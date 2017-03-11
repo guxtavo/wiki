@@ -18,21 +18,12 @@
 * [PATCH] sto - udpdate README.md with installation and user guide
 * [PATCH] support handbook 404
 
-* [WRITE] Performance investigation handbook -  latency.txt
-        -> * perf tools killsnoop:gpgagent, execsnoop:acpi
-* [READ] C language
-* [READ] openQA, needles, kernel tests
 * [READ] OBS, OBS workshop, vitetris spec and build, openQA getting started
         -> voguel's video, vitetris package
         -> osc perf-utils package, requires kernel>3.2
         -> osc supportutils openSUSE tumbleweed
 * [READ] Linux Kernel Development
-        -> * fastpath and critical section, how to test?
-        -> * list of fastpaths and critical sections in the kernel
-        -> * pi futex: https://www.mjmwired.net/kernel/Documentation/pi-futex.txt
-        -> * android's sosreport
-        -> * perf stat memmove_avx_unaligned_erms
-        -> * superscalar cpu
+* [READ] C language
 
 == 05/01/17 ==
 
@@ -51,15 +42,9 @@
 
 == 03/12/17 == sunday
 
-* -> equilibrium, confidence, organization, posture <-
-* -> chapter 10, synchronization, taking notes <-
-* -> walden <-
 
 == 03/11/17 == saturday
 
-* -> equilibrium, confidence, organization, posture <-
-* -> chapter 10, synchronization, taking notes <-
-* -> walden <-
 * OK: 1300 coffee, strech
 * OK: 1330  message michaela
 * OK: 1400 lunch and study
@@ -78,10 +63,14 @@
 * OK: 1900 [ACTION] create git repo with documents and configs
 * OK: 1910 update git repos
 
+performance needle - 60 300 900
+
+execsnoop -d 60  > execsnoop_60.txt
+execsnoop -d 300 > execsnoop_300.txt
+execsnoop -d 900 > execsnoop_900.txt
+
 == 03/10/17 ==
 
-* -> equilibrium, confidence, organization <-
-* -> yoga ball all day <-
 * OK: 0830 journal.txt
 * OK: 0900 collab mail
 * OK: 0910 apple, 
@@ -94,8 +83,6 @@
 
 == 03/09/17 ==
 
-* -> equilibrium, confidence, organization <-
-* -> yoga ball all day <-
 * OK: 0730 [PATCH] email Petr
 * OK: 0800 print EIF2013
 * OK: 0830 draft yasmin
