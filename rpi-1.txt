@@ -1,0 +1,53 @@
+    +---------+
+   /         /|  A satellite to be deployed
+  /         / |  in a vertical takeoff drone
+  +--------+  |  that flies up to 3KM
+  |        |  |  
+  | RPS-1  |  +  Modules: camera, gps, solar
+  |        | /   array.
+  |        |/ 
+  +--------+     Software: raspbian, cFS
+
+# todo
+
+  * compile kernel rt in fedora 
+  * compile kernel rt in rpi3
+  * radiation effect - constantly reboot the board, memory scrubing
+  * shake and bake
+  * http://www.frank-durr.de/?p=203
+  * https://cfs.gsfc.nasa.gov
+  * apt-get install lm_sensors virt-manager
+  * solar panel
+  * cubesat frame 3d print
+  * kband research
+  * what is going to be plugged in rpi3?
+  * what instruments to have for 3km flights? camera
+  * buy rpi zero, with complete kit and compatible wifi dongle
+  * OK: install raspbian and enable wifi
+  * OK: try to use powertop in rpi3s-1
+  * OK: https://www.raspberrypi.org/documentation/installation/installing-images/linux.m
+  * OK: sd card michael
+
+# drone
+
+A drone which only job is to go up. How far up a drone can go? 3.4km
+
+  * calculate how much power the drone needs to lift the payload
+  * can I install solar arrays to extend flight or is it just a short flight?
+  * RTT for geostationary orbit is 239ms
+
+# Raspberry pi power consumption
+
+  2.5A - Recommended PSU current capacity (powering 4 usbs)
+  1.2A - Maximum total USB peripheral current draw  
+~400mA - Typical bare-board active current consumption
+ 250mA - Camera module drawn
+
+  ==  Power drawn in amps ==
+
+                 Pi3    Pi0
+  Boot   - Max - 0.75 | 0.20
+           Avg - 0.35 | 0.15
+  Idle   - Avg - 0.30 | 0.10
+  Stress - Max - 1.34 | 0.35
+           Avg - 0.85 | 0.23

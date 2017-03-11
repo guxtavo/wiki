@@ -1,0 +1,74 @@
+The error message cames from clocksource.c:
+
+kernel/time/clocksource.c:
+
+293                 /* Check the deviation from the watchdog clocksource. */
+294                 if (abs(cs_nsec - wd_nsec) > WATCHDOG_THRESHOLD) {
+295                         if (clocksource_failover ||
+296                            (has_kvm_clock && !strcmp(cs->name, "tsc")))
+297                                 clocksource_unstable(cs, cs_nsec - wd_nsec);
+298                         else
+299                                 printk(KERN_WARNING "Clocksource %s unstable (delta = %Ld ns).  Enable clocksource failover by adding clocksource_failover kernel parameter.\n",
+300                                        cs->name, cs_nsec - wd_nsec);
+301                         continue;
+302                 }
+
+
+251 static void clocksource_watchdog(unsigned long data)
+252 {
+253         struct clocksource *cs;
+254         cycle_t csnow, wdnow, delta;
+255         int64_t wd_nsec, cs_nsec;
+256         int next_cpu;
+257 
+258         spin_lock(&watchdog_lock);
+259         if (!watchdog_running)
+260                 goto out;
+261 
+262         list_for_each_entry(cs, &watchdog_list, wd_list) {
+263 
+264                 /* Clocksource already marked unstable? */
+265                 if (cs->flags & CLOCK_SOURCE_UNSTABLE) {
+266                         if (finished_booting)
+267                                 schedule_work(&watchdog_work);
+268                         continue;
+269                 }
+270 
+271                 local_irq_disable();
+272                 csnow = cs->read(cs);
+273                 wdnow = watchdog->read(watchdog);
+274                 local_irq_enable();
+275 
+276                 /* Clocksource initialized ? */
+277                 if (!(cs->flags & CLOCK_SOURCE_WATCHDOG)) {
+278                         cs->flags |= CLOCK_SOURCE_WATCHDOG;
+279                         cs->wd_last = wdnow;
+280                         cs->cs_last = csnow;
+281                         continue;
+282                 }
+283 
+284                 delta = clocksource_delta(wdnow, cs->wd_last, watchdog->mask);
+285                 wd_nsec = clocksource_cyc2ns(delta, watchdog->mult,
+286                                              watchdog->shift);
+287 
+288                 delta = clocksource_delta(csnow, cs->cs_last, cs->mask);
+289                 cs_nsec = clocksource_cyc2ns(delta, cs->mult, cs->shift);
+290                 cs->cs_last = csnow;
+291                 cs->wd_last = wdnow;
+292
+293                 /* Check the deviation from the watchdog clocksource. */
+294                 if (abs(cs_nsec - wd_nsec) > WATCHDOG_THRESHOLD) {
+295                         if (clocksource_failover ||
+296                            (has_kvm_clock && !strcmp(cs->name, "tsc")))
+297                                 clocksource_unstable(cs, cs_nsec - wd_nsec);
+298                         else
+299                                 printk(KERN_WARNING "Clocksource %s unstable (delta = %Ld ns).  Enable clocksource failover by adding clocksource_failover kernel parameter.\n",
+300                                        cs->name, cs_nsec - wd_nsec);
+301                         continue;
+
+
+
+199 /*
+200  * Interval: 0.5sec Threshold: 0.0625s
+201  */
+203 #define WATCHDOG_THRESHOLD (NSEC_PER_SEC >> 4)      

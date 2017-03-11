@@ -1,0 +1,15 @@
+1) Create hosts file:
+
+[dev]
+ip
+
+[prod]
+ip
+
+Then you can run:
+
+$ ansible dev -m command -a uptime -u root
+$ ansible prod -m command -a uptime -u root
+$ ansible all -m command -a uptime -u root
+$ ansible all -m script -a ./foo.sh -u root
+

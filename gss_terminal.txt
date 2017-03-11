@@ -1,0 +1,15 @@
+  new $ID
+    Downloads attachments from case
+
+  ca $ID
+    Shows case description
+
+  nco $ID
+    Creates a new comment for the ticket
+    Runs aspell in the comment after exiting
+    Copy comment to clipboard after exiting
+
+  eco $ID
+    Edits the last comment for ticket id
+    Runs aspell in the comment after exiting
+    Copy comment to clipboard after exiting

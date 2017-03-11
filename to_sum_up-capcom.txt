@@ -1,0 +1,87 @@
+capcom(7)                      Gustavo Figueira                        capcom(7)
+
+OBJECTIVE
+       Linux kernel, Performance and Real-Time Embedded Systems
+
+SYNOPSIS
+       Troubleshooter, good knowledge in Linux kernel internals, x86
+       architecture, performance and power management. I've worked in Internet
+       Startups, Telcos, on different support roles, acting as architect,
+       tester, integrator, project manager, site reliability engineer or just
+       one-man-army. I might not know everything, but it is just a matter of
+       time until I do.
+
+DESCRIPTION
+       For the past 3 years I've been dealing with [sched] and [mm] tickets in
+       Red Hat Support kernel team. I specialized in performance
+       investigation, working with cgroups, systemd, power management,
+       networking, services, shells, storage and filesystems. Have been using
+       RHEL for 7+ years.
+
+OPTIONS
+       -a --architect
+              Designing mission critical clusters for telcos, network design
+              for ISPs
+
+       -t --troubleshooting
+              Performance profiling and tuning, stress tests, low level
+              packet/trace and vmcore analysis
+
+       -l --low-level
+              gdb, strace, ftrace, perf, sar
+
+       -o --os-sysadmin
+              Linux, OpenBSD, Solaris, IOS, AIX, HP-UX, Tru64, FreeBSD
+
+       -c --configuration
+              DNS, HTTP, SMTP, VPN (OpenVPN, IPsec), DHCP, NFS, NMS, MySQL,
+              Oracle Database, Tomcat, JBoss, Asterisk, SAN, LVM
+
+       -s --soft-skills
+              Customer oriented, mentoring, documentation / report writing,
+	            time management, project management
+
+       -n --networking
+              IPv4, firewall configuration (iptables, pf, cisco), routing and
+              switching
+
+       -d --development
+              Scripting, Object Oriented, Linux kernel internals, Git, regex, 
+              vi, SQL, CI (OBS), 
+
+       -i --interests
+              Space exploration, aviation, sports, acoustic guitar and science
+
+       -p --projects
+              MultiKern, uit, Aarav(CLI, CSR, cssbot), STO
+
+
+
+
+
+
+
+VERSIONS
+
+  Suse Linux, CZ                          Red Hat, CZ
+  > Linux Developer                       > Technical Support Engineer
+                                          > Team Lead
+  Gemalto, LATAM
+  > Integration Engineer I and II
+                                          Drogarias Pacheco, BR
+  Fidelity IT, BR                         > Data Center Specialist
+  > Storage Support Engineer              > SAP Basis Support
+  > Unix Support Engineer
+                                          INPI, BR
+  Kern Technologies, BR                   > Unix Support Engineer
+  > Data Center Specialist                > Tech Lead
+
+  Various Companies, BR                   Uniabeu University, BR
+  > Webmaster / Web Developer             > Security Professor
+  > Sysadmin / Windows NT Support
+
+SEE ALSO
+        https://www.linkedin.com/in/guxtavo
+
+
+capcom(7)              guxtavo@gmail.com / +420 774 091 877            capcom(7)

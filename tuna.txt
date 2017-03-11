@@ -1,0 +1,31 @@
+Got it Enrico, you now have something like this:
+
+ +---------------------------------------------------------+
+ |    lnx2317                                              |
+ |  +------------------------+  +------------------------+ |
+ |  |              32G       |  |                32G     | |
+ |  |   Node0 - 8 threads    |  |     Node1 - 8 threads  | |
+ |  |                        |  |                        | |
+ |  |    - IO                |  |   - NET                | |
+ |  |    - kernel threads*   |  |   - fx_slave cg x8cpus | |
+ |  |                        |  |   - default cg x4cpus  | |
+ |  |                        |  |                        | |
+ |  +------------------------+  +------------------------+ |
+ +---------------------------------------------------------+
+
+  * - To improve things a little more, you could move all kernel threads which are not CPU bound to node0. 
+
+Another tool I would recommend you to check out is tuna, to verify your setup is working:
+
+[~]$ tuna -P | sort -n -k 5 | tail -5
+                      thread       ctxt_switches
+    pid SCHED_ rtpri affinity voluntary nonvoluntary             cmd 
+  4       FIFO     1        0   3161181          534   ktimersoftd/0  
+  33      FIFO     1        2   3218349         1047   ktimersoftd/2  
+  132     FIFO    50  0,1,2,3   3846470           22    irq/12-i8042  
+  2588   OTHER     0  0,1,2,3   6232017      2997701         firefox  
+  131     FIFO    50  0,1,2,3  27536958           32 irq/43-xhci_hcd  
+
+It is also possible to use tuna move threads between cpus and even sockets.  
+
+Regarding the error restarting cgconfig, I would need the exact error message so I can verify if this can be a problem. 

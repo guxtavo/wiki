@@ -1,0 +1,25 @@
+Title: How record terminal data to share with Red Hat Support 
+Statement: 
+  * How do I share interactive data with Red Hat Support?
+
+Environment:
+
+* RHEL 6
+* RHEL 7
+
+Resolution
+
+~~~
+script -t 2> time.log -a session.log
+~~~
+
+Upload both interactive.time and interactive.session to your ticket.
+
+
+Private note:
+
+To replay the session use
+
+~~~
+scriptreplay -t interactive.time -s interactive.session
+~~~

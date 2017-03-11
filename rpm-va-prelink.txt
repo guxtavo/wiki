@@ -1,0 +1,24 @@
+These files gave prelink errors and couldn't be verified, having them check it again after redoing prelink.
+
+$ cat rpm.txt | grep \? | sort -u
+S.?......    /lib64/libcryptsetup.so.1.1.0
+S.?......    /lib64/libdmraid.so.1.0.0.rc16
+S.?......    /lib64/libparted-2.1.so.0.0.0
+S.?......    /sbin/cryptsetup
+S.?......    /sbin/dm_dso_reg_tool
+S.?......    /sbin/dmevent_toolCan you run the following and then attach the output rpm-va.log to the case:
+
+prelink -u -a
+prelink -a
+rpm -Va &> rpm-va.log
+
+Regards,
+
+Chris Cheney
+
+S.?......    /sbin/dmraid
+S.?......    /sbin/kpartx
+S.?......    /sbin/parted
+S.?......    /sbin/partprobe
+
+

@@ -1,0 +1,94 @@
+Article: Basic Kernel Logging and Watchdogs
+
+https://en.wikipedia.org/wiki/Linux_kernel_oops
+
+INTRO
+
+There are a few hints the kernel logging (kprintf) give us when our system's misbehave. Certainly, a vmcore[1] analisys will tell us the thruth behind the kernel data structures, but a good old grep in the ring buffer[2] can point us toward a better way before we dispatch crash[3]. 
+
+  [1] Vmcore analysis techniques 
+  https://access.redhat.com/articles/1406253
+
+  [2] How do I increase the kernel log ring buffer size?
+  https://access.redhat.com/solutions/47276
+
+The kernel is always trying to validate data from userspace because it doesn't trust user space. Application bugs are a certainty to the kernel, so it must defend itself and "thou root user" from nasty user-space stuff.
+
+
+The closest thing you might want to do if you're actually handling a fatal case is the panic() function or the BUG_ON and WARN_ON macros, which will abort execution and produce diagnostic messages, a stack trace and a list of modules.
+
+BUG() and BUG_ON()
+
+BUG() and BUG_ON(condition) are used as a debugging help when something in the kernel goes terribly wrong. When a BUG_ON() assertion fails, or the code takes a branch with BUG() in it, the kernel will print out the contents of the registers and a stack trace. After that the current process will die. 
+
+Most likely when you see a BUG() in kernel ring buffer, you will think it is a kernel bug, when in fact it was the kernel catching a unexpect data in the flow just to make sure your computer works without corruption.
+
+When the kernel catches this errors, it will create trap and the 
+
+When BUG() and BUG_ON() are called, they cause an oops, which results in a stack trace and an error message dumped to the kernel. How is it used in the kernel code?
+
+1)
+  if (bad_thing)
+          BUG();
+  
+2)
+  BUG_ON(bad_thing);
+
+What kind of error will I see in the ring buffer? This are the first five lines from a paging request on kernel 2.6.32-504.el6.x86_64:
+
+  BUG: unable to handle kernel paging request at fffffffb8a3e59c0
+  IP: [<ffffffff8105d834>] update_curr+0x144/0x1f0
+  PGD 1a87067 PUD 0 
+  Thread overran stack, or stack corrupted
+  Oops: 0000 [#1] SMP
+
+Here are the first 3 lines of a bug in n_tty.c in kernel 2.6.32-358.el6.x86_64:
+
+  kernel BUG at drivers/char/n_tty.c:1713!
+  invalid opcode: 0000 [#1] SMP 
+  last sysfs file: /sys/module/ipv6/initstate
+
+http://yarchive.net/comp/linux/BUG.html:
+Rule of thumb: BUG() is only good for something that never happens and
+that we really have no other option for (ie state is so corrupt that
+continuing is deadly).
+
+		Linus
+
+And here you can check a solution when BUG is triggered because the CPU is stalled for N seconds:
+
+  Getting "BUG: soft lockup detected on CPU#N" messages running RHEL on VMWare
+  https://access.redhat.com/solutions/21849
+
+
+So, to summarize, the kernel needs to validate anything that comes from userspace and just handle it. The BUG and BUG_ON macros exist to catch bugs in your own code or problems with the hardware.
+
+INFO 
+
+WARNING
+
+panic)
+
+A more critical error is signaled via panic(). A call to panic() prints an error message and then halts the kernel. Obviously, you want to use it only in the worst of situations:
+
+if (terrible_thing)
+        panic("foo is %ld!\n", foo);
+
+
+Sometimes, you just want a simple stack trace issued on the console to help you in debugging. In those cases, dump_stack() is used. It simply dumps the contents of the registers and a function back trace to the console:
+
+if (!debug_check) {
+        printk(KERN_DEBUG "provide some information...\n");
+        dump_stack();
+}
+
+
+Lockup watchdog
+
+Hung task watchdog
+
+
+
+
+  System becomes unresponsive with message "INFO: task <process>:<pid> blocked for more than 120 seconds".
+  https://access.redhat.com/solutions/31453

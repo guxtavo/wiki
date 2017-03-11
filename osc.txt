@@ -1,0 +1,33 @@
+OBS/osc knowledge base
+
+TODO
+ * write spec file for vitetris and make it build
+ * Finish OBS epub
+ * create supportutils package for tumbleweed
+
+## osc usefull commands
+
+  osc co home:unixmonk3y
+  checkout home project
+
+  osc mkpac package_name
+  create package
+
+  osc ci -m "message"
+  comit changes
+
+  osc add file
+  add file
+
+  osc addremove
+  add and remove files :)
+
+  osc importsrcrpm file
+  import spec file from src rpm
+
+  osc copypac
+  copy package
+
+  osb build
+  build the package
+

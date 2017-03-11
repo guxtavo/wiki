@@ -1,0 +1,35 @@
+
+                          Method of Procedure
+
+ MOP ID: perf0001   Author: Gustavo Figueira    Approver: 
+ Version: 0001        Date: 02/7/2016
+
+ MOP title: Capturing valid data for performance analysis on host  0123-cluster14-node88-prod
+ MOP purpose: A baseline of system data points accross a given amount of time and the
+ capability of replicating the tests on demand is the ideal condition for a quick There is a gap of 28994 patches committed from current version
+ (2.6.32-279), until latest kernel version.
+
+ == Prerequisites ==
+
+ 1. Batch data set 
+ 2. Automation in place to run batches and capture required data
+ 3. Data diagram
+
+
+
+
+ == Timeline ==
+
+   Action                                             Needed time 
+   1. yum update kernel  (install newest kernel)      5-15 minutes
+   2. init 6 (reboot the system)                      5-15 minutes
+   3. Test application                                
+   4. Rollback procedure (if needed)                  5-15 minutes
+
+ == Rollback procedure ==
+
+ 1. How do I boot using an alternate / previous / older kernel?
+    https://access.redhat.com/solutions/226423
+
+ 2. How do I change the default kernel in GRUB that is loaded at startup? 
+    https://access.redhat.com/solutions/3089

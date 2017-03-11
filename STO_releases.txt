@@ -1,0 +1,210 @@
+tuned-gss-scripts
+=================
+
+https://access.redhat.com/solutions/1305833
+
+docker times in RHEL
+
+tuned-gss-scripts rpm
+tuned script - protect system - find script
+tuned script - user 80% CPU/memory, 500IO/s all devices
+tuned script - cpupower disable c-states, cpupower performance governor
+tuned script - increase vm.min_free_kbytes for oracle
+
+anaconda add-on - Initial Setup - cgroup - resource limiting
+Each add-on must have Kickstart support;the GUI and TUI are optional, but can be very helpful. 
+%addon com_redhat_kdump 
+
+https://rhinstaller.github.io/anaconda-addon-development-guide/
+https://github.com/daveyoung/kdump-anaconda-addon
+
+
+cgroup config for login
+
+#!/bin/bash
+ps -ef | egrep "sshd|mingetty|login|cron|rsyslog" | grep -v grep | while read a b c; \
+# Setting  oom_score_adj to -1000:
+do echo "-1000" > /proc/$b/oom_score_adj
+# Set IO class to real time and highest priority
+ionice -c1 -n0 -p $b
+# Set nice to -19
+renice -19 -p $b > /dev/null
+done
+# Set TOS for port 22
+iptables -A PREROUTING -t mangle -p tcp --sport 22 -j TOS --set-tos Minimize-Delay
+iptables -A OUTPUT -t mangle -p tcp --dport 22 -j TOS --set-tos Minimize-Delay
+
+https://fritshoogland.wordpress.com/2012/12/15/throttling-io-with-linux/
+
+kernel scripts
+==============
+
+script memory check - friendly, check for oom and page allocation failures in logs and give warning
+kernel instrumentation rpm - sysstat, colleclt, perf,
+script cap hogging process
+script isolate cpu
+script check load
+
+
+# awk '/DEV/,/^$/' /var/log/sa/sar* | sort -k 4 -n | tail -5
+12:00:01 AM       DEV       tps  rd_sec/s  wr_sec/s  avgrq-sz  avgqu-sz     await     svctm     %util
+03:20:01 PM  dev253-0    104.49    799.79    741.14     14.75      0.64      6.14      0.11      1.19
+04:40:01 PM  dev253-0    104.95    360.38    774.91     10.82      0.04      0.41      0.14      1.43
+05:00:01 PM  dev253-0    106.15    479.59    706.32     11.17      0.06      0.58      0.24      2.51
+07:50:01 AM  dev253-0    249.95   1063.30   1947.36     12.04     17.47     69.88      0.06      1.59
+11:50:01 AM  dev253-0   1567.12     13.47  12532.03      8.01    396.97    253.31      0.02      3.27
+                        ^^^^^^^
+
+# awk '/DEV/,/^$/' /var/log/sa/sar* | sort -k 5 -n | tail -5
+12:00:01 AM       DEV       tps  rd_sec/s  wr_sec/s  avgrq-sz  avgqu-sz     await     svctm     %util
+03:20:01 PM  dev252-0     15.17    800.59    758.35    102.75      0.02      1.54      0.80      1.21
+07:50:01 AM  dev252-0     10.30   1063.30   1948.58    292.49      0.18     17.64      1.55      1.60
+07:50:01 AM  dev253-0    249.95   1063.30   1947.36     12.04     17.47     69.88      0.06      1.59
+07:30:01 AM  dev252-0      9.00   1413.00    109.61    169.09      0.02      2.26      1.37      1.23
+07:30:01 AM  dev253-0     21.17   1413.00    109.59     71.93      0.11      5.31      0.58      1.23
+                                  ^^^^^^^
+
+# awk '/DEV/,/^$/' /var/log/sa/sar* | sort -k 6 -n | tail -5
+12:00:01 AM       DEV       tps  rd_sec/s  wr_sec/s  avgrq-sz  avgqu-sz     await     svctm     %util
+04:30:01 PM  dev252-0     35.71    342.72   1056.94     39.19      0.03      0.85      0.44      1.59
+07:50:01 AM  dev253-0    249.95   1063.30   1947.36     12.04     17.47     69.88      0.06      1.59
+07:50:01 AM  dev252-0     10.30   1063.30   1948.58    292.49      0.18     17.64      1.55      1.60
+11:50:01 AM  dev252-0     22.67     13.47  12532.03    553.47      3.47    153.19      1.44      3.26
+11:50:01 AM  dev253-0   1567.12     13.47  12532.03      8.01    396.97    253.31      0.02      3.27
+                                           ^^^^^^^^
+
+performance
+===========
+
+There is a bunch of things I can do to help you with your performance, but it would be nice if you could provide some specific data in order to narrow down the problem, which can be:
+
+  * Capacity planning of the system
+  * Any chart from your application showing a drop, deviation or
+    jitter or anything out of expected pattern (your NMS might provide such)
+  * Reproducible steps/routine/script/job
+  * If you have io-bound application, what's your disks MTBF 
+  * End of life date of your hardware or hypervisor's hardware
+
+
+STO V1.0:
+=========
+
+greet : Greetings, my name is Gustavo from the EMEA Kernel Team and I will assist you with this service request.
+qbudd : Greetings, my name is Gustavo from the EMEA Kernel Team and I will assist you with this service request while my colleague is out of office.
+collab: Greetings, my name is Gustavo from the EMEA Kernel Team and I will collaborate with this service request.
+NNO   : Greetings, my name is Gustavo from the EMEA Kernel Team and I will assist you with this service request until an Engineer in your GEO can take this case.
+WTF???: Greetings, my name is Gustavo from the EMEA Kernel Team. Are you sure there is a problem or do you want to understand something?
+triage: Greetings, my name is Gustavo from the EMEA Kernel Team and I will triage this service request. I am now setting this case to be handled by a XXX Engineer, let me know in case the GEO is incorrect.
+
+STO V2.0:
+=========
+
+sign  : --
+get_random(http://bkhull.com/signature.html)
+Kind regards, Gustavo
+
+  Reference Guide for Engaging with Red Hat Support
+  https://access.redhat.com/articles/280093
+
+# sign 01635001
+# rhst getcase 01635001 | grep 
+  
+*#### CEE EMEA - Kernel team ####	
+*# kernel: 2.6.32-573.18.1      #
+*# kdump : unknown              #
+*# kdump : non functional       #
+*# kdump : functional           #
+*# vmcore: none                 #
+*# subsystem:
+*# module:
+*# case type:
+*# sos   : yes                  #
+*# RCA   : unsufficient data    #
+*# RCA   : KB linked            #
+*# RCA   : yes, comment #14     #
+*# TS    : 01632392 0110101101010
+
+sto v2.0
+========
+
+Scripts! Run a script directly from sto to gather data from any file:
+
+  * Do a grep in var/log/message and spit out data to your comment
+  
+  Examples: run a tshark tcpdump analysys 
+            xsos
+            any bash custom script :D
+
+  
+
+vmcore memory analysis
+======================
+
+crash - top 10 memory consuming application
+ps -G | tail -n +2 | cut -b2- | sort -g -r -k 8,8 | head
+ps -Gu java | tail -n +2 | cut -b2- | gawk '{mem += $8} END {print "total " mem/1048576 " GB"}'
+ps -Gu oracle | tail -n +2 | cut -b2- | gawk '{mem += $8} END {print "total " mem/1048576 " GB"}'
+ps -Gu dagent | tail -n +2 | cut -b2- | gawk '{mem += $8} END {print "total " mem/1048576 " GB"}'
+ps -G | sed 's/^>//' | awk '{ m[$9]+=$8 } END { for (item in m) { printf "%20s %10s KiB\n", item, m[item] } }' | sort -k 2 -r -n |head
+
+Therefore I recommend to review the application logs, configuration and memory requirements.
+
+
+
+sar conversion
+==============
+
+TZ="Europe/Stockholm" LANG=C LC_ALL=en_us ~/scripts/sar/sar6 -A -f sa/sa08 > sar08 
+
+
+
+sar analysis tips
+=================
+
+awk '/%user/,/^$/' var/log/sa/sar*  | egrep -v "all|Average"  | awk '{if ($5 > 5) print}'
+
+awk '/runq-sz/,/^$/' var/log/sa/sar* 
+
+awk '/DEV/,/^$/' var/log/sa/sar*  | egrep -v "Average"  | sort -k 8 -n | tail -20 # await
+awk '/DEV/,/^$/' var/log/sa/sar*  | egrep -v "Average"  | sort -k 9 -n | tail -20 # svctm
+
+the logs show a break in logging meaning that the system either was down, all logging processes were stopped, or the system reached a state where it could not report its own health. Regardless, since we have no data at the time noted, we will most certainly need a vmcore from the time of the issue, as vmcores contain the contents of memory at the time of their creation. 
+
+
+
+lukas
+=====
+
+My name is Lukas and I am senior engineer located in EMEA.
+We were on the call. As agreed on the call it looks that there is no issue, but the performance is just matter of physical capabilities of the hardware.
+
+To confirm that the systems is using all the bandwidth of the storage I would like to ask you if you can collect following data:
+I assume that the merging is in progress now.
+
+ # iostat -tkx 1 300 >   # iostat_-tkx_1_300
+ # dmsetup ls --tree
+ # cat /proc/partitions
+ # cat /proc/mounts
+
+
+
+rhel4
+=====
+
+Those machine checks are dated from Mar 13 so they may not be related to the current reboots. 
+
+Unfortunately the kernel version running on this system is in the Extended Life Phase. We do not provide root cause analysis or bug fixes for products in this phase. No new RHEL 4 kernels will be released at any future point. This version is not eligible for any future patches. 
+
+$ cat uname 
+Linux lonrs06089 2.6.9-89.0.9.ELlargesmp #1 SMP Wed Aug 19 08:12:11 EDT 2009 x86_64 x86_64 x86_64 GNU/Linux
+
+$ cat etc/redhat-release 
+Red Hat Enterprise Linux AS release 4 (Nahant Update 8)
+
+If the hardware vendor has ruled out any issues, I'd recommend the following:
+- Check for any mechanisms which are capable of rebooting the system (cluster, hp-asr). If any such mechanisms are enabled check the respective logs or disable the mechanism to see if the system behavior changes
+- In terms of an OS bug, there are a large number of newer RHEL 4 kernels, you can update to the latest version to rule out any fixed kernel issues. 
+- If this does not prove successful, you'll need to rebuild the system as a fully supported version - RHEL 5 or newer. 
+
+The latest RHEL 4 version is linked below. 
+https://access.redhat.com/downloads/content/rhel---4/x86_64/2013/kernel/2.6.9-103.EL/x86_64/db42a60e/package

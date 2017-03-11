@@ -1,0 +1,781 @@
+    /\    #######################
+   /  \   #                     # Object oriented programming
+  /    \  #  LKD, code and RPS1 # Functional and scripting
+ / vucs \ #                     # CI: OBS
+--------- #######################
+
+ # header ##
+ 5 x patches - 3 x actions - 5 x reads
+ ###########   ###########   #########
+
+* [ACTION] [IMPORTANT] mail diploma and super legalization from brazil
+
+* [PATCH] obs-build - add verbose warning when package auto-detect is triggered
+* [PATCH] uprobe - avoid dying when more than 1 libraries are found
+* [PATCH] tuna - pep8
+* [PATCH] sto - udpdate README.md with installation and user guide
+* [PATCH] support handbook 404
+
+* [ACTION] create git repo with documents and configs
+* [ACTION] passport wednesday
+* [ACTION] passagem brasil
+
+* [WRITE] Performance investigation handbook -  latency.txt
+        -> * perf tools killsnoop:gpgagent, execsnoop:acpi
+* [READ] C language
+* [READ] openQA, needles, kernel tests
+* [READ] OBS, OBS workshop, vitetris spec and build, openQA getting started
+        -> voguel's video, vitetris package
+        -> osc perf-utils package, requires kernel>3.2
+        -> osc supportutils openSUSE tumbleweed
+* [READ] Linux Kernel Development
+        -> * fastpath and critical section, how to test?
+        -> * list of fastpaths and critical sections in the kernel
+        -> * pi futex: https://www.mjmwired.net/kernel/Documentation/pi-futex.txt
+        -> * android's sosreport
+        -> * perf stat memmove_avx_unaligned_erms
+        -> * superscalar cpu
+
+== 05/01/17 ==
+
+* [PATCH] support handbook - 404: school or academic institution
+
+== 03/13/17 == monday
+
+* -> equilibrium, confidence, organization, posture <-
+* -> chapter 10, synchronization, taking notes <-
+* -> walden <-
+* sd card patrick
+* book appointment with prevent
+* 01771708 tuned oracle profile RFE
+* ~/git/sto$ git push origin master
+* create issue for sto: add support to firefox
+
+== 03/12/17 == sunday
+
+* -> equilibrium, confidence, organization, posture <-
+* -> chapter 10, synchronization, taking notes <-
+* -> walden <-
+
+== 03/11/17 == saturday
+
+* -> equilibrium, confidence, organization, posture <-
+* -> chapter 10, synchronization, taking notes <-
+* -> walden <-
+* OK: 1300 coffee, strech
+* OK: 1330  message michaela
+* OK: 1400 lunch and study
+* OK: 1430 perf tools play
+* OK: 1443 wait-for completion
+* OK: 1506 now
+* OK: 1530 gpu virtualization
+* OK: 1545 email relocation agency and lebusa
+* OK: 1600 personal questionnaire
+* OK: 1630 diploma 
+* OK: 1645 email libusa prevent
+* OK: 1700 queue management 
+* OK: 1730 desert, pay, home, toilet, charge phone, grocery shopping, coffee
+* OK: 1800 ~/Documents/sto-install.txt -> README.md git commit
+* 1830 startalk
+
+== 03/10/17 ==
+
+* -> equilibrium, confidence, organization <-
+* -> yoga ball all day <-
+* OK: 0830 journal.txt
+* OK: 0900 collab mail
+* OK: 0910 apple, 
+* OK: 0915 concentration music
+* OK: 0920 buy bus tickets to prague next wednesday
+* OK: 0930 tea, break, coffee
+* OK: 0945 email mrdest pto next wednesday, mail HR
+* OK: 1800 check how to get to meeting, tram
+* OK: 1900 portuguese meeting
+
+== 03/09/17 ==
+
+* -> equilibrium, confidence, organization <-
+* -> yoga ball all day <-
+* OK: 0730 [PATCH] email Petr
+* OK: 0800 print EIF2013
+* OK: 0830 draft yasmin
+* OK: 0930 install sto
+* OK: 1000 fill EIF2013, scan and send
+* OK: 1030 print PL-02-01
+* OK: 1100 Translate and fill PL-02-01
+* OK: 1115 email Libusa
+* OK: 1200 lunch
+* OK: 1230 01788500 cgroups sar
+* OK: 1300 01805439 performance
+* OK: 1330 01797948 bugzilla
+* OK: 1400 01575254 yasmin
+* OK: 1430 clone sto repo
+
+== 03/08/17 ==
+
+* OK: 0700 bus to prague
+* OK: 0710 LKD - chapter 10
+* OK: 1000 brazilian embassy
+* OK: 1430 bus to brno
+
+== 03/07/17 ==
+
+* OK: [ACTION] openSUSE tumbleweed tweak (IRC, git repos)
+* OK: breakfast
+* OK: irc config smuxi
+* OK: 0830 01802550 iowait
+* OK: 0900 01802550 iowait
+* OK: 0930 01802550 iowait
+* OK: 1000 01802550 iowait
+* OK: 1030 01802550 iowait
+* OK: 1100 01795756 unexpected reboot
+* OK: 1130 lunch
+* OK: 1230 01801749 starvation hotfix
+* OK: 1330 buy tickets to prague
+* OK: 1400 01798054 cgroups
+* OK: 1430 01805439 java performance
+* OK: 1500 Aneta Suse
+* OK: 1530 chapter 10
+* OK: 1700 separate things for embassy
+
+== 03/06/17 ==
+
+* OK: 0615 wakeup, vitamins, coffee, shower
+* OK: 0710 program washing machine 
+* OK: 0715 leave to office
+* OK: 0800 [ACTION] tracking RR093069476BR
+* OK: 0830 email HR, Jiri and Vadim
+* OK: 0815 01798796
+* OK: 0830 breakfast and backlog
+* OK: 0900 finish bottom halves
+* OK: 1030 01801749 tasklist_lock starvation
+* OK: 1100 lunch
+* OK: 1130 01801749 tasklist_lock starvation
+* OK: 1200 01801749 tasklist_lock starvation
+* OK: 1300 01802692
+* OK: 1400 01791918 review
+* OK: 1700 bring books home
+
+== 05/03/17 ==
+
+* OK: planning tomorrow 
+
+== 04/03/17 ==
+
+* OK: battery level on tmux bar
+* OK: lynx black background - switch to elinks :D
+
+== 03/03/17 ==
+
+* OK: 01788500 - cgroups performance
+
+== 27/02/17 ==
+
+* OK: 0830 breakfast
+* OK: 0900 strace oscilloscope
+* OK: 0930 coffee obs
+* OK: 1000 epub obs
+* OK: 1030 study C
+* OK: 1100 openstack case collab
+* OK: 1300 lunch
+* OK: 1705 bus 44
+* OK: 1730 hairdresser
+* OK: 1730 western union
+
+== 26/02/17 ==
+
+* OK: 0800 01798893 kdump 4.52 firmware
+* OK: 0830 01788500 cgroups
+* OK: 1000 01798796 reboot volvo
+* OK: 1330 01797948 check bugzilla nep
+* OK: 1300 01788500 cgroups
+* OK: 1500 01796701 swap na
+* OK: 1600 orange
+* OK: 01575254 email which machine, which user?
+* OK: 1710 9K rb
+
+== 17/02/17 ==
+
+* OK: 0730 tmux
+* OK: 0800 bath and breakfast
+* OK: 0830 tmux
+* OK: 0900 tmux
+* OK: 0930 writing today's plan
+* OK: 1000 01792381
+* OK: 1010 01764546
+* OK: 1015 sheep meeting
+* OK: 1030 breakfast?
+* OK: 1100 01575254
+* OK: 1130 01575254
+* OK: 1200 youtube c object oriented
+* OK: 1215 prepare for interview with suse and honeywell
+* OK: 1230 youtube c object oriented
+* OK: 1300 lunch
+* OK: 1330 lunch
+* OK: 1400 01575254
+* OK: 1440 prepare for interview, tea, room
+* OK: 1500 Aneta Suse
+* OK: 1545 Jarmila Honeywell
+* OK: 1600 01575254
+
+== 15/02/17 ==
+
+* OK: 0800 01791918 review
+* OK: 1030 interview
+* OK: 1100 interview
+* OK: 1130 interview
+* OK: 1200 lunch
+* OK: 1230 lunch
+* OK: 1300 tuna code review - writing handover notes
+* OK: 1330 tuna code review
+* OK: 1400 01792759
+* OK: 1415 where is gustavo thursday
+
+== 14/02/17 ==
+
+* OK: 0800 tuna code review
+* OK: 0830 tuna code review
+* OK: 0900 tuna code review
+* OK: 0930 read about sysops position
+* OK: 1000 Configuration management videos
+* OK: 1030 city errands
+* OK: 1200 lunch
+* OK: 1230 buy tickets to prague on thu
+* OK: 1300 python classes and objects - https://goo.gl/SzLyb5
+* OK: 1330 tuna code review
+* OK: 1400 tuna code review
+* OK: 1430 01788500 cgroups perf summary
+* OK: 1500 01788293 kpatch
+* OK: 1530 break
+* OK: 1600 01788097 hba solaris perf
+* OK: 1630 01787301 close
+* OK: 1645 01788294 seg fault device-mapper
+
+== 13/02/17 ==
+
+* OK: 0800 Aarav article draft
+* OK: 1100 sar and gnuplot testing
+* OK: 1430 perf video
+* OK: 1500 tax thingy
+
+== 09/02/17 ==
+
+* OK: 0800 01788097 hba errors
+* OK: 0830 01776770 cg close case
+* OK: 0900 01788294 segfault
+* OK: 0930 lstopo rhel73: hwlock-ls
+* OK: 0940 01788500 performance
+* OK: 1200 01787334 vmcore corrupt
+
+== 06/02/17 ==
+
+* OK: 0800 01778414 collab flame graphs
+* OK: 0830 interrupt handlers
+* OK: 1030 interrupt handlers
+* OK: 1100 c programming, functions
+* OK: 1130 youtube learning
+* OK: 1300 Lunch
+* OK: 1400 01786531 unexpected reboot - no data
+* OK: 1430 01784990 performance problem
+
+== 01/02/17 ==
+
+* OK: 0800 01772537 close case
+* OK: 0830 01756431 where is my swap?
+* OK: 0900 01773061 collab queue
+* OK: 0930 01781955 collab queue
+* OK: 0930 mainline kernel in rhel72 vm running
+* OK: 1000 01756431 where is my swap?
+* OK: 1030 break
+* OK: 1100 contributing to michal's project "cle"
+* OK: 1110 01781001 xeon bug, configure kdump
+* OK: 1130 01776880 kdump on hp doesn't work
+* OK: 1200 01783688 check sosreport
+* OK: 1230 01776880 kcs 
+* OK: 1330 01756431 crash foreach vm
+
+== 31/01/17 ==
+
+* OK: 0930 01781145 50% cpu, architect
+* OK: 1400 01742865 nokia backport
+* OK: 1500 01776880 Sam, kdump, disk not found
+* OK: 1600 01773675 reboot takes 30 minutes
+
+== 30/01/17 ==
+
+* OK: 0700 01720389
+* OK: 0830 01781754
+* OK: 0930 01728795 
+* OK: 1100 increase memory on rhel72
+* OK: 1105 clone linux-stable on rhel72
+* NOK: 1115 try compilingt 3.10.104 kernel on rhel72
+* OK: 1120 lunch
+* OK: 1150 lunch
+* OK: 1220 01742865 backport writing
+* OK: 1400 01776880 bomgar kdump cannot find device
+
+== 29/01/17 ==
+
+* OK: 1315 list writing
+* OK: 1330 01756431
+* OK: 1400 01781001
+* OK: 1430 01776880
+* OK: 1530 01776770
+* OK: 1600 01781076
+* OK: 1605 01772537
+* OK: 1610 01773675
+* OK: 1615 01781147
+* OK: 1700 01781492
+* NOK: 1730 boot rhel7 upstream kernel 3.10.104
+* OK: 1800 clone linux-stable
+* OK: 1815 try to build 3.10.104
+* NOK: 1900 boot 3.10.104
+* OK: 1925 enable nfs.service in fedora
+* OK: 1930 update rhel72 libtirpc 
+* NOK: 1910 try to build 3.10.104 in rhel72 (fail because of nfs)
+
+== 27/01/17 ==
+
+* OK: alone in emea
+
+== 26/01/17 ==
+
+* OK: 0830 01778069
+* OK: 0840 01775313
+* OK: 0850 01778198
+* OK: 0900 01776880
+* OK: 0930 01776880
+* OK: 1050 01777550 - sbr-storage: nno emea
+* OK: 1100 01776770
+* OK: 1105 01756431
+* OK: 1115 01773675
+* OK: 1300 the benefits of red hat enterprise linux for real time: blog
+* OK: 1500 sbr-kernel meeting
+* OK: 1600 01765741 collab
+
+== 25/01/17 ==
+
+PTO
+
+==24/01/17 ==
+
+* OK: 0830 wakeup, coffee
+* OK: 0900 01776880 
+* OK: 0930 01775313
+* OK: 1000 01777550
+* OK: 1030 01778198 sap hana
+* OK: 1200 GDB L&L
+* OK: 1230 GDB L&L
+* OK: 1300 GDB L&L
+* OK: 1330 01778069 power management [8] x86_power_flags
+* OK: 01775631 collab
+
+== 23/01/17 ==
+
+* OK: 0615 wakeup, vitamins, coffee, tea
+* OK: 0745 physiotherapy
+* OK: 0900 coffee, breakfast
+* OK: 0910 01776880 kdump hp
+* OK: 0930 create report for interesing cases
+           https://na7.salesforce.com/00OA0000005qKdY
+* OK: 1000 01777550 system unstable high load
+* OK: 1030 01777550 system unstable and high load
+* OK: 1100 merge two script kcs
+* OK: 1130 01776880 kdump hp
+* OK: 1200 lunch
+* OK: 1250 01773471 swappiness collab
+* OK: 1300 01777776 - where is my memory
+* OK: 1330 2860051 - how to tune vm.min_free_kbytes  
+
+== 22/01/17 ==
+
+* OK: KCS: How to record remote session to share with Red Hat Support
+* OK: Try script with atomic host
+
+== 21/01/07 ==
+
+* OK: 0630 wakeup, vitamins, coffee
+* NOK: 0645 audiobook
+* OK: 0800 essentials of airplaine maintenance
+
+== 20/01/17 ==
+
+* OK: 0615 wakeup, vitamins, coffee
+* OK: 0630 pad my schedule, tea - 10 min
+* OK: 0640 strech, maintain correct position
+* OK: 0645 daydream customers user the CP
+* OK: 0715 bath, dress(shorts), bag(towel)
+* OK: 0745 physiotherapy
+* OK: 0000 print ~/print.jpg, put on front wall
+* OK: 0915 01755973 aio hitachi collab
+* OK: 0900 01773675 systemd timeout reboot - leave WoCollab
+* OK: 0930 01775313 - recreate vm, 
+* OK: 1030 improve cssbot.txt database
+* OK: 1030 01775313 test memory controller, stress package
+* OK: 1130 pickup japanese food (24 vegetarian, 16 fish)
+* OK: 1200 lunch (ginger in bag)
+* OK: 1230 how to open ~/Downloads/Kenshi_.pdo (windows)
+* OK: 1300 download redhat-newca.crt 
+* OK: 1330 Install opvn (ipsec dies March 1st)
+* OK: 1400 01763541 collab jozef
+* OK: 1405 ping pong
+* OK: 1430: break 
+* OK: 1500: 01776027 RME collab
+* OK: 1640 home, shave
+* OK: 1730 relax darling
+* OK: 1830 ice skate
+
+== 19/01/17 ==
+
+* OK: 0640 wake up
+* OK: 0715 physiotherapy
+* OK: 0800 01770793 stack size
+* OK: 0815 coffee
+* OK: 0900 01773675 systemd reboot.target time out
+* OK: 1000 01775313
+* OK: 1100 01775313
+* OK: 1200 lunch, wfh
+* OK: 1300 google wish list
+* OK: 1330 01775313 reproducer register update ssh
+* OK: 1500 essentials of airplane maintenance
+* OK: 1530 01775141 soft lockup 
+* OK: 1600 edit idp
+* OK: 1610 rpi satellite CFS https://cfs.gsfc.nasa.gov
+* OK: 1630 rpi3 power consumption
+* OK: 1700 leave WFH
+* OK: 1900 yogurt oat meal
+* OK: 1930 shower, teeth
+* OK: 2000 essentials of airplane maintenance
+* OK: 2130 sleep
+
+== 18/01/17 ==
+
+* OK: 0800 breakfast banana apple yogurt
+* OK: 0805 pad your schedule
+* OK: 0830 IDP edit
+* OK: 0950 01770814 collaboration
+* OK: 1000 01773675 reboot.target failed KB 2774351
+* OK: 1030 01773437 s390 kswapd
+* OK: 1110 lunch, pizza
+* OK: 1140 01773722
+* OK: 1200 cron ping rpi
+* OK: 1300 506163 - disabling ipmi did the trick, publish solution 
+* OK: 1310 01773437 edit kcs with latest data from case
+* OK: 1320 969503 - publish and edit
+* OK: 1330 find prague's embassy address
+* OK: 1400 moleskine
+* OK: 1430 mail
+* OK: 1440 01775141 soft lockups
+* OK: 1500 improve cssbot.txt database
+* OK: 1600 nap
+* OK: 1700 leave work
+* OK: 1710 billa, groceries
+* OK: 1730 wash dishes
+* OK: 1800 prepare eggs
+* OK: 1830 read book
+* OK: 1900 shave, bath, shave
+* OK: 2000 ish milacku
+
+== 17/01/17 ==
+
+* OK: Schedule PTO next week (calendar, email "gss|Pedro")
+* OK: Book bus tickets to prague
+* OK: 0830 Review two articles, 2677291, 2677301   <======|||t
+* OK: 0900 review chorn's swap article
+* OK: 0900 01757138 - cgroups - disable automation
+* OK: 0930 edit cssbot and add results to last comment
+* OK: 1000 create function zz_check_url and test
+* OK: 1010 01756431 - where is my swap
+* OK: 1040 fujitsu-tx1320-m2.tpb.lab.eng.brq.redhat.com
+* OK: 1100 01773675 - systemd timeout at reboot.target - kcs WoC
+* OK: 1150 01773542 - tomcat - memory overcomittment
+* OK: 1200 01773722 - vmcore system fenced 
+* OK: 1300 lunch, rb dollars, flower, vegalite
+* OK: 1430 fedora raspberry pi 3 image
+* OK: 01771708 KCS created
+* OK: 1515 reflash rpi3
+* OK: 1600 Meeting with Patrick
+* OK: 1730 vladka, direct from work
+* OK: 1830 sauna
+
+== 16/01/17 ==
+
+  * OK - copy comments to ~/redhat/comments
+  * OK - create eco.sh and nco.sh (add alias)
+  * OK - create pco.sh (paste comment, aspell, irc)
+
+01742865 - OK: Nokia ipv6 backport 7.2: disable case automation
+01771000 - OK: D state process hang ps
+01773437 - OK: kswapd0: WOCollab
+01771130 - OK: case closed
+01772537 - OK: netlink_compare
+01773542 - OK: oom_killer
+01773454 - OK: vm.min_free_kbytes
+01752848 - OK: cqi review
+
+== 13/01/07 ==
+
+01756431 - OK - swap
+91770597 - OK: collab - high cpu
+01771708 - OK: tune profile oracle
+01772577 - OK: hang rca
+01772580 - OK - high load
+01771039 - leap second: collab
+
+== 12/01/17 ==
+
+01771522 - OK - high CPU utilization
+01771130 - OK - page allocation failure
+01771635 - OK - high disk IO
+01771130 - OK - page allocation failure
+
+== 11/01/17 ==
+
+01750917 - OK - case review
+01756431 - OK - swap
+01763805 - OK - hang, kernel update, WoC
+01770597 - OK - perf data
+01757138 - OK - cgroups no oom_killer reproducer
+01771000 - OK - processes in D state
+01771020 - OK - acpi_pad 100% cpu, vmcore
+01771039 - OK - leap second
+01771036 - OK - sse2
+01770702 - OK - reboot rca
+01771000 - OK - processes in D state
+
+== 07/01/17 ==
+
+01745833 - veritas slab grow, drop fts and sev
+01768661 - memory allocation error oracle from 3.10.0-327.37.1.el7 to 3.10.0-514.el7
+01768433 - cannot boot - run fsck
+01768945 - cannot boot 2.6.32-642.11.1.el6 - possible problem with megaraid driver
+01768951 - performance
+
+== 06/01/17 ==
+
+Standby for collaboration as I'm working in weekend
+
+== 05/01/17 ==
+
+ * learning c
+
+== 04/01/17 ==
+
+01766940 - OK - linuxshield hang
+01766937 - OK - httpd crashed
+01739733 - OK - CSAT engineer review draft
+01765041 - OK - hang/reboot rca - WoC
+01765112 - OK - memory hot plug01766870
+01765468 - OK - BL: closed due to uncorrect entitlements
+01765334 - OK - BL: hang/reboot rca - action plan 
+01677176 - OK - BL: 4 months without response about cpu replacement
+01666463 - OK - BL: no vmcore in 5 months
+01697955 - OK - BL: hang/reboot rca - customer abandoned and status was WoC
+01699327 - OK - BL: page alloc failure
+01727376 - OK - BL: hang/reboot rca- vmcore instructions
+01745177 - OK - BL: jbd2 cpu usage
+01750529 - OK - BL: performance - no data
+01752214 - OK - BL:
+
+   10:20 - OK - ping pong
+   15:00 - ping pong
+
+== today, 30/12/16 ==
+
+01765026 - OK - swap on db server - use top to find swap
+01765468 - OK - oom_killer java - asked for top output with swap field
+01763954 - OK - hang/reboot rca filesystem - vmcore deleted by cu
+01764851 - OK - redis error on atomic host - source code
+01765041 - OK - bug found - no workaround without downtime
+01765334 - OK - hang/reboot rca, waiting on collab
+01765112 - OK - memory hot plug
+01757138 - OK - cgroups swap trashing
+01764848 - OK - nvme tuning
+
+== today, 29/12/16 ==
+
+case work full morning, and that's it
+
+01763954 - OK: write kcs
+01765026 - OK
+01765041 - OK: ob found
+01764546 - OK: WoCU
+01763954 - OK: Collaboration
+01764578 - OK: WoCU - need_data(vmcore)
+01764851 - OK: WoCU - need_data(redis error)
+01764848 - OK
+
+== letter for management ==
+
+I think my actions are being taken mistakenly by mgmt. I constantly remind you
+that I need extra time, out from work, but nothing is working. I understand
+you have coverage constraints. But believe me, we all rotate the burden. There
+are days that some of us can't take more cases. 
+
+So we take turns in scrapping the pile of cases. I, like the others in our
+region, not only try to keep improving myself, take cases from our queue (when
+I can find any or when I can find time), and although I am contributing to
+EMEA, I'm also doing first touches for other GEOs. Like the way you wanted. We
+are a collaboration center. This is my collaboration to sbr-kernel as a whole.
+
+Do I have someone veryfying my work and improving me? What my coach is doing
+to improve me? Here's what I am doing for GSS:
+
+  * Kernel Support enginner, working tickets for cgroups, [sched], [mm],
+    "can't boot" (dracut), performance, power management, networking,
+    storage and filesystems, services and shells
+  * Project leader for STO, web shared template system
+  * TSE role DevOps - scripts/tools to support case automation
+  * Collaborating with all GEOs for "first touch" tickets to prevent sla 
+    breaching, mainly in NA and India
+  * Conducting technical interviews and presentations
+  * Kernel and git focused, taking first steps learning c
+
+After GDB change, I anternate between first touches and documentation writing,
+mainly for learning porposes, which I readly integrate into my automation. 
+
+I've being studying c for a month now. My kcs writing is small, but my 
+
+
+learn c, sto
+
+Take pictures for (Documentary: Global Support Services)
+
+Red Hat guide to supportable installation
+Best practices for running RHEL in bare metal or as guest
+How to automate your sysadmin tasks for a better experience with RHEL
+How to avoid the most common problems our customers face
+Research for google's/microsofts best practice on vm building
+How to own your application in RHEL
+
+https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-guidance-compute-single-vm
+
+  * [security] yum update --security
+  * [perf] power settings
+  * [perf] tuna/tuned
+  * cgroups - avoid hangs dues to out of memory scenarios,
+    resource over committment, wrong sysadmin decisions
+  * [debugging] kdump (over nfs), you might need to blacklist some devices
+
+    When a system crashes, there might not be sufficent time to flush logs to
+    disk, which can be bad if you are trying to understand what happened. But
+    it is possible to dump the memory stack to disk or nfs before the machine
+    reboots. This is possible with kdump. There is a hook in the kernel to
+    call another kernel, which was loaded in memory previously) when a
+    irrecoravabel error occurs. This new kernel will be able then to copy the
+    memory content to some place for further investigation
+
+  * [debugging] sar/pcp and other tools
+  * If your workload cannot fit in your memory but you still are willing to
+    compromise on perfornce, consider using swap on a SSD ;)
+
+======== done =======
+01757138 - cgroup reproducer, update on progress, dl320g4
+
+01742865 - Nokia, script, backport, data capture 6.6x7.2 and 7.3
+
+01763090 - high io wait
+
+01756431 - where is my swap?
+
+1400 - interview
+
+01756431 - swap
+
+01751859 - cgexec rhel7
+
+01750917 - high load average
+
+01752848 - blocked tasks, WoCollab
+
+01751859 - cpuset
+
+01752848
+
+01752214 - performance
+
+01742865 - nokia, read last comments and work in a new plan
+
+01750917 - Oracle xen hypervisor, how to vmcore
+
+01749360 - 2.6.32-358.23.2.el6 hung task panic enabled
+         * several stuck ios on dm-7, move to sbr-storage
+
+01740202 - kswap
+
+01747161 - controller crash
+
+Get ascension box name for Patrick
+
+01745558 - swap
+
+01740202 - kswapd
+
+01739514 - veeeam oom
+
+01575254 - yasmin, mrdest
+
+01742865 - waiting on collaboration, mtesar
+
+Reading sar files - LT
+
+Reading sar files - LT - dry run
+
+01739733 - oracle
+
+01740202 - sosreport analysis, find out if kernel has the patch
+
+01736705 -
+
+01575254 - yasmin
+
+01739514 - high watermark ? 
+
+01740419 - cron script
+
+01740366 - noop, test kdump
+
+01740366 - cannot ping
+
+01739514 - swapping
+
+01740202 - kswapd, translation, sosreport
+
+Working the kernel source with git - LT
+
+01739292 - memory
+
+01739223 - cpu high
+
+01739292 - memory
+
+01737581 - hang
+
+01738225 - ram speed
+
+01738591 - perf
+
+01737608 - dirty cow
+
+01738591
+
+01737950
+
+01737581
+
+01575254
+
+01735390 - clone_children, no changes in docker, reproducer, workaround -
+rc.local
+
+01704096 - php perf, power settings - any improovment, how to disable zend
+cache? close
+
+01575254 - check if she created the ticket, create one if not, comment about
+hardware changes
+
+01737707 - oracle node unexpected reboot, vmcore, sosreport
+
+01737608 - dirty cow
+
+01737278 - performance

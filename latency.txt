@@ -1,0 +1,199 @@
+I thought I should share this here in the hopes the $subject is demystified.
+
+# Performance investigation handbook
+
+In order to determine if your system's slow performance is not caused by faulty
+hardware, high levels of overcommittment (improper sizing), application bugs
+or misconfiguration, or other reasons than a bug in our products, let's use 
+a baseline to guide us in the measurement.
+
+  Latency Comparison Numbers                 ns         us     ms
+  +---------------------------------------------------------------------------------------------+
+  | Fetch from L1 cache                |        0.5 |        |    |                             |
+  | Execute typical instruction        |          1 |        |    |                             |
+  | Branch mispredict                  |          5 |        |    |                             |
+  | Fetch from L2 cache                |          7 |        |    | 14x L1 cache                |
+  | Mutex lock/unlock                  |         25 |        |    |                             |
+  | Fetch from main memory             |        100 |    0.1 |    | 20x L2 cache, 200x L1 cache |
+  | Send 2KB over 1 Gbps network       |     20,000 |     10 |    |                             |
+  | Read 4KB randomly from  SSD*       |    150,000 |    150 |    |                             |
+  | Read 1 MB sequentially from memory |    250,000 |    250 |    |                             |
+  | Read 1 MB sequentially from SSD*   |  1,000,000 |  1,000 |  1 | 4x memory                   |
+  | Fetch from new disk location       | 10,000,000 | 10,000 | 10 | 1000x memory                |
+  | Read 1 MB sequentially from disk   | 20,000,000 | 20,000 | 20 | 20X SSD                     |
+  | Send packet 6000km RTT             | 50,000,000 | 50,000 | 50 |                             |
+  +---------------------------------------------------------------------------------------------+
+
+  Notes
+  -----
+  1 ns = 10^-9 seconds
+  1 us = 10^-6 seconds = 1,000 ns
+  1 ms = 10^-3 seconds = 1,000 us = 1,000,000 ns
+  * ~1GB/sec transfer rate
+
+* https://gist.github.com/jboner/2841832
+
+Any baseline can be used, but it is important to define this at the beginning
+of the case life. 
+
+What are the common performance issues as seen from a service-oriented
+perspective?
+
+  1) Faulty hardware and/or firmware
+  2) Application/OS contention and/or bugs due to improper sizing/tuning 
+
+Customers might not know how to:
+  
+  ... correctly debug or capture debug data from a system
+  ... identify if and when the system is failing
+  ... apply the tuning recommendations to hardware, OS and application
+  
+  and 
+
+  ... they might not know what is running and how frequent is running
+
+## Building blocks
+
+There are several building blocks
+
+  0) Application and system calls
+  1) Scheduler and time management
+  2) Memory management and page cache
+  3) Interrupt handling
+  4) Filesystem, VFS and Block IO
+  5) Networking
+
+## Debugging a subsystem
+
+Forget ps/top/vmstat, and lets go deeper with some Intel goodies:
+
+ * latencytop, tuna
+ * powertop / turbostat
+ * tuna / numactl / lstopo / cpupower
+
+latencytop allows you to scope inside a process to determine what kind of
+contention it has.
+
+  Cause                                                Maximum     Percentage
+  [__wait_rcu_gp]                                    31.2 msec         75.7 %
+  Waiting for event (poll)                            4.3 msec          3.6 %
+  [ep_poll]                                           4.2 msec          7.8 %
+  Reading from a pipe                                 2.4 msec          0.7 %
+  Userspace lock contention                           2.0 msec         11.2 %
+  [do_wait]                                           0.9 msec          0.2 %
+  ACPI hardware access                                0.2 msec          0.7 %
+
+  Process powertop (15993)                   Total: 579.6 msec
+  [__wait_rcu_gp]                                    31.2 msec         98.4 %
+  Reading from a pipe                                 2.4 msec          0.9 %
+  ACPI hardware access                                0.1 msec          0.8 %
+
+   bash  bash  bash  bash  firefox  Web Content  pxgsettings  sudo  powertop 
+
+powertop has how much time each component is run by the scheduler and how many
+events those components are running. The category list includes: process,
+interrupt, kwork (or kernel work queue, the bottom half of interrupt handling), 
+timer, and last but not least, device.
+
+When device is a NIC, it will show you pkts/s intead of ms/s. If you have a
+laptop, it will show you the percentage of display backlight.
+
+You will even see a summary of how many wakeups per second the system has and
+VFS operations per second. 
+
+powertop has different tabs which shows other intersting stuff
+
+The third, turbostat, shows you how much time each logical CPU is spending in
+C0 (Busy%), which is the most power hungry C state, and of course all other C
+states and package states, which is a different thing. Interrupts and SMI per 
+CPU, core temperature and even watts spent by package, cores and GFX.
+
+There are a number of tools that can be used to trace a system:
+
+  http://brendangregg.com/Perf/linux_perf_tools_full.png
+
+With those tools, you will be able to detect where is the bottleneck of the
+whole system. And by system I mean the real system which is being operated on
+top of hardware, OS and application. You should be able to tell what kernel
+subsystem is taking more time or being flooded in order to understand how can
+you make it faster. Whithout this understanding you cannot really debug the
+"performance issue", as Red Hat customers sometimes describe their issues
+since they lack knowledge.
+
+Being able to pin-point where most time is being spent using those tools is no
+trivial task, and some understanding of how each kernel subsystem works might
+be necessary.
+
+Showing who is the biggest contributor to system resources usage is the first
+step determining what is the bottleneck. Once you have a subsystem or
+component, keep going deeper :D
+
+## A walk in our legacy - what is cutting edge and where can you gain
+performance?
+
+RHEL 5 and 6 are cemented technology, and the current maintenance is in place
+to fix what is broken, but not to implement what is new and quicker. 
+
+  Kernel   Release     Updates first quarter 2017
+  -----------------------------------------------
+  2.6.18 - RHEL 5.11 - NULL
+  2.6.32 - RHEL 6.9  -  169 - ##
+  3.10.0 - RHEL 7.3  - 1700 - ##################
+
+There is not much going on regarding improvements in RHEL 5 and 6. Patches to
+those kernels are mainly backported to fix breakage in the ABI.
+
+RHEL7 kernel in contrast can receive improvements from upstream kernel. If
+there is some know bug or improvement in upstream
+
+## moving ahead
+
+As with all tickets, and for a better integration with upstream and
+downstream, we should make clear where this case is going to end.
+
+  RCA 
+  RFE
+  BUGZILLA - need to 
+
+## numa and power management
+
+## CPU
+
+ user    system      idle
+  -nice    -irq        -iowait
+           -softirq 
+           -steal
+
+The catch here is that almost all CPU usage can be triggered by user-space.
+  
+## checklist
+
+  - power settings in bios
+  - IO schedulers matter, if 
+
+Only when IO is not what is causing your application to crawl, of when you are
+IO bound, you can
+
+If you don't know where to start, 
+
+        /\
+       /  \
+      /cpu \ -> scheduler
+     /      \
+    / memory \ -> memory management
+   /          \
+  /IO block/net\ -> interrupts
+  --------------
+
+  sbr-kernel categories
+
+  # rca 
+     -> reboot
+     -> crash
+  # cannot boot
+  # performance
+     -> scheduler
+     -> memory management
+     -> interrupts
+  # blocked tasks and soft lockups
+  # 

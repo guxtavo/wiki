@@ -1,0 +1,61 @@
+Top 10 tips from support (KCS's I'd like to see)
+
+Kdump server
+
+Having a "kdump server" will  
+
+  Kdump Helper
+  https://access.redhat.com/labs/kdumphelper/
+
+If you are not sure kdump is operational on the affected system or if you don't know what is kdump[KB 6038], you need to test vmcore genaration with the following commands:  
+
+   This might required one or several reboots. Open a ticket an attach a fresh sosreport
+
+~~~
+  # rhst kernel-debug help
+    
+      on -> enable panic tunables and starts kdump service
+     off -> disable panic tunables and 
+   sysrq -> triggers a sysrq+c   
+
+  # rhst kernel-debug on
+    Enabling kernel.sysrq
+    Enabling kernel.panic
+    Enabling kernel.hung_task_panic
+    Enabling kernel.panic_on_oops
+    Enabling kernel.panic_on_io_nmi
+    Enabling kernel.panic_on_unrecovered_nmi
+    Enabling kernel.panic_on_stackoverflow 
+    Enabling kernel.softlockup_panic
+    Enabling kernel.unknown_nmi_panic
+    Enabling kernel.nmi_watchdog
+    Enabling vm.panic_on_oom
+    Starting kdump service
+  # rhst kernel-debug sysrq
+  After the reboot, vmcore will be located at $KDUMP_PATH 
+~~~
+
+Configure a NFS share to receive 
+
+  Pro tip: Available space should be calculated using the following formula:
+
+           KMT = total amount of memory on all servers dumping to NFS share
+                      
+
+           KMT
+
+When suspecting
+  * Hardware fault
+  * Constant unexpected reboots or hangs
+
+
+Upload the vmcore to dropbox[KB xx] or to the ticket:
+  
+  # rhst -c xxxxx upload vmcore (1gb maximum size)
+
+We are aware some users report problems with our dropbox. If you are having difficulties, either try again or provide a way to share the file yourself.
+
+After capturing the vmcore core and uploading, make sure you disable kernel-debug mode
+
+  # rhst kernel-debug off
+

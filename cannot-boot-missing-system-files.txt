@@ -1,0 +1,107 @@
+Greetings, my name is Gustavo from the EMEA Kernel Team and I will try to
+collaborate with this ticket.
+
+Although my knowledge is limited in storage, I suppose you could run fsck on
+your filesystems to make sure they are not corrupted. You should be able to
+mount at least the local devices (assuming you are booting from local disks),
+if the fsck on the unmounted partitions (from rescue mode).
+
+If your system has a remote management interface, did you check if there are
+any issues there? 
+
+/bin was missing
+
+
+
+As we don't have a sosreport
+
+* action plan
+* KB 2175491
+* 15 hours offline
+ystem cannot boot due to missing system files
+
+RHEL 7.2
+
+Note that this process may drop you to a prompt without access to a usb
+keyboard, and does not work in a VM like KVM or VirtualBox. To reset the root
+password in these environments
+
+    remove rhgb
+        add rd.break instead of init=/bin/sh to the line that starts with
+        linux in
+            Grub2
+                run mount -o remount,rw /sysroot when the system boots
+                    run chroot /sysroot
+                        run passwd
+                            run touch /.autorelabel
+                                run exit to leave chroot
+                                    run exit to logout
+
+                                    check for missing files with "rpm -Va"
+
+                                    https://fedoraproject.org/wiki/How_to_debug_Dracut_problems
+
+                                     Additional dracut boot parameters
+
+                                      The following boot parameters are also
+                                      available to further assist with
+                                       debugging boot issues.
+
+                                        rd.shell
+                                             Drop to a shell, if the initramfs
+                                             fails.
+                                                  rd.debug
+                                                           set -x for the
+                                                           dracut shell.
+                                                                    rd.break=[cmdline|pre-udev|pre-trigger|initqueue|pre-mount|mount|pre-pivot|cleanup]
+                                                                                 drop
+                                                                                 the
+                                                                                 shell
+                                                                                 on
+                                                                                 defined
+                                                                                 breakpoint
+                                                                                 (use
+                                                                                 egrep
+                                                                                 'rd.?break'
+                                                                                              /usr/lib/dracut/modules.d/99base/init.sh
+                                                                                              to
+                                                                                              find
+                                                                                              the
+                                                                                              breakpoints
+                                                                                                           supported
+                                                                                                           by
+                                                                                                           your
+                                                                                                           dracut
+                                                                                                           version)
+                                                                                                                        rdudevinfo
+                                                                                                                                         set
+                                                                                                                                         udev
+                                                                                                                                         to
+                                                                                                                                         loglevel
+                                                                                                                                         info
+                                                                                                                                                          rdudevdebug
+                                                                                                                                                                               set
+                                                                                                                                                                               udev
+                                                                                                                                                                               to
+                                                                                                                                                                               loglevel
+                                                                                                                                                                               debug
+                                                                                                                                                                                                    rdnetdebug
+                                                                                                                                                                                                                             debug
+                                                                                                                                                                                                                             network
+                                                                                                                                                                                                                             scripts
+                                                                                                                                                                                                                             in
+                                                                                                                                                                                                                             dracut.
+                                                                                                                                                                                                                             Output
+                                                                                                                                                                                                                             is
+                                                                                                                                                                                                                             written
+                                                                                                                                                                                                                             to
+                                                                                                                                                                                                                                                      /tmp
+
+                                                                                                                                                                                                                                                      Resolution
+
+                                                                                                                                                                                                                                                      Restore
+                                                                                                                                                                                                                                                      backup
+                                                                                                                                                                                                                                                      or
+                                                                                                                                                                                                                                                      re-install
+                                                                                                                                                                                                                                                      system.
+

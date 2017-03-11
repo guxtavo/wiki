@@ -1,0 +1,54 @@
+Technical Support Engineer
+Central European Time
+
+Job ID 
+    56084 
+
+Department 
+    Technical Support
+
+Location 
+    CZ-Brno 
+
+Posting date 
+    2/1/2017
+
+Remote base 
+    .. 
+
+Job description
+Company description
+
+At Red Hat, we connect an innovative community of customers, partners, and contributors to deliver an open source stack of trusted, high-performing solutions. We offer cloud, Linux, middleware, storage, and virtualization technologies, together with award-winning global customer support, consulting, and implementation services. Red Hat is a rapidly growing company supporting more than 90% of Fortune 500 companies.
+
+Job summary
+
+Red Hat is looking for a Technical Support Engineer with a focus on the Linux Kernel to join our worldwide support organization. In this role, you'll become an expert on Linux system administration and troubleshooting by earning your Red Hat Certified Engineer (RHCE) certification and getting up to speed with our Kernel Support team. You'll then use your in-depth knowledge of Linux-based operating system internals to resolve problems quickly and effectively for our enterprise customers. Our customers are typically other engineers, so you will continually develop your technical skills. This opportunity is a great chance to become part of a fast-paced, leading  edge company that is changing the way software is developed, sold, and supported.
+
+Primary job responsibilities
+
+    Perform diagnostics of problems, troubleshoot, and develop solutions for customer issues
+    Provide high level technical support to customers by taking incoming calls and responding to web-based inquiries
+    Consult with and develop relationships with in-house engineers and developers to drive creative solutions and improve customer satisfaction
+    Contribute to global Red Hat knowledge base to improve future customer support
+    Share your knowledge through training sessions and mentoring
+    Be actively involved in product design, development, troubleshooting, documentation, or upstream community work
+
+Required skills
+
+    Troubleshooting and debugging skills and a passion for problem solving and investigation
+    Understanding of hardware and computer architecture, including x86_64 architecture; knowledge of other architectures is a major plus
+    Familiarity in Linux system administration and network configuration
+    Ability to read and understand C code and C build process
+    Usage of distributed version control system, preferably git
+    Understanding of Linux (or other UNIX system) main kernel internal structures (virtual file system, memory management, interrupt handling, etc.)
+    Bachelor's degree or equivalent experience within the enterprise IT sector
+    Outstanding English communication skills, both written and verbal
+
+The following are considered a plus:
+
+    Knowledge of x86_64 assembly (other architecture assembly languages are highly beneficial)
+    Experience with using kernel debugger (kdb, kgdb, mdb, adb, etc.) or kernel tracing system (Dtrace, Systemtap, ftrace, perf,  oprofile, etc.)
+    Experience writing scripts using Bash and Python, to troubleshoot and correct Linux issues
+    Red Hat Certified Administrator (RHCA), RHCE, or other Linux certification
+    Fluency in an additional language like Spanish, French, German, Russian, or Italian

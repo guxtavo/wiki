@@ -1,0 +1,21 @@
+# How to compile kernel rt in Fedora
+
+sudo dnf install elfutils-libelf-devel
+mkdir ~/redhat/kernel-rt
+cd ~/redhat/kernel-rt
+wget https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.4.tar.xz
+wget https://www.kernel.org/pub/linux/kernel/projects/rt/4.9/patch-4.9.4-rt2.patch.xz
+
+tar xf https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.4.tar.xz
+cd linux-4.9.4
+xzcat ../patch-4.9.4-rt2.patch.xz | patch -p1
+
+cp /boot/config-4.9.4-201.fc25.x86_64 ~/redhat/kernel-rt/linux-4.9.4/.config
+echo "CONFIG_PREEMPT_RT=y" >> .config
+echo "CONFIG_PREEMPT_RT_FULL=y" >> .config
+echo "DEBUG_PREEMPT=n" >> .config
+
+make oldconfig
+
+make -j4     # if you have 4 cpus
+sudo make modules_install install

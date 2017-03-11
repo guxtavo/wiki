@@ -1,0 +1,53 @@
+Individual Development Plan - Gustavo (capcom) Figueira
+
+Current achievements
+Statistics
+Long Term Goal
+How to get there
+Action tracking
+Presentations
+Customer praises
+CQIs
+Current achievements
+Kernel Support engineer, working tickets for cgroups, [sched], [mm], can't boot", performance/power management, networking, storage and filesystems, services and shells
+Project leader for STO, web shared template system: https://gitlab-stage.cee.redhat.com/pbajenez/sto
+Active EMEA DevOps role - scripts/tools to support case automation
+Collaborating with all GEOs for "first touch" tickets to prevent sla breaching, mainly in NA and India
+Conducting technical interviews and presentations
+Kernel and git focused, taking first steps learning c
+Statistics
+Average cases closed per month:30 (as of 18/1/17)
+Average solutions created per month: 1.6 (as of 18/1/17) 
+https://url.corp.redhat.com/capcom-kcs 
+Average CSAT score: 7.79 (as of 18/1/17)
+Long Term Goal
+Develop coding skills around the Linux Kernel
+Move to SME position
+How to get there
+Work towards becoming STSE:
+Participate in local and global projects (KCS revamp, Ascension etc.)
+KCS revamp is still halted
+RFEs for KCS revamp can be found here: https://docs.google.com/a/redhat.com/document/d/1HRZx_i_WEGp6WiwhokesQ0vFZ4RdUvigQjBdO1zGmRU/edit?usp=sharing 
+Share knowledge by holding L&L and/or individual training sessions 
+3 lightning talk sessions in 2016 (please check #Presentations)
+Share knowledge by writing and/or updating and cleaning up KCSes 
+Obtain and collect feedback (from customers, TAM, SRM, CSM, CSAT) for the good case work
+Attend RH442 training
+Identify key crucial skills together with one of the SME’s
+3 hours - configuring and using c-scope (ask eel++) http://cscope.sourceforge.net/cscope_vim_tutorial.html 
+2 hours - configuring and using git with RHEL Kernel repos (ask eel++)
+Learn [sched] and [mm] (we need to make it trackable/measurable) 
+As I  to these types of tickets, I guess a CQI on one of my tickets around this subject could be a nice starting point
+Action tracking
+Presentations
+DevOps in GSS LT: https://bluejeans.com/s/fgLH4/
+Working the kernel source with GIT LT: https://bluejeans.com/s/btu5K/
+Reading sar files: https://bluejeans.com/s/Ka_Ay/
+Customer praises 
+Here is a list of customer praises I’ve collected manually:
+https://docs.google.com/document/d/1NX35DcOllE7bqFI56Lile7Tm0PSYqJcoKWPUPtEHYPA/edit#
+CQIs
+
+DvOps in GSS LT: https://bluejeans.com/s/fgLH4/
+Working the kernel source with GIT LT: https://bluejeans.com/s/btu5K/
+Reading sar files: https://bluejeans.com/s/Ka_Ay/
