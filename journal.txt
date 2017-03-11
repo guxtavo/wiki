@@ -9,16 +9,14 @@
  ###########   ###########   #########
 
 * [ACTION] [IMPORTANT] mail diploma and super legalization from brazil
+* [ACTION] passport wednesday
+* [ACTION] passagem brasil
 
 * [PATCH] obs-build - add verbose warning when package auto-detect is triggered
 * [PATCH] uprobe - avoid dying when more than 1 libraries are found
 * [PATCH] tuna - pep8
 * [PATCH] sto - udpdate README.md with installation and user guide
 * [PATCH] support handbook 404
-
-* [ACTION] create git repo with documents and configs
-* [ACTION] passport wednesday
-* [ACTION] passagem brasil
 
 * [WRITE] Performance investigation handbook -  latency.txt
         -> * perf tools killsnoop:gpgagent, execsnoop:acpi
@@ -76,7 +74,9 @@
 * OK: 1700 queue management 
 * OK: 1730 desert, pay, home, toilet, charge phone, grocery shopping, coffee
 * OK: 1800 ~/Documents/sto-install.txt -> README.md git commit
-* 1830 startalk
+* OK: 1830 startalk
+* OK: 1900 [ACTION] create git repo with documents and configs
+* OK: 1910 update git repos
 
 == 03/10/17 ==
 
