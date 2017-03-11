@@ -201,3 +201,41 @@ export EDITOR=vi
 battery_left(){
   acpi -V | head -1 | awk '{print $5}' | cut -b 1-5
 }
+
+weather(){
+   if test "`find /tmp/weather -mmin +30`"
+   then
+      curl wttr.in/Brno > /tmp/weather
+   fi
+   head -4 /tmp/weather  | tail -2 | cut -b 31-71 | sed 'N;s/\n/ /'
+}
+
+function git_branches()
+{
+    if [[ -z "$1" ]]; then
+        echo "Usage: $FUNCNAME <dir>" >&2
+        return 1
+    fi
+
+    if [[ ! -d "$1" ]]; then
+        echo "Invalid dir specified: '${1}'"
+        return 1
+    fi
+
+    # Subshell so we don't end up in a different dir than where we started.
+    (
+        cd "$1"
+        for sub in *; do
+            [[ -d "${sub}/.git" ]] || continue
+            echo "$sub [$(cd "$sub"; git  branch | grep '^\*' | cut -d' ' -f2)]"
+        done
+    )
+}
+
+alias gitstat="~/git/wiki/profile/git-status.sh ~/git"
+
+update_profile_git() {
+  cp ~/.bashrc ~/git/wiki/profile/
+  cp ~/.vimrc ~/git/wiki/profile/
+  cp ~/.tmux.conf ~/git/wiki/profile/
+}
