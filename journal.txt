@@ -1,36 +1,54 @@
 
-     /\     ####################### linux + bash + tmux + vi + git 
-    /  \    #                     #   Object oriented, scripting
-   /    \   #  LKD, code and RPS1 #   and functional programming
-  / vucs \  #                     # CI: OBS & Git
-  --------  #######################
+     /\      ######################  linux + bash + tmux + vi + git 
+    /  \     #                    #    Object oriented, scripting
+   /    \    # LKD, code and RPS1 #    and functional programming
+  / vucs \   #                    #  CI: osc || git
+  --------   ######################                      -> May 1st
+
+
+
+
 
 * [ACTION] [IMPORTANT] mail diploma and super legalization from brazil
-* [ACTION] passport wednesday
-* [ACTION] passagem brasil
+
+
+
+
+
+
+
+
+
+
+* [ACTION] passport wednesday 15/03/17, plan trip
+* [ACTION] paperwork suse
+* [ACTION] passagem brasil, banco - biometria, cartao, livros guilherme
+* [ACTION] obs build package
 * [ACTION] osc perf-utils package, requires kernel>3.2
 * [ACTION] osc supportutils openSUSE tumbleweed
 
 * [PATCH] perf-tools: uprobe set_path select library - fixes #39
 * [PATCH] obs-build - add warning when package auto-detect is triggered
 * [PATCH] tuna - pep8
-* [PATCH] sto - udpdate README.md with installation and user guide
-* [PATCH] support handbook 404
-* [PATCH] funcoeszzz
-* [PATCH] wiki/profile .tmux.conf two online interfaces (aliases)
+* [PATCH] suse support handbook 404
+* [PATCH] funcoeszz
 
-* [READ] OBS, OBS workshop, vitetris spec and build
-* [READ] Linux Kernel Development - chapter 10
+* [READ] OBS reference guide
 * [READ] C language - chapter 1
+* [READ] Linux Kernel Development - chapter 10
 
 == 03/13/17 == monday
 
 * -> equilibrium, confidence, organization, posture <-
 * sd card patrick
-* ~/git/sto$ git push origin master
+* [PATCH] sto - udpdate README.md with installation and user guide
+   -> * [~/git/sto]$ git push origin master
 * create issue for sto: add support to firefox
+* check inbox
 * book appointment with prevent
 * 01771708 tuned oracle profile RFE
+* [PATCH] perf-tools: uprobe set_path select library - fixes #39
+* [PATCH] profile: .tmux.conf two online interfaces (aliases)
 
 == 03/12/17 == sunday
 
@@ -49,9 +67,10 @@
 * OK: 1200 coffee, lunch
 * OK: 1230 tmux show nic when null
 * OK: 1330 latency.txt 
-* 1400 
-* shave, bath, teeth
-* read book with vladka
+* OK: 1400 ci github
+* OK: 1700 shave, bath, teeth
+* 1730 na purkynce, obs reference guide read
+* 2000 read book with vladka
 
 == 03/11/17 == saturday
 

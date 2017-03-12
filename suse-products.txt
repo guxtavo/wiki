@@ -1,0 +1,6 @@
+SUSE Linux Enterprise Server
+  High Availability Extension
+  Real Time Extension
+SUSE OpenStack Cloud
+SUSE Enterprise Storage
+SUSE Manager

@@ -1,10 +1,10 @@
 #!/bin/bash
 #
 # setup phase
-sudo zypper install git tmux
-mkdir ~/git && cd ~/git
-git clone https://github.com/guxtavo/wiki.git
-~/git/wiki/profile/install.sh
+#sudo zypper install git tmux
+#mkdir ~/git && cd ~/git
+#git clone https://github.com/guxtavo/wiki.git
+#~/git/wiki/profile/install.sh
 
 # copying and sourcing
 cd ~/git/wiki/profile

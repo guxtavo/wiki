@@ -26,3 +26,6 @@ As a software engineer, if you give me access to a shell, that's all I really
 need. I call this solution profile. My next openSUSE machine will be exactly
 like this after I clone the repo and use the install script. Two steps and my
 whole system is deployed as it was before.
+
+This keeps my focus on producing patches for my own CI and as well for the
+projects I participate.

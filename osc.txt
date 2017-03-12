@@ -1,9 +1,16 @@
-OBS/osc knowledge base
+# OBS/osc knowledge base
 
-TODO
- * write spec file for vitetris and make it build
- * Finish OBS epub
- * create supportutils package for tumbleweed
+## CI workflow:
+
+* add specfile
+* add source
+* build / fix / rebuild
+
+## TODO
+
+* write spec file for vitetris and make it build
+* Finish OBS epub
+* create supportutils package for tumbleweed
 
 ## osc usefull commands
 
@@ -28,6 +35,14 @@ TODO
   osc copypac
   copy package
 
-  osb build
+  osc build
   build the package
 
+  osc results
+  show results on build server
+
+  osc prjresults
+  show results for all packages in build server
+
+  osc pr openSUSE:Factory
+  show prohect information for openSUSE user, Factory project
