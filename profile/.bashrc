@@ -239,3 +239,5 @@ update_profile_git() {
   cp ~/.vimrc ~/git/wiki/profile/
   cp ~/.tmux.conf ~/git/wiki/profile/
 }
+
+alias journal="vi ~/git/wiki/journal.txt"

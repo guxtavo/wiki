@@ -1,16 +1,37 @@
-To sum it up: executing commands below is basically equivalent to fresh git clone from original source (but it does not re-download anything, so is much faster):
+## Working upstream
+
+1) Clone, fork, remote upstream
+* git clone https://github.com/brendangregg/perf-tools.git 
+* Fork project on github
+* git remote add upstream https://github.com/guxtavo/perf-tools.git
+* git fetch upstream
+
+2) Work the source
+* git checkout -b new_fix_for_this
+* Do some change, add some files
+* git add .
+* git commit -a -m "new fix for this"
+
+3) Push upstream and pull request
+* git push upstream (pushes branch new_fix_for_this to upstream/
+* Create a pull request on github website
+* Wait for merge
+* git pull (update from origin)
+
+## my tips
+
+To sum it up: executing commands below is basically equivalent to fresh git 
+clone from original source (but it does not re-download anything, so is much 
+faster):
 
 git reset
 git checkout .
 git clean -fdx
 
-
 If you wish to "undo" all uncommitted changes simply run:
 
 git stash
 git stash drop
-
-
 
 # print remote repos 
 git remote -v
@@ -20,8 +41,7 @@ git branch --remote --list
 git fetch --all
 git pull
 
-
-=== cia ===
+## cia wikileaks
 
 The "I can never remember that alias I set" Trick
 

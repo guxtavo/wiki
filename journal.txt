@@ -1,12 +1,9 @@
-    /\    #######################
-   /  \   #                     # Object oriented programming
-  /    \  #  LKD, code and RPS1 # Functional and scripting
- / vucs \ #                     # CI: OBS
---------- #######################
 
- # header ##
- 5 x patches - 3 x actions - 5 x reads
- ###########   ###########   #########
+     /\     #######################
+    /  \    #                     # Object oriented programming
+   /    \   #  LKD, code and RPS1 # Functional and scripting
+  / vucs \  #                     # CI: OBS
+  --------  #######################
 
 * [ACTION] [IMPORTANT] mail diploma and super legalization from brazil
 * [ACTION] passport wednesday
@@ -16,34 +13,30 @@
 
 * [PATCH] obs-build - add verbose warning when package auto-detect is triggered
 * [PATCH] uprobe - avoid dying when more than 1 libraries are found
+* [PATCH] perf-tools documentation
 * [PATCH] tuna - pep8
 * [PATCH] sto - udpdate README.md with installation and user guide
 * [PATCH] support handbook 404
 
-* [READ] OBS, OBS workshop, vitetris spec and build, openQA getting started
-* [READ] Linux Kernel Development
-* [READ] C language
-
-== 05/01/17 ==
-
-* [PATCH] support handbook - 404: school or academic institution
+* [READ] OBS, OBS workshop, vitetris spec and build
+* [READ] Linux Kernel Development - chapter 10
+* [READ] C language - chapter 1
 
 == 03/13/17 == monday
 
 * -> equilibrium, confidence, organization, posture <-
-* -> chapter 10, synchronization, taking notes <-
-* -> walden <-
 * sd card patrick
-* book appointment with prevent
-* 01771708 tuned oracle profile RFE
 * ~/git/sto$ git push origin master
 * create issue for sto: add support to firefox
+* book appointment with prevent
+* 01771708 tuned oracle profile RFE
 
 == 03/12/17 == sunday
 
 * OK: 0615 wakeup, vitamins, coffee
 * OK: 0620 fix weather script
-* 0700 youtube watch later list, power management
+* OK: 0700 youtube power management
+* OK: 0730 youtube go language for devops
 
 == 03/11/17 == saturday
 
