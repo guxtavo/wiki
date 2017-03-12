@@ -11,6 +11,8 @@
 * [ACTION] [IMPORTANT] mail diploma and super legalization from brazil
 * [ACTION] passport wednesday
 * [ACTION] passagem brasil
+* [ACTION] osc perf-utils package, requires kernel>3.2
+* [ACTION] osc supportutils openSUSE tumbleweed
 
 * [PATCH] obs-build - add verbose warning when package auto-detect is triggered
 * [PATCH] uprobe - avoid dying when more than 1 libraries are found
@@ -19,9 +21,6 @@
 * [PATCH] support handbook 404
 
 * [READ] OBS, OBS workshop, vitetris spec and build, openQA getting started
-        -> voguel's video, vitetris package
-        -> osc perf-utils package, requires kernel>3.2
-        -> osc supportutils openSUSE tumbleweed
 * [READ] Linux Kernel Development
 * [READ] C language
 
@@ -42,11 +41,14 @@
 
 == 03/12/17 == sunday
 
+* OK: 0615 wakeup, vitamins, coffee
+* OK: 0620 fix weather script
+* 0700 youtube watch later list, power management
 
 == 03/11/17 == saturday
 
 * OK: 1300 coffee, strech
-* OK: 1330  message michaela
+* OK: 1330 message michaela
 * OK: 1400 lunch and study
 * OK: 1430 perf tools play
 * OK: 1443 wait-for completion
@@ -57,7 +59,7 @@
 * OK: 1630 diploma 
 * OK: 1645 email libusa prevent
 * OK: 1700 queue management 
-* OK: 1730 desert, pay, home, toilet, charge phone, grocery shopping, coffee
+* OK: 1730 desert, home, charge phone, grocery shopping, coffee
 * OK: 1800 ~/Documents/sto-install.txt -> README.md git commit
 * OK: 1830 startalk
 * OK: 1900 [ACTION] create git repo with documents and configs
@@ -73,7 +75,7 @@ execsnoop -d 900 > execsnoop_900.txt
 
 * OK: 0830 journal.txt
 * OK: 0900 collab mail
-* OK: 0910 apple, 
+* OK: 0910 apple
 * OK: 0915 concentration music
 * OK: 0920 buy bus tickets to prague next wednesday
 * OK: 0930 tea, break, coffee
@@ -224,7 +226,7 @@ execsnoop -d 900 > execsnoop_900.txt
 * OK: 0830 tuna code review
 * OK: 0900 tuna code review
 * OK: 0930 read about sysops position
-* OK: 1000 Configuration management videos
+* OK: 1000 configuration management videos
 * OK: 1030 city errands
 * OK: 1200 lunch
 * OK: 1230 buy tickets to prague on thu
@@ -240,7 +242,7 @@ execsnoop -d 900 > execsnoop_900.txt
 
 == 13/02/17 ==
 
-* OK: 0800 Aarav article draft
+* OK: 0800 aarav article draft
 * OK: 1100 sar and gnuplot testing
 * OK: 1430 perf video
 * OK: 1500 tax thingy
