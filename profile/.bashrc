@@ -23,7 +23,8 @@ alias ds="dstat -c -D sda -r --disk-util --top-bio --top-io-adv"
 alias jbacik="ps auxH -L | grep \" D\"  | awk '{print $3}' | xargs -I '{}' bash -c \"echo '{}'; cat /proc/'{}'/stack\" > /tmp/pid_stack.out"
 
 # User specific aliases
-alias edit_alias="vi ~/.bashrc;. ~/.bashrc"
+alias edit_alias="vi ~/.bashrc;. ~/.bashrc; update_profile_git"
+alias t_edit="vi ~/.tmux.conf; update_profile_git"
 alias l="ls -lh" 
 alias lr="ls -ltr | tail -40" 
 alias ssh="ssh -X -o TCPKeepAlive=yes"
@@ -241,3 +242,6 @@ update_profile_git() {
 }
 
 alias journal="vi ~/git/wiki/journal.txt"
+
+alias gbrl="git branch --remote --list"
+alias rec="recordmydesktop --no-sound"

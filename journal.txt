@@ -11,12 +11,12 @@
 * [ACTION] osc perf-utils package, requires kernel>3.2
 * [ACTION] osc supportutils openSUSE tumbleweed
 
-* [PATCH] obs-build - add verbose warning when package auto-detect is triggered
-* [PATCH] uprobe - avoid dying when more than 1 libraries are found
-* [PATCH] perf-tools documentation
+* [PATCH] perf-tools: uprobe set_path select library - fixes #39
+* [PATCH] obs-build - add warning when package auto-detect is triggered
 * [PATCH] tuna - pep8
 * [PATCH] sto - udpdate README.md with installation and user guide
 * [PATCH] support handbook 404
+* [PATCH] funcoeszzz
 
 * [READ] OBS, OBS workshop, vitetris spec and build
 * [READ] Linux Kernel Development - chapter 10
@@ -37,6 +37,17 @@
 * OK: 0620 fix weather script
 * OK: 0700 youtube power management
 * OK: 0730 youtube go language for devops
+* OK: 0830 clean watch later queue
+* OK: 0900 breakfast
+* OK: 0930 hang clothes
+* OK: 1000 git upstream pull request
+* OK: 1030 [PATCH] perf-tools - remove blanks in top output from execsnoop examples
+* OK: 1100 draft uprobe set_path select library - fixes #39
+* OK: 1130 optmizing linux boot time video
+* OK: 1140 install recordmydesktop - make screencasts
+* 1200 coffee, lunch, teeth
+* shave, bath
+* read book with vladka
 
 == 03/11/17 == saturday
 

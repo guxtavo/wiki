@@ -25,9 +25,11 @@ cannot check if path is executable as it is an array so the program dies.
 164         fi
 
 2) Prompt user to select a library 
+Iterate the libraries from 1 until nr_libraries_in_path and set path for the
+choosen library
 
-for i = 0; i = $nr_libraries_in_path; i++ 
-  do
+for i = 0; i = $nr_libraries_in_path; i--
+  do 
 
 ############################################################################
 
