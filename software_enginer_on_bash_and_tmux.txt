@@ -1,0 +1,28 @@
+Continuous integration, the kernel hacker way...
+
+  [0] 0:vi*    master 0 | 3 | Partly cloudy 2 – 6 °C | wlp3s0 | ☀ 33 | ♪ 40 | ♥ 99% | Sun 03-12 13:05
+
+Displays my tmux window manager. I have 3 changes, 2 repos with modified
+content and 1 with untracked files. I'm inside a git repo, on master branch,
+and here there is no changes, this repo is clean, well, not until I create
+this file, which then I see:
+
+   master 1 |
+
+Ok, I will now push some changes in one repo:
+
+   master 1 | 1 | 
+
+The only change I'm working right now is this very file. This will show me
+the rough number of code I'm working on, which is roughly how many patches I
+am currently dealing with.
+
+The tmux status bar personalization along with bash are the building blocks of
+my CI terminal. All is built on the following tools:
+
+  linux bash tmux vi git
+
+As a software engineer, if you give me access to a shell, that's all I really
+need. I call this solution profile. My next openSUSE machine will be exactly
+like this after I clone the repo and use the install script. Two steps and my
+whole system is deployed as it was before.
