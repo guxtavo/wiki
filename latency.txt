@@ -197,3 +197,17 @@ If you don't know where to start,
      -> interrupts
   # blocked tasks and soft lockups
   # 
+
+## performance needle
+
+WARNING: this can slow down your workload considerably and even crash your
+system.
+
+extract some counters to understand whay is the worload per processor of
+interrupts, context switches, and other data to assert how your system is
+being used, with extracts from 60, 300 and 900 seconds (to mach load rolling
+metric).
+
+What the needle will include?
+  * The system call count for 60, 300 and 900 seconds
+  * 

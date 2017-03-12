@@ -1,8 +1,8 @@
 
-     /\     #######################
-    /  \    #                     # Object oriented programming
-   /    \   #  LKD, code and RPS1 # Functional and scripting
-  / vucs \  #                     # CI: OBS
+     /\     ####################### linux + bash + tmux + vi + git 
+    /  \    #                     #   Object oriented, scripting
+   /    \   #  LKD, code and RPS1 #   and functional programming
+  / vucs \  #                     # CI: OBS & Git
   --------  #######################
 
 * [ACTION] [IMPORTANT] mail diploma and super legalization from brazil
@@ -17,6 +17,7 @@
 * [PATCH] sto - udpdate README.md with installation and user guide
 * [PATCH] support handbook 404
 * [PATCH] funcoeszzz
+* [PATCH] wiki/profile .tmux.conf two online interfaces (aliases)
 
 * [READ] OBS, OBS workshop, vitetris spec and build
 * [READ] Linux Kernel Development - chapter 10
@@ -45,8 +46,11 @@
 * OK: 1100 draft uprobe set_path select library - fixes #39
 * OK: 1130 optmizing linux boot time video
 * OK: 1140 install recordmydesktop - make screencasts
-* 1200 coffee, lunch, teeth
-* shave, bath
+* OK: 1200 coffee, lunch
+* OK: 1230 tmux show nic when null
+* OK: 1330 latency.txt 
+* 1400 
+* shave, bath, teeth
 * read book with vladka
 
 == 03/11/17 == saturday
