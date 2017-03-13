@@ -4,7 +4,7 @@ OBJECTIVE
        Linux kernel, Performance and Real-Time Embedded Systems
 
 SYNOPSIS
-       Troubleshooter, good knowledge in Linux kernel internals, x86
+       Troubleshooter, good knowledge in Linux kernel internals, x86 and arm
        architecture, performance and power management. I've worked in Internet
        Startups, Telcos, on different support roles, acting as architect,
        tester, integrator, project manager, site reliability engineer or just
@@ -64,22 +64,22 @@ OPTIONS
 
 VERSIONS
 
-  Suse Linux, CZ                          Red Hat, CZ
-  > Linux Developer                       > Technical Support Engineer
-                                          > Team Lead
-  Gemalto, LATAM
-  > Integration Engineer I and II
-                                          Drogarias Pacheco, BR
-  Fidelity IT, BR                         > Data Center Specialist
-  > Storage Support Engineer              > SAP Basis Support
-  > Unix Support Engineer
-                                          INPI, BR
-  Kern Technologies, BR                   > Unix Support Engineer
-  > Data Center Specialist                > Tech Lead
-
-  Various Companies, BR                   Uniabeu University, BR
-  > Webmaster / Web Developer             > Security Professor
-  > Sysadmin / Windows NT Support
+    SUSE Linux, CZ                       Red Hat, CZ
+    > Linux Developer, L3 Support        > Technical Support Engineer
+                                         > Team Lead
+    Gemalto, LATAM
+    > Integration Engineer I and II      Drogarias Pacheco, BR
+                                         > SAP Basis Support
+    Fidelity IT, BR                      > Site Reliability Engineer
+    > Storage Support Engineer 
+    > Unix Support Engineer              INPI, BR
+                                         > Tech Lead
+    Kern Technologies, BR                > Unix Support Engineer
+    > Site Reliability Engineer 
+                                         Uniabeu University, BR
+    Various Companies, BR                > Information Security Professor
+    > Webmaster / Web Developer
+    > Sysadmin / Windows NT Support
 
 SEE ALSO
         https://www.linkedin.com/in/guxtavo
@@ -87,9 +87,8 @@ SEE ALSO
 R&D - remove from cv before sending
         02 patches for Brendan Greg's perf-tools
         01 patch for openSUSE's obs-build
-        01 patch for funcoeszz 
         01 patch to sto (internal)
-        
+        01 patch for funcoeszz 
 
 
 capcom(7)              guxtavo@gmail.com / +420 774 091 877            capcom(7)
