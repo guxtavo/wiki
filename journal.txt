@@ -13,7 +13,6 @@
 * [ACTION] obs build vitetris package
 * [ACTION] osc perf-utils package, requires kernel>3.2
 * [ACTION] osc supportutils openSUSE tumbleweed
-* [PATCH] sto: merge patch sto or pull request?
 * [PATCH] perf-tools: uprobe set_path select library - fixes #39
 * [PATCH] obs-build - add warning when package auto-detect is triggered
 * [PATCH] tuna - pep8
@@ -42,6 +41,7 @@
 * OK: 1030 [PATCH] perf-tools: uprobe set_path select library - fix #39
 * OK: 1100 [PATCH] perf-tools: uprobe set_path select library - fix #39
 * OK: 1200 [COMMENT] 01704066 kworker ixgbe
+* OK: 1500 [PATCH] sto: pull request :new_readme
 
 * 01771708 [COMMENT] tuned oracle profile RFE
 * 01575254 [COMMENT] summary
