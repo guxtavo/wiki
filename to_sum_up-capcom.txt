@@ -13,10 +13,9 @@ SYNOPSIS
 
 DESCRIPTION
        For the past 3 years I've been dealing with [sched] and [mm] tickets in
-       Red Hat Support kernel team. I specialized in performance
-       investigation, working with cgroups, systemd, power management,
-       networking, services, shells, storage and filesystems. Have been using
-       RHEL for 7+ years.
+       Red Hat Support kernel team. I specialized in performance investigation, 
+       working with cgroups, systemd, power management, networking, services, 
+       shells, storage and filesystems. Have been using RHEL for 7+ years.
 
 OPTIONS
        -a --architect
@@ -46,14 +45,16 @@ OPTIONS
               switching
 
        -d --development
-              Scripting, Object Oriented, Linux kernel internals, Git, regex, 
-              vi, SQL, CI (OBS), 
+              Scripting (Bash, Perl, Python), Object Oriented (JavaScript, C),
+              Linux kernel internals, Git, regex, vi, SQL, CI (OBS), 
 
        -i --interests
               Space exploration, aviation, sports, acoustic guitar and science
 
        -p --projects
-              MultiKern, uit, Aarav(CLI, CSR, cssbot), STO
+              MultiKern (Bash / PHP), uit (Bash), Aarav(CLI, CSR, cssbot), 
+              STO (Java Script)
+
 
 
 
@@ -82,6 +83,13 @@ VERSIONS
 
 SEE ALSO
         https://www.linkedin.com/in/guxtavo
+
+R&D - remove from cv before sending
+        02 patches for Brendan Greg's perf-tools
+        01 patch for openSUSE's obs-build
+        01 patch for funcoeszz 
+        01 patch to sto (internal)
+        
 
 
 capcom(7)              guxtavo@gmail.com / +420 774 091 877            capcom(7)

@@ -40,15 +40,29 @@
 == 03/13/17 == monday
 
 * -> equilibrium, confidence, organization, posture <-
-* sd card patrick
-* [PATCH] sto - udpdate README.md with installation and user guide
-   -> * [~/git/sto]$ git push origin master
-* create issue for sto: add support to firefox
-* check inbox
-* book appointment with prevent
-* 01771708 tuned oracle profile RFE
-* [PATCH] perf-tools: uprobe set_path select library - fixes #39
-* [PATCH] profile: .tmux.conf two online interfaces (aliases)
+* OK: 0710 coffee, vitamins
+* OK: 0750 arrive at office
+* OK: 0800 sd card patrick's table, hangouts ping
+* OK: 0800 [PATCH] sto - udpdate README.md with installation and user guide
+* OK: 0805 create issue for sto: add support to firefox
+* OK: 0815 to sum up - languages
+* OK: 0820 [PATCH] sto -b new_readme to upstream
+* OK: 0830 [PATCH] fix weather widget on tmux status bar, sometimes is blank
+
+* 0845 [PATCH] perf-tools: uprobe set_path select library - fixes #39
+
+* 0900 breakfast
+* 0930 01771708 tuned oracle profile RFE
+* 1030 01575254 summary
+* 1100
+* 1130
+* 1200 lunch
+* 1300 rust 101 youtube
+* 1400 [PATCH] profile: .tmux.conf two online interfaces (aliases)
+
+
+
+* answer from libusa, book appointment with prevent
 
 == 03/12/17 == sunday
 
