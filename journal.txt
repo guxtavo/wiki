@@ -19,7 +19,6 @@
 * [PATCH] suse support handbook 404
 * [PATCH] funcoeszz - Função para verificar disponibilidade de sites. #287
 * [PATCH] xsos - show warning in the end
-* [PATCH] profile: .tmux.conf two online interfaces (aliases)
 * [READ] OBS reference guide
 * [READ] C language - chapter 1
 * [READ] Linux Kernel Development - chapter 10
@@ -48,6 +47,7 @@
 * OK: 1100 [PATCH] perf-tools: uprobe set_path select library - fix #39
 * OK: 1200 [COMMENT] 01704066 kworker ixgbe
 * OK: 1500 [PATCH] sto: pull request :new_readme
+* OK: 1600 [PATCH] profile: .tmux.conf two online interfaces (aliases)
 
 == 03/12/17 == sunday
 
