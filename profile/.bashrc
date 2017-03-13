@@ -24,7 +24,7 @@ alias jbacik="ps auxH -L | grep \" D\"  | awk '{print $3}' | xargs -I '{}' bash 
 
 # User specific aliases
 alias edit_alias="vi ~/.bashrc;. ~/.bashrc; update_profile_git"
-alias t_edit="vi ~/.tmux.conf; update_profile_git"
+alias t_edit="vi ~/.tmux.conf; tmux source-file ~/.tmux.conf; update_profile_git"
 alias l="ls -lh" 
 alias lr="ls -ltr | tail -40" 
 alias ssh="ssh -X -o TCPKeepAlive=yes"

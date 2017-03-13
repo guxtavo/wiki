@@ -5,30 +5,14 @@
   / vucs \   #                    #  CI: osc || git
   --------   ######################                      -> May 1st
 
-
-
-
-
-
-
+#TASKS
 * [ACTION] [IMPORTANT] mail diploma and super legalization from brazil
-
-
-
-
-
-
-
-
-
-
 * [ACTION] passport wednesday 15/03/17, plan trip
 * [ACTION] paperwork suse
 * [ACTION] passagem brasil, banco - biometria, cartao, livros guilherme
 * [ACTION] obs build vitetris package
 * [ACTION] osc perf-utils package, requires kernel>3.2
 * [ACTION] osc supportutils openSUSE tumbleweed
-
 * [PATCH] sto: merge patch sto or pull request?
 * [PATCH] perf-tools: uprobe set_path select library - fixes #39
 * [PATCH] obs-build - add warning when package auto-detect is triggered
@@ -37,7 +21,6 @@
 * [PATCH] funcoeszz - Função para verificar disponibilidade de sites. #287
 * [PATCH] xsos - show warning in the end
 * [PATCH] profile: .tmux.conf two online interfaces (aliases)
-
 * [READ] OBS reference guide
 * [READ] C language - chapter 1
 * [READ] Linux Kernel Development - chapter 10
