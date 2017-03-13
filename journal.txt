@@ -24,6 +24,12 @@
 * [READ] C language - chapter 1
 * [READ] Linux Kernel Development - chapter 10
 
+== 03/14/17 == tuesday
+
+* 01771708 [COMMENT] tuned oracle profile RFE
+* 01575254 [COMMENT] summary
+* answer from libusa, book appointment with prevent
+
 == 03/13/17 == monday
 
 * -> equilibrium, confidence, organization, posture <-
@@ -42,10 +48,6 @@
 * OK: 1100 [PATCH] perf-tools: uprobe set_path select library - fix #39
 * OK: 1200 [COMMENT] 01704066 kworker ixgbe
 * OK: 1500 [PATCH] sto: pull request :new_readme
-
-* 01771708 [COMMENT] tuned oracle profile RFE
-* 01575254 [COMMENT] summary
-* answer from libusa, book appointment with prevent
 
 == 03/12/17 == sunday
 
