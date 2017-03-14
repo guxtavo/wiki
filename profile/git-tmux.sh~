@@ -1,4 +1,4 @@
-#!/bin/bash
+# fix me, if first time use, /tmp file doesn't exist and program fails
 
 update_tmp(){
   ~/git/wiki/profile/git-status.sh ~/git | egrep "Modified|Untracked" > /tmp/git_status
