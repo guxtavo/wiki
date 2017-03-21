@@ -246,3 +246,6 @@ alias journal="vi ~/git/wiki/journal.txt"
 
 alias gbrl="git branch --remote --list"
 alias rec="recordmydesktop --no-sound"
+pidstat_15(){
+  pidstat 5  | awk '{ if ($8 > 1.5) print}'
+}

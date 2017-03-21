@@ -1,0 +1,45 @@
+[~]$ sudo strace -fcqp 26608                             
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 79.80   91.650750        1080     84897     21892 futex
+ 10.78   12.375669         116    106888           poll
+  9.30   10.676558         411     25995           epoll_wait
+  0.05    0.060000       15000         4         2 restart_syscall
+  0.04    0.045374           0    186082           gettimeofday
+  0.01    0.015136           0    721599           clock_gettime
+  0.01    0.011360           0     36540           write
+  0.00    0.005216           0    142010    124303 recvmsg
+  0.00    0.001855           0      9783           sendmsg
+  0.00    0.001187           0     36541       278 read
+  0.00    0.000705           0     35774           getrusage
+  0.00    0.000433           0      7534           mprotect
+  0.00    0.000215           0     12160           madvise
+  0.00    0.000041           1        82           munmap
+  0.00    0.000016           0       366        48 stat
+  0.00    0.000000           0        84           mmap
+  0.00    0.000000           0      2095           getpid
+------ ----------- ----------- --------- --------- ----------------
+100.00  114.844515               1408434    146523 total
+
+So in ~115 seconds we failed to run syscall recvmsg 87% of the times, and
+futex is taking ~80% of the time of the program. I see a lot of: 
+
+  -1 ETIMEDOUT (Connection timed out)
+
+When running with "-e futex". So I would guess the thing is busy looping
+waiting for data from the network. Apparently my firefox is busy with
+connections, which is weird, as I have a yotube video and two wikipedia pages
+loaded. 
+ 
+    $ man 2 futex
+    futex - fast user-space locking
+
+    A user-space program employs the futex() system call only when it is likely
+    that the program has to block for a longer time until the condition becomes
+    true.
+
+The CPU usage is higher when the youtube tab is selected. This system which
+I'm running now is a Pentium T32200
+Questions?
+
+Is the futex high usage and the 87% of failure in recvmsg connected?

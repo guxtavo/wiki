@@ -1,24 +1,13 @@
+I thought I should share this here in the hopes the $subject is demystified.
+
 # Performance investigation handbook
 
-## Index
-  * Abstract
-  * Baseline
-  * Building blocks
-  * The common mistakes
-  * Moving ahead
-  * USE and workload characterization
-  * Debugging
-
-## Abstract
-
-## Baseline
-
-In order to determine if the system's slow performance is not caused by faulty
+In order to determine if your system's slow performance is not caused by faulty
 hardware, high levels of overcommittment (improper sizing), application bugs
-or misconfiguration, or other reasons than a bug in our products, let's use a
-baseline to guide us in the measurement.
+or misconfiguration, or other reasons than a bug in our products, let's use 
+a baseline to guide us in the measurement.
 
-  Latency Comparison Numbers                 ns         us     ms   Comparisom
+  Latency Comparison Numbers                 ns         us     ms
   +---------------------------------------------------------------------------------------------+
   | Fetch from L1 cache                |        0.5 |        |    |                             |
   | Execute typical instruction        |          1 |        |    |                             |
@@ -44,33 +33,8 @@ baseline to guide us in the measurement.
 
 * https://gist.github.com/jboner/2841832
 
-Any baseline can be used, but it is important to define this at the beginning 
+Any baseline can be used, but it is important to define this at the beginning
 of the case life. 
-
-## Building blocks
- 
-There are several building blocks from the operating system which could be
-investigated in order to determine where the slowness is comming from:
-
-  0) Application and system calls
-  1) Scheduler and time management
-  2) Memory management and page cache
-  3) Interrupt handling
-  4) Filesystem, VFS and Block IO
-  5) Networking
-
-With the baseline in mind, we can assume the 
-
-        /\
-       /  \
-      /cpu \ -> scheduler
-     /      \
-    / memory \ -> memory management
-   /          \
-  /IO block/net\ -> interrupts
-  --------------
-
-## The common mistakes
 
 What are the common performance issues as seen from a service-oriented
 perspective?
@@ -88,22 +52,18 @@ Customers might not know how to:
 
   ... they might not know what is running and how frequent is running
 
-## Moving ahead
+## Building blocks
 
-As with all tickets, and for a better integration with upstream and
-downstream, we should make clear where the case is going to end.
+There are several building blocks
 
-  * RCA 
-  * RFE
-  * BUGZILLA
+  0) Application and system calls
+  1) Scheduler and time management
+  2) Memory management and page cache
+  3) Interrupt handling
+  4) Filesystem, VFS and Block IO
+  5) Networking
 
-## USE, workload characterization
-
-Utilization, Starvation and Errors (USE) and workload charachterization are
-two methods which can be applied when the customer is not sure where is the
-problem.
-
-## Debugging
+## Debugging a subsystem
 
 Forget ps/top/vmstat, and lets go deeper with some Intel goodies:
 
@@ -167,3 +127,92 @@ be necessary.
 Showing who is the biggest contributor to system resources usage is the first
 step determining what is the bottleneck. Once you have a subsystem or
 component, keep going deeper :D
+
+## A walk in our legacy - what is cutting edge and where can you gain
+performance?
+
+RHEL 5 and 6 are cemented technology, and the current maintenance is in place
+to fix what is broken, but not to implement what is new and quicker. 
+
+  Kernel   Release     Updates first quarter 2017
+  -----------------------------------------------
+  2.6.18 - RHEL 5.11 - NULL
+  2.6.32 - RHEL 6.9  -  169 - ##
+  3.10.0 - RHEL 7.3  - 1700 - ##################
+
+There is not much going on regarding improvements in RHEL 5 and 6. Patches to
+those kernels are mainly backported to fix breakage in the ABI.
+
+RHEL7 kernel in contrast can receive improvements from upstream kernel. If
+there is some know bug or improvement in upstream
+
+## moving ahead
+
+As with all tickets, and for a better integration with upstream and
+downstream, we should make clear where this case is going to end.
+
+  RCA 
+  RFE
+  BUGZILLA - need to 
+
+## numa and power management
+
+## CPU
+
+ user    system      idle
+  -nice    -irq        -iowait
+           -softirq 
+           -steal
+
+The catch here is that almost all CPU usage can be triggered by user-space.
+  
+## checklist
+
+  - power settings in bios
+  - IO schedulers matter, if 
+
+Only when IO is not what is causing your application to crawl, of when you are
+IO bound, you can
+
+If you don't know where to start, 
+
+        /\
+       /  \
+      /cpu \ -> scheduler
+     /      \
+    / memory \ -> memory management
+   /          \
+  /IO block/net\ -> interrupts
+  --------------
+
+  sbr-kernel categories
+
+  # rca 
+     -> reboot
+     -> crash
+  # cannot boot
+  # performance
+     -> scheduler
+     -> memory management
+     -> interrupts
+  # blocked tasks and soft lockups
+  # 
+
+## performance needle
+
+WARNING: this can slow down your workload considerably and even crash your
+system.
+
+extract some counters to understand whay is the worload per processor of
+interrupts, context switches, and other data to assert how your system is
+being used, with extracts from 60, 300 and 900 seconds (to mach load rolling
+metric).
+
+What the needle will include?
+  * The system call count for 60, 300 and 900 seconds
+  * 
+
+## USE, workload characterization
+
+Utilization, Starvation and Errors and workload charachterization can be
+applied when the customer is not sure where is the problem

@@ -5,18 +5,46 @@
   / vucs \   #                    #  CI: osc || git
   --------   ######################                      -> May 1st
 
-#TASKS
-* [ACTION] [IMPORTANT] marcia, high school diploma(apostill), diploma abeu, CAC
-* [ACTION] [IMPORTANT] extended stay MOI Eva
+#TASKS [IMPORTANT]
+* [ACTION] email eva, training certificates
+* [ACTION] forign police passport change
+* [ACTION] extended stay or plane ticket
 * [READ] C language - chapter 1
-* [PATCH] obs-build - add warning when package auto-detect is triggered
-* [PATCH] funcoeszz - Função para verificar disponibilidade de sites. #287
-* [READ] OBS reference guide
-* [READ] Linux Kernel Development - chapter 10
-* [ACTION] osc supportutils openSUSE tumbleweed
-* [ACTION] passagem brasil, banco - biometria, cartao, livros guilherme
+* [WAIT] marcia correios
 
-* [ACTION] compile redoxos
+* [ACTION] prevent schedule
+* [PATCH] obs-build - add warning when package auto-detect is triggered
+* [READ] OBS reference guide, osc supportutils openSUSE tumbleweed
+* [READ] Linux Kernel Development - chapter 10
+* [PATCH] [RFE] funcoeszz - Função para verificar disponibilidade de sites. #287
+
+* [ACTION] ressurect laptop battery
+* [ACTION] replace laptop fan
+* [PACTH] sysctl numlock on default after wake
+* [ACTION] bring documents from brazil
+* [ACTION] passagem brasil, ituverava, banco(biometria, cartao), livros guix
+* [ACTION] gmail + mutt
+* [READ] kernel coding style
+
+== 03/17/17 == friday
+
+* OK: 0715 coffee, plan the day
+* OK: 0800 plan the day
+* OK: 0830 plan the day
+* OK: 0900 create tmux widget for temperature
+* OK: 0915 plan the day
+* OK: 0930 C language
+* OK: 1000 C language
+* OK: 1030 download youtube albums, ogg123
+* OK: 1100 rfe funcoeszz pull request
+* NOK: 1115 virtualization on laptop - no vmx :(
+* OK: 1120 [ACTION] banner spacex ascii
+* OK: 1130 latency patch - USE and workload charachterization
+* 1200 lunch
+* 1230 lunch
+* obs-build pull request preparation
+* coffee break 
+* swim
 
 == 03/16/17 == thursday
 
@@ -25,8 +53,11 @@
 * OK: 1530 organize documents
 * OK: 1535 email eva
 * OK: 1600 email instructions marcia
-* washing machine
-* mercado
+* OK: 1630 washing machine
+* OK: 1700 mercado
+* OK: 1730 coffee and clean kitchen
+* OK: 1800 hang clothes
+* OK: 1820 brightness control patch
 
 == 03/15/17 == wednesday
 

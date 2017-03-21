@@ -1,0 +1,18 @@
+  * add verifica_site to (zzpiadas, zznoticiassec, zzminiurl)
+  * create function verifica_site
+  * double check the if the site is up with:
+    http://www.downforeveryoneorjustme.com/ (http://isup.me/)
+    http://isitdownorjust.me/
+    http://www.isitdownrightnow.com/ (http://www.iidrn.com)
+  * zztool url_ok
+  zztool url_ok "$url" || { zztool erro "Site inacessível"; return 1; }
+  cache recent checks to save bandwidth
+
+retorno=$(curl -L -s -m 30 -w "\n%{http_code}\n" $1 -o /dev/null|sed -n '$p') 
+
+if test $(echo "$retorno") -eq 200
+then
+  echo "$retorno"
+else
+echo "error"
+fi

@@ -1,0 +1,16 @@
+Recentemente houveram problemas com sites ficando indisponíveis, por exemplo:
+
+    http://www.xalexandre.com.br/piadasAleiatorias em zzpiadas
+    http://www.linuxsecurity.com.br em zznoticiassec
+    http://migre.me em zzminiurl
+
+Nesses casos ou a função congela momentaneamente ou não oferece nenhum retorno, e pode dar falsa impressão de estar quebrada.
+Os sites:
+
+    http://www.downforeveryoneorjustme.com/ (http://isup.me/)
+    http://isitdownorjust.me/
+    http://www.isitdownrightnow.com/ (http://www.iidrn.com)
+
+podem fornecer um retorno rápido sobre a situação do site a ser consultado.
+
+Uma função de suporte que verifique a disponibilidade de uma url pode ser uma opção para evitar demora em respostas ou conclusões errôneas.
