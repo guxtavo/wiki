@@ -6,11 +6,9 @@
   --------   ######################                      -> May 1st
 
 #TASKS [IMPORTANT]
-* [ACTION] email eva, training certificates
 * [ACTION] forign police passport change
-* [ACTION] extended stay or plane ticket
+* [ACTION] MOI extension Eva
 * [READ] C language - chapter 1
-* [WAIT] marcia correios
 
 * [ACTION] prevent schedule
 * [PATCH] obs-build - add warning when package auto-detect is triggered
