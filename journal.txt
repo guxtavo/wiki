@@ -6,23 +6,46 @@
   --------   ######################                      -> May 1st
 
 #TASKS [IMPORTANT]
+* [BIGGIE] moving emails to mutt, mutt gmail address lookup
 * [ACTION] forign police passport change
 * [ACTION] MOI extension Eva
 * [READ] C language - chapter 1
-
 * [ACTION] prevent schedule
 * [PATCH] obs-build - add warning when package auto-detect is triggered
 * [READ] OBS reference guide, osc supportutils openSUSE tumbleweed
 * [READ] Linux Kernel Development - chapter 10
 * [PATCH] [RFE] funcoeszz - Função para verificar disponibilidade de sites. #287
+* [PACTH] sysctl numlock on default after wake
+* [READ] kernel coding style
+* strace firefox recvmsg errors cpu 
 
 * [ACTION] ressurect laptop battery
 * [ACTION] replace laptop fan
-* [PACTH] sysctl numlock on default after wake
-* [ACTION] bring documents from brazil
 * [ACTION] passagem brasil, ituverava, banco(biometria, cartao), livros guix
-* [ACTION] gmail + mutt
-* [READ] kernel coding style
+* [ACTION] bring documents from brazil
+
+== 03/28/17 == tuesday
+
+* -> equilibrium, confidence, organization, posture <-
+* 0615 wakeup
+* 0620 bath, coffee
+* 0630 clean dishes
+* 0700 prelude to foundation
+* 0730 [READ] C language - chapter 1
+* 0830 [ACTION] MOI extension Eva
+* 0900 washing machine
+* 0930 whatsup petra
+* 1000 mensagem guilherme
+
+== 03/27/17 == monday
+
+* -> equilibrium, confidence, organization, posture <-
+* OK: 1630 [ACTION] sto release notes email
+* OK: 1655 email cleanup
+* OK: 1715 cleanup journal
+* 1720 shower
+* 1730 git commit
+* 1830 meet milacku
 
 == 03/17/17 == friday
 
@@ -33,61 +56,37 @@
 * OK: 0915 plan the day
 * OK: 0930 C language
 * OK: 1000 C language
-* OK: 1030 download youtube albums, ogg123
 * OK: 1100 rfe funcoeszz pull request
-* NOK: 1115 virtualization on laptop - no vmx :(
 * OK: 1120 [ACTION] banner spacex ascii
 * OK: 1130 latency patch - USE and workload charachterization
-* 1200 lunch
-* 1230 lunch
-* obs-build pull request preparation
-* coffee break 
-* swim
 
 == 03/16/17 == thursday
 
-* OK: 0800-1400 keri
 * OK: 1500 [PATCH] tmux brightness and battery
 * OK: 1530 organize documents
 * OK: 1535 email eva
 * OK: 1600 email instructions marcia
-* OK: 1630 washing machine
-* OK: 1700 mercado
-* OK: 1730 coffee and clean kitchen
-* OK: 1800 hang clothes
 * OK: 1820 brightness control patch
 
 == 03/15/17 == wednesday
 
 * --> passport, super legalization, extended stay <--
-* OK: 0530 wake up, coffee
-* OK: 0538 turn computer on, review plan, music, email ticket
-* OK: 0600 teeth, hair, dress up
-* OK: 0630 tram
 * OK: 0700 bus to prague
 * OK: 0730 draft email eva
 * OK: 0930 embaixada, passaport, perguntas
-* OK: 1400 home
-* OK: 1600 breakfast
-* OK: 1605 now
-* OK: 1615 updates, music
 
 == 03/14/17 == tuesday
 
 * -> equilibrium, confidence, organization, posture <-
 * -> always rename your tmux panes so you don't get lost <-
 * OK: 1900 redox os
-* OK: 2000 tilde?
 * OK: 2030 keyboard correct mapping - belgium
 * OK: 2200 git remote set-url origin new_url, git stash, git stash apply
-* OK: 2230 plan, music, shower
 
 == 03/13/17 == monday
 
-* OK: 0800 sd card patrick's table, hangouts ping
 * OK: 0801 [PATCH] sto - udpdate README.md with installation and user guide
 * OK: 0805 [GITLAB] create issue for sto: add support to firefox
-* OK: 0815 [PATCH] to sum up - languages
 * OK: 0820 [PATCH] sto -b new_readme to upstream
 * OK: 0830 [PATCH] fix weather widget on tmux status bar, sometimes is blank
 * OK: 0840 [PATCH] profile/weather fixes
@@ -102,13 +101,10 @@
 
 == 03/12/17 == sunday
 
-* OK: 0615 wakeup, vitamins, coffee
 * OK: 0620 fix weather script
 * OK: 0700 youtube power management
 * OK: 0730 youtube go language for devops
 * OK: 0830 clean watch later queue
-* OK: 0900 breakfast
-* OK: 0930 hang clothes
 * OK: 1000 git upstream pull request
 * OK: 1030 [PATCH] perf-tools - remove blanks in top output from execsnoop examples
 * OK: 1100 draft uprobe set_path select library - fixes #39

@@ -6,23 +6,38 @@
   --------   ######################                      -> May 1st
 
 #TASKS [IMPORTANT]
+* [BIGGIE] moving emails to mutt, mutt gmail address lookup
 * [ACTION] forign police passport change
-* [READ] C language - chapter 1
-
 * [ACTION] MOI extension Eva
+* [READ] C language - chapter 1
 * [ACTION] prevent schedule
 * [PATCH] obs-build - add warning when package auto-detect is triggered
 * [READ] OBS reference guide, osc supportutils openSUSE tumbleweed
 * [READ] Linux Kernel Development - chapter 10
 * [PATCH] [RFE] funcoeszz - Função para verificar disponibilidade de sites. #287
+* [PACTH] sysctl numlock on default after wake
+* [READ] kernel coding style
+* strace firefox recvmsg errors cpu 
 
 * [ACTION] ressurect laptop battery
 * [ACTION] replace laptop fan
-* [PACTH] sysctl numlock on default after wake
-* [ACTION] bring documents from brazil
 * [ACTION] passagem brasil, ituverava, banco(biometria, cartao), livros guix
-* [ACTION] gmail + mutt
-* [READ] kernel coding style
+* [ACTION] bring documents from brazil
+
+== 03/28/17 == tuesday
+
+* [READ] C language - chapter 1
+* [ACTION] MOI extension Eva
+
+
+== 03/27/17 == monday
+
+--> * mensagem guilherme <--
+* 1456 plan the day
+* OK: 1630 [ACTION] sto release notes email
+* 1655 emails
+* shower, shave
+* 1830 meet milacku
 
 == 03/17/17 == friday
 

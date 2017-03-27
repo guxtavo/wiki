@@ -8,20 +8,21 @@ Hi all,
 Ingo Weiss, Patrick Bajeneza and me, Gustavo Figueira, were working in a side 
 project called "STO". 
 
-  Sto (Czech), 100 (číslo), one hundred.
+  It was build to be plugable to SFDC and Ascension. 
 
 STO is a template system for GSS Support, built for sharing. It is a browser 
 extension which can be used with Ascension or SFDC. The extension connects to a
-back-end component which stores the templates. After opening STO's main window
+backend component to store the text files. After opening STO's main window
 with the case opened in Ascension, just click on the template to insert it to
 the comment area.
+
+  - screenshot in ascii art :)
 
  -----------------------------------------------------
                                             (R)      |
  -----------------------------------------------------
-  -----------------------                            |
-  | search ______ share |                            |
-  -----------------------                            |
+                                                     |
+  search ______ share                                |
   rhn-support-gfigueir                               |
     rca-kernel-panic                                 |
     rca-unexpected-reboot                            | 
@@ -33,12 +34,15 @@ the comment area.
 
             Image 1 - main interface 
 
-STO is written in JavaScript/Angular (browser extension) and Java (back-end).
-Other features include:
+                  #change me vvvvvvv
+STO is written in javascript/angular (browser extension) and java (backend), and
+the data is stored in text files. Other features include:
 
-  * Template editor
-  * RHN username search
-  * Rest API
+  * template editor
+  * rhn username search
+  * chrooted backend
+  * simple rest api
+  * 
 
 The source code can be found here:
                          https://gitlabs.redhat.com/pbajanez/sto.git
@@ -46,20 +50,24 @@ The source code can be found here:
 
   #open-templates 
 
-STO gathers your RHN username from CP cookies to provision your account
+STO gathers your rhn username from CP cookie to provision your account
 automatically. After you create your templates, they are available for other 
 users to view and copy.
 
            Image 2 - admin interface
 
+"Sto" from Czech language means 100. STO will scale where repeatable customer 
+behaviour occurs.
+
   #ascension-rfe
 
-STO will scale where repeatable customer behavior occurs. After SBR coaches
-and senior members curate templates for a meta user, a Weak AI system 
-can be fed by the rest API to compose responses to customers. 
+What if each SBR had a meta user, with curated templates, picked by SBR
+coaches, and senior members, to help newcomers? 
 
 Todo
- * Port extension to Firefox || Port to Ascension
+ * Port extention to Firefox || Port to Ascension
+ * v1.1 - scripting support
+ * v2.0 - STO AI BOT - customer portal solving tickets
 
 --
 Best regards,

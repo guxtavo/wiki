@@ -249,3 +249,6 @@ alias rec="recordmydesktop --no-sound"
 pidstat_15(){
   pidstat 5  | awk '{ if ($8 > 1.5) print}'
 }
+google(){
+  elinks www.google.com/search?q=$1
+}
