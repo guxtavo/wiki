@@ -1,0 +1,2 @@
+Create a report of articles and patches touches per week, and month (partial
+report will contain last 3 months) to build a anual report

@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+/* "Utilization, Starvation and Errors" Method Debugger 
+
+script prototype
+
+  usage: use-md [--help]
+
+  use-md - USE method debugger 
+  use-md - triggering needles to investigate performance
+  -p <PID>
+     call strace -c on a process, to get system call stats 
+
+ DESCRIPTION
+        This command gathers performance data to be investigated. It uses the µ
+        Concept of needles from OpenQA. 
+*/
+
+needle_interval
+
+needle_proc_stat
+
+needle_perf
+needle_strace_culprit_process
+
+trigger_types proc/stat, perf
+trigger_proc_running
+trigger_proc_blocked
+trigger_context switches
+trigger_cpu_utilization
+trigger_memory - how much memory you are moving
+trigger_
+
+trigger_to_start_debugger
+  bool manual
+  
+
+utilization_points
+starvation_points
+errors_points
+
+start_debugger
+
+
+
+main

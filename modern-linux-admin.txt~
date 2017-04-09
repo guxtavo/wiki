@@ -1,0 +1,78 @@
+The modern Linux admin and lessons learned from the high-end Android market
+
+About the Author: Gustavo (capcom) Figueira is a Kernel Software Engineer,
+performance and RPS-1 
+
+When designing a deterministic system without a Real Time Kernel, the
+isolation of CPUs for application, which is why you have bought the
+subscription for Enterpirse Linux Support and an expensive machine was for, it
+a common practice in performance tuning.
+
+Not all of your CPU cycles will be spent on userspace. If you have
+synchronization problems, memory contention or have delays in network, storage
+or any other type of interrupt, CPU cycles will be spent dealing with this,
+and you will see increase in %system CPU.
+
+When you have synchronization issues, you will see an increased use of futexes
+in user space, of other kernel-space synchronization techniques like
+spin-locks, futexes andr
+
+How much memory can you move in micro benchmark? Can your application do the
+same? Is your memory speed the bottleneck? 
+
+Do you have delays in network or storage, or both? 
+
+Here are the CPU specs for the Samsumg Galaxy S8, which was released in March
+2017:
+
+  Qualcomm MSM8998 Snapdragon 835 - US model
+  Octa-core (4x2.35 GHz Kryo & 4x1.9 GHz Kryo) 
+
+  Exynos 8895 Octa - EMEA model
+  Octa-core (4x2.3 GHz & 4x1.7 GHz)
+
+* - http://www.gsmarena.com/samsung_galaxy_s8-8161.php
+
+Samsumg uses it's own SoC, the Exynos for the EMEA market, where in the US,
+Qualcomm delivers the Snapdragon SoC. But in both cases, the octa-core CPUs
+have half of the cores running in a lower speed.
+
+Digging the Nexus 5X CPU architecture, I found the following:
+
+  In order to save power, Google has introduced what it calls an 'Android Sensor
+  Hub'. It is a secondary low-power processor whose purpose is to run
+  activity-recognition algorithms by directly monitoring the device's
+  accelerometer, gyroscope, fingerprint reader, and camera sensors, allowing the
+  main CPU to remain inactive until something requires its attention.
+
+* - https://en.wikipedia.org/wiki/Nexus_5X
+
+Nexus 5X's SoC is a Qualcomm MSM8992 (808), it's a ARMv8-A, 2+4 hexa-core with 
+Cortex-A57 (1.8GHz) and Cortex-A53 (1.5GHz) CPUs. It uses Global Task 
+Scheduling, also know as heteregeneous multi-processing (HMP), which is how
+the Linux Scheduler preempts the processes:
+
+  Big.Little architecture is heterogeneous multi-processing (HMP), which enables
+  the use of all physical cores at the same time. Threads with high priority or
+  computational intensity can in this case be allocated to the "Big" cores while
+  threads with less priority or less computational intensity, such as background
+  tasks, can be performed by the "Little" cores.
+
+* - https://en.wikipedia.org/wiki/ARM_big.LITTLE
+
+We can say that the lower power cores are responsible for high priority
+interrupts from various devices. It is the same principle applied to IRQ
+isollation on busy systems. The system administrator deliberrately assigns the
+Network and the network-intensive application to the same numa node, thus
+taking advantage of data locality. If the system is not so IO-bound, the block
+devices and system daemons are then assigned to a different numa node, so the
+logging, remote access and system cleanup runs on different CPUs than the ones
+running the application.
+
+The power savings gained in such architecture will benefity power-hungry
+mobile users, but inside the data center, where power is unlimted, this can
+mean lower latencies.
+
+As virtualization becomes common practice, we can see 
+
+* - https://github.com/snabbco/snabb/blob/master/src/doc/performance-tuning.md

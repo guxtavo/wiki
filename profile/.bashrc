@@ -252,3 +252,7 @@ pidstat_15(){
 google(){
   elinks www.google.com/search?q=$1
 }
+
+set_target(){
+  echo $1 > ~/.config/target
+}

@@ -1,59 +1,41 @@
 
-     /\      ######################  linux + bash + tmux + vi + git 
+     /\      ######################  linux + vi + git + bash + tmux 
     /  \     #                    #    Object oriented, scripting
    /    \    # LKD, code and RPS1 #    and functional programming
-  / vucs \   #                    #  CI: osc || git
-  --------   ######################                      -> May 1st
+  / vucs \   #                    #        CI: osc && git
+  --------   ######################        SuSE June 15th
+
+projects
+  wiki - the book - write index
 
 #TASKS [IMPORTANT]
-* [BIGGIE] moving emails to mutt, mutt gmail address lookup
-* [ACTION] forign police passport change
+* [ACTION] forign police passport change monday
 * [ACTION] MOI extension Eva
-* [READ] C language - chapter 1
 * [ACTION] prevent schedule
-* [PATCH] obs-build - add warning when package auto-detect is triggered
-* [READ] OBS reference guide, osc supportutils openSUSE tumbleweed
-* [READ] Linux Kernel Development - chapter 10
-* [PATCH] [RFE] funcoeszz - Função para verificar disponibilidade de sites. #287
-* [PACTH] sysctl numlock on default after wake
-* [READ] kernel coding style
-* strace firefox recvmsg errors cpu 
+* [BUY] Desk, chair and yoga ball
 
+* [READ] OBS reference guide, osc supportutils openSUSE tumbleweed
+* [PATCH] [RFE] funcoeszz - Função para verificar disponibilidade de sites. #287
+* [PATCH] obs-build - add warning when package auto-detect is triggered
 * [ACTION] ressurect laptop battery
-* [ACTION] replace laptop fan
+* [ACTION] replace laptop fan, tools, thermal paste
 * [ACTION] passagem brasil, ituverava, banco(biometria, cartao), livros guix
 * [ACTION] bring documents from brazil
+* [PACTH] sysctl numlock on default after wake
+* [WIKI] finish the book, where is the index?
 
-== 03/28/17 == tuesday
+== 04/01/17 == saturday
 
-* -> equilibrium, confidence, organization, posture <-
-* 0615 wakeup
-* 0620 bath, coffee
-* 0630 clean dishes
-* 0700 prelude to foundation
-* 0730 [READ] C language - chapter 1
-* 0830 [ACTION] MOI extension Eva
-* 0900 washing machine
-* 0930 whatsup petra
-* 1000 mensagem guilherme
+* OK: 1400 The modern Linux Admin
 
 == 03/27/17 == monday
 
 * -> equilibrium, confidence, organization, posture <-
 * OK: 1630 [ACTION] sto release notes email
-* OK: 1655 email cleanup
-* OK: 1715 cleanup journal
-* 1720 shower
-* 1730 git commit
-* 1830 meet milacku
 
 == 03/17/17 == friday
 
-* OK: 0715 coffee, plan the day
-* OK: 0800 plan the day
-* OK: 0830 plan the day
 * OK: 0900 create tmux widget for temperature
-* OK: 0915 plan the day
 * OK: 0930 C language
 * OK: 1000 C language
 * OK: 1100 rfe funcoeszz pull request
@@ -70,7 +52,6 @@
 
 == 03/15/17 == wednesday
 
-* --> passport, super legalization, extended stay <--
 * OK: 0700 bus to prague
 * OK: 0730 draft email eva
 * OK: 0930 embaixada, passaport, perguntas
