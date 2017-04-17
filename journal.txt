@@ -1,28 +1,59 @@
 
-     /\      ######################  linux + vi + git + bash + tmux 
-    /  \     #                    #    Object oriented, scripting
-   /    \    # LKD, code and RPS1 #    and functional programming
-  / vucs \   #                    #        CI: osc && git
-  --------   ######################        SuSE June 15th
+     /      ######################  linux + vi + git + bash + tmux 
+    /G\     #                    #    Object oriented, scripting
+   / v \    # LKD, code and RPS1 #    and functional programming
+  / UCS \   #                    #        CI: osc && git
+  -------   ######################        SuSE: July 1st
+           1, 1, 2, 3, 5, 8, 13, 21
 
-projects
-  wiki - the book - write index
+#TASKS-NOW 3-5-8-13-21
+* review addresses for prague trip - crime record and evas office
+* buy ticket to brazil - confirm dates with Eva
+* mail lease contract to Eva - marketa
 
-#TASKS [IMPORTANT]
-* [ACTION] forign police passport change monday
-* [ACTION] MOI extension Eva
+#TASKS-WEEKS
+* + C language - chapter 5
+* review trip to embassy
+* withdraw euros for vienna trip
+* anger, frustration, silence
 * [ACTION] prevent schedule
-* [BUY] Desk, chair and yoga ball
 
+#TASKS-MONTHS
+* [BUY] Desk, chair and yoga ball
 * [READ] OBS reference guide, osc supportutils openSUSE tumbleweed
-* [PATCH] [RFE] funcoeszz - Função para verificar disponibilidade de sites. #287
 * [PATCH] obs-build - add warning when package auto-detect is triggered
 * [ACTION] ressurect laptop battery
-* [ACTION] replace laptop fan, tools, thermal paste
 * [ACTION] passagem brasil, ituverava, banco(biometria, cartao), livros guix
 * [ACTION] bring documents from brazil
+* + linux kernel podcast
+
+#TASKS-YEARS
+* climate is-up
+* sanitize bashrc
+* [ACTION] replace laptop fan, tools, thermal paste
+* [PATCH] [RFE] funcoeszz - Função para verificar disponibilidade de sites. #287
 * [PACTH] sysctl numlock on default after wake
+* + linux kernel development - chapter 12
 * [WIKI] finish the book, where is the index?
+* https://collegeinfogeek.com/now/
+* write shell scripts using kernel coding style
+* + are you joking mr feynman?
+* + google fit workout
+* + cfs osal
+* + alice
+
+== 04/17/17 ==
+
+* sanitize tmux status panel script
+
+== 04/14/17 ==
+
+* OK [ACTION] (4) bus tickets to vienna 27/04 0700
+* OK [ACTION] (1) foreign police passport change
+
+== 10/01/17 == monday
+
+* OK: 0930 [ACTION] MOI extension Eva
 
 == 04/01/17 == saturday
 

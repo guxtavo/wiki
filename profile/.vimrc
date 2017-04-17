@@ -119,7 +119,7 @@ highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 
 set expandtab
-set shiftwidth=2
+set shiftwidth=8
 set softtabstop=2
 
 set number
