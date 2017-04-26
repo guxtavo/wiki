@@ -2,12 +2,24 @@
                           Method of Procedure
 
  MOP ID: perf0001   Author: Gustavo Figueira    Approver: 
- Version: 0001        Date: 02/7/2016
+ Version: 0001      Date: 02/7/2016
 
- MOP title: Capturing valid data for performance analysis on host  0123-cluster14-node88-prod
+ MOP title: Capturing valid data for performance analysis on host 0123-cl14-prod
  MOP purpose: A baseline of system data points accross a given amount of time and the
  capability of replicating the tests on demand is the ideal condition for a quick There is a gap of 28994 patches committed from current version
  (2.6.32-279), until latest kernel version.
+
+perf top
+sudo perf top -a -g -F99
+
+
+Children - Shared Object - Symbol
+
+
+Samples: 7K of event 'cycles', Event count (approx.): 33864155848
+Children      Self  Shared Object                       Symbol
+   7.34%     7.34%  libcrypto.so.1.0.0                  [.] OPENSSL_cleanse
++  3.73%     3.72%  libcrypto.so.1.0.0                  [.] DES_set_key_unchecked
 
  == Prerequisites ==
 

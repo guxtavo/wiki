@@ -1,23 +1,38 @@
-I've been working as a Kernel Support Engineer in Red Hat for the past 3 years,
-and before I acted in different roles in Engineering Support. My main studies
-concentrate on Unix Kernel Design and implementation and C Programming
-Language.
+Linux Developer at SuSE, from Rio de Janeiro - Brazil, living in Brno - Czech
+Republic. 
 
-Other interests include networking, shell scripting, performance and RT Patch.
+My stack is built around Tumbleweed, tmux(1), vim(1), git(1) and global(1), and
+I'm getting proficient with gdb(1), perf(1) and strace(1).
 
-In my spare time I try to read as much Aerospace books I can, do table tennis
-trick shots, 
+Markets I have worked for:
+        * Open Source
+        * Telecom/Networking
+        * Mission critical
 
-  What I am doing now
+Currently I'm hacking:
+        * The Linux Kernel
+        * C language
 
-    * Reading
+Open Source projects I subscribe and/or do pull request:
+        * linux-stable
+        * RT Patch
+        * funcoeszz
+        * obs-build
+        * perf-tools
+        * tmux
+        * cfs-osal
 
-I'm in Brno, Czech Republic
+Projects I've hacked in the past:
+        * Captive portal
+        * Diagnostic information tool for Unix
+        * Collaborative template system
 
-  What I am know for helping with:
+I'm also know for:
+        * doing table tennis trick shots 
+        * artful basketball player
+        * aerospace geek
 
-    * Ticketing system
-    * Captive portal
-    * Diagnostic information tool for Unix
-    * Collaborative template system
-    * Linux Peformance Debbugger
+Happy hacking!
+
+-- 
+capcom

@@ -12,10 +12,24 @@ git_repos_change(){
 }
 
 tasks(){
-        A=$(awk '/#TASKS-NOW/,/^$/' ~/git/wiki/journal.txt | egrep -v "TASKS|^$" | wc -l)
-        B=$(awk '/#TASKS-WEEKS/,/^$/' ~/git/wiki/journal.txt | egrep -v "TASKS|^$" | wc -l)
-        C=$(awk '/#TASKS-MONTHS/,/^$/' ~/git/wiki/journal.txt | egrep -v "TASKS|^$" | wc -l)
-        echo -n " $A/$B/$C |"
+        r=$(( $RANDOM % 10 ))
+
+        if [  "$r" -le "5" ]
+        then
+                A=$(awk '/#TASKS-NOW/,/^$/' ~/git/wiki/journal.txt | egrep -v "TASKS|^$" | wc -l)
+                B=$(awk '/#TASKS-WEEKS/,/^$/' ~/git/wiki/journal.txt | egrep -v "TASKS|^$" | wc -l)
+                C=$(awk '/#TASKS-MONTHS/,/^$/' ~/git/wiki/journal.txt | egrep -v "TASKS|^$" | wc -l)
+                D=$(awk '/#TASKS-YEARS/,/^$/' ~/git/wiki/journal.txt | egrep -v "TASKS|^$" | wc -l)
+                E=$(awk '/#TASKS-10-YEARS/,/^$/' ~/git/wiki/journal.txt | egrep -v "TASKS|^$" | wc -l)
+                echo -n " $A/$B/$C/$D/$E |"
+        else
+                A=" "
+                B="  "
+                C=" "
+                D="  "
+                E=" "
+                echo -n " +000/-000 |"
+        fi
 }
 
 weather(){
@@ -24,7 +38,7 @@ weather(){
 }
 
 temperature(){
-        B=$(sensors | grep C | egrep "temp2|Core 1" | cut -b 15-17 | tr "\n" , | sed -e 's/,$/°C/')
+        B=$(sensors | grep C | egrep "temp1" | cut -b 15-17 | tr "\n" , | sed -e 's/,$/°C/')
         echo -n " $B |"
 }
 

@@ -8,3 +8,4 @@ Presentation preparation checklist:
   * connect to bluejeans
   * enter the presentation-mode speed
   * start the SW
+  * be sure to ask many questions

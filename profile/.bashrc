@@ -1,21 +1,34 @@
 # .bashrc
-# Source global definitions
+# https://github.com/torvalds/linux/blob/master/Documentation/CodingStyle
+
+#############################
+# Source global definitions #
+#############################
+
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-DISABLE_AUTO_TITLE=true
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# Instalacao das Funcoes ZZ (www.funcoeszz.net)
-#export ZZOFF=""  # desligue funcoes indesejadas
-#export ZZPATH="/home/gfigueir/git/funcoeszz/funcoeszz"  # script
-#source "$ZZPATH"
+# History specific command
+shopt -s histappend
+set -o vi
 
-# Variables
+#############
+# Variables #
+#############
+
 export PS1="[\W]\$ "
 export PATH=$PATH:~/redhat/scripts::~/redhat/git/myscripts/rh
 export HISTSIZE=9999999
-#export PROMPT_COMMAND='history -a; history -n; echo -n "pwd: "; pwd; echo ""'
+export PROMPT_COMMAND='history -a; history -n'
+export DISABLE_AUTO_TITLE=true
+export EDITOR=vi
+
+###########
+# aliases #
+###########
 
 # power aliases
 alias psg="ps kstart_time -ef"
@@ -42,40 +55,106 @@ alias p="dbus-send --session --dest=org.hexchat.service --print-reply --type=met
 alias c="~/redhat/git/myscripts/csr -m|less"
 alias x="xsos -ay .|more"
 alias fc="fold -sw 80 ~/Documents/80.txt | xsel"
+alias cas="tail -f ~/redhat/scripts/cases.log"
+alias dstate="awk '$8 ~ /^D/' ps"
+alias nco="~/redhat/scripts/nco.sh"
+alias eco="~/redhat/scripts/eco.sh"
+alias pco="~/redhat/scripts/pco.sh"
+alias ada="~/redhat/scripts/ada.sh"
+alias tca="~/redhat/scripts/tca.sh"
+alias csr="~/redhat/scripts/myscripts/csr . | less"
+alias css="~/redhat/scripts/css.sh"
+alias cdcl="cd;clear"
 
-# User specific Functions
-kb() { redhat-support-tool  kb $1 | less ; }
-loc() { find . -name "*$1*" ; }
-new() { ~/redhat/scripts/new.sh $1 ; cd ~/redhat/cases/$1 ; }
-cdc() { if [ -d  ~/redhat/cases/$1 ]; then cd ~/redhat/cases/$1 ; ls -l ; else mkdir ~/redhat/cases/$1; cd ~/redhat/cases/$1 ; ls -l ; fi ; }
-erpm() { rpm2cpio $1 | cpio -idmv ; }
-eimg() { 
-  mv $1 $1.gz
-  gunzip $1.gz
-  mkdir img
-  mv $1 img/
-  cd img
-  cat $1 | cpio -idmv ; 
+# git aliases
+alias glo="git log --oneline"
+alias gddir="git diff --dirstat=files,5,cumulative"
+#alias gddirroot="git diff  --dirstat=files,0.000001,cumulative kernel-3.10.0-327.37.1.el7..kernel-3.10.0-514.el7  | grep " [a-z]\+/$" | sort -n"
+alias journal="vi ~/git/wiki/journal.txt"
+alias gbrl="git branch --remote --list"
+alias rec="recordmydesktop --no-sound"
+alias gitstat="~/git/wiki/profile/git-status.sh ~/git"
+alias 17="cal 2017"
+
+#############
+# functions #
+#############
+
+kb() 
+{ 
+        redhat-support-tool  kb $1 | less 
 }
-iexec() { tmp_file=`mktemp`; \
-          curl -s "$1" -o $tmp_file ; \
-          chmod +x $tmp_file ; \
-          $tmp_file; \
-          rm -f $tmp_file ; }
-eexec() { iexec http://etherpad.corp.redhat.com/ep/pad/export/${1}/latest?format=txt ; }
+
+loc() 
+{ 
+        find . -name "*$1*"
+}
+
+new() 
+{ 
+        ~/redhat/scripts/new.sh $1
+        cd ~/redhat/cases/$1
+}
+
+cdc()
+{ 
+        if [ -d  ~/redhat/cases/$1 ]
+                then 
+                        cd ~/redhat/cases/$1
+                        ls -l ; else mkdir ~/redhat/cases/$1
+                        cd ~/redhat/cases/$1
+                        ls -l
+        fi
+}
+
+erpm() 
+{ 
+        rpm2cpio $1 | cpio -idmv
+}
+
+eimg() 
+{  
+        mv $1 $1.gz
+        gunzip $1.gz
+        mkdir img
+        mv $1 img/
+        cd img
+        cat $1 | cpio -idmv
+}
+
+iexec()
+{ 
+        tmp_file=`mktemp` \
+        curl -s "$1" -o $tmp_file ; \
+        chmod +x $tmp_file ; \
+        $tmp_file; \
+        rm -f $tmp_file ; }
+eexec()
+{ 
+        iexec http://etherpad.corp.redhat.com/ep/pad/export/${1}/latest?format=txt
+}
 
 # tshark functions
-t_con() { tshark -tad -r $1 -z "conv,tcp" -q ; }
-t_phs() { tshark -tad -r $1 -z "io,phs" -q ;}
-t_exp() { tshark -tad -r $1 -z "expert,note,tcp" -q ; }
-t_latency() { tshark -n -r $1  -T fields -e ip.src -e tcp.analysis.ack_rtt "tcp.analysis.ack_rtt" 2>/dev/null | sort -nrk2 | head ;  }
+t_con() 
+{ 
+        tshark -tad -r $1 -z "conv,tcp" -q 
+}
 
-# History specific command
-shopt -s histappend
-set -o emacs
+t_phs()
+{ 
+        tshark -tad -r $1 -z "io,phs" -q
+}
+t_exp()
+{ 
+        tshark -tad -r $1 -z "expert,note,tcp" -q
+}
+
+t_latency()
+{ 
+        tshark -n -r $1  -T fields -e ip.src -e tcp.analysis.ack_rtt "tcp.analysis.ack_rtt" 2>/dev/null | sort -nrk2 | head
+}
 
 # Aarav functions
-
 #cco() { DATE=`date +%Y%m%d-%H%M` ;
 #        vi ${DATE}.txt ;
 #        echo File created ${DATE}.txt ;
@@ -87,8 +166,8 @@ set -o emacs
 #       gpaste file $LOCAL_FILE ; }
 
 # clone kernel git repos
-
-clone_rhel6() {
+clone_rhel6() 
+{
         cd ~/git 
 	git clone git://git.app.eng.bos.redhat.com/rhel6.git
 	cd rhel6
@@ -104,7 +183,8 @@ clone_rhel6() {
 	cd ..
 }
 
-clone_rhel7() {
+clone_rhel7() 
+{
 	cd ~/git
 	git clone git://git.app.eng.bos.redhat.com/rhel7.git
 	cd rhel7
@@ -115,144 +195,189 @@ clone_rhel7() {
 	cd ..
 }
 
-afk() { 
+afk() 
+{ 
 	context=`dbus-send --dest=org.xchat.service --print-reply --type=method_call /org/xchat/Remote org.xchat.plugin.FindContext string:"Red Hat IRC" string:"" | tail -n1 | awk '{print $2}'`
 	dbus-send --dest=org.xchat.service --type=method_call /org/xchat/Remote org.xchat.plugin.SetContext uint32:$context
 	dbus-send --dest=org.xchat.service --type=method_call /org/xchat/Remote org.xchat.plugin.Command string:"anick capcom|afk" 
 }
-oln() { 
+
+oln()
+{ 
 	context=`dbus-send --dest=org.xchat.service --print-reply --type=method_call /org/xchat/Remote org.xchat.plugin.FindContext string:"Red Hat IRC" string:"" | tail -n1 | awk '{print $2}'`
 	dbus-send --dest=org.xchat.service --type=method_call /org/xchat/Remote org.xchat.plugin.SetContext uint32:$context
 	dbus-send --dest=org.xchat.service --type=method_call /org/xchat/Remote org.xchat.plugin.Command string:"anick capcom"
 }
-lunch() { 
+
+lunch()
+{ 
 	context=`dbus-send --dest=org.xchat.service --print-reply --type=method_call /org/xchat/Remote org.xchat.plugin.FindContext string:"Red Hat IRC" string:"" | tail -n1 | awk '{print $2}'`
 	dbus-send --dest=org.xchat.service --type=method_call /org/xchat/Remote org.xchat.plugin.SetContext uint32:$context
 	dbus-send --dest=org.xchat.service --type=method_call /org/xchat/Remote org.xchat.plugin.Command string:"anick capcom|lunch"
 }
-irc() { tail -f .config/xchat2/xchatlogs/* | egrep --line-buffered -v "CHANSERV gives|EDNING|LOGGING|Topic for|CHANSERV gives|is now known|has quit \(|xchatlogs|^$|has joined|points of karma.|Ping timeout:" | grep -i --color -E '^|gux|capcom|ping emea|ping brq|ping sbr-kernel' ; }
 
-alias cas="tail -f ~/redhat/scripts/cases.log"
-alias dstate="awk '$8 ~ /^D/' ps"
-
-ca() { redhat-support-tool getcase $1 | less ; }
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-alias glo="git log --oneline"
-alias gddir="git diff --dirstat=files,5,cumulative"
-#alias gddirroot="git diff  --dirstat=files,0.000001,cumulative kernel-3.10.0-327.37.1.el7..kernel-3.10.0-514.el7  | grep " [a-z]\+/$" | sort -n"
-
-
-#check this:
-# http://www.pement.org/awk/awk1line.txt
-
-# Instalacao das Funcoes ZZ (www.funcoeszz.net)
-export ZZOFF=""  # desligue funcoes indesejadas
-#export ZZPATH="/home/gfigueir/git/funcoeszz/funcoeszz"  # script
-#export ZZDIR="/Users/aurelio/funcoeszz/zz"
-#source "$ZZPATH"
-
-alias nco="~/redhat/scripts/nco.sh"
-alias eco="~/redhat/scripts/eco.sh"
-alias pco="~/redhat/scripts/pco.sh"
-alias ada="~/redhat/scripts/ada.sh"
-alias tca="~/redhat/scripts/tca.sh"
-alias csr="~/redhat/scripts/myscripts/csr . | less"
-alias css="~/redhat/scripts/css.sh"
-
-alias cdcl="cd;clear"
-
-make_git_alias() {
- export PS1="\\w:\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\$ " 
-}
-
-#test_void(void)
-#{
-#  echo 1 ;
-#}
-
-test_no_void()
+irc() 
 {
-  echo normal return
-  echo $1
-  echo $2
+        tail -f .config/xchat2/xchatlogs/* | egrep --line-buffered -v "CHANSERV gives|EDNING|LOGGING|Topic for|CHANSERV gives|is now known|has quit \(|xchatlogs|^$|has joined|points of karma.|Ping timeout:" | grep -i --color -E '^|gux|capcom|ping emea|ping brq|ping sbr-kernel'
 }
 
-# Project tmux
+ca() 
+{ 
+        redhat-support-tool getcase $1 | less
+}
 
-# https://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
-
-
-#tmux_gss(){
-  # lunch tmux in gss mode 
-  # +----+----+----+
-  # |    |    |    |
-  # +----+    +----+
-  # |    +----+    |
-  # +----+    +----+
-  # |    |    |    |
-  # +----+----+----+
-  
-#  tmux name gss
-#}
-export EDITOR=vi
-
+make_git_alias() 
+{
+        export PS1="\\w:\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\$ " 
+}
 
 battery_left(){
-  acpi -V | head -1 | awk '{print $5}' | cut -b 1-5
+        acpi -V | head -1 | awk '{print $5}' | cut -b 1-5
 }
 
 weather(){
-   if test "`find /tmp/weather -mmin +30`"
-   then
-      curl wttr.in/Brno > /tmp/weather
-   fi
-   head -4 /tmp/weather  | tail -2 | cut -b 31-71 | sed 'N;s/\n/ /'
+        if test "`find /tmp/weather -mmin +30`"
+                then
+                        curl wttr.in/Brno > /tmp/weather
+        fi
+        head -4 /tmp/weather  | tail -2 | cut -b 31-71 | sed 'N;s/\n/ /'
 }
 
 function git_branches()
 {
-    if [[ -z "$1" ]]; then
-        echo "Usage: $FUNCNAME <dir>" >&2
-        return 1
-    fi
+        if [[ -z "$1" ]]; then
+                echo "Usage: $FUNCNAME <dir>" >&2
+                return 1
+        fi
 
-    if [[ ! -d "$1" ]]; then
-        echo "Invalid dir specified: '${1}'"
-        return 1
-    fi
+        if [[ ! -d "$1" ]]; then
+                echo "Invalid dir specified: '${1}'"
+                return 1
+        fi
 
-    # Subshell so we don't end up in a different dir than where we started.
-    (
-        cd "$1"
-        for sub in *; do
-            [[ -d "${sub}/.git" ]] || continue
-            echo "$sub [$(cd "$sub"; git  branch | grep '^\*' | cut -d' ' -f2)]"
+        # Subshell so we don't end up in a different dir than where we started.
+         (
+                 cd "$1"
+                 for sub in *; do
+                         [[ -d "${sub}/.git" ]] || continue
+                         echo "$sub [$(cd "$sub"; git  branch | grep '^\*' | cut -d' ' -f2)]"
+                 done
+        )
+}
+
+
+update_profile_git()
+{
+        cp ~/.bashrc ~/git/wiki/profile/
+        cp ~/.vimrc ~/git/wiki/profile/
+        cp ~/.tmux.conf ~/git/wiki/profile/
+        cp ~/.gitconfig ~/git/wiki/profile/
+}
+
+pidstat_15()
+{
+        pidstat 5  | awk '{ if ($8 > 1.5) print}'
+}
+
+google()
+{
+        # replace default functionality, open I
+        #elinks --dump www.google.com/search?q=$1 | head -16 | tail -1
+        elinks www.google.com/search?q=$1
+}
+
+# I'm feeling lucky
+gl()
+{
+        elinks --dump www.google.com/search?q=$1 | head -16 | tail -1
+}
+
+set_target()
+{
+        echo $1 > ~/.config/target
+}
+
+# bash completion for global
+# to enable type: complete -F global_func global
+global_func()
+{
+        local cur
+        cur=${COMP_WORDS[COMP_CWORD]}
+        COMPREPLY=(`global -c $cur`)
+}
+# set completion on
+complete -F global_func global
+
+# limit.pid - blkio wrarpper for running pids
+# Usage: ./limit_pid [bps] PID 
+limit_io_pid()
+{ 
+        cgroup_name=$(basename $(mktemp -d))
+        blkio_path=/sys/fs/cgroup/blkio
+        mm_ids="253:1" # fedora-root
+        pid=$2
+        bw=$1
+
+        sudo mkdir ${blkio_path}/${cgroup_name}
+
+        echo "${mm_ids} ${bw}" | sudo tee \
+        ${blkio_path}/${cgroup_name}/blkio.throttle.write_bps_device 
+        echo "${mm_ids} ${bw}" | sudo tee \
+        ${blkio_path}/${cgroup_name}/blkio.throttle.read_bps_device 
+        echo ${pid} | sudo tee \
+        ${blkio_path}/${cgroup_name}/tasks
+}
+
+# limit_io_run - blkio wrarpper for ephemeral processes
+# Usage: ./limit.io [bps] command [args]
+limit_io_run()
+{
+
+        cgroup_name=$(basename $(mktemp -d))
+        blkio_path=/sys/fs/cgroup/blkio
+        command=${*:2}
+        mm_ids="253:1" # fedora-vg
+        bw=$1
+
+        sudo mkdir ${blkio_path}/${cgroup_name}
+
+        echo "${mm_ids} ${bw}" | sudo tee \
+        ${blkio_path}/${cgroup_name}/blkio.throttle.write_bps_device 
+        echo "${mm_ids} ${bw}" | sudo tee \
+        ${blkio_path}/${cgroup_name}/blkio.throttle.read_bps_device 
+
+        if [ $(id -u) != "0" ]
+                then 
+                        sudo chown -R $(id -u) ${blkio_path}/${cgroup_name}/
+        fi
+
+        cgexec -g blkio:${cgroup_name} $command
+        sudo cgdelete -g blkio:${cgroup_name}
+} 
+
+# lslimit - list blkio cgroups bw and pids
+# Usage: ./lslimit
+lslimit()
+{
+        blkio_path=/sys/fs/cgroup/blkio
+	READ_PATH="/blkio.throttle.read_bps_device"
+	WRITE_PATH="/blkio.throttle.write_bps_device"
+
+        for i in $(ls -d $blkio_path/tmp*/)
+        do
+                echo
+                echo $i
+                echo
+                cat ${i}${WRITE_PATH} 
+                cat ${i}${READ_PATH} 
+                cat ${i}/tasks | perl -p -e 's/\n/ /g'
+                echo 
         done
-    )
 }
 
-alias gitstat="~/git/wiki/profile/git-status.sh ~/git"
-
-update_profile_git() {
-  cp ~/.bashrc ~/git/wiki/profile/
-  cp ~/.vimrc ~/git/wiki/profile/
-  cp ~/.tmux.conf ~/git/wiki/profile/
-  cp ~/.gitconfig ~/git/wiki/profile/
-}
-
-alias journal="vi ~/git/wiki/journal.txt"
-
-alias gbrl="git branch --remote --list"
-alias rec="recordmydesktop --no-sound"
-pidstat_15(){
-  pidstat 5  | awk '{ if ($8 > 1.5) print}'
-}
-google(){
-  elinks www.google.com/search?q=$1
-}
-
-set_target(){
-  echo $1 > ~/.config/target
-}
+#timer()
+#{
+#TIMER_FILE
+#use at
+#write to file
+#flash on status_right

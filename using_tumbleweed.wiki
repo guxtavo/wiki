@@ -1,0 +1,34 @@
+What I've learned using openSUSE Tumbleweed for amost two months
+
+After 3+ years using Fedora (From 19 until 25), I got to try Tumbleweed, and
+with the new Night Light[1] patch on Gnome 3.24, I've decided to write a small 
+article showing what I like about this rolling release.
+
+I don't need a window manager as I'm a CLI guy, and my terminal manager is 
+tmux(1). Tumbleweed's man package has a neat feature for developers, it always 
+hint you about Posix programmer's manual page when you call man program:
+
+	[~]$ man at
+	 * at (1)
+	   at (1p)
+	Man: What manual page do you want?
+
+Not all programs have the Posix programmer's manual page.
+
+zypper
+
+Zypper does the job, and I didn't have to toy with it so much, but one neat 
+thing about it is that the confirmation question has the default answer yes,
+so after issuing a command, you only need to hit enter one more time to confirm
+the operation. It riminds me of a scene from Deadpool movie:
+
+	- Maximum effort!
+
+Boot screen
+
+The grub menu has a nice organization. Instead of showing you all kernels at
+once, it shows you the kernel categories. The first item of course is 
+tumbleweed. This is the default kernel. If you still want to select the kernel
+version, there is another option for that
+
+boot and take notes from grub screen

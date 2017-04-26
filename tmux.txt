@@ -1,0 +1,29 @@
+tmux tricks
+
+# tricks
+        Ctrl-b t    - big clock
+
+# panel division
+        Ctrl-b h    - split horizontally 
+        Ctrl-b v    - split vertically
+
+# Navigation
+        shift right - move to the window in right
+        shift left  - move to the window in left
+	shift up    - move to the next session
+	shift down  - move to the previous session
+        alt right   - move to the panel in the right
+        alt left    - move to the panel in the left
+        alt up      - move to the panel up
+        alt down    - move to the panel down
+        Ctrl-b l    - last window
+
+# copy mode
+        Ctrl-b [    - enter copy mode and use arrows to move
+        space       - start marking text
+        enter       - copy text
+
+# paste mode
+        tmux list-buffer
+        tmux show-buffer
+        tmux show-buffer -n 1
