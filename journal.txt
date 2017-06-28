@@ -9,13 +9,13 @@
                   
 
 
-                                             TTV BCGG GPS VO - stack
+                                             TTV BCGG GPS VON - stack
              /       ######################  tumbleweed + tmux + vi
             /G\      #                    #  bash + c + git + global
            / V \     # LKD, code and RPS1 #    gdb + perf + strace
-          / UCS \    #                    #      valgrind + osc 
-          --------   ######################      SuSE: July 1st
-           ACTION   1, 1, 2, 3, 5, 8, 13, 21
+          / UCS \    #                    #  valgrind + osc + numactl  
+          --------   ######################         
+           ACTION   1, 1, 2, 3, 5, 8, 13, 21     SuSE: July 1st
 
 
 
@@ -29,64 +29,42 @@
 
 
               
-                           \            VIE - GIG - VIE     VPTGMZ
-              ;;.      \------>         05/14 0510 BRN -> VIE 0725
-             ;; ; ..       /            05/14 0925 VIE -> AMS 1115
-            ;;   ;  .;;                 05/14 1250 AMS -> GIG 1935
-           ; GUI   ;   :                06/21 1540 GIG -> CDG 0750
-          ;       ; RIO  ;              06/22 1000 CDG -> VIE 1200
-         ^^^^^^^^^^^^^^^^^^^^           06/22 1420 VIE -> BRN 1650
-
-
-
-         mountains                      05/05 friday
-                                        05/06 saturday
-                                        05/07 sunday
-                                        05/08 monday (holiday)
-
-Guilherme 
-* patins
-home screen
-* Google Books - what books to buy?
-  => teach how to use text-to-speech
-* Google Earth
-  => teach how to nagivate the world
-* Clock
-  => add rio and brno timezone
-
-	    	     	        +------------+    /\
-	 	        +----+  |            |    ||
+	    	     	        +------------+    
+	 	        +----+  |------------|    ()
 	   |      +--+  |    |  |            |    ||
 	  [.]     |5"|  | 7" |  |     14"    |    ||
 	   |      +--+  +----+  +------------+   .||.
 	   R       L1     L2          L3          ##
 
- +----------------------------------+ 
- |                                  |
- |            RPS1                  |
- |                                  |
- |                                  |
- |                                  |
- |                                  |
- |                                  |
- |                                  |
- |                                  |
- |                                  |
- |         Neuroscience             | 
- |                                  |
- |     Aerospace Foundation         |
- |                                  |
- | IT                Psy/Philosophy |
- |                                  |
- | Books Clock        Keep  Audible |
- |                                  |
- +----------------------------------+
+
+
+		 +----------------------------+ 
+		 |                            |
+		 |           RPS1             |
+		 |                            |
+		 |                            |
+		 |                            |
+		 |                            |
+		 |                            |
+		 |                            |
+		 |                            |
+		 |                            |
+		 |        Foundation          | 
+		 |                            |
+		 |  Aerospace   Neuroscience  |
+		 |                            |
+		 | IT          Psy/Philosophy |
+		 |                            |
+		 | Books Clock   Keep Audible |
+		 |                            |
+		 +----------------------------+
 
 #############################################################################
 
 #TASKS-NOW
-* taxi vienna
-* trip to vienna
+* c language - chapter 5
+
+#TASKS-WEEKS
 * gdb tmux 
    -> break window_copy_copy_buffer
    -> break screen_write_start
@@ -95,17 +73,14 @@ home screen
    -> run, list
    -> bt
 
-#TASKS-WEEKS
-* c language - chapter 5
-* trip to mountains: 5,6,7,8/5, plan
-* trip to brazil: mala, plan
 
 #TASKS-MONTHS
 
 #TASKS-YEARS
 
 #TASKS-10-YEARS
-* use-wc-md: how to check disk and network queue
+* desk, chair and yoga ball
+* use-wc-md: create repo and how to check disk and network queue
 * patch gl() I'm feeling lucky
 * finish global tutorial - vi
 * clean wiki for public release - move files to .wiki, use markdown
@@ -113,18 +88,17 @@ home screen
 * cfs osal
 * [PATCH] [RFE] funcoeszz - climate is-up #287
 * sanitize inbox
-* ituverava, livros guix
 * real time playlist
 * crash course biology
 * crash course chemistry
 * crash course physics
 * crash course anatomy and physiology
 * crash course astronomy
+* watch later playlist
 * crash course philosophy
 * crash course psychology
 * Youtube calculus 1
 * Youtube cosmos
-* desk, chair and yoga ball
 * The enginner who have flown a cubesat, index?
 * write shell scripts using kernel coding style
 * OBS reference guide, osc supportutils openSUSE tumbleweed

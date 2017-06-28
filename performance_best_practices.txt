@@ -67,3 +67,12 @@ The more IRQs, the more time ksoftirqd will be called, thus less time for user-s
     
     [rhel6]$ glo --grep="performance" kernel-2.6.32-279.el6.. | wc -l
     542
+
+Checklist
+
+* bios performance settings
+* os performance settings
+* scheduler affinity in numa systems
+* cgroups and limits
+* updates
+* what are you measuring? 
