@@ -1,12 +1,18 @@
 #!/bin/bash
-#
-# setup phase
-#sudo zypper install git tmux
-#mkdir ~/git && cd ~/git
-#git clone https://github.com/guxtavo/wiki.git
-#~/git/wiki/profile/install.sh
+# Profile install script
+# To execute it:
+# bash <(curl -s https://goo.gl/KNNaEX)
 
-# copying and sourcing
+echo "setup phase"
+mkdir ~/git
+
+echo "installing packages"
+sudo zypper install git tmux sensors acpi global strace 
+
+echo "Cloning wiki"
+cd ~/git
+git clone https://github.com/guxtavo/wiki.git 
+
 echo "Copying config files"
 cd ~/git/wiki/profile
 cp .bashrc ~/.bashrc && source ~/.bashrc
@@ -14,7 +20,6 @@ cp .vimrc ~/.vimrc
 cp .tmux.conf ~/.tmux.conf
 cp .gitconfig ~/.gitconfig
 
-# git cloning
 echo "Cloning git repos serially"
 cd ~/git
 git clone https://github.com/guxtavo/aarav.git 
