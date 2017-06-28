@@ -1,7 +1,7 @@
 #!/bin/bash
 # Profile install script
 # To execute it:
-# bash <(curl -s https://goo.gl/KNNaEX)
+# bash <(curl -s -L https://goo.gl/KNNaEX)
 
 echo "setup phase"
 mkdir ~/git
