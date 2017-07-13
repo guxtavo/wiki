@@ -1,0 +1,249 @@
+Proof of concept: The future of self-healing support in SuSE
+
+Tags: operations, self-healing, orchestration, devops
+
+Solutions: Enterprise Linux, Mission-Critical Computing, 
+           Cloud and as a Service Solution, Software-defined Storage
+
+Links:
+  https://www.mirantis.com/blog/auto-remediation-making-an-openstack-cloud-self-healing/
+  https://code.facebook.com/posts/156810174519680/making-facebook-self-healing/
+  https://www.dynatrace.com/blog/top-2-features-self-healing-microservices/
+
+
+  "You've just deployed a new version of your application in your dev vms
+   running SLES. After starting the performance tests you receive an email
+   notification about a new bug filled in your Bugzilla project which reads: 
+    
+      TID 3597 - MCE detected in host nfs_vm1, host group BZ: NFS Cluster
+
+
+   Made possible by OpenSUPPORT"
+
+
+Glossary:
+
+   SR   - Service request 
+   DSRH - Default SR handler 
+   ESRH - Escalation SR handler 
+   CDR  - Call detail record
+   SCC  - SuSE Customer Center
+   RHCP - Red Hat Customer Portal
+
+
+
+
+
+	   SuSE's Operations API - OpenSUPPORT
+
+
+According to Dyntrace, the only barrier to self-healing is orchestration, to be 
+more precise the lack of it or the troubleshooting overhead of having it.
+
+You are sure there is no SPOF in a new LUN by having double controllers in both 
+ends and by sparing disks for your RAID 5, so perhaps you could spare nodes in 
+your data-center to wake from LAN and start spinning your end-points.
+
+With orchestration, it is possible to feed a "circuit breaker" in case any
+of your systems running SLES is having troubles. This moves your support to an 
+automated system that deals with tickets and get you closer to problem 
+resolution. Gone are the days a human is needed to open a ticket or upload 
+support data.
+
+The Operations API is the centerpiece of OpenSUPPORT, and allows your SLES
+servers to open service requests and feed data to orchestration software so 
+your system can self-heal. This can be done via remediation agents, meaning 
+evacuation of a cluster host or shutdown of a system and provision of a new 
+one. Think of it as an enabler of a Self-healing Infrastructure.
+
+<img OpenSUPPORT.png>
+
+The SR Router, upon receiving a CDR from the Operations API will generate 
+a new ticket in your SR tool of choice. 
+
+The the Self-healing and orchestration layer is responsible for the logic 
+behind disabling and enabling hosts, acting upon events and rules. A good 
+example of such layer is StackStorm.
+
+Let's say one of your systems encounter a memory problem. You might want to 
+disable this system so a hardware team can run a health check. If this is part
+of a cluster, the host can be evacuated at a time of your choice, and if this  
+is an active/active instance in your OpenStack, the node can be shutdown. At 
+the same time a ticket is being created in your Bugzilla/Jira/SCC, so the right 
+people can troubleshoot the problem and release the server to be reused.
+
+The OpenSUPPORT needles are the OS part of OpenSUPPORT. They run in your server
+or in your VM as part of SLES and upon detecting a known problem they will:
+  
+  1) Create a CDR in /var/log/opensupport.log pointing you to the relevant TID
+
+  2) Send the CDR to Operations API
+
+Attachments can be generated (support-tool) before CDR is submitted to the API.
+You can even script what data you need to gather into a custom needle.
+
+If no one acts upon the issue, you can escalate the issue by login in the
+affected system and issuing:
+
+  # opensupport escalate attachments
+
+  # opensupport escalate
+
+This will generate another CDR and in case you have a ESRH in your host group, 
+it will escalate the SR to one or more ESRH. The first example will also 
+attach support data to the handler so the team can troubleshoot the issue.
+
+Alternatively you can escalate the SR via the Operations API Interface:
+
+<img Operations_API_Interface.png>
+
+Every host group should have a DSRH and alternatively many ESRH's:
+
+    Unhandled host group
+    Hosts: app1, app2, db1, db2
+        DSRH: Jira - project MyEnterprise_nodes
+
+    Host group #1
+    Hosts: app_cluster1, app_cluster2
+	DSRH: BZ - project MyAppDevNodes
+	ESRH: SCC - user mycompany_level1
+    
+    Host group #2
+    Hosts: mysql1, mysql2, mysql3, web1, web2, web3
+        DSRH: SCC - user myproject_level1 
+        ESRH: SCC - user myproject_level2 
+        ESRH: SCC - user myproject_level3 
+
+Integrating the Operations API in your infrastructure:
+
+  * Add the Operations API IP to your DNS or /etc/hosts
+  * Install OpenSUPPORT in your SLES and edit /etc/opensupport/config
+    pointing to the Operations API hostname
+  * Login to the Operations API interface and add a DSRH to the "unhandled host 
+    group" and add the proper credentials. Upon registration hosts are
+    automatically added to the unhandled host group.
+  * You can also create personalized host groups with different handlers
+
+Needles are test scripts that can detect common issues:
+
+ - mce - machine check exception/hardware errors
+ - oom - out of memory condition
+ - hung tasks - blocked taks
+ - soft/hard lockup
+ - application segfault
+ - io errors
+ - page allocation failure
+ - fork issues due to resource limitation
+ - disk atime bigger than 100ms
+ - load higher than the number of CPUs
+ - call traces and panics
+ - flapping interfaces
+ - unexpected reboots
+ - security upgrades
+ - filesystem full
+ - needles can be created by the Support Group
+
+Facebook, LinkedIn, Netflix, and other hyper-scale operators use event-driven 
+automation and workflows to automatically generate tickets, and they have built 
+their own remediation layer to treat not only OS issues but also application
+issues. Facebook's Dapper, the orchestration layer, has 5% of the tickets being 
+generated by automation.
+
+Enterprise Linux will continue to grow, and some problems can be dealt with
+head-on. More novice admins will emerge, and leading customers to a more 
+fault-tolerant infrastructure is paramount to keep a lean support organization.
+
+  OpenSUPPORT might be the solution for these needs
+
+These inbound "proactive" tickets should be dealt in bundles, by automating 
+responses broke down into 3 layers. The first touch should be a comprehensive
+message breaking down all the knowledge in small and simple parts. The next 
+two layers should address more in-depth resolution to each particular problem.
+
+The CDR is a failsafe log in case orchestration and SR handlers are not in 
+place. They can become notifications in Gnome or they could be redirected to
+the console output.
+
+########################################################################## Draft
+
+
+
+
+====== sandbox area =========
+
+Commands:
+
+	opensupport operations_interface
+	opensupport operations_api
+	opensupport sr_router
+	opensupport self_healing_layer
+	opensupport needles
+	opensupport sr --with-attachments
+	opensupport escalate --with-attachments
+
+How to run opensupport:
+
+	memory        IO          CPU
+	cgroups       ionice      last CPU
+	64MB <2G      idle class
+	128 >2 <16
+	512MB > 16G 
+
+	cgexec -g memory:opensupport ionice -c idle taskset -c 11 opensupport needles
+
+   Question? Will this make opensupport get blocked? If it does, will it
+   generate a ticket?
+
+When to run the needles
+  * Every 3 hours from 7 till 19
+  * Every hour from 20 till 7
+
+  0 1 2 3 4 5 6    7 10 13 16 19   20 21 22 23
+
+Todo:
+  * capcom: Create support needles
+  * capcom: Create Database layout
+  * Write SR handlers (Bugzilla, SCC, Jira, TSANet, Red Hat, AWS, Azure, GCP)
+  * Write SR Router and work the logic (DSRH, ESRH)
+  * Write Operations API
+  * Write Operations API Interface
+  * Write Self-healing and Orchestration layer or integrate with StackStorm
+     - cluster (host evacuation)
+     - openstack and kubernetes (shutdown, spin)
+
+Database schema
+
+Registration
+
+  host_group_table
+  id | hostname | ip           | host group 
+   0 | vm1      | 172.16.32.1  | 0
+   1 | vm2      | 172.16.32.2  | 1
+
+  group_handler_table
+  id | group name | dsrh | esrh
+   0 | default    | 0    |
+   1 | my_group   | 1    | 2,3
+
+  sr_cdr_table
+  id | sr number | host | handler | summary                | execution time | 
+   0 | 100301    | 0    | 2       | TID 3579: MCE detected | 5 seconds      |
+ 
+  handler_type_config_table
+  id | handler_name    | type
+   0 | default handler | 0
+
+  bz_handler_credentials_table
+  id | sr_type | hostname          | username | password | project    | product
+   0 | 0       | bugzilla.suse.com | user1    | pass1    | my_project |
+
+  sr_types_table
+  id | sr_types
+   0 | bugzilla
+   1 | suse
+   2 | jira
+   3 | redhat
+   4 | tsanet
+   5 | aws
+   6 | azure
+   7 | gcp

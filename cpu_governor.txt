@@ -1,13 +1,17 @@
-[Performance] All you want to know about scaling drivers, governors, cstates,
-pstates and power management
+[Performance] All you need to know about scaling drivers, governors, cstates,
+pstates and power management.
 
-In this article, I will explain the hands-on and theory behind contemporary
-CPU power management on x86 systems. I will explore the use of the cpupower
-utility, which is shipped in RHEL 6* and 7.
+In this article, I will try to explain the hands-on and theory behind 
+contemporary CPU power management. I will explore the use of the cpupower
+utility, which is shipped in RHEL 6* and 7 and variants.
 
 Modern CPUs together with ACPI (Advanced Configuration and Power Interface)
 provide different power states which can improve your energy savings or
 boost performance some orders of magnitude. 
+
+ACPI brings the power management under the control of the operating system, 
+as opposed to the previous BIOS-centric system that relied on platform-specific 
+firmware to determine power management and configuration policies.
 
 There are three different power states in contemporary CPUS:
 
@@ -215,3 +219,8 @@ states:
     T12:                  25%
     T13:                  19%
     T14:                  13%
+
+
+Measure twice, cut once! During your performance acceptance test, cut your resources in half to re-measure latency.  You can use /sys/devices/system/cpu/cpuX/online and turn half of the CPUS offline. After all, you know what is the TPS designated for this system, right?
+
+Testing your system with hyperthreading disabled might show some improvement - workload dependant. 

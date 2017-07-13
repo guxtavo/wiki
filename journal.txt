@@ -23,7 +23,7 @@
                 | linux-stable    funcoeszz     sto*       |
                 | RT Patch        obs-build     multikern* |
                 | RPS1            perf-tools    uit*       |
-                | wiki            tmux                     |
+                | wiki            tmux          wok*       |
                 | use-wc-md       cfs-osal     *non-FOSS   |
                 +------------------------------------------+
 
@@ -62,9 +62,19 @@
 #############################################################################
 
 #TASKS-NOW
+* OpenSUPPORT
 * c language - chapter 5
 
 #TASKS-WEEKS
+* medical exam
+* vienna trip
+* prague trip
+
+#TASKS-MONTHS
+
+#TASKS-YEARS
+
+#TASKS-10-YEARS
 * gdb tmux 
    -> break window_copy_copy_buffer
    -> break screen_write_start
@@ -72,13 +82,6 @@
    -> break tty_write
    -> run, list
    -> bt
-
-
-#TASKS-MONTHS
-
-#TASKS-YEARS
-
-#TASKS-10-YEARS
 * desk, chair and yoga ball
 * use-wc-md: create repo and how to check disk and network queue
 * patch gl() I'm feeling lucky
