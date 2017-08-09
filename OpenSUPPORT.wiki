@@ -63,7 +63,7 @@ a new ticket in your SR tool of choice. Based on your host group and the
 type of incident (detected by needles or manual escalation), it will route 
 the SR to the appropriate system.
 
-The the Self-healing and orchestration layer is responsible for the logic 
+Then the Self-healing and orchestration layer is responsible for the logic 
 behind disabling and enabling hosts, acting upon events and rules. A good 
 example of such layer is StackStorm.
 
@@ -175,19 +175,78 @@ The CDR is a fail-safe log in case orchestration and SR handlers are not in
 place. They can become notifications in Gnome or they could be redirected to
 the console output as a mean to simplify Linux troubleshooting.
 
+version 2
+
+  * Needles: Guarantee 15 seconds execution, next round continue from where it stopped
+
 ########################################################################## Draft
 
+Post study on "The future of self-healing support in SuSE"
+
+In order to make things easier for customers to implement the Operations API, it
+would be nice to have DNS auto discovery so agents can find the API and start
+reporting. There are some service discovery hability in OpenStack as far as I 
+could google.
+
+It would be expected that every SLES the customers have are hooked up in a NMS
+somehow, but this is not the case for the majority. Taking responsibility of 
+SLES health ourselves will unburden customers from it and allow them to 
+concentrate on their business. If a lean support organization is where we want
+to be in the future, we should start telling when some situation is not ok. 
+Would we be patronizing the customers? Is it best to expect them to do the right
+thing and follow the best practises? Will our growth 
+
+The CDRS will be issued again and again, e.g., every time the needles run and 
+found your atime is > than 100ms, the CDR will be generated. 
+
+Vaporware? What is gained with this system? The customer might not install the 
+Operations API, thus no self-healing would be possible, nor tickets will be 
+created, but they will receive alerts on the console which will give them 
+reference to TIDs and a simple explanation of what might be a problem for their
+system. The notifications will help them control their systems, not in an 
+automated way, but will highlight and enlight them about how to take better 
+advantage of their subscription. Take a look at your console log and you will
+know automatically something is not wrong. 
+
+The needles should be curated and created with attention. They should highlight 
+scenarios that are not benefitial, with medium thresholds so heavy workloads 
+have time to adapt. Enterprise storage should have atime with less than 10ms in 
+an optimal workload. One would agree that having more than 100ms will start to 
+create problems, even less than that. Likewise some systems will periodically 
+report hung tasks, and for some developers that should not be a problem. A tape
+device driver developer might say this is normal for instance. But nonetheless 
+90% of the admins would agree hung tasks will be something to be avoided.
+
+As the law of the vital few tell us, 80% of the effects come from 20% of the 
+causes. The needles have to detect 20% of the causes, and cover 80% of the 
+incidents. The other 20% of incidents shall be opened by our customers and 
+will need humans to work on them. 
 
 
+       Effects/Tickets        Causes           Taken care by
+             
+            80%                 20%             Automation
+
+
+            20%                 80%          Technical Support
+
+
+
+In a scenario where every customer is using the Operations API, we would see 80%
+of the tickets being created by it. When we reach 4:1 ratio, meaning 4 tickets 
+created by Operations API and 1 by customers, we would know it is working.
+
+The ticket database (SCC) should provide what is the 20% causes which generate 
+80% of the ticket
 
 ====== sandbox area =========
 
 Commands:
-	opensupport operations_interface
-	opensupport operations_api
-	opensupport sr_router
-	opensupport self_healing_layer
-	opensupport needles
+	opensupport operations_interface         - start/stop web interface
+	opensupport operations_api               - start/stop API
+	opensupport sr_router                    - start/stop router
+	opensupport self_healing_layer           - start/stop SH layer 
+	opensupport needles                      - run needles
 	opensupport sr --with-attachments
 	opensupport escalate --with-attachments
 
@@ -255,3 +314,61 @@ Database schema
    5 | aws
    6 | azure
    7 | gcp
+
+
+##### Capacity planning #####
+
+OpenSUPPORT system requirements (arbritary/common sense):
+
+	RAM:    64MB on systems with less than 2GB
+		128MB on systems with less than 16GB and more than 2GB
+		512MB on systems with more than 16GB of memory
+
+	CPU:    1 CPU
+	TIME:   15 minutes run, 16 times a day
+
+        IO:     Idle class (might get blocked)
+
+        DISK:   100MB for needle output archive
+                 50MB for CDRs
+
+     Network:   CDRs are 256 bytes long
+                Handshake 
+
+############# Needles prototype ###############
+
+What does a needle do? It checks for some condition, and if it is true, it 
+submits a cdr to Operations API.
+
+The needle will save data temporarily in case the condition is true. 
+
+Limit the size of the needle output directory to 100MB
+
+Whatchdog 15 minutes of running time maximum.
+
+# begin or continue needles execution
+run_needles()
+  global continue 
+
+# registration
+registration()
+
+# Create Service request with operations API
+submit_cdr()
+
+# Escalate service request with ESRH's 
+escalate()
+
+# Check if process is already running so we can abort 
+check_if_is_running()
+
+# Exit the program with a error message in case a bad condition happens
+abort()
+
+# Maintain the cdr archive with less than 50MB
+rotate_cdr_logs()
+
+# The CDRs will not be marked as sent if Operations API timeout. If a CDR 
+# times-out, there won't be a retry
+timeout_submit_cdr()
+

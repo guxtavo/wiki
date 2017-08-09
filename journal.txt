@@ -15,8 +15,39 @@
            / V \     # LKD, code and RPS1 #    gdb + perf + strace
           / UCS \    #                    #  valgrind + osc + numactl  
           --------   ######################         
-           ACTION   1, 1, 2, 3, 5, 8, 13, 21     SuSE: July 1st
+           ACTION   1, 1, 2, 3, 5, 8, 13, 21     SuSE: July 27th
 
+
+			   ,aodObo,
+			,AMMMMP~~~~
+		     ,MMMMMMMMA.
+		   ,M;'     `YV'
+		  AM' ,OMA,
+		 AM|   `~VMM,.      .,ama,____,amma,..
+		 MML      )MMMD   .AMMMMMMMMMMMMMMMMMMD.
+		 VMMM    .AMMY'  ,AMMMMMMMMMMMMMMMMMMMMD
+		 `VMM, AMMMV'  ,AMMMMMMMMMMMMMMMMMMMMMMM,                ,
+		  VMMMmMMV'  ,AMY~~''  'MMMMMMMMMMMM' '~~             ,aMM
+		  `YMMMM'   AMM'        `VMMMMMMMMP'_              A,aMMMM
+		   AMMM'    VMMA. YVmmmMMMMMMMMMMML MmmmY          MMMMMMM
+		  ,AMMA   _,HMMMMmdMMMMMMMMMMMMMMMML`VMV'         ,MMMMMMM
+		  AMMMA _'MMMMMMMMMMMMMMMMMMMMMMMMMMA `'          MMMMMMMM
+		 ,AMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMa      ,,,   `MMMMMMM
+		 AMMMMMMMMM'~`YMMMMMMMMMMMMMMMMMMMMMMA    ,AMMV    MMMMMMM
+		 VMV MMMMMV   `YMMMMMMMMMMMMMMMMMMMMMY   `VMMY'  adMMMMMMM
+		 `V  MMMM'      `YMMMMMMMV.~~~~~~~~~,aado,`V''   MMMMMMMMM
+		    aMMMMmv       `YMMMMMMMm,    ,/AMMMMMA,      YMMMMMMMM
+		    VMMMMM,,v       YMMMMMMMMMo oMMMMMMMMM'    a, YMMMMMMM
+		    `YMMMMMY'       `YMMMMMMMY' `YMMMMMMMY     MMmMMMMMMMM
+		     AMMMMM  ,        ~~~~~,aooooa,~~~~~~      MMMMMMMMMMM
+		       YMMMb,d'         dMMMMMMMMMMMMMD,   a,, AMMMMMMMMMM
+			YMMMMM, A       YMMMMMMMMMMMMMY   ,MMMMMMMMMMMMMMM
+		       AMMMMMMMMM        `~~~~'  `~~~~'   AMMMMMMMMMMMMMMM
+		       `VMMMMMM'  ,A,                  ,,AMMMMMMMMMMMMMMMM
+		     ,AMMMMMMMMMMMMMMA,       ,aAMMMMMMMMMMMMMMMMMMMMMMMMM
+		   ,AMMMMMMMMMMMMMMMMMMA,    AMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+		 ,AMMMMMMMMMMMMMMMMMMMMMA   AMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+		AMMMMMMMMMMMMMMMMMMMMMMMMAaAMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 
 
                 +-projects---------------------------------+
@@ -24,9 +55,9 @@
                 | RT Patch        obs-build     multikern* |
                 | RPS1            perf-tools    uit*       |
                 | wiki            tmux          wok*       |
-                | use-wc-md       cfs-osal     *non-FOSS   |
+                | OpenSupport     cfs-osal                 |
                 +------------------------------------------+
-
+                                              * - non-FOSS
 
               
 	    	     	        +------------+    
@@ -62,85 +93,44 @@
 #############################################################################
 
 #TASKS-NOW
-* OpenSUPPORT
 * c language - chapter 5
+* clean wiki for public release - move files to .wiki, use markdown
+* tmux clipboard management
+* bashrc timer tmux
 
 #TASKS-WEEKS
-* medical exam
-* vienna trip
-* prague trip
+* code bumming
+* how to find which programs are actively using memory? how to avoid swapping for a process
 
 #TASKS-MONTHS
+* rtl-sdr dongle
+* cfs osal
 
 #TASKS-YEARS
+* dump keep opensupport to wiki
 
 #TASKS-10-YEARS
-* gdb tmux 
-   -> break window_copy_copy_buffer
-   -> break screen_write_start
-   -> break screen_write_setselection
-   -> break tty_write
-   -> run, list
-   -> bt
-* desk, chair and yoga ball
-* use-wc-md: create repo and how to check disk and network queue
-* patch gl() I'm feeling lucky
-* finish global tutorial - vi
-* clean wiki for public release - move files to .wiki, use markdown
-* [PATCH] obs-build - add warning when package auto-detect is triggered
-* cfs osal
-* [PATCH] [RFE] funcoeszz - climate is-up #287
-* sanitize inbox
-* real time playlist
-* crash course biology
-* crash course chemistry
-* crash course physics
-* crash course anatomy and physiology
-* crash course astronomy
-* watch later playlist
-* crash course philosophy
-* crash course psychology
-* Youtube calculus 1
-* Youtube cosmos
 * The enginner who have flown a cubesat, index?
 * write shell scripts using kernel coding style
 * OBS reference guide, osc supportutils openSUSE tumbleweed
-* google fit workout
-* QED
-* are you joking mr feynman?
-* linux kernel podcast
-* google how+to+design+555+timer+with+pcb
-* recursion ai ingo email factorial google search
-* /proc/sys/kernel/hung_task*
+* QED - are you joking mr feynman?
 * markdown in vi
 * git reports like historygram in github
 * script to show git changes today, last week, last month, last 3 months
 * why hung task watchdog in rhel is 120 seconds?
-* create script to process tasks in day by creating tmux windows with the proper names, alarms
-* elinks ssl errors
-* valgrind elinks
-* zypper The following 7 package updates will NOT be installed:
+* elinks ssl errors, valgrind elinks
 * install fzf
-* code bumming
-* space time eletric rocket
-* how to avoid swapping for a process
-* bashrc timer tmux
 
 #############################################################################
 
 == 04/27/17 ==
 
-* 0500 BRN -> VIE 0700
-* 0715 taxi embassy
+* OK: 0500 BRN -> VIE 0700
+* OK: 0715 taxi embassy
 
 == 04/26/17 ==
 
-* taxi
-* plan day
-* 0900 review documents, give ok to Eva
-* 2000 home
-* 2100 book
-* 2200 sleep
+* OK: 0900 review documents, give ok to Eva
 
 == 04/25/17 ==
 
