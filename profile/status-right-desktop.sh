@@ -38,7 +38,7 @@ weather(){
 }
 
 temperature(){
-        B=$(sensors | grep C | egrep "temp1" | cut -b 15-17 | tr "\n" , | sed -e 's/,$/°C/')
+        B=$(sensors | grep CPU  | awk '{print $2}')
         echo -n " $B |"
 }
 
@@ -53,13 +53,13 @@ volume(){
 }
 
 battery(){
-        B=$(acpi | tac | cut  -d ',' -f 2)
+        B=$(acpi | tac | awk '{print $4}')
         echo -n " ♥ $B |"
 }
 
 brightness(){
-        TEMP=`cat /sys/devices/pci0000:00/0000:00:02.0/backlight/acpi_video0/brightness`
-        B=$(( (TEMP * 100) /10 ));  
+        TEMP=`cat /sys/devices/pci0000:00/0000:00:02.0/drm/card0/card0-eDP-1/intel_backlight/brightness`
+        B=$(( (TEMP * 100) / 937));  
         echo -n " ☀ $B |"
 }
 
@@ -68,7 +68,7 @@ main(){
         git_repos_change
         tasks
         weather
-        #temperature
+        temperature
         nic_up
         brightness
         volume

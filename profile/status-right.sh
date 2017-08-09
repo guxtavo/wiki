@@ -1,1 +1,1 @@
-./status-right-server.sh
+./status-right-desktop.sh

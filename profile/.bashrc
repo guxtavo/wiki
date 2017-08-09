@@ -1,9 +1,8 @@
-# .bashrc
-# https://github.com/torvalds/linux/blob/master/Documentation/CodingStyle
-
 #############################
 # Source global definitions #
 #############################
+
+# https://github.com/torvalds/linux/blob/master/Documentation/CodingStyle
 
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
@@ -75,6 +74,10 @@ alias gbrl="git branch --remote --list"
 alias rec="recordmydesktop --no-sound"
 alias gitstat="~/git/wiki/profile/git-status.sh ~/git"
 alias 17="cal 2017"
+
+# SuSE
+alias iosc="osc -A https://api.suse.de"
+alias ptf="ssh l3slave.suse.de"
 
 #############
 # functions #
