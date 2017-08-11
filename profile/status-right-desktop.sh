@@ -66,7 +66,7 @@ brightness(){
 main(){
         target
         git_repos_change
-        tasks
+        #tasks
         weather
         temperature
         nic_up

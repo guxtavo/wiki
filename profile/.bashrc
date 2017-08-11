@@ -79,6 +79,9 @@ alias 17="cal 2017"
 alias iosc="osc -A https://api.suse.de"
 alias ptf="ssh l3slave.suse.de"
 
+# tmux clipboard management
+alias copy="tmux show-buffer|xclip"
+
 #############
 # functions #
 #############

@@ -31,7 +31,7 @@ main(){
   fi
   
   # show the formatted weather
-  head -4 /tmp/weather  | tail -2 | \
+  head -4 /tmp/weather  | tail -1 | \
   cut -b 16-40 | sed 's/ *$//' | \
   sed 'N;s/\n/ /' 
 }
