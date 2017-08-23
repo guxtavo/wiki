@@ -20,6 +20,17 @@
 
 ## my tips
 
+# how to make diff between branches
+
+git diff master Branch1 > ../patchfile
+git checkout Branch2    
+git apply ../patchfile
+
+## working with tags
+
+* git checkout v4.4.60
+* git checkout master
+
 To sum it up: executing commands below is basically equivalent to fresh git 
 clone from original source (but it does not re-download anything, so is much 
 faster):

@@ -20,3 +20,6 @@ take a lot of space)
         $ global kmem<TAB><TAB>
 
 How to use global in vi
+
+:Gtags somthing
+:cn - next

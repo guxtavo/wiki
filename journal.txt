@@ -9,14 +9,21 @@
                   
 
 
-                                             TTV BCGG GPS VON - stack
-             /       ######################  tumbleweed + tmux + vi
-            /G\      #                    #  bash + c + git + global
-           / V \     # LKD, code and RPS1 #    gdb + perf + strace
-          / UCS \    #                    #  valgrind + osc + numactl  
-          --------   ######################         
-           ACTION   1, 1, 2, 3, 5, 8, 13, 21     SuSE: July 27th
+                                                 TVGG OPQ SPG - stack
+             /       ######################     tmux + vi + git + global
+            /G\      #                    #      osc + pftutils + quilt
+           / V \     # LKD, code and RPS1 #       strace + perf + gdb
+          / UCS \    #                    #      
+          --------   ######################     git - vi - osc - ptf - quilt
+           ACTION   1, 1, 2, 3, 5, 8, 13, 21    global - strace - perf - gdb
 
+     31 quilt - 1%                              git 15% - vi 12% - osc 2.3%
+     48 ptf - 1.5%                                 ptf 1.5% - quilt 1%
+     77 iosca - 2.3%                            git - vi - osc - ptf - quilt
+    370 vi - 12%                                global - strace - perf - gdb
+    454 git - 15%
+3100=100
+48 = 1.5
 
 			   ,aodObo,
 			,AMMMMP~~~~
@@ -90,13 +97,35 @@
 		 |                            |
 		 +----------------------------+
 
+ssh capcom@self ps aux
+ PID %CPU %MEM TIME COMMAND
+   1  0.1 10.0  37y init
+   2 90.9 90.9   2w [watchdog]
+   3  0.0  1.0   2d [moleskine-system]       interrupt coalescing
+   4  5.0 30.0   3h [audible]
+   5  0.2  3.0  37y [self-healing] 
+   6  0.0  3.0   2w [vacation-planning]
+   
+ 100  1.0  0.5  12y [screen-brain interface]
+ 101  3.0  0.9   4y software-engineer
+ 102  1.0  0.2   4y `-swapping
+
 #############################################################################
 
 #TASKS-NOW
-* c language - chapter 5
-* clean wiki for public release - move files to .wiki, use markdown
+fuzzy finder
+move git stuff from tmux status bar to PS1
+add charging battery status to status right
+* openssh mac algo, run global, look for mac, read the >code<
+* kdump initrd by label
+* interrupt coalescing - do not swap out - trashing
 * tmux clipboard management
 * bashrc timer tmux
+* irssi notification status_right.sh
+* mutt notification status_right.sh
+* elinks bugzilla
+* is battery charging status_right
+* suse gitlab ~/suse
 
 #TASKS-WEEKS
 * code bumming

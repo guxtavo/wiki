@@ -32,8 +32,7 @@ main(){
   
   # show the formatted weather
   head -4 /tmp/weather  | tail -1 | \
-  cut -b 16-40 | sed 's/ *$//' | \
-  sed 'N;s/\n/ /' 
+  cut -b 16-40 | tr -d " "
 }
 
 # adding case to easily test the bugs

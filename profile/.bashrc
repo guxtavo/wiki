@@ -8,10 +8,33 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# Setup fzf
+# ---------
+if [[ ! "$PATH" == */home/gfigueira/git/fzf/bin* ]]; then
+  export PATH="$PATH:/home/gfigueira/git/fzf/bin"
+fi
+
+# Auto-completion
+# ---------------
+[[ $- == *i* ]] && source "/home/gfigueira/git/fzf/shell/completion.bash" 2> /dev/null
+
+# Key bindings
+# ------------
+source "/home/gfigueira/git/fzf/shell/key-bindings.bash"
+
+# bash completion for global
+# to enable type: complete -F global_func global
+global_func()
+{
+        local cur
+        cur=${COMP_WORDS[COMP_CWORD]}
+        COMPREPLY=(`global -c $cur`)
+}
+# set completion on
+complete -F global_func global
 
 # History specific command
-shopt -s histappend
+#shopt -s histappend
 set -o vi
 
 #############
@@ -74,10 +97,18 @@ alias gbrl="git branch --remote --list"
 alias rec="recordmydesktop --no-sound"
 alias gitstat="~/git/wiki/profile/git-status.sh ~/git"
 alias 17="cal 2017"
+alias git_clean_all="git reset; git checkout .; git clean -fdx"
 
 # SuSE
 alias iosc="osc -A https://api.suse.de"
 alias ptf="ssh l3slave.suse.de"
+alias polio="ssh polio.suse.cz"
+alias l3vm="ssh polio.suse.cz l3vm"
+alias noe="ssh noe.suse.cz"
+alias vpn="sudo ~/suse/manage_vpn.sh"
+alias zypper="sudo zypper"
+alias pvirsh="sudo virsh -c qemu+ssh://gfigueira@polio.suse.cz/system"
+alias solid="elinks https://l3support.nue.suse.com/"
 
 # tmux clipboard management
 alias copy="tmux show-buffer|xclip"
@@ -303,17 +334,6 @@ set_target()
         echo $1 > ~/.config/target
 }
 
-# bash completion for global
-# to enable type: complete -F global_func global
-global_func()
-{
-        local cur
-        cur=${COMP_WORDS[COMP_CWORD]}
-        COMPREPLY=(`global -c $cur`)
-}
-# set completion on
-complete -F global_func global
-
 # limit.pid - blkio wrarpper for running pids
 # Usage: ./limit_pid [bps] PID 
 limit_io_pid()
@@ -381,9 +401,32 @@ lslimit()
         done
 }
 
-#timer()
-#{
-#TIMER_FILE
-#use at
-#write to file
-#flash on status_right
+check()
+{
+	echo $1 | aspell -a
+}
+
+stopwatch()
+{
+	since=$(date +%s);watch -tn 1 eval "echo \$(($1-\$(date +%s)+$since))"
+}
+
+countdown ()
+{
+     if (($# != 1)) || [[ $1 = *[![:digit:]]* ]]; then
+         echo "Usage: countdown seconds";
+         return;
+     fi;
+     local t=$1 remaining=$1;
+     SECONDS=0;
+     while sleep .9; do
+         echo $remaining > /tmp/countdown;
+         if (( (remaining=t-SECONDS) <= 0 )); then
+		rm -rf /tmp/countdown
+		set AUDIODRIVER=oss
+		play -q /usr/lib64/libreoffice/share/gallery/sounds/space.wav
+		break;
+         fi;
+     done
+}
+alias pomo="countdown 1500 &"
