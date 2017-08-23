@@ -100,15 +100,25 @@
 ssh capcom@self ps aux
  PID %CPU %MEM TIME COMMAND
    1  0.1 10.0  37y init
-   2 90.9 90.9   2w [watchdog]
-   3  0.0  1.0   2d [moleskine-system]       interrupt coalescing
+   2 50.9 90.9   2w [watchdog]
+   3  0.0  1.0   2d [moleskine-system]                  # interrupt coalescing
    4  5.0 30.0   3h [audible]
+                    `-algorithms_to_live_by:scheduling
+     10.0  0.1   1h `-spotify_heavy_metal_playlist
    5  0.2  3.0  37y [self-healing] 
+                    `-smoking--
+                    `-water
+                    `-reading
+                    `-posture_acke
+                    `-stomach_acke
    6  0.0  3.0   2w [vacation-planning]
-   
- 100  1.0  0.5  12y [screen-brain interface]
- 101  3.0  0.9   4y software-engineer
- 102  1.0  0.2   4y `-swapping
+ 100 11.0  0.5  12y [screen-brain interface]
+                    `-tmux-android-wp8
+ 101  3.0  0.9   4y [software-engineer]
+ 102  1.0  0.2   4y `-swapping-pomo-quilt-global-bashrc-tmux.conf
+ 110  5.0 10.0   1d `-kdump_by_label.patch 
+ 120 10.0  1.0   8y `-irssi-mutt-inbox-IM
+ 130  1.0  5.0   3y dream-chaser
 
 #############################################################################
 
