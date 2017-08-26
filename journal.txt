@@ -6,25 +6,16 @@
                  #          #        #    #     ##    ##
                  ########    ########     #######     #######
                   ######      ######      ######      ########
-                  
 
-
-                                                 TVGG OPQ SPG - stack
+                                                  TVGG OPQ SPG - stack
              /       ######################     tmux + vi + git + global
             /G\      #                    #      osc + pftutils + quilt
-           / V \     # LKD, code and RPS1 #       strace + perf + gdb
+           / Z \     # LKD, code and RPS1 #       strace + perf + gdb
           / UCS \    #                    #      
-          --------   ######################     git - vi - osc - ptf - quilt
-           ACTION   1, 1, 2, 3, 5, 8, 13, 21    global - strace - perf - gdb
-
-     31 quilt - 1%                              git 15% - vi 12% - osc 2.3%
-     48 ptf - 1.5%                                 ptf 1.5% - quilt 1%
-     77 iosca - 2.3%                            git - vi - osc - ptf - quilt
-    370 vi - 12%                                global - strace - perf - gdb
-    454 git - 15%
-3100=100
-48 = 1.5
-
+          --------   ######################            GVOQP-GSPG
+           ACTION   1, 1, 2, 3, 5, 8, 13, 21   git - vi - osc - quilt - ptf
+                                               global - strace - perf - gdb  
+                                               virsh 
 			   ,aodObo,
 			,AMMMMP~~~~
 		     ,MMMMMMMMA.
@@ -56,111 +47,74 @@
 		 ,AMMMMMMMMMMMMMMMMMMMMMA   AMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 		AMMMMMMMMMMMMMMMMMMMMMMMMAaAMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 
-
                 +-projects---------------------------------+
                 | linux-stable    funcoeszz     sto*       |
                 | RT Patch        obs-build     multikern* |
                 | RPS1            perf-tools    uit*       |
                 | wiki            tmux          wok*       |
-                | OpenSupport     cfs-osal                 |
+                | OpenAID         cfs-osal                 |
                 +------------------------------------------+
                                               * - non-FOSS
 
-              
-	    	     	        +------------+    
-	 	        +----+  |------------|    ()
-	   |      +--+  |    |  |            |    ||
-	  [.]     |5"|  | 7" |  |     14"    |    ||
-	   |      +--+  +----+  +------------+   .||.
-	   R       L1     L2          L3          ##
+					+------------+    
+				+----+  |------------|    ()
+		   |      +--+  |    |  |            |    ||
+		  [.]     |5"|  | 7" |  |     14"    |    ||
+		   |      +--+  +----+  +------------+   .||.
+		   R       L1     L2          L3          ##
 
-
-
-		 +----------------------------+ 
-		 |                            |
-		 |           RPS1             |
-		 |                            |
-		 |                            |
-		 |                            |
-		 |                            |
-		 |                            |
-		 |                            |
-		 |                            |
-		 |                            |
-		 |        Foundation          | 
-		 |                            |
-		 |  Aerospace   Neuroscience  |
-		 |                            |
-		 | IT          Psy/Philosophy |
-		 |                            |
-		 | Books Clock   Keep Audible |
-		 |                            |
-		 +----------------------------+
-
-ssh capcom@self ps aux
- PID %CPU %MEM TIME COMMAND
-   1  0.1 10.0  37y init
-   2 50.9 90.9   2w [watchdog]
-   3  0.0  1.0   2d [moleskine-system]                  # interrupt coalescing
-   4  5.0 30.0   3h [audible]
-                    `-algorithms_to_live_by:scheduling
-     10.0  0.1   1h `-spotify_heavy_metal_playlist
-   5  0.2  3.0  37y [self-healing] 
-                    `-smoking--
-                    `-water
-                    `-reading
-                    `-posture_acke
-                    `-stomach_acke
-   6  0.0  3.0   2w [vacation-planning]
- 100 11.0  0.5  12y [screen-brain interface]
-                    `-tmux-android-wp8
- 101  3.0  0.9   4y [software-engineer]
- 102  1.0  0.2   4y `-swapping-pomo-quilt-global-bashrc-tmux.conf
- 110  5.0 10.0   1d `-kdump_by_label.patch 
- 120 10.0  1.0   8y `-irssi-mutt-inbox-IM
- 130  1.0  5.0   3y dream-chaser
+  ###########################################################################
+  #	$ ssh capcom@self ps aux                                            #
+  #	 PID %CPU %MEM TIME COMMAND                                         #
+  #	   1  1.0 10.0  37y init                                            #
+  #	   2 30.0 01.0   2w [watchdog]                                      #
+  #	   3 10.0 01.0   2d [moleskine-system-interrupt-coalescing]         #
+  #	   4 00.0 01.0   3h [audible]                                       #
+  #			    `-algorithms_to_live_by:scheduling              # 
+  #			    `-atlas_shrugged                                # 
+  #	     10.0 01.0   3h `-spotify_playlist                              #
+  #	   5 05.0 03.0  37y [self-healing]                                  #
+  #			    `-smoking-water-reading-postura_acke-stomach-ac #
+  #	   6 00.0 10.0   2w [free-time-planner]                             #
+  #			    `-27/9->2/10 -Jan/2018                          #
+  #	 100 20.0 05.0  12y [screen-brain interface]                        #
+  #			    `-tmux-android-wp8                              #
+  #	 101 03.0 10.0   4y [software-engineer]                             #
+  #	 102 05.0 31.0   4y `-swapping-pomo-quilt-global-bashrc-tmux.conf   #
+  #	 110 02.0 10.0   1d `-kdump_by_label.patch                          #
+  #	 110 07.0 10.0   3d `-openssh_remove_weak_macs.patch                #
+  #	 120 05.0 01.0   8y `-irssi-mutt-inbox-IM                           #
+  #	 130 06.0 05.0   3y dream-chaser                                    #
+  #                         rtl-sdr dongle                                  #
+  #                         cfs osal                                        #
+  #                         The enginner who have flown a cubesat           #
+  #      ======= totals =========                                           #
+  #         100.0 89.0                                                      #
+  #                                                                         #
+  ###########################################################################
 
 #############################################################################
 
-#TASKS-NOW
-fuzzy finder
-move git stuff from tmux status bar to PS1
-add charging battery status to status right
-* openssh mac algo, run global, look for mac, read the >code<
-* kdump initrd by label
-* interrupt coalescing - do not swap out - trashing
-* tmux clipboard management
-* bashrc timer tmux
-* irssi notification status_right.sh
-* mutt notification status_right.sh
-* elinks bugzilla
-* is battery charging status_right
-* suse gitlab ~/suse
-
-#TASKS-WEEKS
-* code bumming
-* how to find which programs are actively using memory? how to avoid swapping for a process
-
-#TASKS-MONTHS
-* rtl-sdr dongle
-* cfs osal
-
-#TASKS-YEARS
-* dump keep opensupport to wiki
-
-#TASKS-10-YEARS
-* The enginner who have flown a cubesat, index?
-* write shell scripts using kernel coding style
-* OBS reference guide, osc supportutils openSUSE tumbleweed
-* QED - are you joking mr feynman?
-* markdown in vi
-* git reports like historygram in github
-* script to show git changes today, last week, last month, last 3 months
-* why hung task watchdog in rhel is 120 seconds?
-* elinks ssl errors, valgrind elinks
-* install fzf
+* java share qcow from polio? how? 
+* openssh
+* kdump reproducer 
+* iptables: https://pes.suse.de/Maintenance-Security/Update_Management/
 
 #############################################################################
+
+== 08/25/17 ==
+
+* OK - 0900 weekly report
+* OK - 1100 openssh: write analysis and needinfo to pcerny
+* OK - 1120 emails
+* OK - 1130 email libusa
+* OK - 1145 sle15 download, error on installation -> screenshot
+* OK - 1200 compress /home/gfigueira/suse/vms/sles12sp2-2.qcow2 
+* OK - 1230 lunch
+* OK - 1300 lunch
+* OK - 1330 find service to place qcow outside for IBM
+* OK -  1400 coffee and dental hygiene
+* OK -  1430 beta.suse ticket, sles12sp2 qcow
 
 == 04/27/17 ==
 

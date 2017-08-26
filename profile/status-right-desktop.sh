@@ -69,8 +69,8 @@ volume(){
 }
 
 battery(){
-        B=$(acpi | tac | awk '{print $4}' | tr -d ",")
-	if acpi | grep -q charging 
+        B=$(acpi | head -1 | awk '{print $4}' | tr -d ",")
+	if $(acpi | grep "Battery 0" | grep -q Discharging)
 		then
 			echo -n " ♥$B |"
 		else

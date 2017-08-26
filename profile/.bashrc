@@ -8,6 +8,10 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+#######
+# fzf #
+#######
+
 # Setup fzf
 # ---------
 if [[ ! "$PATH" == */home/gfigueira/git/fzf/bin* ]]; then
@@ -22,6 +26,10 @@ fi
 # ------------
 source "/home/gfigueira/git/fzf/shell/key-bindings.bash"
 
+##########
+# global #
+##########
+
 # bash completion for global
 # to enable type: complete -F global_func global
 global_func()
@@ -33,18 +41,31 @@ global_func()
 # set completion on
 complete -F global_func global
 
-# History specific command
+############################
+# History specific command #
+############################
+
 #shopt -s histappend
-set -o vi
+#set -o vi
+
+#############
+# funcoeszz #
+#############
+
+# Instalacao das Funcoes ZZ (www.funcoeszz.net)
+export ZZOFF=""  # desligue funcoes indesejadas
+export ZZPATH="/home/gfigueira/git/funcoeszz/funcoeszz"  # script
+export ZZDIR="/home/gfigueira/git/funcoeszz/zz"
+source "$ZZPATH"
 
 #############
 # Variables #
 #############
 
 export PS1="[\W]\$ "
-export PATH=$PATH:~/redhat/scripts::~/redhat/git/myscripts/rh
+#export PATH=$PATH:~/redhat/scripts::~/redhat/git/myscripts/rh
 export HISTSIZE=9999999
-export PROMPT_COMMAND='history -a; history -n'
+#export PROMPT_COMMAND='history -a; history -n'
 export DISABLE_AUTO_TITLE=true
 export EDITOR=vi
 
@@ -59,6 +80,7 @@ alias jbacik="ps auxH -L | grep \" D\"  | awk '{print $3}' | xargs -I '{}' bash 
 
 # User specific aliases
 alias edit_alias="vi ~/.bashrc;. ~/.bashrc; update_profile_git"
+alias source_bash="source ~/.bashrc"
 alias t_edit="vi ~/.tmux.conf; tmux source-file ~/.tmux.conf; update_profile_git"
 alias l="ls -lh" 
 alias lr="ls -ltr | tail -40" 
@@ -102,16 +124,32 @@ alias git_clean_all="git reset; git checkout .; git clean -fdx"
 # SuSE
 alias iosc="osc -A https://api.suse.de"
 alias ptf="ssh l3slave.suse.de"
+alias stel="ssh l3slave.suse.de /suse/bin/stel"
 alias polio="ssh polio.suse.cz"
 alias l3vm="ssh polio.suse.cz l3vm"
 alias noe="ssh noe.suse.cz"
-alias vpn="sudo ~/suse/manage_vpn.sh"
+alias vpn="sudo ~/suse/bin/manage_vpn.sh"
 alias zypper="sudo zypper"
 alias pvirsh="sudo virsh -c qemu+ssh://gfigueira@polio.suse.cz/system"
-alias solid="elinks https://l3support.nue.suse.com/"
+alias solid="elinks https://l3support.nue.suse.com/short/"
 
 # tmux clipboard management
 alias copy="tmux show-buffer|xclip"
+
+# funcoes zz
+# adding pagers for nice scripts 
+# pagers are so short they should be a one-line function
+
+# zzajuda
+# zzlembrete
+# zzlinux
+
+wiki() { zzwikipedia -en $* | less ; }
+dict() { zzenglish $* | less ; }
+pt() { zzdicbabylon $* ; }
+
+alias dado=zzdado
+alias define=zzdefinr
 
 #############
 # functions #
