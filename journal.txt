@@ -85,9 +85,11 @@
   #	 110 07.0 10.0   3d `-openssh_remove_weak_macs.patch                #
   #	 120 05.0 01.0   8y `-irssi-mutt-inbox-IM                           #
   #	 130 06.0 05.0   3y dream-chaser                                    #
-  #                         rtl-sdr dongle                                  #
-  #                         cfs osal                                        #
-  #                         The enginner who have flown a cubesat           #
+  #                         rtl2832u_R820T2_473Mhz                          #
+  #                     20y relationship_manager                            #
+  #                      2m `-zuzi                                          #
+  #                      3y `-neelx                                         #
+  #                      2y `-ksenyia_igor                                  #
   #      ======= totals =========                                           #
   #         100.0 89.0                                                      #
   #                                                                         #
@@ -95,10 +97,8 @@
 
 #############################################################################
 
-* java share qcow from polio? how? 
-* openssh
-* kdump reproducer 
-* iptables: https://pes.suse.de/Maintenance-Security/Update_Management/
+* strace -qfo network.strace -e open gnome-control-center
+* iptables maintenance update process with mkubecek
 
 #############################################################################
 
@@ -113,8 +113,7 @@
 * OK - 1230 lunch
 * OK - 1300 lunch
 * OK - 1330 find service to place qcow outside for IBM
-* OK -  1400 coffee and dental hygiene
-* OK -  1430 beta.suse ticket, sles12sp2 qcow
+* OK - 1430 beta.suse ticket, sles12sp2 qcow
 
 == 04/27/17 ==
 
