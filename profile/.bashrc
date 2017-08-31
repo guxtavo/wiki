@@ -133,6 +133,7 @@ alias vpn="sudo ~/git/suse/bin/manage_vpn.sh"
 alias zypper="sudo zypper"
 alias pvirsh="sudo virsh -c qemu+ssh://gfigueira@polio.suse.cz/system"
 alias solid="elinks https://l3support.nue.suse.com/short/"
+alias suse="vi ~/git/suse/suse.txt"
 
 # tmux clipboard management
 alias copy="tmux show-buffer|xclip"
@@ -348,6 +349,7 @@ update_profile_git()
         cp ~/.vimrc ~/git/wiki/profile/
         cp ~/.tmux.conf ~/git/wiki/profile/
         cp ~/.gitconfig ~/git/wiki/profile/
+        cp ~/.quiltrc ~/git/wiki/profile/
 }
 
 pidstat_15()

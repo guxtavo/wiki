@@ -97,8 +97,30 @@
 
 #############################################################################
 
-* strace -qfo network.strace -e open gnome-control-center
-* iptables maintenance update process with mkubecek
+    default                             
+   ###################################
+   # guxtavo@gmail.com               #  bashC01123581321345589144233$
+   # unixmonk3y@gmail.com            #
+   # guxtavo14@gmail.com             #
+   # capc8m@gmail.com                #
+   # amazon - guxtavo@gmail.com      #
+   # laptop@suse - gfigueira/root    #
+   ###################################
+
+    default2
+   ###################################
+   # spotify - unixmonk3y            #
+   # github - guxtavo@gmail.com      #
+   ###################################
+
+     default2
+   ####################################################################
+   # guxtavo@gmail.com          - PSN BR - BF3                        #
+   # guxtavo14@gmail.com        - PSN US - GTAV                       #
+   # guxtavo@hotmail.com        - PSN US                              # 
+   # guxtav.o@gmail.com         - PSN UK - BFBC2 Vietnam              #
+   # gustavo.figueira@gmail.com - PSN PT - WipEout HD, Rachet & Clank #
+   ####################################################################
 
 #############################################################################
 
