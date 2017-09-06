@@ -135,6 +135,9 @@ alias pvirsh="sudo virsh -c qemu+ssh://gfigueira@polio.suse.cz/system"
 alias solid="elinks https://l3support.nue.suse.com/short/"
 alias suse="vi ~/git/suse/suse.txt"
 
+# OpenBSD
+alias obsd="ssh root@192.168.1.243"
+
 # tmux clipboard management
 alias copy="tmux show-buffer|xclip"
 

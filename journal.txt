@@ -111,6 +111,9 @@
    ###################################
    # spotify - unixmonk3y            #
    # github - guxtavo@gmail.com      #
+   # facebook - guxtavo@gmail.com    #
+   # reddit?                         #
+   # imgur?                          #
    ###################################
 
      default2

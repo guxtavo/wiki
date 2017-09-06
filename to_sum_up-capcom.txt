@@ -1,7 +1,7 @@
 capcom(7)                      Gustavo Figueira                        capcom(7)
 
 OBJECTIVE
-       Linux kernel, Performance and Real-Time Embedded Systems
+       Networkin, Linux/OpenBSD kernel, Performance and Embedded Systems
 
 SYNOPSIS
        Troubleshooter, good knowledge in Linux kernel internals, x86 and arm
@@ -22,31 +22,29 @@ OPTIONS
               Designing mission critical clusters for telcos, network design
               for ISPs
 
-       -t --troubleshooting
-              Performance profiling and tuning, stress tests, low level
-              packet/trace and vmcore analysis
-
-       -l --low-level
-              gdb, strace, ftrace, perf, sar
-
-       -o --os-sysadmin
-              Linux, OpenBSD, Solaris, IOS, AIX, HP-UX, Tru64, FreeBSD
-
        -c --configuration
               DNS, HTTP, SMTP, VPN (OpenVPN, IPsec), DHCP, NFS, NMS, MySQL,
               Oracle Database, Tomcat, JBoss, Asterisk, SAN, LVM
 
-       -s --soft-skills
-              Customer oriented, mentoring, documentation / report writing,
-	            time management, project management
+       -d --development
+              Scripting (Bash, Perl, Python), Object Oriented (JavaScript, C),
+              Linux kernel internals, git, regex, vi,  CI (OBS), quilt,
+              Bugzilla, strace, perf, sar, gdb, crash
 
        -n --networking
               IPv4, firewall configuration (iptables, pf, cisco), routing and
               switching
 
-       -d --development
-              Scripting (Bash, Perl, Python), Object Oriented (JavaScript, C),
-              Linux kernel internals, Git, regex, vi, SQL, CI (OBS), 
+       -t --troubleshooting
+              Performance profiling and tuning, stress tests, low level
+              packet/trace and vmcore analysis
+
+       -o --os-sysadmin
+              Linux, OpenBSD, Solaris, IOS, AIX, HP-UX, Tru64, FreeBSD
+
+       -s --soft-skills
+              Customer oriented, mentoring, documentation / report writing,
+	      time management, project management
 
        -i --interests
               Space exploration, aviation, sports, acoustic guitar and science

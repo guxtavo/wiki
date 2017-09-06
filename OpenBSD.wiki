@@ -1,0 +1,249 @@
+###########
+# openbsd #
+###########
+
+	I've just installed OpenBSD 6.1 and I don't know what to do.
+
+	OpenBSD/amd64 (ktrace.network1) (tty00)
+
+	login: root
+	Password:
+	OpenBSD 6.1 (GENERIC.MP) #20: Sat Apr  1 13:45:56 MDT 2017
+
+	Welcome to OpenBSD: The proactively secure Unix-like operating system.
+
+	Please use the sendbug(1) utility to report bugs in the system.
+	Before reporting a bug, please try to reproduce it with the latest
+	version of the code.  With bug reports, please try to ensure that
+	enough information to reproduce the problem is enclosed, and if a
+	known fix for it exists, include that as well.
+
+	You have new mail.
+	#
+
+#################################
+# What to do after installation #
+#################################
+
+  * mail
+  * man afterboot
+  * man 1 intro
+  * man 2 intro
+  * man 3 intro
+  * man 4 intro
+  * man 5 intro
+  * man 6 intro
+  * man 7 intro
+  * man 8 intro
+  * man 9 intro 
+  * man syspatch
+  * man pkg_add
+  * man release
+  * man sendbug
+
+#####################
+# Basic differences #
+#####################
+
+	Process 0 is the scheduler
+	Process 1 is init
+
+	Base load should always be 1 as scheduler run idleX 
+	processes for each CPU.
+
+	System relies heavily on Perl
+
+	The replacement for wget is ftp
+
+############
+# syspatch #
+############
+
+	echo "https://ftp2.eu.openbsd.org/pub/OpenBSD/" > /etc/installurl
+	syspatch -c # list available
+	syspatch -l # list installed
+	syspatch -r # rollback last
+	syspatch    # install pending patches
+
+############
+# building #
+############
+
+  * man 8 release
+
+	cd /usr/src
+	ftp https://ftp2.eu.openbsd.org/pub/OpenBSD/6.1/sys.tar.gz
+	tar xzf sys.tar.gz && rm sys.tar.gz
+	cvs -d anoncvs@anoncvs.eu.openbsd.org:/cvs -q up -rOPENBSD_6_1 -Pd
+	cd /sys/arch/amd64/compile/GENERIC.MP/ 
+	make obj && make config
+	time make -j $(top -b | grep -c CPU[0-9])  && make install
+	make clean && reboot
+
+##############
+# make times #
+##############
+
+	time make # laptop
+	    3m58.17s real     5m24.11s user     1m19.42s system
+
+	time make -j4 # laptop
+	    1m34.66s real     6m10.28s user     2m31.75s system
+
+	time make -j8 # laptop
+	    1m32.64s real     6m17.27s user     2m42.65s system
+
+	time make -j $(top -b | grep -c CPU[0-9]) # 8 vCPUs workstation
+	    0m50.05s real     4m22.45s user     1m32.94s system
+
+################
+# ktrace/kdump #
+################
+
+#ktrace examples
+ktrace -C  # ends tracing on all processes
+ktrace -di # follow childs
+ktrace -dif /home/ktrace.out  # follow childs and save file in different location
+
+#trace points
+     -t trstr   The string argument represents the kernel trace points, one
+                per letter.  By default all trace points except for X are
+                enabled.  The following table equates the letters with the
+                trace points:
+
+                      c     trace system calls
+                      i     trace I/O
+                      n     trace namei translations
+                      p     trace violation of pledge(2) restrictions
+                      s     trace signal processing
+                      t     trace various structures
+                      u     trace user data coming from utrace(2)
+                      x     trace argument vector in execve(2)
+                      X     trace environment in execve(2)
+                      +     trace the default points
+
+#timing
+kdump
+     -R      Display relative timestamps (time since previous entry).
+
+     -T      Display absolute timestamps for each entry (seconds since the
+             Epoch).
+
+     -TR     If both options are specified, display timestamps relative to
+             trace start.
+
+#kdump examples
+kdump -Rf /home/ktrace-make.out
+
+###############
+# performance #
+###############
+
+	systat vm
+	systat ifstat
+
+     view    The view argument expects to be one of: vmstat, pigs, ifstat,
+             iostat, sensors, mbufs, netstat, swap, states, rules, queues, pf,
+             pool, malloc, buckets, nfsclient, nfsserver, or cpu.  These
+             displays can also be requested interactively and are described in
+             full detail below.  view may be abbreviated to the minimum
+             unambiguous prefix; for example, "io" for "iostat".
+
+########
+# todo #
+########
+
+  * OK - compile the kernel
+  * OK - time kernel compilation: make -j 1/4/8
+  * OK - find out how to get perf data - ktrace/kdump
+  * OK - install 6.1 on workstation
+  * write kdump-c to count times | try with awk first
+  * play with vmd vmctl
+  * git log on cvs
+  * panic the system and use ddb
+  * build the iso image
+  * use ktrace/kdump to trace kernel compilation - what to trace?
+
+###########
+# kdump-c #
+###########
+
+man 2 ktrace
+
+     Each tracing event outputs a record composed of a generic header followed
+     by a trace point specific structure.  The generic header is:
+
+     struct ktr_header {
+             uint    ktr_type;               /* trace record type */
+             pid_t   ktr_pid;                /* process id */
+             pid_t   ktr_tid;                /* thread id */
+             struct  timespec ktr_time;      /* timestamp */
+             char    ktr_comm[MAXCOMLEN+1];  /* command name */
+             size_t  ktr_len;                /* length of buf */
+     };
+
+/*
+ * KTR_SYSCALL - system call record
+ */
+#define KTR_SYSCALL     1
+struct ktr_syscall {
+        int     ktr_code;               /* syscall number */
+        int     ktr_argsize;            /* size of arguments */
+        /*
+         * followed by ktr_argsize/sizeof(register_t) "register_t"s
+         */
+};
+
+/*
+ * KTR_SYSRET - return from system call record
+ */
+#define KTR_SYSRET      2
+struct ktr_sysret {
+        int     ktr_code;
+        int     ktr_error;
+        /*
+         * If ktr_error is zero, then followed by retval: register_t for
+         * all syscalls except lseek(), which uses long long
+         */
+};
+
+# Example of kdump output
+
+  8004 vmstat   0.000065 CALL  mprotect(0x14f43830cea8,0x158,0x1<PROT_READ>)
+  8004 vmstat   0.000040 RET   mprotect 0
+  8004 vmstat   0.000064 CALL  issetugid()
+  8004 vmstat   0.000036 RET   issetugid 0
+  8004 vmstat   0.000138 CALL  getentropy(0x14f43830e5c0,256)
+  8004 vmstat   0.000105 RET   getentropy 0
+  8004 vmstat   0.000051 CALL  mmap(0,0x4000,0x3<PROT_READ|PROT_WRITE>,0x1002<MAP_PRIVATE|MAP_ANON>,-1,0)
+  8004 vmstat   0.000061 RET   mmap 23039123791872/0x14f436ca2000
+  8004 vmstat   0.000047 CALL  mprotect(0x14f436ca2000,0x1000,0<PROT_NONE>)
+  8004 vmstat   0.000064 RET   mprotect 0
+  8004 vmstat   0.000049 CALL  mprotect(0x14f436ca5000,0x1000,0<PROT_NONE>)
+  8004 vmstat   0.000054 RET   mprotect 0
+  8004 vmstat   0.000053 CALL  getentropy(0x14f43830e5c0,256)
+  8004 vmstat   0.000051 RET   getentropy 0
+ 
+kdump -R | grep CALL
+
+# this will print only entries with RET or CALL
+kdump -R -f ktrace-make.out | awk '($4=="CALL" || $4=="RET") {print}'
+
+# how to leave just the syscall 
+ 55450 cc1      0.000003 CALL  munmap(0x27efc8000,0x1000)
+ 37203 cc1      0.000001 RET   fstat 0
+ 90934 cc1      0.000001 RET   mmap 12439613440/0x2e5757000
+ 37203 cc1      0.000007 CALL  read(3,0x27d44a000,0x4468)
+ 55450 cc1      0.000005 RET   munmap 0
+
+split $5 to get just first part before "("
+
+ awk '{split($5, a, "("); print a[1]}'
+
+kdump -R -f ktrace-make.out | awk '($4=="CALL" || $4=="RET") {print}' \
+ awk '{split($5, a, "("); print $3 " " a[1]}' \
+ awk '{arr[$2]+=$1} END {for (i in arr) {printf(" %6.5f\n" i,arr[i])} }' 
+
+# this gives me numbers lile 1.5e-05, and I want without this scientific stuff
+
+# How to get float with 7 digits?
