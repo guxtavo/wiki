@@ -50,8 +50,8 @@ rcctl enable dhcpd
 rcctl set dhcpd flags vether0
 rcctl start dhcpd
 rcctl set apmd flags "-A"
-rcctl set ntpd flags "-s"
 rcctl enable apmd
+rcctl set ntpd flags "-s"
 rcctl enable ntpd
 rcctl start apmd
 rcctl start ntpd
@@ -94,7 +94,7 @@ rcctl start vmd
 vmctl start -c -b /bsd.rd -m 512M -i 1 -d /home/vms/vm1.img
 ifconfig bridge0 add tap0
 vmctl status
-vmctl console 0
+vmctl console 1
 
 echo "vm "openbsd61-git-0917" {" >> /etc/vm.conf
 echo "	memory 512M" >> /etc/vm.conf
