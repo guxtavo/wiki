@@ -51,35 +51,29 @@ rcctl set dhcpd flags vether0
 rcctl start dhcpd
 rcctl set apmd flags "-A"
 rcctl set ntpd flags "-s"
+rcctl enable apmd
+rcctl enable ntpd
 rcctl start apmd
 rcctl start ntpd
 
 # create disk image
 mkdir /home/vms/
 cd /home/vms
-vmctl create /home/vms/openbsd61-git-0917.img -s 2G
+vmctl create /home/vms/vm1.img -s 2G
 
+# vm.conf
 echo "switch "switch0" {" > /etc/vm.conf
 echo "	add vether0" >> /etc/vm.conf
 echo "	interface bridge0" >> /etc/vm.conf
 echo "}" >> /etc/vm.conf
 
-echo "vm "openbsd61-git-0917" {" >> /etc/vm.conf
-echo "	memory 512M" >> /etc/vm.conf
-echo "	disk \"/home/vms/openbsd61-git-0917.img\" >> /etc/vm.conf
-echo " 	interface { switch \"swicth0\" }" >> /etc/vm.conf
-echo "}" >> /etc/vm.conf
-
-rcctl enable vmd
-rcctl start vmd
-
 # configure pf and ip forwarding
 sysctl net.inet.ip.forwarding=1 
 echo "net.inet.ip.forwarding=1" >> /etc/sysctl.conf
 
-/etc/pf.conf (add)
+# /etc/pf.conf 
 echo "ext_if=\"em0\"" >> /etc/pf.conf
-echo "int_if=\"{ vether0 tap0 tap1 tap2 tap3 tap4 tap5 tap6 tap7 }\" >> /etc/pf.conf
+echo "int_if=\"{ vether0 tap0 tap1 tap2 tap3 tap4 tap5 tap6 tap7 }\"" >> /etc/pf.conf
 echo "set block-policy drop" >> /etc/pf.conf
 echo "set loginterface egress" >> /etc/pf.conf
 echo "match in all scrub (no-df random-id max-mss 1440)" >> /etc/pf.conf
@@ -92,8 +86,18 @@ echo "pass in on egree inet proto tcp from any to (egrees) port 22" >> /etc/pf.c
 pfctl -d
 pfctl -e
 
+# restart vmd
+rcctl enable vmd
+rcctl start vmd
+
 # create vm
 vmctl start -c -b /bsd.rd -m 512M -i 1 -d /home/vms/vm1.img
 ifconfig bridge0 add tap0
 vmctl status
 vmctl console 0
+
+echo "vm "openbsd61-git-0917" {" >> /etc/vm.conf
+echo "	memory 512M" >> /etc/vm.conf
+echo "	disk \"/home/vms/openbsd61-git-0917.img\"" >> /etc/vm.conf
+echo " 	interface { switch \"swicth0\" }" >> /etc/vm.conf
+echo "}" >> /etc/vm.conf
