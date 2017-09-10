@@ -1,5 +1,7 @@
 #!/bin/ksh
 
+# https://goo.gl/LCXZUW
+
 ############
 # Learning #
 # OpenBSD  #
@@ -96,8 +98,15 @@ rcctl start vmd
 vmctl start vm1 -b /bsd.rd -m 512M -i 1 -d /home/vms/vm1.img
 ifconfig bridge0 add tap0
 vmctl status
+echo " # now you should login via console and finish installation"
 echo "vmctl console 1"
+echo " # after installing"
+echo "vmctl stop 1" 
+echo "rcctl stop vmd"
+echo "rcctl start vmd"
+echo "vmctl status"
 
+# finish setting up vm1
 echo "vm "openbsd61-git-0917" {" >> /etc/vm.conf
 echo "	memory 512M" >> /etc/vm.conf
 echo "	disk \"/home/vms/vm1.img\"" >> /etc/vm.conf
