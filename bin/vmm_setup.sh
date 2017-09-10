@@ -72,6 +72,8 @@ sysctl net.inet.ip.forwarding=1
 echo "net.inet.ip.forwarding=1" >> /etc/sysctl.conf
 
 # /etc/pf.conf 
+echo "" >> /etc/pf.conf
+echo "# vm config" >> /etc/pf.conf
 echo "ext_if=\"em0\"" >> /etc/pf.conf
 echo "int_if=\"{ vether0 tap0 tap1 tap2 tap3 tap4 tap5 tap6 tap7 }\"" >> /etc/pf.conf
 echo "set block-policy drop" >> /etc/pf.conf
@@ -79,7 +81,7 @@ echo "set loginterface egress" >> /etc/pf.conf
 echo "match in all scrub (no-df random-id max-mss 1440)" >> /etc/pf.conf
 echo "match out on egress inet from !(egress:network) to any nat-to (egress:0)" >> /etc/pf.conf
 echo "pass out quick inet" >> /etc/pf.conf
-echo "pass in on $int_if inet" >> /etc/pf.conf
+echo "pass in on \$int_if inet" >> /etc/pf.conf
 echo "pass in on egree inet proto tcp from any to (egrees) port 22" >> /etc/pf.conf
 
 # restart pf
@@ -94,10 +96,10 @@ rcctl start vmd
 vmctl start -c -b /bsd.rd -m 512M -i 1 -d /home/vms/vm1.img
 ifconfig bridge0 add tap0
 vmctl status
-vmctl console 1
+echo "vmctl console 1"
 
 echo "vm "openbsd61-git-0917" {" >> /etc/vm.conf
 echo "	memory 512M" >> /etc/vm.conf
-echo "	disk \"/home/vms/openbsd61-git-0917.img\"" >> /etc/vm.conf
-echo " 	interface { switch \"swicth0\" }" >> /etc/vm.conf
+echo "	disk \"/home/vms/vm1.img\"" >> /etc/vm.conf
+echo " 	interface { switch \"switch0\" }" >> /etc/vm.conf
 echo "}" >> /etc/vm.conf
