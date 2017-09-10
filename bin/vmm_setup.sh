@@ -49,9 +49,9 @@ echo "}" >> /etc/dhcpd.conf
 rcctl enable dhcpd
 rcctl set dhcpd flags vether0
 rcctl start dhcpd
-rcctl set apmd flags "-A"
+rcctl set apmd flags -A
 rcctl enable apmd
-rcctl set ntpd flags "-s"
+rcctl set ntpd flags -s
 rcctl enable ntpd
 rcctl start apmd
 rcctl start ntpd
