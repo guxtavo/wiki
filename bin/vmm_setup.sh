@@ -93,7 +93,7 @@ rcctl enable vmd
 rcctl start vmd
 
 # create vm
-vmctl start -c -b /bsd.rd -m 512M -i 1 -d /home/vms/vm1.img
+vmctl start vm1 -b /bsd.rd -m 512M -i 1 -d /home/vms/vm1.img
 ifconfig bridge0 add tap0
 vmctl status
 echo "vmctl console 1"
