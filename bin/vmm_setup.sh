@@ -49,8 +49,8 @@ echo "}" >> /etc/dhcpd.conf
 rcctl enable dhcpd
 rcctl set dhcpd flags vether0
 rcctl start dhcpd
-rcctl set apmd flags -A
 rcctl enable apmd
+rcctl set apmd flags -A
 rcctl set ntpd flags -s
 rcctl enable ntpd
 rcctl start apmd
@@ -86,7 +86,7 @@ echo "pass in on egree inet proto tcp from any to (egrees) port 22" >> /etc/pf.c
 
 # restart pf
 pfctl -d
-pfctl -e
+pfctl -f /etc/pf.conf -e
 
 # restart vmd
 rcctl enable vmd
