@@ -132,7 +132,7 @@ alias noe="ssh noe.suse.cz"
 alias vpn="sudo ~/git/suse/bin/manage_vpn.sh"
 alias zypper="sudo zypper"
 alias pvirsh="sudo virsh -c qemu+ssh://gfigueira@polio.suse.cz/system"
-alias solid="elinks https://l3support.nue.suse.com/short/"
+alias solid="w3m https://l3support.nue.suse.com/short/"
 alias suse="vi ~/git/suse/suse.txt"
 
 # OpenBSD
@@ -140,6 +140,9 @@ alias obsd="ssh root@192.168.1.243"
 
 # tmux clipboard management
 alias copy="tmux show-buffer|xclip"
+
+# olther aliases
+alias rfc="elinks https://tools.ietf.org/rfc/index"
 
 # funcoes zz
 # adding pagers for nice scripts 

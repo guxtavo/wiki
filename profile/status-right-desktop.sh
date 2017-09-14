@@ -86,6 +86,7 @@ brightness(){
 
 main(){
         git_repos_change
+	target
 	countdown
         nic_up
         weather galaxy

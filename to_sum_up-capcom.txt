@@ -1,7 +1,9 @@
 capcom(7)                      Gustavo Figueira                        capcom(7)
 
 OBJECTIVE
-       Networkin, Linux/OpenBSD kernel, Performance and Embedded Systems
+       RFC 791/793/1034/3022/3783iscsi/7030/, IEEE 1003, Performance and Embedded Systems
+       RFC 
+       RFC 8239 Data Center Benchmarking Methodology
 
 SYNOPSIS
        Troubleshooter, good knowledge in Linux kernel internals, x86 and arm
