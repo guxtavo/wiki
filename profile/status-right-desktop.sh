@@ -19,7 +19,40 @@ countdown()
 
 target(){
         B=$(cat ~/.config/target) 
-        echo -n "=> $B <= |"
+        echo -n " => $B <= |"
+}
+
+getVmstat() {
+	cat /proc/vmstat|egrep "pgpgin|pgpgout"
+}
+
+# virtual hdd indicator
+# reads /proc/stat and track changes in pgpgin and pgpgout
+# if there is no change, print an empty circle
+# if there is change, prinf a full circle
+# It should print 4 circles, every time status-right.sh executes
+# most of the time it should be empty circles as there is a 2 seconds
+# interval on the tmux status bar script, but it would show a lot of 
+# full circles if there is big activity
+hdd_led(){
+LOOP=0.25
+
+# initialise variables
+NEW=$(getVmstat)
+OLD=$(getVmstat)
+
+echo -n " "
+for i in 1 2 3 4; do
+  sleep $LOOP
+  NEW=$(getVmstat)
+  if [ "$NEW" = "$OLD" ]; then
+    printf '\xE2\x97\x8B'
+  else
+    printf '\xE2\x97\x8F'
+  fi
+  OLD=$NEW
+done
+echo " |"
 }
 
 git_repos_change(){
@@ -94,6 +127,7 @@ main(){
         brightness
         volume
         battery
+	hdd_led
 }
 
 main

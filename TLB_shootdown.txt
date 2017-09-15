@@ -1,0 +1,18 @@
+A TLB (Translation Lookaside Buffer) is a cache of the translations from
+virtual memory addresses to physical memory addresses. When a processor
+changes the virtual-to-physical mapping of an address, it needs to tell the
+other processors to invalidate that mapping in their caches.
+
+That process is called a "TLB shootdown".
+
+A quick example:
+
+   * You have some memory shared by all of the processors in your system.
+
+   * One of your processors restricts access to a page of that shared memory.
+
+   * Now, all of the processors have to flush their TLBs, so that the ones 
+     that were allowed to access that page can't do so any more.
+
+The actions of one processor causing the TLBs to be flushed on other
+processors is what is called a TLB shootdown.
