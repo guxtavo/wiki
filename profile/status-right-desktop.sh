@@ -88,7 +88,8 @@ weather(){
 
 temperature(){
         B=$(sensors | grep CPU | awk '{print $2}' | tr -d "+" | sed 's/\.0//g')
-        echo -n " $B |"
+	C=$(sudo hddtemp /dev/sda| awk '{print $6}')
+        echo -n " $B $C|"
 }
 
 nic_up(){
@@ -122,7 +123,7 @@ main(){
 	target
 	countdown
         nic_up
-        weather galaxy
+        weather
         temperature
         brightness
         volume

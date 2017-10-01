@@ -1,23 +1,30 @@
 capcom(7)                      Gustavo Figueira                        capcom(7)
 
 OBJECTIVE
-       RFC 791/793/1034/3022/3783iscsi/7030/, IEEE 1003, Performance and Embedded Systems
-       RFC 
-       RFC 8239 Data Center Benchmarking Methodology
+       Work for Aerospace sector (rtl-sdr, cubesats)
 
 SYNOPSIS
-       Troubleshooter, good knowledge in Linux kernel internals, x86 and arm
-       architecture, performance and power management. I've worked in Internet
-       Startups, Telcos, on different support roles, acting as architect,
-       tester, integrator, project manager, site reliability engineer or just
-       one-man-army. I might not know everything, but it is just a matter of
-       time until I do.
+       IEEE 1003          #######...                  arch/x86 ###.......
+       troubleshooting    ######....    linux kernel internals ####......
+       RFC (791/793/1034) #######...                  RFC 8239 #####.....
+       RFC 3022                                       RFC 7030 #.........
+
+         Neo: I know kung fu!
 
 DESCRIPTION
-       For the past 3 years I've been dealing with [sched] and [mm] tickets in
-       Red Hat Support kernel team. I specialized in performance investigation, 
-       working with cgroups, systemd, power management, networking, services, 
-       shells, storage and filesystems. Have been using RHEL for 7+ years.
+       At 16 I started my first job as web designer. It was the modem times.
+       I continued using notepad in a different company to write my html, and
+       for the first time there was network! I had a breif stay in an ISP
+       before starting my Unix ramp-up. The network was huge and I got first 
+       taste with routing and switching. There I worked all the infrastructure
+       disciplenes you can think of. It was good 4 years. Then I went to an
+       ISP to manage the network and 50+ servers. I was also lead on a captive
+       portal system. Then I did quick projects involving Unix and Storage, 
+       before I move to a pharmaciutical company managing network plus 70+ 
+       servers. In telco I was integrating high-throughput SMS gateways in 
+       complex and mission-critical networks. In Red Hat it was kernel time, 
+       sched and mm took my attention for almost three years, and now at SuSE
+       I work as Linux Developer on packaging.
 
 OPTIONS
        -a --architect
@@ -25,38 +32,48 @@ OPTIONS
               for ISPs
 
        -c --configuration
-              DNS, HTTP, SMTP, VPN (OpenVPN, IPsec), DHCP, NFS, NMS, MySQL,
+              DNS, HTTP, SMTP, VPN (OpenVPN, IPsec), DHCP, NFS, Nagios, MySQL,
               Oracle Database, Tomcat, JBoss, Asterisk, SAN, LVM
 
        -d --development
               Scripting (Bash, Perl, Python), Object Oriented (JavaScript, C),
-              Linux kernel internals, git, regex, vi,  CI (OBS), quilt,
+              Linux kernel internals, git, regex, vi, CI(OBS), quilt,
               Bugzilla, strace, perf, sar, gdb, crash
 
        -n --networking
-              IPv4, firewall configuration (iptables, pf, cisco), routing and
-              switching
+              IPv4, firewall configuration (iptables, pf), routing and switching
 
        -t --troubleshooting
               Performance profiling and tuning, stress tests, low level
-              packet/trace and vmcore analysis
+              packet/trace and vmcore analysis, sytem hardening
 
        -o --os-sysadmin
-              Linux, OpenBSD, Solaris, IOS, AIX, HP-UX, Tru64, FreeBSD
+              Debian, RHEL, SLES, OpenBSD, Solaris, IOS, AIX, True64
 
        -s --soft-skills
-              Customer oriented, mentoring, documentation / report writing,
-	      time management, project management
+	      Time management, project management, product management,
+              customer oriented
 
        -i --interests
-              Space exploration, aviation, sports, acoustic guitar and science
+              rtl-sdr, openbsd, ac.guitar, cubesats
 
        -p --projects
-              MultiKern (Bash / PHP), uit (Bash), Aarav(CLI, CSR, cssbot), 
-              STO (Java Script)
+              Here are projects I was in charge of (and the tooling I used)
 
+              multikern/Kerntec 2004 - hotspot with bandwidth throtlling 
+               (apache2, iptables, tc, bash, php, mysql)
 
+              uit/Fidelity IT, BR 2005 - ieee 1003 data collector (ksh, oracle,
+               linux, sunos, aix, hp-ux, osf/1) 
 
+              csr/Red Hat CZ 2013 -  
+
+              aarav/Red Hat CZ 2014 - cli automation (bash)
+
+              sto/Red Hat CZ 2015 - template system for salesforce (program
+               management)
+
+              domyjob.sh/SuSE 2017 - 
 
 
 
@@ -65,12 +82,12 @@ OPTIONS
 VERSIONS
 
     SUSE Linux, CZ                       Red Hat, CZ
-    > Linux Developer, L3 Support        > Technical Support Engineer
+    > Linux Developer, L3 Support        > Kernel Support Engineer
                                          > Team Lead
     Gemalto, LATAM
     > Integration Engineer I and II      Drogarias Pacheco, BR
                                          > SAP Basis Support
-    Fidelity IT, BR                      > Site Reliability Engineer
+    Fidelity IT, BR                      > Site Reliability Engineer, L2 Support
     > Storage Support Engineer 
     > Unix Support Engineer              INPI, BR
                                          > Tech Lead
@@ -83,12 +100,5 @@ VERSIONS
 
 SEE ALSO
         https://www.linkedin.com/in/guxtavo
-
-R&D - remove from cv before sending
-        02 patches for Brendan Greg's perf-tools
-        01 patch for openSUSE's obs-build
-        01 patch to sto (internal)
-        01 patch for funcoeszz 
-
 
 capcom(7)              guxtavo@gmail.com / +420 774 091 877            capcom(7)
