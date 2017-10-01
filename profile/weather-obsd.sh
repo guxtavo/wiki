@@ -9,7 +9,7 @@
 
 get_weather(){
   curl wttr.in/Brno | \
-  sed -r "s/\x1B\[(([0-9]+)(;[0-9]+)*)?[m,K,H,f,J]//g" \
+  head -4 | tail -1 | awk '{print $4}' \
   > /tmp/weather
 }
 
@@ -29,10 +29,8 @@ main(){
   then
     get_weather
   fi
+  cat /tmp/weather | strings | cut -b 11-12
   
-  # show the formatted weather
-  head -4 /tmp/weather  | tail -1 | \
-  cut -b 16-40 | tr -d " "
 }
 
 # adding case to easily test the bugs

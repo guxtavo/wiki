@@ -149,21 +149,6 @@ kdump -Rf /home/ktrace-make.out
              full detail below.  view may be abbreviated to the minimum
              unambiguous prefix; for example, "io" for "iostat".
 
-########
-# todo #
-########
-
-  * OK - compile the kernel
-  * OK - time kernel compilation: make -j 1/4/8
-  * OK - find out how to get perf data - ktrace/kdump
-  * OK - install 6.1 on workstation
-  * write kdump-c to count times | try with awk first
-  * play with vmd vmctl
-  * git log on cvs
-  * panic the system and use ddb
-  * build the iso image
-  * use ktrace/kdump to trace kernel compilation - what to trace?
-
 ###########
 # kdump-c #
 ###########
@@ -247,3 +232,28 @@ kdump -R -f ktrace-make.out | awk '($4=="CALL" || $4=="RET") {print}' \
 # this gives me numbers lile 1.5e-05, and I want without this scientific stuff
 
 # How to get float with 7 digits?
+
+############
+# terminal #
+############
+
+	xterm -fa 'Mono' -fs 13 -fg green -bg black
+
+########
+# todo #
+########
+
+  * OK - compile the kernel
+  * OK - time kernel compilation: make -j 1/4/8
+  * OK - find out how to get perf data - ktrace/kdump
+  * OK - install 6.1 on workstation
+  * OK - play with vmd vmctl
+  * OK - change terminal backgroud and foreground and find good font
+  * OK - configure tmux for OpenBSD
+  * NOK - panic the system and use ddb -> only on console :(
+  * write kdump-c to count times | try with awk first
+  * build the iso image
+  * use ktrace/kdump to trace kernel compilation - what to trace?
+  * find out hdd_led alternative
+  * git log on cvs
+
