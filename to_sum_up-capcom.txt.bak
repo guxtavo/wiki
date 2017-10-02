@@ -1,30 +1,31 @@
-capcom(7)                       Gustavo Figueira                       capcom(7)
+capcom(7)                      Gustavo Figueira                        capcom(7)
 
 OBJECTIVE
-       Work for aerospace sector or engineering/R&D (PaaS, CaaS, HPC, DevOps).
+       Work for Aerospace sector (rtl-sdr, HPC, PaaS, CaaS)
 
 SYNOPSIS
        IEEE 1003          ######....                    x86_64 ###.......
        troubleshooting    #####.....    linux kernel internals ####......
-       RFC 791/793/3022   ######....                  RFC 8239 #####.....
-       RFC 3720/3643      ##........                         C ##........
-       Bash               ######....                  
+       RFC 791/793/1034   ######....                  RFC 8239 #####.....
+       RFC 3022/3643      #.........                  RFC 7030 #.........
+       C                  ##........                      bash ######....
+                                                       rlt-sdr #.........
 
 DESCRIPTION
        At 16 I started my  first job as  web designer.  It was the modem times.
        I continued using  notepad in a  different company to write my html, and
-       for the first  time  there was  network! I  had a  brief  stay in an ISP
+       for the first  time  there was  network! I  had a  breif  stay in an ISP
        before starting my  Unix ramp-up. The  network  was huge and I got first 
        taste  with  routing   and  switching.  There   I  worked  most  of  the 
-       infrastructure  disciplines . It  was  good 4 years. Then  I went  to an
+       infrastructure  disciplenes . It  was  good 4 years. Then  I went  to an
        ISP to  manage the network and 50+ servers. I was also lead on a captive
        portal system  development. Then I did quick projects involving Unix and 
-       Storage,  before  I  move to a  pharmaceutical  company managing network 
+       Storage,  before  I  move to a  pharmaciutical  company managing network 
        plus  70+ servers  (including a brief try as SAP Basis). In telcos I was 
        integrating high-throughput SMS gateways in complex and mission-critical
        networks. In Red Hat it was  kernel time, sched and mm took my attention 
        for   almost three years, and now at   SuSE I work as Linux Developer on 
-       packaging, developing my C and Storage skills, to become full stack dev.
+       packaging, .
 
 OPTIONS
        -a --architect
@@ -33,7 +34,7 @@ OPTIONS
 
        -c --configuration
               DNS, HTTP, SMTP, VPN (OpenVPN, IPsec), DHCP, NFS, Nagios, MySQL,
-              Oracle, Tomcat, JBoss, Asterisk, SAN, NFS, CIFS, LVM
+              Oracle Database, Tomcat, JBoss, Asterisk, SAN, LVM
 
        -d --development
               Scripting (Bash, Perl, Python), Object Oriented (JavaScript, C),
@@ -46,7 +47,7 @@ OPTIONS
 
        -t --troubleshooting
               Performance profiling and tuning, stress tests, low level
-              packet/trace and vmcore analysis, system hardening, RCA
+              packet/trace and vmcore analysis, sytem hardening, RCA
 
        -o --os-sysadmin
               Debian, RHEL, SLES, OpenBSD, Solaris, IOS, AIX, True64
@@ -56,11 +57,11 @@ OPTIONS
               customer oriented
 
        -i --interests
-              rtl-sdr, cubesats, openbsd, acoustic guitar, aviation, philosophy
+              rtl-sdr, cubesats, openbsd, acoustic guitar
 
        -p --projects
-              multikern/Kerntec 2004 - hotspot with bandwidth throttling 
-               (bash, iptables, tc, snmp, apache, php, mysql)
+              multikern/Kerntec 2004 - hotspot with bandwidth throtlling 
+               (apache2, iptables, tc, bash, php, mysql)
 
               uit/Fidelity IT, BR 2005 - ieee 1003 data collector 
                (ksh, oracle, linux, sunos, aix, hp-ux, osf/1) 
@@ -73,23 +74,23 @@ OPTIONS
 
 VERSIONS
 
-    SUSE Linux, CZ - 1y-                 Red Hat, CZ - 2y+
+    SUSE Linux, CZ                       Red Hat, CZ
     > Linux Developer, L3 Support        > Kernel Support Engineer
                                          > Team Lead
-    Gemalto, LATAM - 4y+
-    > Integration Engineer I and II      Drogarias Pacheco, BR - 1y
+    Gemalto, LATAM
+    > Integration Engineer I and II      Drogarias Pacheco, BR
                                          > SAP Basis Support
-    Fidelity IT, BR - 1y-                > Site Reliability Engineer, 
+    Fidelity IT, BR                      > Site Reliability Engineer, 
     > Unix Support Engineer              > L2 Support
     > Storage Support Engineer 
-                                         INPI, BR - 4y
-    Kern Technologies, BR - 2y+          > Tech Lead
+                                         INPI, BR
+    Kern Technologies, BR                > Tech Lead
     > Linux Engineer                     > Unix Support Engineer
     > Site Reliability Engineer          > Network and Security group
      
-    Various Companies, BR - 2y+          Uniabeu, Br - 1y-
+    Various Companies, BR                Uniabeu, Br
     > Webmaster / Web Developer          > Information Security Professor
-    > Sysadmin / Windows/Linux Support
+    > Sysadmin / Windows NT Support
 
 SEE ALSO
         https://www.linkedin.com/in/guxtavo

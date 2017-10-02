@@ -8,11 +8,11 @@
                   ######      ######      ######      ########
 
                                                   TVGG OPQ SPG - stack
-             /       ######################     tmux + vi + git + global
+             .       ######################     tmux + vi + git + global
             /G\      #                    #      osc + pftutils + quilt
            / Z \     # LKD, code and RPS1 #       strace + perf + gdb
           / UCS \    #                    #      
-          --------   ######################            GVOQP-GSPG
+         .-------.   ######################            GVOQP-GSPG
            ACTION   1, 1, 2, 3, 5, 8, 13, 21   git - vi - osc - quilt - ptf
                                                global - strace - perf - gdb  
                                                virsh 
@@ -99,31 +99,53 @@
 
     default                             
    ###################################
-   # guxtavo@gmail.com               #  bashC011235813$
-   # unixmonk3y@gmail.com            #  bashCO11235813$
-   # guxtavo14@gmail.com             #
-   # capc8m@gmail.com                #
-   # amazon - guxtavo@gmail.com      #
-   # laptop@suse - gfigueira/root    #
+   # g.....o@g...l.com               #
+   # u........y@g...l.com            #
+   # g.......4@g...l.com             #
+   # c....m@g...l.com                #
+   # ama.on - g.....o@g...l.com      #
+   # laptop@suse - g.......a/r..t    #
+   # bashCO11235813$                 #
    ###################################
 
     default2
    ###################################
-   # spotify - unixmonk3y            #
-   # github - guxtavo@gmail.com      #
-   # facebook - guxtavo@gmail.com    #
+   # spotify - u........y            #
+   # github - g.....o@g...l.com      #
+   # facebook - g.....o@g...l.com    #
    # reddit?                         #
    # imgur?                          #
    ###################################
 
      default2
    ####################################################################
-   # guxtavo@gmail.com          - PSN BR - BF3                        #
-   # guxtavo14@gmail.com        - PSN US - GTAV                       #
-   # guxtavo@hotmail.com        - PSN US                              # 
-   # guxtav.o@gmail.com         - PSN UK - BFBC2 Vietnam              #
-   # gustavo.figueira@gmail.com - PSN PT - WipEout HD, Rachet & Clank #
+   # g.....o@g...l.com          - PSN BR - BF3                        #
+   # g.......4@g...l.com        - PSN US - GTAV                       #
+   # g.....o@h.....l.com        - PSN US                              # 
+   # g....v.o@g...l.com         - PSN UK - BFBC2 Vietnam              #
+   # g.....o.f......a@gmail.com - PSN PT - WipEout HD, Rachet & Clank #
    ####################################################################
+
+#############################################################################
+
+bind tmux to paste more easily
+bind tmux to maximaze (z) more easily
+read cdecl README, man page, source code
+
+
+27 jezenik trip
+28 jezenik hiking
+29 jezenik hiking, thermals
+30 jezenik hiking, trip
+01 rest, organize - bread, cheese spread, banana, milk, beans, klobasa, yogurt
+02 suse nexus error
+03 suse caas, cdecl.hackweek
+04 suse kdump(fate, monthly)
+05 suse java(monthly)
+06 suse postfix(fortnight)
+07 weekend, rpi gw
+08 weekend
+09 suse l3t play around
 
 #############################################################################
 

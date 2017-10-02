@@ -57,7 +57,7 @@ echo " |"
 
 git_repos_change(){
         B=$(~/git/wiki/profile/git-tmux.sh)
-        echo -n " $B |"
+        echo -n " GIT:$B |"
 }
 
 tasks(){
@@ -118,7 +118,20 @@ brightness(){
         echo -n " ☀$B |"
 }
 
+solid_ground_progress()
+{
+	B=$(l3ls -m | egrep 'IN_PROGRESS|NEW' | wc -l)
+	echo -n " SG:$B |"
+}
+
+banner()
+{
+echo -n "   [ CODER 0.1 ]  | "
+}
+
 main(){
+#	banner
+#	solid_ground_progress
         git_repos_change
 	target
 	countdown

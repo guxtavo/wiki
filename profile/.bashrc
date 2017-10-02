@@ -134,6 +134,7 @@ alias zypper="sudo zypper"
 alias pvirsh="sudo virsh -c qemu+ssh://gfigueira@polio.suse.cz/system"
 alias solid="w3m https://l3support.nue.suse.com/short/"
 alias suse="vi ~/git/suse/suse.txt"
+alias progress="l3ls -m | egrep 'IN_PROGRESS|NEW' | cut -b 1-80 | sort -k2"
 
 # OpenBSD
 alias obsd="ssh root@192.168.1.243"
