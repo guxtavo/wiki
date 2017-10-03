@@ -478,3 +478,14 @@ countdown ()
      done
 }
 alias pomo="countdown 1500 &"
+
+irc_get()
+{
+total=0
+grep -hc capcom ~/irclogs/suse/* | while read a
+do
+total=$(( $a + $total ))
+echo $total
+done | tail -1
+}
+

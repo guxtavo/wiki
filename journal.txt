@@ -47,14 +47,13 @@
 		 ,AMMMMMMMMMMMMMMMMMMMMMA   AMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 		AMMMMMMMMMMMMMMMMMMMMMMMMAaAMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 
-                +-projects---------------------------------+
-                | linux-stable    funcoeszz     sto*       |
-                | RT Patch        obs-build     multikern* |
-                | RPS1            perf-tools    uit*       |
-                | wiki            tmux          wok*       |
-                | OpenAID         cfs-osal                 |
-                +------------------------------------------+
-                                              * - non-FOSS
+                +-projects----------------------+
+                | linux-stable    multikern*    |
+                | RT Patch        csr-aarav*    |
+                | hawking1        uit*          |
+                | wiki                          |
+                +-------------------------------+
+                                    * - non-FOSS
 
 					+------------+    
 				+----+  |------------|    ()
@@ -128,20 +127,22 @@
 
 #############################################################################
 
+read cdecl README, man page, source code
+status right, check if vpn is connected before calling l3ls
 bind tmux to paste more easily
 bind tmux to maximaze (z) more easily
-read cdecl README, man page, source code
-
 
 27 jezenik trip
 28 jezenik hiking
 29 jezenik hiking, thermals
 30 jezenik hiking, trip
-01 rest, organize - bread, cheese spread, banana, milk, beans, klobasa, yogurt
-02 suse nexus error
-03 suse caas, cdecl.hackweek
-04 suse kdump(fate, monthly)
-05 suse java(monthly)
+
+#october
+01 rest, organize
+02 suse nexus error, danny
+03 suse caas
+04 suse ioctl, cdecl.hackweek
+05 suse 
 06 suse postfix(fortnight)
 07 weekend, rpi gw
 08 weekend

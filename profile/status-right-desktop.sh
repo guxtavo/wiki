@@ -120,18 +120,40 @@ brightness(){
 
 solid_ground_progress()
 {
-	B=$(l3ls -m | egrep 'IN_PROGRESS|NEW' | wc -l)
-	echo -n " SG:$B |"
+	if $(ip a | grep tun0 | grep -q UP)
+		then
+			B=$(l3ls -m | egrep 'IN_PROGRESS|NEW' | wc -l)
+			echo -n " SG:$B |"
+		else
+			echo -n " L3:NA |"
+	fi
 }
 
 banner()
 {
-echo -n "   [ CODER 0.1 ]  | "
+	echo -n "   [ CODER 0.1 ]   | "
+}
+
+irc_get()
+{
+	total=0
+	grep -hc capcom ~/irclogs/suse/* | while read a
+	do
+	total=$(( $a + $total ))
+	echo $total
+	done | tail -1
+}
+
+irc()
+{
+	B=$(eval irc_get)
+	echo -n " IRC:$B |"
 }
 
 main(){
 #	banner
-#	solid_ground_progress
+	irc
+	solid_ground_progress
         git_repos_change
 	target
 	countdown
