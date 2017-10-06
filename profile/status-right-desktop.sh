@@ -89,7 +89,7 @@ weather(){
 temperature(){
         B=$(sensors | grep CPU | awk '{print $2}' | tr -d "+" | sed 's/\.0//g')
 	C=$(sudo hddtemp /dev/sda| awk '{print $6}')
-        echo -n " $B $C|"
+        echo -n " $B/$C |"
 }
 
 nic_up(){
@@ -122,7 +122,12 @@ solid_ground_progress()
 {
 	if $(ip a | grep tun0 | grep -q UP)
 		then
-			B=$(l3ls -m | egrep 'IN_PROGRESS|NEW' | wc -l)
+			if test "`find /tmp/progress -mmin +30`"
+			then
+				l3ls -m | egrep 'IN_PROGRESS|NEW' | wc -l > \
+				/tmp/progress
+			fi
+			B=$(cat /tmp/progress)
 			echo -n " SG:$B |"
 		else
 			echo -n " L3:NA |"
@@ -150,8 +155,19 @@ irc()
 	echo -n " IRC:$B |"
 }
 
+updates()
+{
+	if [ $(zypper lu|wc -l) -gt 3 ]
+		then
+			echo -n " !! |"
+		else
+			echo -n " OK |"
+	fi
+}
+
 main(){
 #	banner
+	updates
 	irc
 	solid_ground_progress
         git_repos_change
