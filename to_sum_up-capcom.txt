@@ -1,14 +1,17 @@
 capcom(7)                       Gustavo Figueira                       capcom(7)
 
 OBJECTIVE
-       Work for aerospace sector or engineering/R&D (PaaS, CaaS, HPC, DevOps).
+       Work for aerospace sector or engineering (R&D, PaaS, CaaS, HPC, DevOps).
+                                                   980.000CZK annual +-10%
 
 SYNOPSIS
        IEEE 1003          ######....                    x86_64 ###.......
        troubleshooting    #####.....    linux kernel internals ####......
        RFC 791/793/3022   ######....                  RFC 8239 #####.....
        RFC 3720/3643      ##........                         C ##........
-       Bash               ######....                  
+       Bash               ######....                      math ###....... 
+
+                unix -> c and storage -> engineering -> cubesats
 
 DESCRIPTION
        At 16 I started my  first job as  web designer.  It was the modem times.
@@ -27,31 +30,31 @@ DESCRIPTION
        packaging, developing my C and Storage skills, to become full stack dev.
 
 OPTIONS
-       -a --architect
+       -a --architect (experienced beginner)
               Designing mission critical clusters for telcos, network design
               for ISPs
 
-       -c --configuration
+       -c --configuration (knowledgeable practitioner)
               DNS, HTTP, SMTP, VPN (OpenVPN, IPsec), DHCP, NFS, Nagios, MySQL,
               Oracle, Tomcat, JBoss, Asterisk, SAN, NFS, CIFS, LVM
 
-       -d --development
+       -d --development (practitioner)
               Scripting (Bash, Perl, Python), Object Oriented (JavaScript, C),
               Linux kernel internals, git, regex, vi, CI(OBS), quilt,
               Bugzilla, strace, perf, sar, gdb, crash
 
-       -n --networking
+       -n --networking (knowledgeable practitioner)
               IPv4, firewall configuration (iptables, pf), routing and 
               switching
 
-       -t --troubleshooting
+       -t --troubleshooting (practitioner)
               Performance profiling and tuning, stress tests, low level
               packet/trace and vmcore analysis, system hardening, RCA
 
-       -o --os-sysadmin
+       -o --os-sysadmin (knowledgeable practitioner)
               Debian, RHEL, SLES, OpenBSD, Solaris, IOS, AIX, True64
 
-       -s --soft-skills
+       -s --soft-skills (experienced beginner)
 	      Time management, project management, product management,
               customer oriented
 
@@ -73,21 +76,21 @@ OPTIONS
 
 VERSIONS
 
-    SUSE Linux, CZ - 1y-                 Red Hat, CZ - 2y+
+    SUSE Linux, CZ _ 1y-                 Red Hat, CZ _ 2y+
     > Linux Developer, L3 Support        > Kernel Support Engineer
                                          > Team Lead
-    Gemalto, LATAM - 4y+
-    > Integration Engineer I and II      Drogarias Pacheco, BR - 1y
+    Gemalto, LATAM _ 4y+
+    > Integration Engineer I and II      Drogarias Pacheco, BR _ 1y-
                                          > SAP Basis Support
-    Fidelity IT, BR - 1y-                > Site Reliability Engineer, 
+    Fidelity IT, BR _ 1y-                > Site Reliability Engineer, 
     > Unix Support Engineer              > L2 Support
     > Storage Support Engineer 
-                                         INPI, BR - 4y
-    Kern Technologies, BR - 2y+          > Tech Lead
+                                         INPI, BR _ 4y+
+    Kern Technologies, BR _ 2y+          > Tech Lead
     > Linux Engineer                     > Unix Support Engineer
     > Site Reliability Engineer          > Network and Security group
      
-    Various Companies, BR - 2y+          Uniabeu, Br - 1y-
+    Various Companies, BR _ 2y+          Uniabeu, Br _ 1y-
     > Webmaster / Web Developer          > Information Security Professor
     > Sysadmin / Windows/Linux Support
 

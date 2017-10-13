@@ -124,7 +124,7 @@ solid_ground_progress()
 		then
 			if test "`find /tmp/progress -mmin +30`"
 			then
-				l3ls -m | egrep 'IN_PROGRESS|NEW' | wc -l > \
+				l3ls -m | egrep 'IN_PROGRESS|NEW|CONFIRM' | wc -l > \
 				/tmp/progress
 			fi
 			B=$(cat /tmp/progress)
@@ -139,19 +139,11 @@ banner()
 	echo -n "   [ CODER 0.1 ]   | "
 }
 
-irc_get()
-{
-	total=0
-	grep -hc capcom ~/irclogs/suse/* | while read a
-	do
-	total=$(( $a + $total ))
-	echo $total
-	done | tail -1
-}
-
 irc()
 {
-	B=$(eval irc_get)
+	B=$(grep capcom ~/irclogs/suse/* \
+	| egrep -v "You're now known as|has joined|has quit\
+        |capcom>|sdibot>|\* capcom" | wc -l)
 	echo -n " IRC:$B |"
 }
 

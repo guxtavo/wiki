@@ -75,6 +75,7 @@ export EDITOR=vi
 
 # power aliases
 alias psg="ps kstart_time -ef"
+alias pst="ps aux | sort -k10 | cut -b 1-79 | tail -11"
 alias ds="dstat -c -D sda -r --disk-util --top-bio --top-io-adv"
 alias jbacik="ps auxH -L | grep \" D\"  | awk '{print $3}' | xargs -I '{}' bash -c \"echo '{}'; cat /proc/'{}'/stack\" > /tmp/pid_stack.out"
 
@@ -134,7 +135,7 @@ alias zypper="sudo zypper"
 alias pvirsh="sudo virsh -c qemu+ssh://gfigueira@polio.suse.cz/system"
 alias solid="w3m https://l3support.nue.suse.com/short/"
 alias suse="vi ~/git/suse/suse.txt"
-alias progress="l3ls -m | egrep 'IN_PROGRESS|NEW' | cut -b 1-80 | sort -k2"
+alias progress="l3ls -m | egrep 'IN_PROGRESS|NEW|CONFIRM' | cut -b 1-80 | sort -k2"
 
 # OpenBSD
 alias obsd="ssh root@192.168.1.243"

@@ -10,12 +10,12 @@
                                                   TVGG OPQ SPG - stack
              .       ######################     tmux + vi + git + global
             /G\      #                    #      osc + pftutils + quilt
-           / Z \     # LKD, code and RPS1 #       strace + perf + gdb
+           / ? \     # LKD, code and RPS1 #       strace + perf + gdb
           / UCS \    #                    #      
          .-------.   ######################            GVOQP-GSPG
            ACTION   1, 1, 2, 3, 5, 8, 13, 21   git - vi - osc - quilt - ptf
                                                global - strace - perf - gdb  
-                                               virsh 
+                                                         l3vm
 			   ,aodObo,
 			,AMMMMP~~~~
 		     ,MMMMMMMMA.
@@ -47,13 +47,13 @@
 		 ,AMMMMMMMMMMMMMMMMMMMMMA   AMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 		AMMMMMMMMMMMMMMMMMMMMMMMMAaAMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 
-                +-projects----------------------+
-                | linux-stable    multikern*    |
-                | RT Patch        csr-aarav*    |
-                | hawking1        uit*          |
-                | wiki                          |
-                +-------------------------------+
-                                    * - non-FOSS
+                +-projects----------------------+    ######
+                | linux-stable    multikern*    |   ##    ## 
+                | RT Patch        csr-aarav*    |        ##
+                | hawking1        uit*          |       ##   question!
+                | wiki                          |       
+                +-------------------------------+      ##    action!
+                                    * - non-FOSS       ##
 
 					+------------+    
 				+----+  |------------|    ()
@@ -80,13 +80,10 @@
   #			    `-tmux-android-wp8                              #
   #	 101 03.0 10.0   4y [software-engineer]                             #
   #	 102 05.0 31.0   4y `-swapping-pomo-quilt-global-bashrc-tmux.conf   #
-  #	 110 02.0 10.0   1d `-kdump_by_label.patch                          #
-  #	 110 07.0 10.0   3d `-openssh_remove_weak_macs.patch                #
   #	 120 05.0 01.0   8y `-irssi-mutt-inbox-IM                           #
   #	 130 06.0 05.0   3y dream-chaser                                    #
   #                         rtl2832u_R820T2_473Mhz                          #
   #                     20y relationship_manager                            #
-  #                      2m `-zuzi                                          #
   #                      3y `-neelx                                         #
   #                      2y `-ksenyia_igor                                  #
   #      ======= totals =========                                           #
@@ -130,40 +127,37 @@
 read cdecl README, man page, source code
 bind tmux to paste more easily
 bind tmux to maximaze (z) more easily
+ps aliases
 
-27 jezenik trip
-28 jezenik hiking
-29 jezenik hiking, thermals
-30 jezenik hiking, trip
-
-#october
-01 rest, organize
-02 suse nexus error, danny
-03 suse caas
-04 suse ioctl, cdecl.hackweek
-05 suse 
-06 suse postfix(fortnight)
-07 weekend, rpi gw
-08 weekend
-09 suse l3t play around
+ps for running threads - ps axmsr
+ps by time - sort by time
 
 #############################################################################
+
+     October 2017
+ Mo Tu We Th Fr Sa Su
+                    1
+  2  3  4  5  6  7  8
+  9 10 11 12 13 14 15 > today 11
+ 16 17 18 19 20 21 22
+ 23 24 25 26 27 28 29
+ 30 31
 
     November 2017 
  Mo Tu We Th Fr Sa Su 
         1  2  3  4  5
-  6  7  8  9 10 11 12
- 13 14 15 16 17 18 19
- 20 21 22 23 24 25 26
+  6  7  8  9 10 11 12 > work x 4, hackweek
+ 13 14 15 16 17 18 19 > hackweek x 4
+ 20 21 22 23 24 25 26 > work x 2, FTO x 3 to study C?
  27 28 29 30         
 
     December 2017
  Mo Tu We Th Fr Sa Su
               1  2  3
   4  5  6  7  8  9 10
- 11 12 13 14 15 16 17
+ 11 12 13 14 15 16 17 > FTO x 3 ?, work x 2
  18 19 20 21 22 23 24
- 25 26 27 28 29 30 31 > holiday x 2
+ 25 26 27 28 29 30 31 > holiday x 2, work x 3
 
     January 2018
  Mo Tu We Th Fr Sa Su
