@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # History
 # 20170417 - Sanitize tmux status bar scripts
 
@@ -61,7 +62,7 @@ weather(){
 
 temperature(){
         B=$(sysctl -a | grep hw.sensors |grep cpu | cut -b 23-24)
-        echo -n " $B C |"
+        echo -n " ${B}C |"
 }
 
 nic_up(){
@@ -73,9 +74,8 @@ main(){
 	target
 	countdown
         nic_up
-        weather
+        #weather
         temperature
 }
 
 main
-

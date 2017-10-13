@@ -1,1 +1,1 @@
-./status-right-desktop.sh
+./status-right-openbsd.sh

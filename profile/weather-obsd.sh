@@ -8,7 +8,7 @@
 # functions
 
 get_weather(){
-  curl wttr.in/Brno | \
+  curl -s wttr.in/Brno | \
   head -4 | tail -1 | awk '{print $4}' \
   > /tmp/weather
 }
