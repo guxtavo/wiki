@@ -1,11 +1,2 @@
-# This is Git's per-user configuration file.
-[user]
-# Please adapt and uncomment the following lines:
-	name = Gustavo Figueira
-	email = gfigueira@suse.com
-[color]
-	status = always
-[core]
-	askpass = 
-[merge]
-	tool = meld
+[http]
+	sslVerify = false

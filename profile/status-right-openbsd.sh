@@ -70,7 +70,22 @@ nic_up(){
         echo -n " $B |"
 }
 
+git_repos_change(){
+        B=$(~/git/wiki/profile/git-tmux.sh)
+        echo -n " GIT:$B |"
+}
+
+irc()
+{
+        B=$(grep capcom ~/.irssi/irclogs/suse/* \
+        | egrep -v "You're now known as|has joined|has quit\
+        |capcom>|sdibot>|\* capcom" | wc -l | awk '{print $1}')
+        echo -n " IRC:$B |"
+}
+
 main(){
+	irc
+	git_repos_change
 	target
 	countdown
         nic_up
