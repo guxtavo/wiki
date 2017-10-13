@@ -94,4 +94,4 @@ countdown ()
      done
 }
 
-alias pomo="countdown 5 &"
+alias pomo="countdown 1500 &"

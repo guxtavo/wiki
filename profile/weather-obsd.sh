@@ -1,16 +1,8 @@
 #!/usr/bin/env bash
 
-# feed /tmp/weather from wttr.in and use regex to manipulate data
-# 
-# fix me - if no internet, file could be empty, try a second time maybe or 
-# something more robust
-
-# functions
-
 get_weather(){
-  curl -s wttr.in/Brno | \
-  head -4 | tail -1 | awk '{print $4}' \
-  > /tmp/weather
+  curl -s wttr.in/Brno | gsed "s,\x1B\[[0-9;]*[a-zA-Z],,g" | strings | head -3 | tail -1 | awk '{print $2}' 
+  touch /tmp/weather
 }
 
 # main funtion

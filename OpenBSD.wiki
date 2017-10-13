@@ -239,6 +239,25 @@ kdump -R -f ktrace-make.out | awk '($4=="CALL" || $4=="RET") {print}' \
 
 	xterm -fa 'Mono' -fs 13 -fg green -bg black
 
+###########
+# openbsd #
+# howto   #
+###########
+
+How to update system: pkg_add -Uu
+How to change volume: mixerctl outputs.master=255,25
+
+############
+# i3 howto #
+############
+
+  windows + enter     = open new terminal
+  windows + d         = run a command
+  windows + f         = full screen
+  windows + shift + q = close current window
+  windows + shift + e = exit i3
+  windows + shift + # = move window to # workspace
+
 ########
 # todo #
 ########

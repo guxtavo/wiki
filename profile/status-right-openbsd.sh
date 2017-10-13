@@ -56,8 +56,12 @@ target(){
 }
 
 weather(){
-        B=$(~/git/wiki/profile/weather-obsd.sh)
-        echo -n " $B C |"
+	if test "`find /tmp/weather -mmin +30`"
+	then
+		curl -s wttr.in/Brno | gsed "s,\x1B\[[0-9;]*[a-zA-Z],,g" | strings | head -3 | tail -1 | awk '{print $2}' > /tmp/weather
+	fi
+	B=$(cat /tmp/weather)
+        echo -n " ${B}C |"
 }
 
 temperature(){
@@ -85,12 +89,14 @@ irc()
 
 main(){
 	irc
+	#solid_ground_progress
 	git_repos_change
 	target
 	countdown
         nic_up
-        #weather
+        weather
         temperature
+	#hdd_led
 }
 
 main
