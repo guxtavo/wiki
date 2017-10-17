@@ -69,16 +69,29 @@
 # building #
 ############
 
+w3m https://www.openbsd.org/faq/current.html
+
+make openbsd more hackr-friendly
+
   * man 8 release
 
+  # kernel #
+
 	cd /usr/src
-	ftp https://ftp2.eu.openbsd.org/pub/OpenBSD/6.1/sys.tar.gz
+	ftp $(cat /etc/installurl)/6.2/sys.tar.gz
 	tar xzf sys.tar.gz && rm sys.tar.gz
 	cvs -d anoncvs@anoncvs.eu.openbsd.org:/cvs -q up -rOPENBSD_6_1 -Pd
 	cd /sys/arch/amd64/compile/GENERIC.MP/ 
 	make obj && make config
 	time make -j $(top -b | grep -c CPU[0-9])  && make install
 	make clean && reboot
+
+  # base system #
+
+
+  # xenocara #
+
+
 
 ##############
 # make times #

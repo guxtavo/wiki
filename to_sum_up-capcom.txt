@@ -2,16 +2,16 @@ capcom(7)                       Gustavo Figueira                       capcom(7)
 
 OBJECTIVE
        Work for aerospace sector or engineering (R&D, PaaS, CaaS, HPC, DevOps).
-                                                   980.000CZK annual +-10%
+                                                     980.000/910.000CZK annual 
 
 SYNOPSIS
        IEEE 1003          ######....                    x86_64 ###.......
        troubleshooting    #####.....    linux kernel internals ####......
        RFC 791/793/3022   ######....                  RFC 8239 #####.....
-       RFC 3720/3643      ##........                         C ##........
-       Bash               ######....                      math ###....... 
+       RFC 3720/3643      ##........             c/python/perl ##........
+       bash/ksh           #####.....             algebra/logic ###....... 
 
-                unix -> c and storage -> engineering -> cubesats
+                    unix -> c -> assembly -> cubesats/rtl-sdr
 
 DESCRIPTION
        At 16 I started my  first job as  web designer.  It was the modem times.
@@ -59,7 +59,7 @@ OPTIONS
               customer oriented
 
        -i --interests
-              rtl-sdr, cubesats, openbsd, acoustic guitar, aviation, philosophy
+              philosophy, aviation, acoustic guitar, openbsd, rtl-sdr, cubesats
 
        -p --projects
               multikern/Kerntec 2004 - hotspot with bandwidth throttling 

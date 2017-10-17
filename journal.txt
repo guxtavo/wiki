@@ -127,37 +127,48 @@
 read cdecl README, man page, source code
 bind tmux to paste more easily
 bind tmux to maximaze (z) more easily
+process accounting
 ps aliases
 
 ps for running threads - ps axmsr
 ps by time - sort by time
 
+why paging in and out doesnt appear on systat ?
+how to list number of cpus in bsd easily?
+create router lab in openbsd - vmd
+why systat doesn't show disk latency together with speed? actullay it fucking shows :D
+
+controlled descend
+does shutdown in linux has the dump option? no it doesn't
+
 #############################################################################
 
-     October 2017
- Mo Tu We Th Fr Sa Su
-                    1
-  2  3  4  5  6  7  8
-  9 10 11 12 13 14 15 > today 11
- 16 17 18 19 20 21 22
- 23 24 25 26 27 28 29
- 30 31
+    October 2017
+Su Mo Tu We Th Fr Sa
+ 1  2  3  4  5  6  7 [40]
+ 8  9 10 11 12 13 14 [41]
+15 16 17 18 19 20 21 [42] *
+22 23 24 25 26 27 28 [43] > sendbug(8)
+29 30 31             [44]
+                    
 
-    November 2017 
- Mo Tu We Th Fr Sa Su 
-        1  2  3  4  5
-  6  7  8  9 10 11 12 > work x 4, hackweek
- 13 14 15 16 17 18 19 > hackweek x 4
- 20 21 22 23 24 25 26 > work x 2, FTO x 3 to study C?
- 27 28 29 30         
+   November 2017
+Su Mo Tu We Th Fr Sa
+          1  2  3  4 [44]
+ 5  6  7  8  9 10 11 [45] > work x 4, hackweek
+12 13 14 15 16 17 18 [46] > hackweek x 4, holiday
+19 20 21 22 23 24 25 [47] > work x 3, FTO C x 2
+26 27 28 29 30       [48]
+                    
 
-    December 2017
- Mo Tu We Th Fr Sa Su
-              1  2  3
-  4  5  6  7  8  9 10
- 11 12 13 14 15 16 17 > FTO x 3 ?, work x 2
- 18 19 20 21 22 23 24
- 25 26 27 28 29 30 31 > holiday x 2, work x 3
+   December 2017
+Su Mo Tu We Th Fr Sa
+                1  2 [48]
+ 3  4  5  6  7  8  9 [49]
+10 11 12 13 14 15 16 [50] > FTO x 3 ?, work x 2
+17 18 19 20 21 22 23 [51]
+24 25 26 27 28 29 30 [52] > holiday x 2, work x 3
+31                   [53]
 
     January 2018
  Mo Tu We Th Fr Sa Su
@@ -166,6 +177,24 @@ ps by time - sort by time
  15 16 17 18 19 20 21 > fto x 5, weekend
  22 23 24 25 26 27 28 > fto, travel x 3, working, weekend
  29 30 31 
+
+== week 42 ==
+
+  
+  pomo email
+  pomo workstation setup
+  pomo workstation tooling
+  pomo workstation certs
+  pomo workstation
+  pomo workstation 
+  pomo xfs ptf
+
+
+  pomo sendbug(8)
+  pomo sendbug(8)
+  pomo sendbug(8)
+  pomo sendbug(8)
+
 
 == 08/25/17 ==
 

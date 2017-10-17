@@ -20,6 +20,7 @@ alias ll="ls -lahtr"
 alias lr="ls -ltr | tail -40" 
 alias ssh="ssh -X -o TCPKeepAlive=yes"
 alias journal="vi ~/git/wiki/journal.txt"
+alias top="top -SC"
 
 # git aliases
 alias glo="git log --oneline"
@@ -94,4 +95,10 @@ countdown ()
      done
 }
 
-alias pomo="countdown 1500 &"
+alias 1500="countdown 1500 &"
+
+pomo()
+{
+	echo $date "-" $* >> git/wiki/pomo.log
+	1500
+}

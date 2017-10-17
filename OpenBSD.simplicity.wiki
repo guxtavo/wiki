@@ -1,0 +1,23 @@
+I recently acquired an OpenBSD book and am running as my daily driver in SuSE.
+
+Things are different in the BSD world, so instead of Googling I try to read the man pages. 
+
+# Start your investigation making quieting the top
+
+   top(8)
+
+     -q      Renice top to -20 so that it will run faster.  This can be used
+             when the system is being very sluggish to improve the possibility
+             of discovering the problem.  This option can only be used by
+             root.
+
+# Controlled vmcore descend, good habits with shutdown
+
+shutdown(8) - first option
+
+     -d      When used with -h, -p, or -r causes system to perform a dump.
+             This option is useful for debugging system dump procedures or
+             capturing the state of a corrupted or misbehaving system.  See
+             savecore(8) for information on how to recover this dump.
+
+

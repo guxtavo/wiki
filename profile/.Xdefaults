@@ -3,7 +3,7 @@ XTerm*loginShell:true
 XTerm*Background: black
 XTerm*Foreground: green
 XTerm*faceName: Mono
-XTerm*faceSize: 12
+XTerm*faceSize: 11
 XTerm*ScrollBar: false
 XTerm*eightBitInput:   false
 XTerm*metaSendsEscape: true

@@ -42,9 +42,9 @@ for i in 1 2 3 4; do
   sleep $LOOP
   NEW=$(getVmstat)
   if [ "$NEW" = "$OLD" ]; then
-    printf '\xE2\x97\x8B'
+    echo -n "#"
   else
-    printf '\xE2\x97\x8F'
+    echo -n "."
   fi
   OLD=$NEW
 done
@@ -55,18 +55,41 @@ target(){
         echo -n " => $B <= |"
 }
 
+
+curling()
+{ 
+	curl -s wttr.in/Brno | \
+	gsed "s,\x1B\[[0-9;]*[a-zA-Z],,g" | \
+	strings | \
+	head -3 | \
+	tail -1 | \
+	awk '{print $2}' > /tmp/weather
+}
+
 weather(){
-	if test "`find /tmp/weather -mmin +30`"
-	then
-		curl -s wttr.in/Brno | gsed "s,\x1B\[[0-9;]*[a-zA-Z],,g" | strings | head -3 | tail -1 | awk '{print $2}' > /tmp/weather
+	# prepare
+	if test -e /tmp/weather
+		then
+			if test "`find /tmp/weather -mmin +30`"
+				then
+					curling
+			fi
+		else
+			curling
 	fi
+
+	# test for error - file is empty
+	#if 
+
+	# display
 	B=$(cat /tmp/weather)
         echo -n " ${B}C |"
 }
 
 temperature(){
         B=$(sysctl -a | grep hw.sensors |grep cpu | cut -b 23-24)
-        echo -n " ${B}C |"
+	C=$(doas /root/hdd_temp.sh | awk '{print $4}')
+        echo -n " ${B}C/${C}C |"
 }
 
 nic_up(){
@@ -87,16 +110,32 @@ irc()
         echo -n " IRC:$B |"
 }
 
+updates()
+{
+	B=$(cat /tmp/syspatch)
+	echo -n " $B |"
+}
+
+volume()
+{
+	B=$(mixerctl outputs.master | cut -f 2 -d ",")
+	echo -n " $(( ( $B * 100 ) / 255 ))% |"
+}
+
 main(){
+	updates
 	irc
-	#solid_ground_progress
+	#solid_ground_progress - vm gfigueira-l3t-1017
 	git_repos_change
 	target
 	countdown
         nic_up
         weather
         temperature
-	#hdd_led
+	#brightness - what to use here?
+	volume
+	#battery - what to use here?
+	#hdd_led - reddit pgin/out
 }
 
 main
