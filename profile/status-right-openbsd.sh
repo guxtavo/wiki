@@ -94,7 +94,7 @@ temperature(){
 }
 
 nic_up(){
-        B=$(ifconfig | grep UP | egrep -v "lo0|pflog0" | awk '{print $1}' | tr -d ":" | perl -p -e 's/\n/, /' | sed -e 's/, $//g' || echo NIC)
+        B=$(ifconfig | grep RUNNING | egrep -v "lo0|pflog0" | awk '{print $1}' | tr -d ":" | perl -p -e 's/\n/, /' | sed -e 's/, $//g' || echo NIC)
         echo -n " $B |"
 }
 

@@ -38,8 +38,10 @@ alias tel="ssh l3slave.suse.de /suse/bin/tel"
 alias polio="ssh polio.suse.cz"
 alias l3vm="ssh polio.suse.cz l3vm"
 alias noe="ssh noe.suse.cz"
-alias vpn="doas openvpn --daemon --config /etc/openvpn/SUSE.conf.PRG"
+alias vpn_on="doas openvpn --daemon --config /etc/openvpn/SUSE.conf.PRG"
 alias vpn-dns="doas /etc/openvpn/dns.suse"
+alias vpn-dns-home="doas /etc/openvpn/dns.home"
+alias vpn_off="doas pkill openvpn"
 alias pvirsh="sudo virsh -c qemu+ssh://gfigueira@polio.suse.cz/system"
 alias solid="w3m https://l3support.nue.suse.com/short/"
 alias suse="vi ~/git/suse/suse.txt"
@@ -57,7 +59,7 @@ update_profile_git()
         cp ~/.profile ~/git/wiki/profile/
         cp ~/.Xdefaults ~/git/wiki/profile/
         cp ~/.vimrc ~/git/wiki/profile/
-        cp ~/.tmux.conf ~/git/wiki/profile/
+        cp ~/.tmux.conf ~/git/wiki/profile/.tmux.conf-openbsd
         cp ~/.gitconfig ~/git/wiki/profile/
         cp ~/.quiltrc ~/git/wiki/profile/
 }
@@ -98,8 +100,8 @@ countdown ()
 
 alias 1500="countdown 1500 &"
 
-pomo()
-{
-	echo $date "-" $* >> git/wiki/pomo.log
-	1500
-}
+#pomo()
+#{
+#	echo $date "-" $* >> git/wiki/pomo.log
+#	1500
+#}
