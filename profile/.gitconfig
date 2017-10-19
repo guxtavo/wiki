@@ -1,2 +1,5 @@
 [http]
 	sslVerify = false
+[user]
+	name = Gustavo Figueira
+	email = gfigueira@suse.com
