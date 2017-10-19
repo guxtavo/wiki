@@ -355,7 +355,7 @@ update_profile_git()
 {
         cp ~/.bashrc ~/git/wiki/profile/
         cp ~/.vimrc ~/git/wiki/profile/
-        cp ~/.tmux.conf ~/git/wiki/profile/
+        cp ~/.tmux.conf ~/git/wiki/profile/.tmux.conf-tumbleweed
         cp ~/.gitconfig ~/git/wiki/profile/
         cp ~/.quiltrc ~/git/wiki/profile/
 }
