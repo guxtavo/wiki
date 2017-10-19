@@ -160,8 +160,8 @@ updates()
 main(){
 #	banner
 #	updates
-	irc
 	solid_ground_progress
+	irc
         git_repos_change
 	target
 	countdown
