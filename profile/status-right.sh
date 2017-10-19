@@ -1,1 +1,0 @@
-./status-right-openbsd.sh
