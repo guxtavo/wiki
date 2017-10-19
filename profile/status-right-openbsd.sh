@@ -63,6 +63,7 @@ curling()
 	strings | \
 	head -3 | \
 	tail -1 | \
+	tr -d "_/." | \
 	awk '{print $2}' > /tmp/weather
 }
 

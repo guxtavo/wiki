@@ -159,7 +159,7 @@ updates()
 
 main(){
 #	banner
-	updates
+#	updates
 	irc
 	solid_ground_progress
         git_repos_change
