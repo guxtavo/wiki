@@ -93,9 +93,23 @@ temperature(){
         echo -n " ${B}C/${C}C |"
 }
 
+dns()
+{
+if ! grep 10.100.2.8 /etc/resolv.conf > /dev/null
+then
+echo -n home
+fi
+
+if ! grep 192.168.1.1 /etc/resolv.conf > /dev/null
+then
+echo -n suse
+fi
+}
+
 nic_up(){
         B=$(ifconfig | grep RUNNING | egrep -v "lo0|pflog0" | awk '{print $1}' | tr -d ":" | perl -p -e 's/\n/, /' | sed -e 's/, $//g' || echo NIC)
-        echo -n " $B |"
+	C=$(dns)
+        echo -n " $B ($C) |"
 }
 
 git_repos_change(){
