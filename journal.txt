@@ -129,6 +129,8 @@ bind tmux to paste more easily
 bind tmux to maximaze (z) more easily
 process accounting
 ps aliases
+try https://vilimpoc.org/research/ku-latency/
+try http://lttng.org/blog/2016/01/06/monitoring-realtime-latencies/
 
 ps for running threads - ps axmsr
 ps by time - sort by time

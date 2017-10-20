@@ -9,7 +9,7 @@ then
   update_tmp
 fi
 
-if test "`find /tmp/git_status -mmin +10`"
+if test "`find /tmp/git_status -mmin +3`"
 then
   update_tmp
 fi
