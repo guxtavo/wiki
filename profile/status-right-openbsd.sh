@@ -140,22 +140,44 @@ volume()
 hdd_led()
 {
 	B=$(systat -B -s 0.2 iostat | head -5 | tail -1 | awk '{print $6}')
-	echo -n " sd0:$B |"
+	echo -n " sd0: $B |"
 }
+
+
+l3t_progress()
+{
+	ssh -x root@germ57.suse.cz l3ls -m
+}
+
+solid_ground_progress()
+{
+        if ifconfig tun0 | grep RUNN > /dev/null
+                then
+                        if test "`find /tmp/progress -mmin +5`"
+                        then
+                                l3t_progress | \
+				egrep 'IN_PROGRESS|NEW|CONFIRM' | \
+				wc -l > /tmp/progress
+                        fi
+                        B=$(cat /tmp/progress|awk '{print $1}')
+                        echo -n " L3:$B |"
+                else
+                        echo -n " L3:NA |"
+        fi
+} 
 
 main(){
 	updates
+	solid_ground_progress
 	irc
-	#solid_ground_progress - vm gfigueira-l3t-1017
 	git_repos_change
 	target
 	countdown
         nic_up
         weather
         temperature
-	#brightness - what to use here?
 	volume
-	#battery - what to use here?
+	#network latency
 	hdd_led
 }
 
