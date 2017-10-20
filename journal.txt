@@ -135,10 +135,8 @@ try http://lttng.org/blog/2016/01/06/monitoring-realtime-latencies/
 ps for running threads - ps axmsr
 ps by time - sort by time
 
-why paging in and out doesnt appear on systat ?
 how to list number of cpus in bsd easily?
 create router lab in openbsd - vmd
-why systat doesn't show disk latency together with speed? actullay it fucking shows :D
 
 controlled descend
 does shutdown in linux has the dump option? no it doesn't
