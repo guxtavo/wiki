@@ -123,6 +123,12 @@ volume()
 	echo -n " $(( ( $B * 100 ) / 255 ))% |"
 }
 
+hdd_led()
+{
+	B=$(systat -B -s 0.2 iostat | head -5 | tail -1 | awk '{print $6}')
+	echo -n " sd0:$B |"
+}
+
 main(){
 	updates
 	irc
@@ -136,7 +142,7 @@ main(){
 	#brightness - what to use here?
 	volume
 	#battery - what to use here?
-	#hdd_led - reddit pgin/out
+	hdd_led
 }
 
 main

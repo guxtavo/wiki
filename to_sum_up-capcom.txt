@@ -1,8 +1,7 @@
 capcom(7)                       Gustavo Figueira                       capcom(7)
 
 OBJECTIVE
-       Work for aerospace sector or engineering (R&D, PaaS, CaaS, HPC, DevOps).
-                                                     980.000/910.000CZK annual 
+       Work as consultant for aerospace (R&D, PaaS, CaaS, HPC, DevOps).
 
 SYNOPSIS
        IEEE 1003          ######....                    x86_64 ###.......
@@ -11,7 +10,7 @@ SYNOPSIS
        RFC 3720/3643      ##........             c/python/perl ##........
        bash/ksh/regex     #####.....             algebra/logic ###....... 
 
-                    unix -> c -> assembly -> cubesats/rtl-sdr
+                     unix -> c -> rtl-sdr -> cubesats
 
 DESCRIPTION
        At 16 I started my  first job as  web designer.  It was the modem times.
