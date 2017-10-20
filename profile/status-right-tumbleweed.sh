@@ -81,10 +81,10 @@ tasks(){
         fi
 }
 
-#weather(){
-#        B=$(~/git/wiki/profile/weather.sh)
-#        echo -n " $B |"
-#}
+weather(){
+        B=$(~/git/wiki/profile/weather.sh)
+        echo -n " $B |"
+}
 
 temperature(){
         B=$(sensors | grep CPU | awk '{print $2}' | tr -d "+" | sed 's/\.0//g')
@@ -92,9 +92,23 @@ temperature(){
         echo -n " $B/$C |"
 }
 
+dns()
+{
+if ! grep 10.100.2.8 /etc/resolv.conf > /dev/null
+then
+echo -n home
+fi
+
+if ! grep 192.168.1.1 /etc/resolv.conf > /dev/null
+then
+echo -n suse
+fi
+}
+
 nic_up(){
         B=$(ip link  show | grep LOWER_UP | grep -v lo > /dev/null && ip link show | grep LOWER_UP | grep -v lo | cut -f 2 -d " " | tr -d : | tr "\n" , | sed -e 's/,$//' || echo NIC)
-        echo -n " $B |"
+	C=$(dns)
+        echo -n " $B ($C) |"
 }
 
 volume(){
@@ -158,6 +172,7 @@ updates()
 }
 
 main(){
+        battery
 #	banner
 #	updates
 	solid_ground_progress
@@ -166,11 +181,10 @@ main(){
 	target
 	countdown
         nic_up
-#        weather
+        weather
         temperature
-        brightness
+#        brightness
         volume
-        battery
 	hdd_led
 }
 

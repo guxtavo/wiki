@@ -45,7 +45,7 @@ set-window-option -g mode-keys vi
 #	   %a %m-%d %H:%M'
 #
 #set -g status-right '#(cd #{pane_current_path}; git rev-parse --abbrev-ref HEAD) #(cd #{pane_current_path}; git status --porcelain | wc -l) |#(~/git/wiki/profile/status-right.sh) %a %m-%d %H:%M'
-set -g status-right '#(~/git/wiki/profile/status-right-tumbleweed.sh) %a %m-%d %H:%M'
+set -g status-right '#(~/git/wiki/profile/status-right-tumbleweed.sh) [%V] %a %m-%d %H:%M'
 
 # clipboard integration
 # C-b-p to paste buffer from xclip:
