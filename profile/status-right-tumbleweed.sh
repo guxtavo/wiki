@@ -142,7 +142,7 @@ solid_ground_progress()
 				/tmp/progress
 			fi
 			B=$(cat /tmp/progress)
-			echo -n " SG:$B |"
+			echo -n " L3:$B |"
 		else
 			echo -n " L3:NA |"
 	fi
@@ -180,11 +180,11 @@ main(){
         git_repos_change
 	target
 	countdown
-        nic_up
         weather
         temperature
 #        brightness
         volume
+        nic_up
 	hdd_led
 }
 
