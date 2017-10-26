@@ -21,3 +21,19 @@ shutdown(8) - first option
              savecore(8) for information on how to recover this dump.
 
 
+
+factor(6) - 
+
+SYNOPSIS
+     factor [number ...]
+     primes [start [stop]]
+
+jot(1)
+
+     jot - print sequential or random data
+
+SYNOPSIS
+     jot [-cnr] [-b word] [-p precision] [-s string] [-w word]
+         [reps [begin [end [s]]]]
+
+

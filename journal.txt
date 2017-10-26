@@ -6,16 +6,31 @@
                  #          #        #    #     ##    ##
                  ########    ########     #######     #######
                   ######      ######      ######      ########
+			
+				openbsd
+			tmux + vi + git + ctags
+			 osc + ptfutils + quilt
 
-                                                  TVGG OPQ SPG - stack
-             .       ######################     tmux + vi + git + global
-            /G\      #                    #      osc + pftutils + quilt
-           / ? \     # LKD, code and RPS1 #       strace + perf + gdb
-          / UCS \    #                    #      
-         .-------.   ######################            GVOQP-GSPG
-           ACTION   1, 1, 2, 3, 5, 8, 13, 21   git - vi - osc - quilt - ptf
-                                               global - strace - perf - gdb  
-                                                         l3vm
+		 ######   ######  ######   ##  ##  #######
+		 ##   ##  ##      ##   ##  ##  ##  ##
+		 ##   ##  ####    ######   ##  ##  ## ####
+		 ##   ##  ##      ##   ##  ##  ##  ##    #
+		 ######   ######  ######   ######  ####### 
+
+			strace + perf + gdb + crash
+
+		  ######  ######  ##  ##  #####    #####  #######
+		##    ##  ##  ##  ##  ##  ##  ##  ##    # ##
+                ##        ##  ##  ##  ##  ##  ##  ##      ##
+                 ######   ##  ##  ##  ##  #####   ##      ######
+                      ##  ##  ##  ##  ##  ##   #  ##      ##
+                #     ##  ##  ##  ##  ##  ##   #  ##    # ##
+                 #####    ######  #####   ##   #   #####  #######
+
+			~/git/linux-stable
+			/usr/src/sys
+
+
 			   ,aodObo,
 			,AMMMMP~~~~
 		     ,MMMMMMMMA.
@@ -124,6 +139,14 @@
 
 #############################################################################
 
+ctags -x /usr/src/sys/kern/* | less
+ctags -a /usr/src/sys/kern/*
+ctags -u /usr/src/sys/kern/*
+
+ctags in vi
+Ctrl-] -> go to tag
+Ctrl-t -> back
+
 read cdecl README, man page, source code
 bind tmux to paste more easily
 bind tmux to maximaze (z) more easily
@@ -131,6 +154,8 @@ process accounting
 ps aliases
 try https://vilimpoc.org/research/ku-latency/
 try http://lttng.org/blog/2016/01/06/monitoring-realtime-latencies/
+
+vi - highlight after 80 chars
 
 ps for running threads - ps axmsr
 ps by time - sort by time
@@ -140,6 +165,23 @@ create router lab in openbsd - vmd
 
 controlled descend
 does shutdown in linux has the dump option? no it doesn't
+
+openbsd on rpi as friday night project
+  - firmware on the external usb storage
+  - lay the filesystem to the sd card
+  - serial console? wtf?
+
+console - firmware interaction - it might require a 3.3v
+TLL level adapter connected to pins or a header on the board.
+
+EFI Firmware wth DTB - required to boot
+
+miniroot62.fs image -> sd card
+	dd if=minitroot62.fs of=/dev/rsd1c bs=1m
+
+Connect the rpi3 to serial adapter to the workstation, and issue
+a command to connect to the serial port:
+	cu -l cuaU0 -s 115200
 
 #############################################################################
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # History
 # 20170417 - Sanitize tmux status bar scripts
+# storage, sysmgmnt, kernel
 
 countdown()
 {
@@ -18,38 +19,6 @@ countdown()
 	fi
 }
 
-getVmstat() {
-	cat /proc/vmstat|egrep "pgpgin|pgpgout"
-}
- 
-# virtual hdd indicator
-# reads /proc/stat and track changes in pgpgin and pgpgout
-# if there is no change, print an empty circle
-# if there is change, prinf a full circle
-# It should print 4 circles, every time status-right.sh executes
-# most of the time it should be empty circles as there is a 2 seconds
-# interval on the tmux status bar script, but it would show a lot of 
-# full circles if there is big activity
-hdd_led(){
-LOOP=0.25
-
-# initialise variables
-NEW=$(getVmstat)
-OLD=$(getVmstat)
-
-echo -n " "
-for i in 1 2 3 4; do
-  sleep $LOOP
-  NEW=$(getVmstat)
-  if [ "$NEW" = "$OLD" ]; then
-    echo -n "#"
-  else
-    echo -n "."
-  fi
-  OLD=$NEW
-done
-echo " |"
-}
 target(){
         B=$(cat ~/.config/target) 
         echo -n " => $B <= |"
@@ -63,8 +32,8 @@ curling()
 	strings | \
 	head -3 | \
 	tail -1 | \
-	tr -d "_/." | \
-	awk '{print $2}' > /tmp/weather
+	cut -b14-20 | \
+	awk '{print $1}' > /tmp/weather
 }
 
 weather(){
@@ -106,10 +75,28 @@ echo -n suse
 fi
 }
 
+network_check()
+{
+
+#ping -c 1 -w 1 8.7.6.5 > /dev/null
+ping -c 1 -w 1 10.100.2.8 > /dev/null
+OUT=$?
+if [ $OUT -eq 0 ];then
+   echo "."
+else
+   echo "!!"
+fi
+}
+
 nic_up(){
-        B=$(ifconfig | grep RUNNING | egrep -v "lo0|pflog0" | awk '{print $1}' | tr -d ":" | perl -p -e 's/\n/, /' | sed -e 's/, $//g' || echo NIC)
+        B=$(ifconfig | grep RUNNING | \
+	  egrep -v "lo0|pflog0" | \
+	  awk '{print $1}' | \
+	  tr -d ":" | \
+  	  perl -p -e 's/\n/, /' | \
+          sed -e 's/, $//g' || echo NIC)
 	C=$(dns)
-        echo -n " $B ($C) |"
+	echo -n " $B ($C$(network_check)) |"
 }
 
 git_repos_change(){
@@ -127,7 +114,12 @@ irc()
 
 updates()
 {
-	B=$(cat /tmp/syspatch)
+	if [[ ! -e /tmp/syspatch ]]
+		then
+			B=NA
+		else
+			B=$(cat /tmp/syspatch)
+	fi
 	echo -n " $B |"
 }
 
@@ -137,7 +129,7 @@ volume()
 	echo -n " $(( ( $B * 100 ) / 255 ))% |"
 }
 
-hdd_led()
+sd0_lag()
 {
 	B=$(systat -B -s 0.2 iostat | head -5 | tail -1 | awk '{print $6}')
 	echo -n " sd0: $B |"
@@ -151,6 +143,11 @@ l3t_progress()
 
 solid_ground_progress()
 {
+	if [[ ! -e /tmp/progress ]]
+		then
+			touch /tmp/progress
+	fi
+
         if ifconfig tun0 | grep RUNN > /dev/null
                 then
                         if test "`find /tmp/progress -mmin +5`"
@@ -173,12 +170,12 @@ main(){
 	git_repos_change
 	target
 	countdown
-        nic_up
         weather
         temperature
 	volume
-	#network latency
-	hdd_led
+	#network lag
+        nic_up
+	sd0_lag
 }
 
 main
