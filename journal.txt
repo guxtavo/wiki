@@ -139,6 +139,11 @@
 
 #############################################################################
 
+  * INSTALL.arm64 | requirements > journal
+  * play with with jot and git/wiki/profile/tests.sh
+  * status-right-openbsd.sh
+  * git/suse/sendbug/README.md
+
 ctags -x /usr/src/sys/kern/* | less
 ctags -a /usr/src/sys/kern/*
 ctags -u /usr/src/sys/kern/*
@@ -196,12 +201,20 @@ Su Mo Tu We Th Fr Sa
 
    November 2017
 Su Mo Tu We Th Fr Sa
-          1  2  3  4 [44]
+          1  2  3  4 [44] > work x 2, FTO
  5  6  7  8  9 10 11 [45] > work x 4, hackweek
 12 13 14 15 16 17 18 [46] > hackweek x 4, holiday
 19 20 21 22 23 24 25 [47] > work x 3, FTO C x 2
 26 27 28 29 30       [48]
                     
+
+daily, weekly, monthly script for supportconfig
+
+supportconfig --daily
+supportconfig --weekly
+supportconfig --monthly
+port security
+
 
    December 2017
 Su Mo Tu We Th Fr Sa

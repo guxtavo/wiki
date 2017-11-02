@@ -45,7 +45,7 @@ alias vpn-dns-home="doas /etc/openvpn/dns.home"
 alias vpn_off="doas pkill openvpn"
 alias pvirsh="sudo virsh -c qemu+ssh://gfigueira@polio.suse.cz/system"
 alias suse="vi ~/git/suse/suse.txt"
-alias progress="l3t l3ls -m | egrep 'IN_PROGRESS|NEW' | cut -b 1-80 | sort -k2"
+alias progress="l3t l3ls -m | egrep 'IN_PROGRESS|NEW|CONFIRME' | cut -b 1-80 | sort -k2"
 alias needinfo="l3t l3ls -m | egrep 'NEEDINFO' | cut -b 1-80 | sort -k2"
 
 # tmux clipboard management
