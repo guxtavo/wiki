@@ -35,7 +35,7 @@ getVmstat() {
 # interval on the tmux status bar script, but it would show a lot of 
 # full circles if there is big activity
 hdd_led(){
-LOOP=0.25
+LOOP=0.1
 
 # initialise variables
 NEW=$(getVmstat)
@@ -52,7 +52,7 @@ for i in 1 2 3 4; do
   fi
   OLD=$NEW
 done
-echo " |"
+echo -n " |"
 }
 
 git_repos_change(){
@@ -105,10 +105,47 @@ echo -n suse
 fi
 }
 
+network_check()
+{
+#ping -c 1 -w 1 8.7.6.5 > /dev/null
+ping -c 1 -w 1 10.100.2.8 > /dev/null
+OUT=$?
+if [ $OUT -eq 0 ];then
+   echo "."
+else
+   echo "!!"
+fi
+}
+
+network_check2()
+{
+#ping -c 1 -w 1 8.7.6.5 > /dev/null
+
+B=$(ping -c 1 -w 1 8.8.8.8 | grep from | \
+#B=$(ping -c 1 -w 1 10.100.2.8 | grep from | \
+awk '{print $7}' | \
+cut -f 2 -d "=" | \
+cut -f 1 -d ".")
+
+if test ! -z $B; then echo -n "$B"; else echo " !!";fi
+}
+
 nic_up(){
-        B=$(ip link  show | grep LOWER_UP | grep -v lo > /dev/null && ip link show | grep LOWER_UP | grep -v lo | cut -f 2 -d " " | tr -d : | tr "\n" , | sed -e 's/,$//' || echo NIC)
+        B=$(ip link  show | grep LOWER_UP | \
+	  grep -v lo | \
+	  grep LOWER_UP | \
+	  awk '{print $2}' | \
+	  tr -d ":" | \
+	  perl -p -e 's/\n/, /' | \
+	  sed -e 's/, $//g' || echo NIC)
 	C=$(dns)
         echo -n " $B ($C) |"
+}
+
+network_latency()
+{
+B=$(network_check2)
+echo -n " ${B}ms |" 
 }
 
 volume(){
@@ -117,12 +154,14 @@ volume(){
 }
 
 battery(){
-        B=$(acpi | head -1 | awk '{print $4}' | tr -d ",")
+        B=$(acpi | head -1 | awk '{print $4}' | cut -b 1)
+	for i in $(seq $B); do echo -n "!"; done
+
 	if $(acpi | grep "Battery 0" | grep -q Discharging)
 		then
-			echo -n " ♥$B |"
+			echo -n " |"
 		else
-			echo -n " ♥$B ∞ |"
+			echo -n "∞ |"
 	fi
 }
 
@@ -185,6 +224,7 @@ main(){
 #        brightness
         volume
         nic_up
+	network_latency
 	hdd_led
 }
 
