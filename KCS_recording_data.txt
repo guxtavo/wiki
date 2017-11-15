@@ -21,5 +21,5 @@ Private note:
 To replay the session use
 
 ~~~
-scriptreplay -t interactive.time -s interactive.session
+scriptreplay -t time.log -s session.log
 ~~~

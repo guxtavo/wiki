@@ -8,7 +8,7 @@
 # functions
 
 get_weather(){
-  curl wttr.in/Brno | \
+  curl wttr.in/~Brno | \
   sed -r "s/\x1B\[(([0-9]+)(;[0-9]+)*)?[m,K,H,f,J]//g" \
   > /tmp/weather
 }

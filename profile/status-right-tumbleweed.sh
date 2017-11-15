@@ -108,7 +108,8 @@ fi
 network_check()
 {
 #ping -c 1 -w 1 8.7.6.5 > /dev/null
-ping -c 1 -w 1 10.100.2.8 > /dev/null
+#ping -c 1 -w 1 10.100.2.8 > /dev/null
+ping -c 1 -w 1 l3slave.suse.de > /dev/null
 OUT=$?
 if [ $OUT -eq 0 ];then
    echo "."
@@ -121,7 +122,7 @@ network_check2()
 {
 #ping -c 1 -w 1 8.7.6.5 > /dev/null
 
-B=$(ping -c 1 -w 1 8.8.8.8 | grep from | \
+B=$(ping -c 1 -w 1 l3slave.suse.de | grep from | \
 #B=$(ping -c 1 -w 1 10.100.2.8 | grep from | \
 awk '{print $7}' | \
 cut -f 2 -d "=" | \

@@ -1,7 +1,7 @@
 capcom(7)                       Gustavo Figueira                       capcom(7)
 
 OBJECTIVE
-       Work as consultant for aerospace (R&D, PaaS, CaaS, HPC, DevOps).
+       Work as consultant for aerospace (R&D, IaaS, CaaS, HPC, DevOps).
 
 SYNOPSIS
        IEEE 1003          ######....                    x86_64 ###.......
@@ -10,7 +10,7 @@ SYNOPSIS
        RFC 3720/3643      ##........             c/python/perl ##........
        bash/ksh/regex     #####.....             algebra/logic ###....... 
 
-                     unix -> c -> rtl-sdr -> cubesats
+                Infrastructure - Unix - Networking - DevOps
 
 DESCRIPTION
        At 16 I started my  first job as  web designer.  It was the modem times.
