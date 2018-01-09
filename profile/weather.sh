@@ -8,7 +8,8 @@
 # functions
 
 get_weather(){
-  curl wttr.in/~Brno | \
+  curl -m 1 wttr.in/Nova_iguacu | \
+ # curl wttr.in/~Brno | \
   sed -r "s/\x1B\[(([0-9]+)(;[0-9]+)*)?[m,K,H,f,J]//g" \
   > /tmp/weather
 }
@@ -22,8 +23,6 @@ main(){
     get_weather
   fi
 
-  # maybe add some timer here
-
   # if the file is empty, try again to fetch the data 
   if test ! -s /tmp/weather
   then
@@ -31,8 +30,18 @@ main(){
   fi
   
   # show the formatted weather
-  head -4 /tmp/weather  | tail -1 | \
-  cut -b 16-40 | tr -d " "
+  B=$(head -4 /tmp/weather  | tail -1 |  cut -b 16-40 | tr -d " ")
+
+  # there should be numbers in first line
+  if ! $(echo $B | grep [0-9] > /dev/null)
+    then
+      echo "ERROR"
+      exit 1
+    else 
+      echo $B
+      # die and set 
+  fi
+
 }
 
 # adding case to easily test the bugs

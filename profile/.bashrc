@@ -73,6 +73,9 @@ export EDITOR=vi
 # aliases #
 ###########
 
+# Pi3
+alias pi="ssh pi@192.168.10.1"
+
 # power aliases
 alias psg="ps kstart_time -ef"
 alias pst="ps aux | sort -k10 | cut -b 1-79 | tail -11"

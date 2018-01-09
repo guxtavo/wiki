@@ -2,9 +2,13 @@
 
 ## CI workflow:
 
-* add specfile
-* add source
-* build / fix / rebuild
+  * osc - create project
+  * osc add http://example.com/source.tgz
+  * create specfile
+  * osc add specfile
+  * build
+
+iosc meta prj -e
 
 ## TODO
 

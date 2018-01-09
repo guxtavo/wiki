@@ -1,0 +1,44 @@
+I always have difficulties with fetching a commit from a github pull request
+which was merged.
+
+Take pull 334 as an example. The code I want is here:
+
+https://github.com/kubic-project/salt/commit/932ec2730b571361325da7ccaf5d0eca3b9cd821
+git clone...
+[~]$ cd git/salt/
+[salt]$ git show 932ec2730b571361325da7ccaf5d0eca3b9cd821
+fatal: bad object 932ec2730b571361325da7ccaf5d0eca3b9cd821
+
+bad object? what about the shorter id:
+
+[salt]$ git show 932ec27
+fatal: ambiguous argument '932ec27': unknown revision or path not in the
+working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+
+
+Ok, I now understand:
+
+inercia merged 1 commit into release-2.0 from release-2.0-fix-rolebindings 9
+days ago
+
+I need to checkout release-2.0.
+
+git checkout release-2.0
+git log
+
+
+git show
+commit 24ca2193945abc5b3f4af2b7b77ed5db59ffa0a5 (HEAD -> release-2.0,
+origin/release-2.0)
+Author: Alvaro Saurin <alvaro.saurin@gmail.com>
+Date:   Mon Dec 18 16:37:38 2017 +0100
+
+    Do not try to create clusterrolebindings when they are already there
+
+    bsc#1072005
+
+Lessons learned:
+  * check the second line of the commit, it should tell you "into <branch>"
+  * checkout the branch and use git log -p to see the diff wih code

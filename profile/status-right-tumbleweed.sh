@@ -42,7 +42,7 @@ NEW=$(getVmstat)
 OLD=$(getVmstat)
 
 echo -n " "
-for i in 1 2 3 4; do
+for i in 1 2 3; do
   sleep $LOOP
   NEW=$(getVmstat)
   if [ "$NEW" = "$OLD" ]; then
@@ -57,7 +57,7 @@ echo -n " |"
 
 git_repos_change(){
         B=$(~/git/wiki/profile/git-tmux.sh)
-        echo -n " GIT:$B |"
+        echo -n " G:$B |"
 }
 
 tasks(){
@@ -87,7 +87,7 @@ weather(){
 }
 
 temperature(){
-        B=$(sensors | grep CPU | awk '{print $2}' | tr -d "+" | sed 's/\.0//g')
+        B=$(sensors | grep CPU | awk '{print $2}' | tr -d "+°C" | sed 's/\.0//g')
 	C=$(sudo hddtemp /dev/sda| awk '{print $6}')
         echo -n " $B/$C |"
 }
@@ -99,7 +99,7 @@ then
 echo -n home
 fi
 
-if ! grep 192.168.1.1 /etc/resolv.conf > /dev/null
+if ! grep 8.8.8.8 /etc/resolv.conf > /dev/null
 then
 echo -n suse
 fi
@@ -118,35 +118,72 @@ else
 fi
 }
 
-network_check2()
-{
-#ping -c 1 -w 1 8.7.6.5 > /dev/null
-
-B=$(ping -c 1 -w 1 l3slave.suse.de | grep from | \
-#B=$(ping -c 1 -w 1 10.100.2.8 | grep from | \
-awk '{print $7}' | \
-cut -f 2 -d "=" | \
-cut -f 1 -d ".")
-
-if test ! -z $B; then echo -n "$B"; else echo " !!";fi
-}
-
 nic_up(){
-        B=$(ip link  show | grep LOWER_UP | \
+
+if $(ip link show | grep LOWER_UP | egrep "virbr|vnet" > /dev/null)
+  then
+    D="V"
+  else
+    D="."
+fi
+
+        B=$(ip link show | grep LOWER_UP | \
+	  egrep -v "virbr|vnet" | \
 	  grep -v lo | \
 	  grep LOWER_UP | \
 	  awk '{print $2}' | \
 	  tr -d ":" | \
 	  perl -p -e 's/\n/, /' | \
 	  sed -e 's/, $//g' || echo NIC)
+
 	C=$(dns)
-        echo -n " $B ($C) |"
+        echo -n " $B $D ($C) |"
 }
 
 network_latency()
 {
-B=$(network_check2)
-echo -n " ${B}ms |" 
+B=$(ping -c 1 -w 1 l3slave.suse.de \
+  | grep seq \
+  | awk '{print $8}' \
+  | cut -f 2 -d "=" \
+  | cut -f 1 -d ".")
+
+if test -n $B
+	then
+		if [ $B -lt "25" ]
+		  then
+		  C="a"
+
+		  elif  [ $B -lt "50" ] && [ $B -ge "25" ]
+		  then
+		    C="A"
+
+		  elif [ $B -lt "75" ]  && [ $B -ge "50" ]
+		  then 
+		    C="b"
+
+		  elif [ $B -lt "500" ]  && [ $B -ge "250" ]
+		  then 
+		    C="-"
+
+		  elif [ $B -lt "750" ]  && [ $B -ge "500" ]
+		  then 
+		    C="B"
+
+		  else
+		    C="?"
+		fi
+	else
+	C="!"
+fi
+
+tail -2 /tmp/pings > /tmp/pings_t
+echo $C >> /tmp/pings_t
+mv /tmp/pings_t /tmp/pings
+
+D=$(cat /tmp/pings | perl -p -e 's/\n//')
+
+echo -n " ${D} |" 
 }
 
 volume(){
@@ -155,14 +192,14 @@ volume(){
 }
 
 battery(){
-        B=$(acpi | head -1 | awk '{print $4}' | cut -b 1)
-	for i in $(seq $B); do echo -n "!"; done
+        B=$(acpi | head -1 | awk '{print $4}' | tr -d "%,")
+#	for i in $(seq $B); do echo -n "!"; done
 
 	if $(acpi | grep "Battery 0" | grep -q Discharging)
 		then
-			echo -n " |"
+			echo -n " $B |"
 		else
-			echo -n "∞ |"
+			echo -n " $B∞ |"
 	fi
 }
 
@@ -174,17 +211,18 @@ brightness(){
 
 solid_ground_progress()
 {
+	FILTER="IN_PROGRESS|NEW|CONFIRM"
 	if $(ip a | grep tun0 | grep -q UP)
 		then
-			if test "`find /tmp/progress -mmin +30`"
+			if test "`find /tmp/progress -mmin +45`"
 			then
-				l3ls -m | egrep 'IN_PROGRESS|NEW|CONFIRM' | wc -l > \
-				/tmp/progress
+				l3ls -m | grep -v "^\[" > /tmp/progress
 			fi
-			B=$(cat /tmp/progress)
-			echo -n " L3:$B |"
+			B=$(cat /tmp/progress | egrep 'IN_PROGRESS|NEW|CONFIRM' | wc -l)
+			C=$(wc -l /tmp/progress|awk '{print $1}')
+			echo -n " $B/$C |"
 		else
-			echo -n " L3:NA |"
+			echo -n " NA |"
 	fi
 }
 
@@ -198,7 +236,7 @@ irc()
 	B=$(grep capcom ~/irclogs/suse/* \
 	| egrep -v "You're now known as|has joined|has quit\
         |capcom>|sdibot>|\* capcom" | wc -l)
-	echo -n " IRC:$B |"
+	echo -n " I:$B |"
 }
 
 updates()
@@ -212,21 +250,21 @@ updates()
 }
 
 main(){
-        battery
 #	banner
 #	updates
+	countdown
+        weather
 	solid_ground_progress
 	irc
         git_repos_change
 	target
-	countdown
-        weather
         temperature
 #        brightness
-        volume
+#        volume
         nic_up
 	network_latency
 	hdd_led
+        battery
 }
 
 main

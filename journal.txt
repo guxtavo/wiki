@@ -1,23 +1,8 @@
 
-                  ######      ######      ######      ########
-                 ########    ########     #######     #######
-                 #          #        #    #     ##    ##
-                 #          #        #    #     ##    #####
-                 #          #        #    #     ##    ##
-                 ########    ########     #######     #######
-                  ######      ######      ######      ########
-			
 				openbsd
 			tmux + vi + git + ctags
 			 osc + ptfutils + quilt
 
-		 ######   ######  ######   ##  ##  #######
-		 ##   ##  ##      ##   ##  ##  ##  ##
-		 ##   ##  ####    ######   ##  ##  ## ####
-		 ##   ##  ##      ##   ##  ##  ##  ##    #
-		 ######   ######  ######   ######  ####### 
-
-			strace + perf + gdb + crash
 
 		  ######  ######  ##  ##  #####    #####  #######
 		##    ##  ##  ##  ##  ##  ##  ##  ##    # ##
@@ -27,10 +12,33 @@
                 #     ##  ##  ##  ##  ##  ##   #  ##    # ##
                  #####    ######  #####   ##   #   #####  #######
 
+                  ######      ######      ######      ########
+                 ########    ########     #######     #######
+                 #          #        #    #     ##    ##
+                 #          #        #    #     ##    #####
+                 #          #        #    #     ##    ##
+                 ########    ########     #######     #######
+                  ######      ######      ######      ########
+			
+		 ######   ######  ######   ##  ##  #######
+		 ##   ##  ##      ##   ##  ##  ##  ##
+		 ##   ##  ####    ######   ##  ##  ## ####
+		 ##   ##  ##      ##   ##  ##  ##  ##    #
+		 ######   ######  ######   ######  ####### 
+
+
+			strace + perf + gdb + crash
+
+
+
+
+
 			~/git/linux-stable
 			/usr/src/sys
 
 
+
+                                                       Gustavo Figueira   
 			   ,aodObo,
 			,AMMMMP~~~~
 		     ,MMMMMMMMA.
@@ -64,24 +72,17 @@
 
                 +-projects----------------------+    ######
                 | linux-stable    multikern*    |   ##    ## 
-                | RT Patch        csr-aarav*    |        ##
-                | hawking1        uit*          |       ##   question!
+                | openbsd         uit*          |        ##
+                | hawking1        csr/aarav*    |       ##   question!
                 | wiki                          |       
                 +-------------------------------+      ##    action!
-                                    * - non-FOSS       ##
-
-					+------------+    
-				+----+  |------------|    ()
-		   |      +--+  |    |  |            |    ||
-		  [.]     |5"|  | 7" |  |     14"    |    ||
-		   |      +--+  +----+  +------------+   .||.
-		   R       L1     L2          L3          ##
+                                                       ##
 
   ###########################################################################
   #	$ ssh capcom@self ps aux                                            #
   #	 PID %CPU %MEM TIME COMMAND                                         #
   #	   1  1.0 10.0  37y init                                            #
-  #	   2 30.0 01.0   2w [watchdog]                                      #
+  #	   2 10.0 01.0   2w [watchdog]                                      #
   #	   3 10.0 01.0   2d [moleskine-system-interrupt-coalescing]         #
   #	   4 00.0 01.0   3h [audible]                                       #
   #			    `-algorithms_to_live_by:scheduling              # 
@@ -137,92 +138,32 @@
    # g.....o.f......a@gmail.com - PSN PT - WipEout HD, Rachet & Clank #
    ####################################################################
 
-#############################################################################
+	 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+	 ~ %life 2.1                ~
+	 ~ ###...... work (society) ~
+	 ~ ######... work + sleep   ~
+	 ~ ......### family + self  ~
+	 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  * INSTALL.arm64 | requirements > journal
-  * play with with jot and git/wiki/profile/tests.sh
-  * status-right-openbsd.sh
-  * git/suse/sendbug/README.md
-
-ctags -x /usr/src/sys/kern/* | less
-ctags -a /usr/src/sys/kern/*
-ctags -u /usr/src/sys/kern/*
-
-ctags in vi
-Ctrl-] -> go to tag
-Ctrl-t -> back
-
-read cdecl README, man page, source code
-bind tmux to paste more easily
-bind tmux to maximaze (z) more easily
-process accounting
-ps aliases
-try https://vilimpoc.org/research/ku-latency/
-try http://lttng.org/blog/2016/01/06/monitoring-realtime-latencies/
-
-vi - highlight after 80 chars
-
-ps for running threads - ps axmsr
-ps by time - sort by time
-
-how to list number of cpus in bsd easily?
-create router lab in openbsd - vmd
-
-controlled descend
-does shutdown in linux has the dump option? no it doesn't
-
-openbsd on rpi as friday night project
-  - firmware on the external usb storage
-  - lay the filesystem to the sd card
-  - serial console? wtf?
-
-console - firmware interaction - it might require a 3.3v
-TLL level adapter connected to pins or a header on the board.
-
-EFI Firmware wth DTB - required to boot
-
-miniroot62.fs image -> sd card
-	dd if=minitroot62.fs of=/dev/rsd1c bs=1m
-
-Connect the rpi3 to serial adapter to the workstation, and issue
-a command to connect to the serial port:
-	cu -l cuaU0 -s 115200
-
-daily, weekly, monthly script for supportconfig
-
-supportconfig --daily
-supportconfig --weekly
-supportconfig --monthly
-port security
-
-2ds and pilotwings resort, mario kart - guilherme :D
+  It's hard, and that's why I do it. Hardship makes you strong!?
 
 #############################################################################
 
- 42 salary 15th
--10   (danny)
-- 9.8 (rent)
-- 9   (300*30 food)
-- 3   jeans
- 10.2 left
-  2.4 left from october 
- 12.6 left total
+######################
+# process accounting #
+######################
 
-    November 2017
- Su Mo Tu We Th Fr Sa
-  5  6  7  8  9 10 11 [45] > work x 5 - strong
- 12 13 14 15 16 17 18 [46] > hackweek x 4, holiday
- 19 20 21 22 23 24 25 [47] > work x 3, FTO C x 2
- 26 27 28 29 30       [48] 
-                    
-    December 2017
- Su Mo Tu We Th Fr Sa
-                 1  2 [48]
-  3  4  5  6  7  8  9 [49]
- 10 11 12 13 14 15 16 [50] > 
- 17 18 19 20 21 22 23 [51] > FTO x 5
- 24 25 26 27 28 29 30 [52] > holiday x 2, work x 3
- 31                   [53] > weekend
+	try https://vilimpoc.org/research/ku-latency/
+	try http://lttng.org/blog/2016/01/06/monitoring-realtime-latencies/
+
+##############
+# ps aliases #
+##############
+
+	ps for running threads - ps axmsr
+	ps by time - ps aux | sort -k 10
+
+#############################################################################
 
     January 2018
  Mo Tu We Th Fr Sa Su
