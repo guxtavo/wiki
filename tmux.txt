@@ -27,3 +27,6 @@ tmux tricks
         tmux list-buffer
         tmux show-buffer
         tmux show-buffer -n 1
+
+# kill pane ?
+	Ctrl-b x

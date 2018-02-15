@@ -81,6 +81,7 @@ alias psg="ps kstart_time -ef"
 alias pst="ps aux | sort -k10 | cut -b 1-79 | tail -11"
 alias ds="dstat -c -D sda -r --disk-util --top-bio --top-io-adv"
 alias jbacik="ps auxH -L | grep \" D\"  | awk '{print $3}' | xargs -I '{}' bash -c \"echo '{}'; cat /proc/'{}'/stack\" > /tmp/pid_stack.out"
+alias 80="cut -b1-80"
 
 # User specific aliases
 alias edit_alias="vi ~/.bashrc;. ~/.bashrc; update_profile_git"

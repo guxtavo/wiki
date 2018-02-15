@@ -57,7 +57,7 @@ echo -n " |"
 
 git_repos_change(){
         B=$(~/git/wiki/profile/git-tmux.sh)
-        echo -n " G:$B |"
+        echo -n " $B |"
 }
 
 tasks(){
@@ -192,10 +192,10 @@ volume(){
 }
 
 battery(){
-        B=$(acpi | head -1 | awk '{print $4}' | tr -d "%,")
+        B=$(acpi | grep -v "unavailable" | awk '{print $4}' | tr -d "%,")
 #	for i in $(seq $B); do echo -n "!"; done
 
-	if $(acpi | grep "Battery 0" | grep -q Discharging)
+	if $(acpi | grep -v "unavailable" | grep -q Discharging)
 		then
 			echo -n " $B |"
 		else
@@ -216,11 +216,13 @@ solid_ground_progress()
 		then
 			if test "`find /tmp/progress -mmin +45`"
 			then
-				l3ls -m | grep -v "^\[" > /tmp/progress
+				 l3ls -m | grep "^\[" | tr -d "[" | \
+				 awk '{print $1}' | \
+				 perl -pe 's/\n/\//g' | \
+				 awk -F "/" '{ print $2 "/" $1}' > /tmp/progress
 			fi
-			B=$(cat /tmp/progress | egrep 'IN_PROGRESS|NEW|CONFIRM' | wc -l)
-			C=$(wc -l /tmp/progress|awk '{print $1}')
-			echo -n " $B/$C |"
+			B=$(cat /tmp/progress)
+			echo -n " $B -"
 		else
 			echo -n " NA |"
 	fi
@@ -233,7 +235,7 @@ banner()
 
 irc()
 {
-	B=$(grep capcom ~/irclogs/suse/* \
+	B=$(grep capcom ~/.irssi/irclogs/suse/* \
 	| egrep -v "You're now known as|has joined|has quit\
         |capcom>|sdibot>|\* capcom" | wc -l)
 	echo -n " I:$B |"
@@ -255,7 +257,7 @@ main(){
 	countdown
         weather
 	solid_ground_progress
-	irc
+#	irc
         git_repos_change
 	target
         temperature
