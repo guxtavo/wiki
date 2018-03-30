@@ -13,7 +13,7 @@ Resolution
 script -t 2> time.log -a session.log
 ~~~
 
-Upload both interactive.time and interactive.session to your ticket.
+Upload both time.log and session.log to your ticket.
 
 
 Private note:
@@ -21,5 +21,5 @@ Private note:
 To replay the session use
 
 ~~~
-scriptreplay -t time.log -s session.log
+scriptreplay -t time.log -s session.log -d 2 -m 1
 ~~~

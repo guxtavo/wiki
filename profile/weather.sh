@@ -9,7 +9,8 @@
 
 get_weather(){
  # curl -m 1 wttr.in/Nova_iguacu | \
- curl wttr.in/~Brno | \
+ curl -m 5 wttr.in/~Brno | \
+ #curl -m 5 wttr.in/~Prague | \
   sed -r "s/\x1B\[(([0-9]+)(;[0-9]+)*)?[m,K,H,f,J]//g" \
   > /tmp/weather
 }
@@ -33,7 +34,7 @@ main(){
   B=$(head -4 /tmp/weather  | tail -1 |  cut -b 16-40 | tr -d " ")
 
   # there should be numbers in first line
-  if ! $(echo $B | grep [0-9] > /dev/null)
+  if ! $(echo $B | grep "[0-9]" > /dev/null)
     then
       echo "ERROR"
       exit 1

@@ -114,3 +114,10 @@ sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
 Add the following to the end of the file /etc/network/interfaces to restore the configuration when the network interface comes up:
 
 up iptables-restore < /etc/iptables.ipv4.nat
+
+
+##############################
+
+I don't have a ground station, so I want to control my satellite from my phone.
+But with a phone I don't have radio to communicate to the satellite. Unless I 
+communicate to the satellite using iridium

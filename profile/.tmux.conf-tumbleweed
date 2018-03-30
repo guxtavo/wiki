@@ -1,52 +1,57 @@
-# status bar settings
+# colors and styles
+set -g pane-border-bg default
+set -g pane-border-fg default
+set -g pane-active-border-bg default
+set -g pane-active-border-fg colour7
+set-window-option -g window-status-current-bg default
+set-window-option -g window-status-current-fg colour7
+set -g window-status-current-attr bold
+
+# status bar and general settings
 set -g status-right-length 200
 set-option -g status-position top
 set -g base-index 1
+set -g status-right '#(~/git/wiki/profile/status-right-tumbleweed.sh) [%V] %a %m-%d %H:%M'
+bind r source-file ~/.tmux.conf     # reload tmux config
 
 # automatically set window titles
 set-window-option -g automatic-rename on
 set-option -g set-titles on
 
 ## Navigation
-# use alt-arrow keys without prefix to select panels
-bind -n M-Left select-pane -L
-bind -n M-Right select-pane -R
-bind -n M-Up select-pane -U
-bind -n M-Down select-pane -D
-
-# use shift-arrow keys without prefix to switch windows
-bind -n S-Left previous-window
+# panes
+bind -n M-Left select-pane -L      # alt left to move to left
+bind -n M-Right select-pane -R     # alt right to move to right
+bind -n M-Up select-pane -U        # alt up to move up
+bind -n M-Down select-pane -D      # alt down to move down
+#resizing pane
+bind -n S-Down resize-pane -Z      # shift down to resize panes
+# windows 
+bind -n S-Left previous-window     # shift left to move left (windows)
 bind -n S-Right next-window
-# todo
-#bind -n S-up previous-session
-#bind -n S-Left previous-session
-
-# paging up and putting into copy mode
-bind -n S-Pageup copy-mode -u
-
-# reload tmux config
-bind r source-file ~/.tmux.conf
 
 # split window
-bind-key v split-window -h
-bind-key h split-window -v
+bind-key v split-window -h          # prefix v = split vertically
+bind-key h split-window -v          # prefix h = split horizontally
+set -sg escape-time 0               # set no delay for escape key press
+set-window-option -g mode-keys vi   # set vi mode
 
-# set no delay for escape key press
-set -sg escape-time 0
-
-set-window-option -g mode-keys vi
-
-# status bar script
-# set -g status-right 
-#	 '#(cd #{pane_current_path}; git rev-parse --abbrev-ref HEAD) 
-#	  #(cd #{pane_current_path}; git status --porcelain | wc -l)
-#	     |
-#	   #(~/git/wiki/profile/status-right.sh) 
-#	   %a %m-%d %H:%M'
-#
-#set -g status-right '#(cd #{pane_current_path}; git rev-parse --abbrev-ref HEAD) #(cd #{pane_current_path}; git status --porcelain | wc -l) |#(~/git/wiki/profile/status-right.sh) %a %m-%d %H:%M'
-set -g status-right '#(~/git/wiki/profile/status-right-tumbleweed.sh) [%V] %a %m-%d %H:%M'
-
-# clipboard integration
-# C-b-p to paste buffer from xclip:
-bind C-p run-shell "tmux set-buffer \"$(xclip -o)\"; tmux paste-buffer"
+# Clipboard integration
+# paging up and putting into copy mode
+bind -n S-Pageup copy-mode -u
+# copy
+bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "xclip"
+# copy buffer
+bind-key P choose-buffer
+# visual and visual block mode
+unbind-key -T copy-mode-vi v
+bind-key -T copy-mode-vi 'v' send -X begin-selection # Begin selection in copy mode.
+bind-key -T copy-mode-vi 'C-v' send -X rectangle-toggle # Begin selection in copy mode.
+bind-key -T copy-mode-vi 'y' send -X copy-selection # Yank selection in copy mode.
+# copy mode stuff
+bind-key -T copy-mode-vi 'g' send-keys -X copy-selection \; new-window -n google \; send-keys -t right 'w3m -M www.google.com/search?q="$(tmux show-buffer)" && tmux kill-window' 'Enter'
+bind-key -T copy-mode-vi 'w' send-keys -X copy-selection \; new-window -n wikipedia \; send-keys -t right 'w3m -M https://en.wikipedia.org/wiki/Special:Search/"$(tmux show-buffer)" && tmux kill-window' 'Enter'
+bind-key -T copy-mode-vi 'o' send-keys -X copy-selection \; new-window -n w3m \; send-keys -t right 'w3m -M "$(tmux show-buffer)" && tmux kill-window' 'Enter'
+#bind-key -T copy-mode-vi 't' send-keys -X copy-selection \; new-window -n translate   \; send-keys -t translate   'translate-shell es "$(tmux show-buffer)" | w3m        && tmux kill-window' 'Enter'
+#bind-key -T copy-mode-vi 'd' send-keys -X copy-selection \; new-window -n dict        \; send-keys -t dict        'translate-shell -d "$(tmux show-buffer)" | w3m        && tmux kill-window' 'Enter'
+#bind-key -T copy-mode-vi 's' send-keys -X copy-selection \; new-window -n speak       \; send-keys -t speak       'translate-shell -brief "$(tmux show-buffer)" -play    && tmux kill-window' 'Enter'

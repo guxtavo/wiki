@@ -271,6 +271,10 @@ How to change volume: mixerctl outputs.master=255,25
   windows + shift + e = exit i3
   windows + shift + # = move window to # workspace
 
+[~]$ start-pulseaudio-x11 
+[~]$ pavucontrol 
+
+
 ########
 # todo #
 ########

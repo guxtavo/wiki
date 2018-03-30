@@ -8,7 +8,7 @@ SYNOPSIS
        troubleshooting    #####.....		  linux kernel ####......
        RFC 791/793/3022   ######....                  RFC 8239 #####.....
        RFC 3720/3643      ##........             c/python/perl ##........
-       bash/ksh/regex     #####.....         database/services ###.......
+       bash/ksh/regex     #####.....                kubernetes ###.......
 
                 Infrastructure - Unix - Networking - DevOps
 
@@ -35,13 +35,13 @@ OPTIONS
               for ISPs
 
        -c --configuration (knowledgeable practitioner)
-              DNS, HTTP, SMTP, VPN (OpenVPN, IPsec), DHCP, NFS, Nagios, MySQL,
-              Oracle, Tomcat, JBoss, Asterisk, SAN, LVM
+              KVM, HTTP, VPN (OpenVPN, IPsec), DNS, SMTP, DHCP, NFS, Nagios,
+              MySQL, Oracle, Tomcat, JBoss, Asterisk, SAN, LVM
 
        -d --development (practitioner)
-              Scripting (Bash, Perl, Python), Object Oriented (JavaScript, C),
-              Linux kernel internals, git, regex, vi, CI(OBS), quilt,
-              Bugzilla, strace, perf, gdb, crash, tcpdump
+              cash), C, Linux kernel internals, git, OBS, vi, regex, quilt,
+              rpm, strace, perf, gdb, crash, tcpdump
+	      cgroups
 
        -n --networking (knowledgeable practitioner)
               IPv4, firewall configuration (iptables, pf), routing and 
@@ -76,7 +76,7 @@ OPTIONS
 
 VERSIONS
 
-    SUSE Linux, CZ         1y~           Red Hat, CZ           2y+
+    SuSE Linux, CZ         1y~           Red Hat, CZ           2y+
     > Linux Developer, L3 Support        > Kernel Support Engineer
                                          > Team Lead
     Gemalto, LATAM         4y+

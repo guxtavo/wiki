@@ -1,24 +1,26 @@
-set from = "guxtavo@gmail.com"
+set from = "gfigueira@suse.com"
 set realname = "Gustavo Figueira"
-set imap_user = 'guxtavo@gmail.com'
+set imap_user = 'gfigueira'
 set imap_pass = ''
 
-set folder = imaps://imap.gmail.com/
+set folder = imaps://imap.suse.de/
 set spoolfile = +INBOX
-set record = "+[Gmail]/Sent Mail"
-set postponed = "+[Gmail]/Drafts"
+#set record = "+[Gmail]/Sent Mail"
+#set postponed = "+[Gmail]/Drafts"
 
-set smtp_url = 'smtps://guxtavo@smtp.gmail.com'
+set smtp_url = 'smtp://gfigueira@imap.suse.de:587/'
 set smtp_pass = ''
 set record=""
-set trash="imaps://imap.gmail.com/[Gmail]/Trash"
+#set trash="imaps://imap.gmail.com/[Gmail]/Trash"
 
 bind editor <space> noop
-macro index,pager y "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"
-macro index,pager d "<save-message>=[Gmail]/Trash<enter><enter>" "Trash"
-macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
-macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
-macro index gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
-macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+#macro index,pager y "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"
+#macro index,pager d "<save-message>=[Gmail]/Trash<enter><enter>" "Trash"
+#macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+#macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
+#macro index gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
+##macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
 
 set editor = vim
+
+source ~/.mutt-color

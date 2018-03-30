@@ -60,26 +60,26 @@ git_repos_change(){
         echo -n " $B |"
 }
 
-tasks(){
-        r=$(( $RANDOM % 10 ))
-
-        if [  "$r" -le "5" ]
-        then
-                A=$(awk '/#TASKS-NOW/,/^$/' ~/git/wiki/journal.txt | egrep -v "TASKS|^$" | wc -l)
-                B=$(awk '/#TASKS-WEEKS/,/^$/' ~/git/wiki/journal.txt | egrep -v "TASKS|^$" | wc -l)
-                C=$(awk '/#TASKS-MONTHS/,/^$/' ~/git/wiki/journal.txt | egrep -v "TASKS|^$" | wc -l)
-                D=$(awk '/#TASKS-YEARS/,/^$/' ~/git/wiki/journal.txt | egrep -v "TASKS|^$" | wc -l)
-                E=$(awk '/#TASKS-10-YEARS/,/^$/' ~/git/wiki/journal.txt | egrep -v "TASKS|^$" | wc -l)
-                echo -n " $A/$B/$C/$D/$E |"
-        else
-                A=" "
-                B="  "
-                C=" "
-                D="  "
-                E=" "
-                echo -n " +000 / -000 |"
-        fi
-}
+# tasks(){
+#        r=$(( $RANDOM % 10 ))
+# 
+#         if [  "$r" -le "5" ]
+#         then
+#                 A=$(awk '/#TASKS-NOW/,/^$/' ~/git/wiki/journal.txt | egrep -v "TASKS|^$" | wc -l)
+#                 B=$(awk '/#TASKS-WEEKS/,/^$/' ~/git/wiki/journal.txt | egrep -v "TASKS|^$" | wc -l)
+#                 C=$(awk '/#TASKS-MONTHS/,/^$/' ~/git/wiki/journal.txt | egrep -v "TASKS|^$" | wc -l)
+#                 D=$(awk '/#TASKS-YEARS/,/^$/' ~/git/wiki/journal.txt | egrep -v "TASKS|^$" | wc -l)
+#                 E=$(awk '/#TASKS-10-YEARS/,/^$/' ~/git/wiki/journal.txt | egrep -v "TASKS|^$" | wc -l)
+#                 echo -n " $A/$B/$C/$D/$E |"
+#         else
+#                 A=" "
+#                 B="  "
+#                 C=" "
+#                 D="  "
+#                 E=" "
+#                 echo -n " +000 / -000 |"
+#         fi
+# }
 
 weather(){
         B=$(~/git/wiki/profile/weather.sh)
@@ -87,7 +87,8 @@ weather(){
 }
 
 temperature(){
-        B=$(sensors | grep CPU | awk '{print $2}' | tr -d "+°C" | sed 's/\.0//g')
+    B=$(sensors | grep CPU | awk '{print $2}' | \
+        tr -d "+°C" | sed 's/\.0//g')
 	C=$(sudo hddtemp /dev/sda| awk '{print $6}')
         echo -n " $B/$C |"
 }
@@ -148,27 +149,35 @@ B=$(ping -c 1 -w 1 l3slave.suse.de \
   | cut -f 2 -d "=" \
   | cut -f 1 -d ".")
 
+
+#    0-75 ms : a
+#  75-125 ms : A
+# 100-250 ms : b
+# 250-500 ms : B
+# 500-999 ms : c
+#     else   : ?
+
 if test -n $B
 	then
-		if [ $B -lt "25" ]
+		if [ $B -lt "75" ]
 		  then
 		  C="a"
 
-		  elif  [ $B -lt "50" ] && [ $B -ge "25" ]
+		  elif  [ $B -lt "125" ] && [ $B -ge "75" ]
 		  then
 		    C="A"
 
-		  elif [ $B -lt "75" ]  && [ $B -ge "50" ]
+		  elif [ $B -lt "250" ]  && [ $B -ge "125" ]
 		  then 
 		    C="b"
 
 		  elif [ $B -lt "500" ]  && [ $B -ge "250" ]
 		  then 
-		    C="-"
-
-		  elif [ $B -lt "750" ]  && [ $B -ge "500" ]
-		  then 
 		    C="B"
+
+		  elif [ $B -lt "999" ]  && [ $B -ge "500" ]
+		  then 
+		    C="c"
 
 		  else
 		    C="?"
@@ -197,6 +206,7 @@ battery(){
 
 	if $(acpi | grep -v "unavailable" | grep -q Discharging)
 		then
+			B=$(acpi -b 0 | grep "Battery 0" | awk  '{print $5}' | cut -b 2-5)
 			echo -n " $B |"
 		else
 			echo -n " $B∞ |"
@@ -209,6 +219,14 @@ brightness(){
         echo -n " ☀$B |"
 }
 
+solid_ground_fix()
+{
+	l3ls -m | grep "^\[" | tr -d "[" | \
+	awk '{print $1}' | \
+	perl -pe 's/\n/\//g' | \
+	awk -F "/" '{ print $2 "/" $1}' > /tmp/progress
+}
+
 solid_ground_progress()
 {
 	FILTER="IN_PROGRESS|NEW|CONFIRM"
@@ -216,10 +234,7 @@ solid_ground_progress()
 		then
 			if test "`find /tmp/progress -mmin +45`"
 			then
-				 l3ls -m | grep "^\[" | tr -d "[" | \
-				 awk '{print $1}' | \
-				 perl -pe 's/\n/\//g' | \
-				 awk -F "/" '{ print $2 "/" $1}' > /tmp/progress
+			  solid_ground_fix
 			fi
 			B=$(cat /tmp/progress)
 			echo -n " $B -"
@@ -255,18 +270,18 @@ main(){
 #	banner
 #	updates
 	countdown
-        weather
+    weather
 	solid_ground_progress
 #	irc
-        git_repos_change
+    git_repos_change
 	target
-        temperature
-#        brightness
-#        volume
-        nic_up
+    temperature
+#   brightness
+#   volume
+    nic_up
 	network_latency
 	hdd_led
-        battery
+    battery
 }
 
 main

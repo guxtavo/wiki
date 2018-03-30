@@ -2,6 +2,10 @@
 # Source global definitions #
 #############################
 
+# style and colors
+
+LS_COLORS=$LS_COLORS:'di=0;37:' ; export LS_COLORS
+
 # https://github.com/torvalds/linux/blob/master/Documentation/CodingStyle
 
 if [ -f /etc/bashrc ]; then
@@ -82,6 +86,14 @@ alias pst="ps aux | sort -k10 | cut -b 1-79 | tail -11"
 alias ds="dstat -c -D sda -r --disk-util --top-bio --top-io-adv"
 alias jbacik="ps auxH -L | grep \" D\"  | awk '{print $3}' | xargs -I '{}' bash -c \"echo '{}'; cat /proc/'{}'/stack\" > /tmp/pid_stack.out"
 alias 80="cut -b1-80"
+alias 8="cut -b1-$COLUMNS"
+alias webserver="python -m SimpleHTTPServer 8000"
+
+e8()
+{
+    COL=$(stty size | awk '{print $2}')
+    cut -b1-$COL
+}
 
 # User specific aliases
 alias edit_alias="vi ~/.bashrc;. ~/.bashrc; update_profile_git"
@@ -140,12 +152,14 @@ alias pvirsh="sudo virsh -c qemu+ssh://gfigueira@polio.suse.cz/system"
 alias solid="w3m https://l3support.nue.suse.com/short/"
 alias suse="vi ~/git/suse/suse.txt"
 alias progress="l3ls -m | egrep 'IN_PROGRESS|NEW|CONFIRM' | cut -b 1-80 | sort -k2"
+alias pes="w3m -M https://pes.suse.de/L3/"
+alias w3m="w3m -M"
 
 # OpenBSD
 alias obsd="ssh root@192.168.1.243"
 
 # tmux clipboard management
-alias copy="tmux show-buffer|xclip"
+#alias copy="tmux show-buffer|xclip"
 
 # olther aliases
 alias rfc="elinks https://tools.ietf.org/rfc/index"
@@ -373,7 +387,7 @@ google()
 {
         # replace default functionality, open I
         #elinks --dump www.google.com/search?q=$1 | head -16 | tail -1
-        elinks www.google.com/search?q=$1
+        w3m -M www.google.com/search?q="$@"
 }
 
 # I'm feeling lucky
@@ -477,7 +491,7 @@ countdown ()
          if (( (remaining=t-SECONDS) <= 0 )); then
 		rm -rf /tmp/countdown
 		set AUDIODRIVER=oss
-		play -q /usr/lib64/libreoffice/share/gallery/sounds/space.wav
+		play -q ~/git/wiki/profile/space.wav
 		break;
          fi;
      done
