@@ -1,0 +1,12 @@
+#!/bin/bash
+if test -e screencast.ogv; then
+  mv screencast.ogv screencast_$(date +%s).ogv
+fi
+
+ffmpeg -probesize 30M -framerate 2 \
+           -f x11grab -video_size 1920x1080 -i :0.0 \
+           -f alsa -ac 2  -thread_queue_size 256 \
+           -guess_layout_max 0 -i hw:0 \
+           -acodec pcm_s8 \
+           -c:v libvpx-vp9 -b:v 2M \
+           -loglevel warning screencast.webm

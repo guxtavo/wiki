@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Check interval seconds
+CHECKINTERVAL=2
+LOOP=0.25
+
+getVmstat() {
+  cat /proc/vmstat|egrep "pgpgin|pgpgout"  
+}
+
+# initialise variables
+NEW=$(getVmstat)
+OLD=$(getVmstat)
+ 
+echo -n "| "
+for i in 1 2 3 4; do
+  sleep $LOOP
+  NEW=$(getVmstat)
+  if [ "$NEW" = "$OLD" ]; then  
+    printf '\xE2\x97\x8B' 
+  else
+    printf '\xE2\x97\x8F'
+  fi
+  OLD=$NEW  
+done
+echo " |"

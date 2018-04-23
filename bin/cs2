@@ -1,0 +1,68 @@
+#!/bin/bash
+# $1 should be url to vmcore
+# process vmcores with crash-setup automatically 
+
+#
+# Crash setup 2 - vmcore env setup pre-flight - vesp
+# 
+#  client and server(l3slave)
+# 
+#            url  ->  setup-space()
+#           path  <-  setup-space()
+# 
+#   * receives http url for vmcore
+#   * setup directory in /space/`whoami`/vesp-$hash  #setup-space()
+#   * detect kernel and product
+#   * calls crash-setup on correct kernel
+#   * runs sys, log, kmem -i, bt -a and saves to vesp-out.txt
+#   * if user is logged in, use "talk" once job is finished
+# 
+# Read file ~/bin/cs2-queue.txt with parallel?
+# Server: nc -kl 2389 > file
+# Client: echo setup_space | nc -q1 localhost 2389
+
+NOT_SO_RAMDOM_HASH=`date | sha1sum | cut -b 1-16`
+
+setup_space()
+{
+	mkdir /space/`whoami`/vmcore-$NOT_SO_RAMDOM_HASH
+	cd /space/`whoami`/vmcore-$NOT_SO_RAMDOM_HASH
+	wget $1
+}
+
+crash_setup()
+{
+	echo "executing crash-setup, this might take a while"
+	cd /space/`whoami`/vmcore-$NOT_SO_RAMDOM_HASH
+	crash-setup 12 1 3.12.74-60.64.48 default
+}
+
+
+create_log_file()
+{
+	cd /space/`whoami`/vmcore-$NOT_SO_RAMDOM_HASH
+	crash vmlinux.gz vmlinux.debug kabest-vmcore \
+              -i /suse/gfigueira/bin/run > run.txt &
+	echo "running basic commands, this might take a while"
+	echo "crash directory created at /space/`whoami`/vmcore-$NOT_SO_RANDOM_HASH"
+	echo "to enter crash mode run: cs2 -c <id>"
+}
+
+usage()
+{
+	echo "$0 <url>"
+}
+
+cs2_ls()
+{
+	ls -l /space/`whoami`/vmcore-*
+}
+
+main()
+{
+	setup_space
+	crash_setup
+	create_log_file
+}
+
+main

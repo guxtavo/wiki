@@ -1,42 +1,107 @@
-
-  The Engineer who have flown a Raspberry Pi Cubesat
-
-Book cover: blender, raspeberry pi 3 3D model, cubesat 3D model, falcon 9 3D
-model, kendo mask 3D model 
-
-  1. Performance Debbugger Library
-  2. Modern Linux Admin
-  3. Latency
-   . cFS
-  4. RPS-1
-  5. Soft lockups
-  6. Engineering with bash and tmux
-  7. STO
-  8. Kernel
-  9. Kernel compiling
- 10. Kernel RT compiling 
- 11. Nice KCS 
-
-A Raspberry Pi 3 could run in space for about 6 months (totally arbritary 
-number). In order to minimize radiation effects, one would have to reboot it
-every day, just to make sure there is no memory corruption. 
-
-After shaking and baking the Pi, integrating the Flight software, testing the 
-communications and sensors, I have no idea what's is necessary
-
-Chapter 2 - Flight Software
-Chapter 3 - RTL-SDR
-Chapter 3 - Payload
-Chapter 4 - Performance and modern best practices
-Chapter 5 - Telemetry and Orbital Mechanics
-Chapter 6 - Propulsion
-
-Cubesat layers
-
-  Antenna
-  Frame/Solar Panel
-  Power Supply
-  Flight Control Computer
-  RTL-SDR
-  Payload
-  
+aarav.txt - Red Hat Support automation
+afh_epub - Airplane flying handbook pdf to epub conversion
+android_tablet.txt - Lenovo Tab3 7" review
+ansible.txt
+automation.txt
+bash_tips.txt
+bin
+cannot-boot-missing-system-files.txt
+ccna-security.txt
+chromebook_ssh.wiki
+clocksource.txt
+cpu_governor.txt
+crash_cpu_offline.txt
+crash_list_corruption.txt
+ctags.wiki
+dev_env.txt
+docker_database.txt
+documentary-begining-narrated.txt
+funcoeszz_verifica_site.txt
+gdb_tricks.txt
+git_cheat_sheet.txt
+git_pull_requests.txt
+global.txt
+gss_cards.txt
+gss_terminal.txt
+hard_lockups.txt
+hawk1ng.wiki
+historygram.txt
+idp.txt
+index
+journal.txt
+KCS_recording_data.txt
+kdump_server.txt
+kernel_article.txt
+kernel_compiling.txt
+kernel-mop
+kernel-rt-fedora25.txt
+kernel-sync.txt
+kt.txt
+latency.txt
+load_average_needle_trigger.txt
+mbsync
+mission_control.wiki
+modern-linux-admin.txt
+nice_kcs.txt
+numa_contention.txt
+obs-build.txt
+OpenBSD.simplicity.wiki
+OpenBSD.wiki
+openSUPPORT.txt
+OpenSUPPORT.wiki
+oracle.txt
+osc.txt
+page_cache-inactive.txt
+perf-analysis-mop.txt
+performance_best_practices.txt
+pomo.log
+presentation-letter.txt
+presentation-prep.txt
+profile
+redhat-journal.txt
+redox.txt
+Roboto-Regular.ttf
+rpi-1.txt
+rpm-va-prelink.txt
+sar_and_gnuplot.txt
+schedule_while_atomic.txt
+screencast.sh
+short.txt
+slab-allocation.txt
+soft_lockups_vmware.txt
+software_enginer_on_bash_and_tmux.txt
+source
+space-time-er.txt
+spacex_banner.txt
+spacex.png
+spacex.txt
+STO_releases.txt
+sto.txt
+strace_firefox.txt
+suse
+suse-products.txt
+systemd-cgroup-tuning.txt
+thankyou.txt
+the_engineer_who_flew_a_cubesat
+the_path_to_developer.txt
+TLB_shootdown.txt
+tmux_bug_report.txt
+tmux_start.sh
+tmux.txt
+todo.txt
+to_sum_up-capcom.txt
+to_sum_up-capcom.txt.bak
+tse.txt
+tuna-cmd.py
+tuna_code_review.txt
+tuna.txt
+udp_detect_domain.stp
+uprobe.txt
+using_tumbleweed.wiki
+wc.c
+whatsapp_marcia.txt
+wokcc.md
+wok.txt
+writing_aids_in_bash.txt
+xeon_bug.txt
+xrandr.txt

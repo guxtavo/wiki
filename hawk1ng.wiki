@@ -27,11 +27,11 @@
 
 Pi 3 Leds
 
-ACT   green   card status   flashing during SD card activity 
-PWR   red     power         power good indicator that goes off when power 
-                            drops below 4.65V 
+ACT   green   card status   flashing during SD card activity
+PWR   red     power         power good indicator that goes off when power
+                            drops below 4.65V
 
-My current battery pack does not work charging and discharging at the same time.
+My current battery pack does not work charging and discharging at the same time.
 
 	######################
 	# appliance creation #
@@ -106,7 +106,7 @@ EOF
 sudo service isc-dhcp-server start
 sudo service hostapd start
 
-sudo update-rc.d hostapd enable 
+sudo update-rc.d hostapd enable
 sudo update-rc.d isc-dhcp-server enable
 
 sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
@@ -119,5 +119,5 @@ up iptables-restore < /etc/iptables.ipv4.nat
 ##############################
 
 I don't have a ground station, so I want to control my satellite from my phone.
-But with a phone I don't have radio to communicate to the satellite. Unless I 
+But with a phone I don't have radio to communicate to the satellite. Unless I
 communicate to the satellite using iridium

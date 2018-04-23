@@ -1,57 +1,79 @@
 # colors and styles
 set -g pane-border-bg default
-set -g pane-border-fg default
+set -g pane-border-fg '#73ba25'
 set -g pane-active-border-bg default
 set -g pane-active-border-fg colour7
+set -g window-status-current-attr bold
+set -g window-active-style 'fg=default,bg=default'
 set-window-option -g window-status-current-bg default
 set-window-option -g window-status-current-fg colour7
-set -g window-status-current-attr bold
 
 # status bar and general settings
+set -g status-interval 60
+set -g status-bg '#81c13b'
 set -g status-right-length 200
 set-option -g status-position top
 set -g base-index 1
 set -g status-right '#(~/git/wiki/profile/status-right-tumbleweed.sh) [%V] %a %m-%d %H:%M'
 bind r source-file ~/.tmux.conf     # reload tmux config
-
-# automatically set window titles
 set-window-option -g automatic-rename on
 set-option -g set-titles on
+set -sg escape-time 1               # set no delay for escape key press
+set-window-option -g mode-keys vi   # set vi mode
 
-## Navigation
-# panes
+# Navigation
+
+## new stuff
+bind-key -n F10  new-window        # <F10> creates a new window
+
+bind k confirm kill-window
+
+## panes
 bind -n M-Left select-pane -L      # alt left to move to left
 bind -n M-Right select-pane -R     # alt right to move to right
 bind -n M-Up select-pane -U        # alt up to move up
 bind -n M-Down select-pane -D      # alt down to move down
-#resizing pane
-bind -n S-Down resize-pane -Z      # shift down to resize panes
-# windows 
+
+## windows
 bind -n S-Left previous-window     # shift left to move left (windows)
 bind -n S-Right next-window
 
-# split window
-bind-key v split-window -h          # prefix v = split vertically
-bind-key h split-window -v          # prefix h = split horizontally
-set -sg escape-time 0               # set no delay for escape key press
-set-window-option -g mode-keys vi   # set vi mode
+## resizing pane
+bind -n S-Down resize-pane -Z      # shift down to resize panes
+
+## split window
+bind-key -n F3 split-window -h     # <F3> splits vertically
+bind-key -n F4 split-window -v     # <F4> splits horizontally
+
+# Use F9 to search on google
+bind-key -n F9  new-window -n search \; send-keys -t right 'search && tmux kill-window' 'Enter'
+
+# join pane from, send pane to
+bind-key j command-prompt -p "join pane from:"  "join-pane -s '%%'"
+bind-key s command-prompt -p "send pane to:"  "join-pane -t '%%'"
 
 # Clipboard integration
-# paging up and putting into copy mode
+
+## paging up and putting into copy mode
 bind -n S-Pageup copy-mode -u
-# copy
+
+## copy tmux buffer to xclip
 bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "xclip"
-# copy buffer
-bind-key P choose-buffer
-# visual and visual block mode
+
+## copy buffer - Ctrl-b-P to show the copy buffer
+bind-key p choose-buffer
+
+## visual and visual block mode
 unbind-key -T copy-mode-vi v
 bind-key -T copy-mode-vi 'v' send -X begin-selection # Begin selection in copy mode.
 bind-key -T copy-mode-vi 'C-v' send -X rectangle-toggle # Begin selection in copy mode.
 bind-key -T copy-mode-vi 'y' send -X copy-selection # Yank selection in copy mode.
-# copy mode stuff
-bind-key -T copy-mode-vi 'g' send-keys -X copy-selection \; new-window -n google \; send-keys -t right 'w3m -M www.google.com/search?q="$(tmux show-buffer)" && tmux kill-window' 'Enter'
-bind-key -T copy-mode-vi 'w' send-keys -X copy-selection \; new-window -n wikipedia \; send-keys -t right 'w3m -M https://en.wikipedia.org/wiki/Special:Search/"$(tmux show-buffer)" && tmux kill-window' 'Enter'
-bind-key -T copy-mode-vi 'o' send-keys -X copy-selection \; new-window -n w3m \; send-keys -t right 'w3m -M "$(tmux show-buffer)" && tmux kill-window' 'Enter'
-#bind-key -T copy-mode-vi 't' send-keys -X copy-selection \; new-window -n translate   \; send-keys -t translate   'translate-shell es "$(tmux show-buffer)" | w3m        && tmux kill-window' 'Enter'
-#bind-key -T copy-mode-vi 'd' send-keys -X copy-selection \; new-window -n dict        \; send-keys -t dict        'translate-shell -d "$(tmux show-buffer)" | w3m        && tmux kill-window' 'Enter'
-#bind-key -T copy-mode-vi 's' send-keys -X copy-selection \; new-window -n speak       \; send-keys -t speak       'translate-shell -brief "$(tmux show-buffer)" -play    && tmux kill-window' 'Enter'
+
+## when in copy mode, press "g" to google search buffer
+##                          "f" to fastzilla search buffer
+##                          "w" to wikipedia search buffer
+##                          "o" to open link on search buffer
+bind-key -T copy-mode-vi 'g' send-keys -X copy-selection \; new-window -n google \;    send-keys -t right 'w3m -M www.google.com/search?q="$(tmux show-buffer)"' 'Enter'
+bind-key -T copy-mode-vi 'f' send-keys -X copy-selection \; new-window -n fastzilla \; send-keys -t right 'w3m fastzilla.suse.de/?q="$(tmux show-buffer)"' 'Enter'
+bind-key -T copy-mode-vi 'w' send-keys -X copy-selection \; new-window -n wikipedia \; send-keys -t right 'w3m -M https://en.wikipedia.org/wiki/Special:Search/"$(tmux show-buffer)"' 'Enter'
+bind-key -T copy-mode-vi 'o' send-keys -X copy-selection \; new-window -n w3m \;       send-keys -t right 'w3m -M "$(tmux show-buffer)"' 'Enter'

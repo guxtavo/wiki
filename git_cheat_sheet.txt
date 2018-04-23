@@ -22,9 +22,9 @@
 
 # how to make diff between branches
 
-git diff master Branch1 > ../patchfile
-git checkout Branch2    
-git apply ../patchfile
+    git diff master Branch1 > ../patchfile
+    git checkout Branch2    
+    git apply ../patchfile
 
 ## working with tags
 
@@ -35,40 +35,57 @@ To sum it up: executing commands below is basically equivalent to fresh git
 clone from original source (but it does not re-download anything, so is much 
 faster):
 
-git reset
-git checkout .
-git clean -fdx
+    git reset
+    git checkout .
+    git clean -fdx
 
 If you wish to "undo" all uncommitted changes simply run:
 
-git stash
-git stash drop
+    git stash
+    git stash drop
 
 # print remote repos 
-git remote -v
-git branch --remote --list
+
+    git remote -v
+    git branch --remote --list
 
 # update repo
-git fetch --all
-git pull
+
+    git fetch --all
+    git pull
 
 # reports
 # number of commits in a period of time
-git log --oneline --since='4 month ago' --until='now' | wc -l 
+
+    git log --oneline --since='4 month ago' --until='now' | wc -l 
 
 # show adds and deletes for each file
 # how to treat this data and sumarize report
-git log --numstat --oneline --since='1 day ago' --until='now'
-git log --numstat --oneline --since='1 week ago' --until='now'
-git log --numstat --oneline --since='1 month ago' --until='now'
-git log --numstat --oneline --since='3 month ago' --until='now'
-git log --numstat --oneline --since='1 year ago' --until='now'
+
+    git log --numstat --oneline --since='1 day ago' --until='now'
+    git log --numstat --oneline --since='1 week ago' --until='now'
+    git log --numstat --oneline --since='1 month ago' --until='now'
+    git log --numstat --oneline --since='3 month ago' --until='now'
+    git log --numstat --oneline --since='1 year ago' --until='now'
 
 # view head revision of a file
-git show HEAD:path/to/file
 
+    git show HEAD:path/to/file
 
+How to see the content of a remote branch:
 
+    $ git ls-remote --heads origin | grep mkubecek
+
+    b6e09444cde19c9757c4c75a3f2c4cb775b7ff60 refs/heads/users/mkubecek/SLE11-SP3-LTSS/979950
+    e275b90a93aef912d92d5e3b65bd17486e5b7ae8 refs/heads/users/mkubecek/SLE11-SP4/1010175
+    64bf3a7f6eb131921ba145ad07fbce6a917fcc54 refs/heads/users/mkubecek/SLE11-SP4/1010175-2
+    3aadb95245c7dde3598800fc11953c7df592806a refs/heads/users/mkubecek/SLE11-SP4/1030814
+    b399d0a3e5326f6f1bcfaad5fb8f7744d4687b8a refs/heads/users/mkubecek/SLE11-SP4/1070078
+    8e2186808c1123eb0d587524076b118f70d9aa7e refs/heads/users/mkubecek/SLE11-SP4/977687
+    212a226207704bbe99d5b25e3d42320cb1afc30b refs/heads/users/mkubecek/SLE11-SP4/979514
+    ec0c93ceacf94a4a9d29e259f2246879a332b0a1 refs/heads/users/mkubecek/SLE12-LTSS/1034075
+
+    $ git show ec0c93ceacf94a4a9d29e259f2246879a332b0a1
 
 
 

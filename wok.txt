@@ -1,5 +1,74 @@
-Web Order Kiosk
+% Web Order Kiosk
+% Gustavo Figueira
 
-Wok - Panela
+# Intro
 
-How to build a system resilient to FS corruption.
+Wok is a solution for restaurants and food trucks. It automates order taking,
+relying on the customer to have a smartphone. After adding the items to the
+shopping cart.
+
+Raspberry Pi, Debian, Apache, Ruby
+
+The rpi3 will have an open access point, e.g. "Wok - My Restaurant Name", and
+upon connecting the user will be redirected to authentication page, which is
+in fact an order page. After submitting the order and receiving the ticket
+number, the user will be able to access the internet if it is available. The
+internet speed can be limited to to save bandwidth
+
+## Workflow
+
+  * User connects to access point
+  * User is redirected to shopping cart
+  * User select's items and submit order
+  * Wok sends ticket number and allows user to surf the internet
+
+## Displays
+
+Wok has 5 main interfaces:
+
+  * Shopping cart - web page on customer's phone
+  * overview mode - HDMI output (show's
+  * kitchen mode
+  * waitress mode
+  * admin
+
+### Overview mode
+
+In this mode customer can check if the orders are ready (the ticket number of
+ready orders will appear here
+
+  +----------------------------------------------------------------------+
+    Nova Iguacu, 34 degress                 Segunda, 16 de marco de 2018
+                                                                 4:16 PM
+    Processing                                                Delivering
+     t7dhu1                                                       7d221a
+     213132                                                       9sad12
+                                                                  127d2a
+    Menu do dia
+      1 - Frango grelhado (150g)   - R$7,00
+      2 - Frango a milanesa (150g) - R$8,00
+      3 - Empadao de frango (300g) - R$9,00
+      4 - Feijoada (400g)          - R$10,00
+
+    Wifi, Internet
+  +----------------------------------------------------------------------+
+
+### Waitress mode
+
+This is a special page where the waitress can make an order for the customer.
+It is basically the same page the customer has access to.
+
+### Kitchen mode
+
+The cook will see the orders arriving and will click the order to commence
+preparation. Once the order is taken, it will appear in Overview mode under
+processing.
+
+### admin
+
+This will be used by the cashier to process the payments.
+
+## Hardware
+
+The project uses a Rpi3 B (with Wifi), a power button connected to GPIO 5-6,
+an HDMI cable, a power adapter

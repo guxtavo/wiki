@@ -1,0 +1,2 @@
+sudo powertop -C /tmp/ptop -t 1 > /dev/null 2>&1
+grep discharge /tmp/ptop | awk '{print $8 "W"}'

@@ -1,118 +1,115 @@
 
-                   			
-                  		posix + tmux + vi + git + osc
-                	      ptfutils + quilt + gtags
+                          bash + c + python + markdow
+                          strace + perf + gdb + crash
+                            tumbleweed + tmux + vi
+                             git + osc + ptfutils
+                                 mutt + irssi
 
 
-         		  ######  ######  ##  ##  #####    #####  #######
-          		 ##    ## ##  ##  ##  ##  ##  ##  ##    # ##
+                  ######  ######  ##  ##  #####    #####  #######
+                 ##    ## ##  ##  ##  ##  ##  ##  ##    # ##
                  ##       ##  ##  ##  ##  ##  ##  ##      ##
                  ######   ##  ##  ##  ##  #####   ##      ######
                       ##  ##  ##  ##  ##  ##   #  ##      ##
                 #     ##  ##  ##  ##  ##  ##   #  ##    # ##
                  #####    ######  #####   ##   #   #####  #######
 
-                  ######      ######      ######      ########
-                 ########    ########     #######     #######
-                 #          #        #    #     ##    ##
-                 #          #        #    #     ##    #####
-                 #          #        #    #     ##    ##
-                 ########    ########     #######     #######
-                  ######      ######      ######      ########
-			
-	        	 ######   ######  ######   ##  ##  #######
-	        	 ##   ##  ##      ##   ##  ##  ##  ##
-	        	 ##   ##  ####    ######   ##  ##  ## ####
-	        	 ##   ##  ##      ##   ##  ##  ##  ##    #
-	        	 ######   ######  ######   ######  ####### 
+                   ######      ######      ######      ########
+                  ########    ########     #######     #######
+                  #          #        #    #     ##    ##
+                  #          #        #    #     ##    #####
+                  #          #        #    #     ##    ##
+                  ########    ########     #######     #######
+                   ######      ######      ######      ########
 
-
-			             strace + perf + gdb + crash
+                    ######   ######  ######   ##  ##  #######
+                    ##   ##  ##      ##   ##  ##  ##  ##
+                    ##   ##  ####    ######   ##  ##  ## ####
+                    ##   ##  ##      ##   ##  ##  ##  ##    #
+                    ######   ######  ######   ######  #######
 
 
 
 
 
-			~/git/linux-stable
-			/usr/src/sys
+
+
+            ~/git/linux-stable MM
 
 
 
-                                                       Gustavo Figueira   
-			   ,aodObo,
-			,AMMMMP~~~~
-		     ,MMMMMMMMA.   Question    Action
-		   ,M;'     `YV'
-		  AM' ,OMA,
-		 AM|   `~VMM,.      .,ama,____,amma,..
-		 MML      )MMMD   .AMMMMMMMMMMMMMMMMMMD.
-		 VMMM    .AMMY'  ,AMMMMMMMMMMMMMMMMMMMMD
-		 `VMM, AMMMV'  ,AMMMMMMMMMMMMMMMMMMMMMMM,                ,
-		  VMMMmMMV'  ,AMY~~''  'MMMMMMMMMMMM' '~~             ,aMM
-		  `YMMMM'   AMM'        `VMMMMMMMMP'_              A,aMMMM
-		   AMMM'    VMMA. YVmmmMMMMMMMMMMML MmmmY          MMMMMMM
-		  ,AMMA   _,HMMMMmdMMMMMMMMMMMMMMMML`VMV'         ,MMMMMMM
-		  AMMMA _'MMMMMMMMMMMMMMMMMMMMMMMMMMA `'          MMMMMMMM
-		 ,AMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMa      ,,,   `MMMMMMM
-		 AMMMMMMMMM'~`YMMMMMMMMMMMMMMMMMMMMMMA    ,AMMV    MMMMMMM
-		 VMV MMMMMV   `YMMMMMMMMMMMMMMMMMMMMMY   `VMMY'  adMMMMMMM
-		 `V  MMMM'      `YMMMMMMMV.~~~~~~~~~,aado,`V''   MMMMMMMMM
-		    aMMMMmv       `YMMMMMMMm,    ,/AMMMMMA,      YMMMMMMMM
-		    VMMMMM,,v       YMMMMMMMMMo oMMMMMMMMM'    a, YMMMMMMM
-		    `YMMMMMY'       `YMMMMMMMY' `YMMMMMMMY     MMmMMMMMMMM
-		     AMMMMM  ,        ~~~~~,aooooa,~~~~~~      MMMMMMMMMMM
-		       YMMMb,d'         dMMMMMMMMMMMMMD,   a,, AMMMMMMMMMM
-			YMMMMM, A       YMMMMMMMMMMMMMY   ,MMMMMMMMMMMMMMM
-		       AMMMMMMMMM        `~~~~'  `~~~~'   AMMMMMMMMMMMMMMM
-		       `VMMMMMM'  ,A,                  ,,AMMMMMMMMMMMMMMMM
-		     ,AMMMMMMMMMMMMMMA,       ,aAMMMMMMMMMMMMMMMMMMMMMMMMM
-		   ,AMMMMMMMMMMMMMMMMMMA,    AMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-		 ,AMMMMMMMMMMMMMMMMMMMMMA   AMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-		AMMMMMMMMMMMMMMMMMMMMMMMMAaAMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 
-       It's hard, and that's why I do it. Hardship makes you strong!
+                                                       Gustavo Figueira
+              ,aodObo,
+             ,AMMMMP~~~~
+            ,MMMMMMMMA.   Question    Action
+          ,M;'     `YV'
+         AM' ,OMA,
+        AM|   `~VMM,.      .,ama,____,amma,..
+        MML      )MMMD   .AMMMMMMMMMMMMMMMMMMD.
+        VMMM    .AMMY'  ,AMMMMMMMMMMMMMMMMMMMMD
+        `VMM, AMMMV'  ,AMMMMMMMMMMMMMMMMMMMMMMM,                ,
+         VMMMmMMV'  ,AMY~~''  'MMMMMMMMMMMM' '~~             ,aMM
+         `YMMMM'   AMM'        `VMMMMMMMMP'_              A,aMMMM
+          AMMM'    VMMA. YVmmmMMMMMMMMMMML MmmmY          MMMMMMM
+         ,AMMA   _,HMMMMmdMMMMMMMMMMMMMMMML`VMV'         ,MMMMMMM
+         AMMMA _'MMMMMMMMMMMMMMMMMMMMMMMMMMA `'          MMMMMMMM
+        ,AMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMa      ,,,   `MMMMMMM
+        AMMMMMMMMM'~`YMMMMMMMMMMMMMMMMMMMMMMA    ,AMMV    MMMMMMM
+        VMV MMMMMV   `YMMMMMMMMMMMMMMMMMMMMMY   `VMMY'  adMMMMMMM
+        `V  MMMM'      `YMMMMMMMV.~~~~~~~~~,aado,`V''   MMMMMMMMM
+           aMMMMmv       `YMMMMMMMm,    ,/AMMMMMA,      YMMMMMMMM
+           VMMMMM,,v       YMMMMMMMMMo oMMMMMMMMM'    a, YMMMMMMM
+           `YMMMMMY'       `YMMMMMMMY' `YMMMMMMMY     MMmMMMMMMMM
+            AMMMMM  ,        ~~~~~,aooooa,~~~~~~      MMMMMMMMMMM
+              YMMMb,d'         dMMMMMMMMMMMMMD,   a,, AMMMMMMMMMM
+              YMMMMM, A       YMMMMMMMMMMMMMY   ,MMMMMMMMMMMMMMM
+              AMMMMMMMMM        `~~~~'  `~~~~'   AMMMMMMMMMMMMMMM
+              `VMMMMMM'  ,A,                  ,,AMMMMMMMMMMMMMMMM
+            ,AMMMMMMMMMMMMMMA,       ,aAMMMMMMMMMMMMMMMMMMMMMMMMM
+          ,AMMMMMMMMMMMMMMMMMMA,    AMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+        ,AMMMMMMMMMMMMMMMMMMMMMA   AMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+       AMMMMMMMMMMMMMMMMMMMMMMMMAaAMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+    It's hard, and that's why I do it. Hardship makes you strong!
 
-	 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~  +-projects----------------------+
-	 ~ %life 2.1                ~  | linux-stable    multikern*    |
-	 ~ ###...... work (society) ~  | openbsd         uit*          |
-	 ~ ######... work + sleep   ~  | hawking1        csr/aarav*    |
-	 ~ ......### family + self  ~  | wiki                          |
-	 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~  +-------------------------------+
 
-                         Terminal color code 
 
-                     Background: Dark blue  colour17
-                     Foreground: Green      colour2
-                      Highlight: Grey       colour7
 
-  ###########################################################################
-  #	$ ssh capcom@self ps aux                                                #
-  #	 PID %CPU %MEM TIME COMMAND                                             #
-  #	   1  1.0 10.0  37y init                                                #
-  #	   2 10.0 01.0   2w [watchdog]                                          #
-  #	   3 10.0 01.0   2d [moleskine-system-interrupt-coalescing]             #
-  #	   4 00.0 01.0   3h [audible]                                           #
-  #			    `-algorithms_to_live_by:scheduling                          # 
-  #			    `-atlas_shrugged                                            # 
-  #	     10.0 01.0   3h `-spotify_playlist                                  #
-  #	   5 05.0 03.0  37y [self-healing]                                      #
-  #			    `-smoking-water-reading-postura_acke-stomach-ac             #
-  #	   6 00.0 10.0   2w [free-time-planner]                                 #
-  #			    `-27/9->2/10 -Jan/2018                                      #
-  #	 100 20.0 05.0  12y [screen-brain interface]                            #
-  #			    `-tmux-android-wp8                                          #
-  #	 101 03.0 10.0   4y [software-engineer]                                 #
-  #	 102 05.0 31.0   4y `-swapping-pomo-quilt-global-bashrc-tmux.conf       #
-  #	 120 05.0 01.0   8y `-irssi-mutt-inbox-IM                               #
-  #	 130 06.0 05.0   3y dream-chaser                                        #
-  #                         rtl2832u_R820T2_473Mhz                          #
-  #                     20y relationship_manager                            #
-  #                      3y `-neelx                                         #
-  #                      2y `-ksenyia_igor                                  #
-  #      ======= totals =========                                           #
-  #         100.0 89.0                                                      #
-  #                                                                         #
-  ###########################################################################
+
+       +-%life 2.1----------------+ +-projects----------------------+
+       | ###...... work (society) | | linux-stable    hawk1ng       |
+       | ######... work + sleep   | | wiki/profile    wok           |
+       | ......### family + self  | | usek8s          pikbd         |
+       +--------------------------+ +-------------------------------+
+
+          Terminal color code           init
+                                          - screen-brain interface
+      BG #173f4f | RGB  23  63  79        - relationship manager
+      FG #73ba25 | RGB 115 186  37        - books and music
+      HG #35b9ab | RGB  53 185 171        - software engineer
+      A1 #00a489 | RGB   0 164 137          `linux-stable
+      A2 #6da741 | RGB 109 167  65          `wiki/profile
+      A3 #21a4df | RGB  33 164 223          `usek8s
+                                            `hawk1ng
+      opensuse branding-guidelines          `pikbd / wok
+                                          - self-healing
+                                          - free time planner
+                                          - IRQ coalescing
+                                          - watchdog
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #############################################################################
 
@@ -130,52 +127,179 @@
    ####################################################################
    # g.....o@g...l.com          - PSN BR - BF3                        #
    # g.......4@g...l.com        - PSN US - GTAV BF1943                #
-   # g.....o@h.....l.com        - PSN US                              # 
+   # g.....o@h.....l.com        - PSN US                              #
    # g....v.o@g...l.com         - PSN UK - BFBC2 Vietnam              #
    # g.....o.f......a@gmail.com - PSN PT - WipEout HD, Rachet & Clank #
    ####################################################################
-
-
-#############################################################################
-
-##############
-# ps aliases #
-##############
-
-	ps for running threads - ps axmsr
-	ps by time - ps aux | sort -k 10
-
-#############################################################################
-
-         March 2018       
-  w# Su Mo Tu We Th Fr Sa 
-   9              1  2  3 
-  10  4  5  6  7  8  9 10 
-  11 11 12 13 14 15 16 17 
-  12 18 19 20 21 22 23 24 
-  13 25 26 27 28 29 30 31 -> finish IR
-
-         April 2018
-  w# Su Mo Tu We Th Fr Sa
-  14  1  2  3  4  5  6  7 -> k8s
-  15  8  9 10 11 12 13 14
-  16 15 16 17 18 19 20 21
-  17 22 23 24 25 26 27 28
-  18 29 30
 
 Recibo IR 2017: 3308015709
 Recibo IR 2016: 3627933774
 saida: 03/08/2017
 Recibo saida: 1803281003
 
-Console things to fix
-  * OK - color scheme vim, show 80 columns line instead of red text 
-  * OK - vim autoident doesn't play well with pasting from tmux
-  * OK - change scheme in mutt 
-  * OK - change irssi theme= /SET theme agon
-  * OK - color schemes make blue lighter in vim, 
-  * read more vim help commands
-  * make irssi have less colors and less bold text
-  * fix vi for pep8
-  * google music
 
+
+
+
+
+
+
+
+
+
+
+#############################################################################
+
+         April 2018
+     Su Mo Tu We Th Fr Sa
+  14  1  2  3  4  5  6  7
+  15  8  9 10*11 12 13 14 -> make doctor appointment
+  16 15 16 17 18 19 20 21 -> L3: usek8s
+  17 22 23 24 25 26 27 28 -> 23/4 bd * 27/4 bus to vienna
+  18 29 30                -> Austria - plan it
+
+          May 2018
+     Mo Tu We Th Fr Sa Su
+  18     1  2  3  4  5  6 - 1/5 Austria, 2/5 L3
+  19  7  8  9 10 11 12 13
+  20 14 15 16 17 18 19 20
+  21 21 22 23 24 25 26 27
+  22 28 29 30 31
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#############################################################################
+
+TODO:
+  * olcConsoleGameEngine.h && mode7.cpp - convert to linux
+  * patch a way to more easily record screencast
+  * show indication on status bar that you are recording - get from gnome
+  * configure DNS, NTP and PXE
+  * how to add fps or fTimeElapsed to status bar like a game engine?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#############################################################################
+
+## fElapsedTime status-bar-tumbleweed
+
+I open the laptop's lid and immediatelly check the battery time remaining. I
+get confused understanding what the indicator is showing me as first I see a
+bit more than 2 hours and I know that when fully charged this laptop can give
+up to 7 hours or more of battery time.
+
+The time varies from 50 minutes to 7 and a half hours - now that I think of
+it, tmux status bar shouldn't be constantly refreshing as I set
+status-interval at 30
+
+I must make status bar run out of tmux every time interval ( 60 seconds ) and
+write to a file. I will then have tmux to just tail the file. I can time every
+run and have this as metadata, so I can graph backwards what has been the
+performance (need more on this)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+####################################################################
+# tips
+
+## How to record a screencast
+
+    $ record_audio      # Control+c when finished
+    Ctrl+Alt+Shift+r    # repeat shortcut to stop
+
+## How to put together audio and video:
+
+    ffmpeg -i video.webm -i audio.ogg -c:a copy -c:v copy output.webm
+
+## How to add annotation to a video
+
+    # edit bin/fix_video and set text and timing
+    fix_video video.webm
+
+## How to get blocks of text with awk
+
+    awk '/block of text/,/^$/' file
+    or
+    bawk block file
+
+## How to use authentication on curl
+
+    curl -O -u me:mypass "https://apibugzilla.suse.com/..."
+
+## How to fix html files in vim
+
+    :s/<[^>]*>/\r&\r/g
+    :g/^$/d
+
+## How to delete all lines containing a certain string in vim?
+
+    :g/sshd/d
+
+## How to remap capslock to control:
+
+    setxkbmap -option ctrl:nocaps
+
+## How to artificially create delay in tc
+
+    sudo tc qdisc add dev tun0 root netem delay 999ms
+    sudo tc qdisc del dev tun0 root netem
