@@ -18,7 +18,7 @@ if [[ ! "$PATH" == */home/gfigueira/git/fzf/bin* ]]; then
   export PATH="$PATH:/home/gfigueira/git/fzf/bin"
 fi
 
-export PATH="$PATH:/home/gfigueira/suse.bin:/home/gfigueira/wiki.bin"
+export PATH="$PATH:/home/gfigueira/bin/suse:/home/gfigueira/bin/wiki"
 
 # fzf auto-completion
 [[ $- == *i* ]] && source "/home/gfigueira/git/fzf/shell/completion.bash" 2> /dev/null
@@ -36,10 +36,10 @@ global_func()
 complete -F global_func global
 
 # funcoeszz setup
-export ZZOFF=""  # desligue funcoes indesejadas
-export ZZPATH="/home/gfigueira/git/funcoeszz/funcoeszz"  # script
-export ZZDIR="/home/gfigueira/git/funcoeszz/zz"
-source "$ZZPATH"
+#export ZZOFF=""  # desligue funcoes indesejadas
+#export ZZPATH="/home/gfigueira/git/funcoeszz/funcoeszz"  # script
+#export ZZDIR="/home/gfigueira/git/funcoeszz/zz"
+#source "$ZZPATH"
 
 
 
@@ -51,6 +51,7 @@ source "$ZZPATH"
 
 # aliases
 
+alias 512=" vi ~/git/wiki/Zero512.md"
 # servers
 alias pi="ssh pi@192.168.10.1"
 alias obsd="ssh root@192.168.1.243"
@@ -108,14 +109,23 @@ alias w3m_cheat_sheet="w3m -M https://github.com/janosgyerik/cheatsheets/blob/ma
 alias markdown="w3m -M https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"
 alias vim_cheat_sheet="w3m -M https://vim.rtorr.com/"
 alias rfc="elinks https://tools.ietf.org/rfc/index"
+alias aurelio="vi git/suse/aurelio.txt"
+alias script-save="script -t 2> time.log -a session.log"
+alias scriptreplay="scriptreplay -t time.log -s session.log -d 2 -m 1"
 
 # funcoeszz
 alias dado=zzdado
-alias define=zzdefinr
+define()
+{
+  w3m -dump definr.com/$1
+}
 
 alias use-e="egrep -i 'bug|error|warn|fatal'"
 
 
+# Media
+alias vu="amixer -q sset Master 3%+"
+alias vd="amixer -q sset Master 3%-"
 
 
 
@@ -286,11 +296,11 @@ pidstat_15()
   pidstat 5  | awk '{ if ($8 > 1.5) print}'
 }
 
-goo()
+s()
 {
   # replace default functionality, open I
   #elinks --dump www.google.com/search?q=$1 | head -16 | tail -1
-  w3m -M www.google.com/search?q="$@"
+  w3m -M www.google.com/search?q="$(echo $*)"
 }
 
 fz()
@@ -398,7 +408,17 @@ countdown ()
     fi;
   done
 }
-alias pomo="countdown 1500 &"
+#alias pomo="countdown 1500 &"
+pomo(){
+  if [ -e /tmp/countdown ]; then
+    kill -9 $(cat /tmp/pomo)
+    rm /tmp/pomo
+    rm /tmp/countdown
+  else
+    countdown 1500 &
+    echo $! > /tmp/pomo
+  fi
+}
 
 irc_get()
 {
@@ -420,3 +440,15 @@ colors()
 {
   for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i} "; done
 }
+
+
+
+
+## Perl 5
+
+
+PATH="/home/gfigueira/bin/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/gfigueira/bin/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/gfigueira/bin/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/gfigueira/bin/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/gfigueira/bin/perl5"; export PERL_MM_OPT;

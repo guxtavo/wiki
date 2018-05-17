@@ -1,5 +1,4 @@
-# History
-# 20170417 - Sanitize tmux status bar scripts
+#!/bin/bash
 
 countdown()
 {
@@ -10,15 +9,45 @@ countdown()
   if test -e /tmp/countdown
   then
     B=$(cat /tmp/countdown)
-    echo -n " $B |"
-  else
-    B=CD
-    echo -n " $B |"
+    MIN=$(( $B/60 ))
+    SEC=$(( $B%60 ))
+    if [ $SEC -lt 10 ]; then
+      echo -n " $MIN:0$SEC ⌛"
+    else
+      echo -n " $MIN:$SEC ⌛"
+    fi
   fi
 }
 
+mps_whats_playing()
+{
+  WP=$(ps -fugfigueira | grep [m]pv | cut -d '"' -f2)
+  SIZE=${#WP}
+  #if [ "$SIZE" -lt 60
+  if [ ! -z "$WP" ]; then
+    echo -n "| $(~/git/wiki/profile/pl.sh) 🎵"
+  fi
+}
+
+recording()
+{
+  if [ -f /tmp/recording ]; then
+    CREATED=$(find /tmp/recording -printf '%C@\n' | cut -f 1 -d .)
+    NOW=$(date +%s)
+    DIF=$(( $NOW - $CREATED ))
+    MIN=$(( $DIF/60 ))
+    SEC=$(( $DIF%60 ))
+    if [ $SEC -lt 10 ]; then
+      echo -n " $MIN:0$SEC 🔴"
+    else
+      echo -n " $MIN:$SEC 🔴"
+    fi
+  fi
+}
+
+
 target(){
-  B=$(cat ~/.config/target) 
+  B=$(cat ~/.config/target)
   echo -n " => $B <= |"
 }
 
@@ -32,7 +61,7 @@ getVmstat() {
 # if there is change, prinf a full circle
 # It should print 4 circles, every time status-right.sh executes
 # most of the time it should be empty circles as there is a 2 seconds
-# interval on the tmux status bar script, but it would show a lot of 
+# interval on the tmux status bar script, but it would show a lot of
 # full circles if there is big activity
 hdd_led(){
   LOOP=0.1
@@ -57,19 +86,18 @@ hdd_led(){
 
 git_repos_change(){
   B=$(~/git/wiki/profile/git-tmux.sh)
-  echo -n " $B |"
+  echo -n "$B |"
 }
 
-weather(){
-  B=$(~/git/wiki/profile/weather.sh)
-  echo -n " $B |"
-}
+#weather(){
+#}
 
 temperature(){
   B=$(sensors | grep CPU | awk '{print $2}' | \
     tr -d "+°C" | sed 's/\.0//g')
-  C=$(sudo hddtemp /dev/sda| awk '{print $6}')
-  echo -n " $B/$C |"
+  C=$(sudo hddtemp /dev/sda| awk '{print $6}' | tr -d "°C")
+  D=$(~/git/wiki/profile/weather.sh)
+  echo -n " $B/$C🌡 $D |"
 }
 
 dns()
@@ -102,22 +130,25 @@ nic_up(){
 
   if $(ip link show | grep LOWER_UP | egrep "virbr|vnet" > /dev/null)
   then
-    D="V"
+    H="H"
   else
-    D="."
+    H="."
   fi
 
-  B=$(ip link show | grep LOWER_UP | \
-    egrep -v "virbr|vnet" | \
-    grep -v lo | \
-    grep LOWER_UP | \
-    awk '{print $2}' | \
-    tr -d ":" | \
-    perl -p -e 's/\n/, /' | \
-    sed -e 's/, $//g' || echo NIC)
+  echo -n " "
 
-  C=$(helper_latency)
-  echo -n " $B $D ($C) |"
+  if $(ip link show | grep wlp1s0 | grep LOWER_UP > /dev/null); then
+    echo -n 📶
+  fi
+
+  if $(ip link show | grep tun0 | grep LOWER_UP > /dev/null); then
+    echo -n 🔒
+  fi
+
+  L=$(helper_latency)
+  echo -n "($L) |"
+  #📶 show this icon if wifi is on
+  #🔒 show this if tun0 is up
 }
 
 
@@ -183,15 +214,12 @@ volume(){
 
 battery(){
   B=$(acpi | grep -v "unavailable" | awk '{print $4}' | tr -d "%,")
-  #	for i in $(seq $B); do echo -n "!"; done
-  #C=$(~/wiki.bin/power_consuption)
 
   if $(acpi | grep -v "unavailable" | grep -q Discharging)
   then
     B=$(acpi -b 0 | grep "Battery 0" |\
-      awk  '{print $5}' | cut -b 2-5)
-    echo -n " $B |"
-    #echo -n " $B @ $C |"
+      awk  '{print $5}') # bug
+    echo -n " ${B::-3} |"
   else
     echo -n " $B∞ |"
   fi
@@ -211,6 +239,14 @@ solid_ground_fix()
     awk -F "/" '{ print $2 "/" $1}' > /tmp/progress
 }
 
+git_changes()
+{
+  # ! This includes directories
+  # ! It will always has changes due to automatic git update on cron
+  B=$(find ~/git -ctime -1  | wc -l)
+  echo -n " $B"
+}
+
 solid_ground_progress()
 {
   FILTER="IN_PROGRESS|NEW|CONFIRM"
@@ -221,9 +257,9 @@ solid_ground_progress()
       solid_ground_fix
     fi
     B=$(cat /tmp/progress)
-    echo -n " $B -"
+    echo -n " $B/"
   else
-    echo -n " NA -"
+    echo -n " "
   fi
 }
 
@@ -252,11 +288,14 @@ updates()
 }
 
 main(){
+  mps_whats_playing
+  recording
   countdown
+  git_changes
   solid_ground_progress
   git_repos_change
   #target
-  weather
+#  weather
   temperature
   nic_up
   hdd_led

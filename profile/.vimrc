@@ -53,6 +53,7 @@ autocmd FileType sh setlocal shiftwidth=2 tabstop=2
 map <C-l> :w!<CR>:!aspell check %<CR>:e! %<CR>
 " F7 to reformat file
 map <F7> mzgg=G`z
+map <F1> <nop>
 
 " change status line color when in normal and insert mode
 au InsertEnter * hi StatusLine ctermfg=7

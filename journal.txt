@@ -150,14 +150,6 @@ Recibo saida: 1803281003
 
 #############################################################################
 
-         April 2018
-     Su Mo Tu We Th Fr Sa
-  14  1  2  3  4  5  6  7
-  15  8  9 10*11 12 13 14 -> make doctor appointment
-  16 15 16 17 18 19 20 21 -> L3: usek8s
-  17 22 23 24 25 26 27 28 -> 23/4 bd * 27/4 bus to vienna
-  18 29 30                -> Austria - plan it
-
           May 2018
      Mo Tu We Th Fr Sa Su
   18     1  2  3  4  5  6 - 1/5 Austria, 2/5 L3
@@ -185,14 +177,22 @@ Recibo saida: 1803281003
 
 
 
+
+
+
+
+
+
+
+
 #############################################################################
 
 TODO:
-  * olcConsoleGameEngine.h && mode7.cpp - convert to linux
-  * patch a way to more easily record screencast
-  * show indication on status bar that you are recording - get from gnome
-  * configure DNS, NTP and PXE
-  * how to add fps or fTimeElapsed to status bar like a game engine?
+  * Space-Grade Research: FreeCAD model, sgr-shell
+  * hawk1ng - gitlab, NTPD, DNS and PXE
+  * create scripts run_worker and run_all to execute commands in cluster
+  * navigate through tags in python, ruby, go, js, perl, bash tags and c
+
 
 
 
@@ -226,6 +226,11 @@ TODO:
 
 ## fElapsedTime status-bar-tumbleweed
 
+  * how to add fps or fTimeElapsed to status bar like a game engine?
+  * olcConsoleGameEngine.h && mode7.cpp - functions yacc
+    -> setup a buffer
+    -> create update function
+
 I open the laptop's lid and immediatelly check the battery time remaining. I
 get confused understanding what the indicator is showing me as first I see a
 bit more than 2 hours and I know that when fully charged this laptop can give
@@ -239,11 +244,6 @@ I must make status bar run out of tmux every time interval ( 60 seconds ) and
 write to a file. I will then have tmux to just tail the file. I can time every
 run and have this as metadata, so I can graph backwards what has been the
 performance (need more on this)
-
-
-
-
-
 
 
 
@@ -303,3 +303,48 @@ performance (need more on this)
 
     sudo tc qdisc add dev tun0 root netem delay 999ms
     sudo tc qdisc del dev tun0 root netem
+
+## Unicodes
+
+    ✈️    🔎   ⧉
+
+    ttps://emojipedia.org/objects/
+
+## youtube-dl
+
+    # check the available quality
+    youtube-dl -F url
+
+    # Download webm vp9
+    youtube-dl -f '247+251' url
+
+    ### Audio+video
+    43     webm    640x360    medium , vp8.0, vorbis@128k
+
+    ### Audio
+    171   webm    audio only DASH audio  101k , vorbis@128k, 2.13MiB
+    251   webm    audio only DASH audio  119k , opus @160k, 2.53MiB
+
+    ### Video
+    278   webm    256x144    144p    97k , webm container, vp9, 30fps
+    242   webm    426x240    240p   222k , vp9, 30fps
+    243   webm    640x360    360p   406k , vp9, 30fps
+    244   webm    854x480    480p   758k , vp9, 30fps
+    247   webm    1280x720   720p  1554k , vp9, 30fps
+    248   webm    1920x1080  1080p 2859k , vp9, 30fps
+
+## vim
+
+    Type "gqip" to reflow inner paragraph.
+
+## timezone conversion
+
+    [~]$ date --date='TZ="Brazil/East" 14:00'
+    Mon 14 May 19:00:00 CEST 2018
+
+    [~]$ date --date='TZ="Europe/London" 14:00'
+    Mon 14 May 15:00:00 CEST 2018
+
+    # Provo:
+    [~]$ date --date='TZ="US/Mountain" 01:00'
+    Mon 14 May 09:00:00 CEST 2018

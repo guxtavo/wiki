@@ -9,7 +9,7 @@ set-window-option -g window-status-current-bg default
 set-window-option -g window-status-current-fg colour7
 
 # status bar and general settings
-set -g status-interval 60
+set -g status-interval 5
 set -g status-bg '#81c13b'
 set -g status-right-length 200
 set-option -g status-position top
@@ -21,11 +21,20 @@ set-option -g set-titles on
 set -sg escape-time 1               # set no delay for escape key press
 set-window-option -g mode-keys vi   # set vi mode
 
+# Function keys
+bind -n F1 copy-mode                   # enter copy mode
+bind -n F2 paste-buffer                # paste last buffer
+bind -n F3 split-window -h             # split pane vertically
+bind -n F4 split-window -v             # split pane horizontally
+bind -n F5 pipe-pane -o "amixer -q sset Master 3%-" # volume down
+bind -n F6 pipe-pane -o "amixer -q sset Master 3%+" # volume up
+# bind F7 - used by vi                 # format code
+bind -n F8 pipe-pane -o "screencast"   # toggle screencast
+bind -n F10 new-window -n 💡           # creates new window
+bind -n F11 resize-pane -Z             # full screen pane
+bind -n F12 last-window -t L3          # go to last selected window
+
 # Navigation
-
-## new stuff
-bind-key -n F10  new-window        # <F10> creates a new window
-
 bind k confirm kill-window
 
 ## panes
@@ -38,15 +47,17 @@ bind -n M-Down select-pane -D      # alt down to move down
 bind -n S-Left previous-window     # shift left to move left (windows)
 bind -n S-Right next-window
 
-## resizing pane
-bind -n S-Down resize-pane -Z      # shift down to resize panes
+# Microsoft Modern Keyboard hot keys are:
+# 1) calulator
+# 2) resizing pane
+# 3) last window
+# 4) lock computer
+
 
 ## split window
-bind-key -n F3 split-window -h     # <F3> splits vertically
-bind-key -n F4 split-window -v     # <F4> splits horizontally
 
 # Use F9 to search on google
-bind-key -n F9  new-window -n search \; send-keys -t right 'search && tmux kill-window' 'Enter'
+bind-key -n F9  new-window -n 🔎 \; send-keys -t right 'search && tmux kill-window' 'Enter'
 
 # join pane from, send pane to
 bind-key j command-prompt -p "join pane from:"  "join-pane -s '%%'"
@@ -69,11 +80,17 @@ bind-key -T copy-mode-vi 'v' send -X begin-selection # Begin selection in copy m
 bind-key -T copy-mode-vi 'C-v' send -X rectangle-toggle # Begin selection in copy mode.
 bind-key -T copy-mode-vi 'y' send -X copy-selection # Yank selection in copy mode.
 
+
+
+
+
+# 🔎🔎🔎🔎🔎🔎🔎🔎🔎
+
 ## when in copy mode, press "g" to google search buffer
 ##                          "f" to fastzilla search buffer
 ##                          "w" to wikipedia search buffer
 ##                          "o" to open link on search buffer
-bind-key -T copy-mode-vi 'g' send-keys -X copy-selection \; new-window -n google \;    send-keys -t right 'w3m -M www.google.com/search?q="$(tmux show-buffer)"' 'Enter'
-bind-key -T copy-mode-vi 'f' send-keys -X copy-selection \; new-window -n fastzilla \; send-keys -t right 'w3m fastzilla.suse.de/?q="$(tmux show-buffer)"' 'Enter'
-bind-key -T copy-mode-vi 'w' send-keys -X copy-selection \; new-window -n wikipedia \; send-keys -t right 'w3m -M https://en.wikipedia.org/wiki/Special:Search/"$(tmux show-buffer)"' 'Enter'
-bind-key -T copy-mode-vi 'o' send-keys -X copy-selection \; new-window -n w3m \;       send-keys -t right 'w3m -M "$(tmux show-buffer)"' 'Enter'
+bind-key -T copy-mode-vi 'g' send-keys -X copy-selection \; new-window -n 🔎google \;    send-keys -t right 'w3m -M www.google.com/search?q="$(tmux show-buffer)"' 'Enter'
+bind-key -T copy-mode-vi 'f' send-keys -X copy-selection \; new-window -n 🔎fastzilla \; send-keys -t right 'w3m fastzilla.suse.de/?q="$(tmux show-buffer)"' 'Enter'
+bind-key -T copy-mode-vi 'w' send-keys -X copy-selection \; new-window -n 🔎wikipedia \; send-keys -t right 'w3m -M https://en.wikipedia.org/wiki/Special:Search/"$(tmux show-buffer)"' 'Enter'
+bind-key -T copy-mode-vi 'o' send-keys -X copy-selection \; new-window -n 🔎w3m \;       send-keys -t right 'w3m -M "$(tmux show-buffer)"' 'Enter'

@@ -1,6 +1,8 @@
 % Web Order Kiosk
 % Gustavo Figueira
 
+http://hallard.me/raspberry-pi-read-only/
+
 # Intro
 
 Wok is a solution for restaurants and food trucks. It automates order taking,
@@ -14,6 +16,28 @@ upon connecting the user will be redirected to authentication page, which is
 in fact an order page. After submitting the order and receiving the ticket
 number, the user will be able to access the internet if it is available. The
 internet speed can be limited to to save bandwidth
+
+# Architecture
+
+The system will run in read only mode, which means it will need a maintenance
+window to flush the data to disk and to connect to a remote backup server if
+available.
+
+The user must inform a slot for the 2 hour maintenance window, on which
+everything is consolidated. In the MW - maintenance window - the system will
+also be checked for health, and updated in case of security treats. During
+this time the ordering system cannot be used.
+
+
+Brno, 13C               [20]  Wed 05-16 11:12
+
+ FA022 - 15min
+ FA033 - 
+
+
+the data once a day. For that, it will need a 2 hours maintenance time slot
+where it will sync up the data to cloud. The system will still work regardless
+of the backup status, which 1011 8168 35 / 6100 v,s201806 11k
 
 ## Workflow
 

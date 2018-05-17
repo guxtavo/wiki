@@ -1,8 +1,8 @@
 capcom(7)                      Gustavo Figueira                      capcom(7)
 
 OBJECTIVE
-       1) Work as a consultant for aerospace (R&D, *aaS, HPC, DevOps).
-       2)
+       1) Work as a game developer position
+       2) Work as a consultant for aerospace (R&D, *aaS, HPC, DevOps).
 
 SYNOPSIS
        IEEE 1003          ######....                    x86_64 ###.......
@@ -81,6 +81,8 @@ OPTIONS
 
               usek8s/SUSE, CZ 2018...
                (tmux, kubectl...
+
+              https://github.com/guxtavo
 
 VERSIONS
 
