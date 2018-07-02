@@ -1,0 +1,119 @@
+  System:
+    Mfr:  VMware, Inc.
+    Prod: VMware Virtual Platform
+
+  Getting "BUG: soft lockup detected on CPU#N" messages running RHEL on VMWare
+  https://access.redhat.com/solutions/21849
+
+"While these errors can happen for a number of different reasons, one potential cause is detailed by VMWare in their KB article, 1009996, for Linux kernels running on SMP enabled virtual machine. As mentioned, resources may be overcommitted across VMs resulting in some of them not being scheduled for a period of time." 
+
+The vmware solution can be found here:
+
+  Soft lockup messages from Linux kernel running in an SMP-enabled virtual machine (1009996) 
+  https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1009996
+
+"Many Linux kernels have a soft lockup watchdog thread, and report soft lockup messages if that watchdog thread does not get scheduled for more than 10 seconds. On a physical host, a soft lockup message generally indicates a kernel bug or hardware bug. When running in a virtual machine, this might instead indicate high levels of overcommitment (especially memory overcommitment) or other virtualization overheads."
+
+It is known that the ballooning driver, due to host memory pressure, can cause such condition. If you believe the issue is not caused by high levels of overcommitment, the only way we can help you is by analyzing a vmcore captured at the moment the issue occurs. The following solutions will help you doing so:
+
+  How to collect vmcore using kdump to troubleshoot kernel crashes, system hangs, or system reboots?
+  https://access.redhat.com/site/solutions/6038
+
+  How do I automatically generate a vmcore to help analyse soft lockups?
+  https://access.redhat.com/site/solutions/19541
+
+
+========= v0.2 =============
+
+Greetings, my name is Gustavo from the EMEA Kernel Team and I will assist you with this service request.
+
+    "BUG:soft lockup - CPU#0 stuck for 10s! [init:1"
+
+  Many Linux kernels have a soft lockup watchdog thread, and report soft
+  lockup messages if that watchdog thread does not get scheduled for more
+  than N seconds. On a physical host, a soft lockup message generally 
+  indicates a kernel bug or hardware bug. When running in a virtual 
+  machine, this might instead indicate high levels of overcommitment 
+  (especially memory overcommitment) or other virtualization overheads.
+
+Assuming you are running this VM on vmware (which we should confirm after
+you send the sosreport), please find here another knowledge base solution
+which describes the problem:
+
+  > Getting "BUG: soft lockup detected on CPU#N" messages running RHEL on VMWare
+  _ https://access.redhat.com/solutions/21849
+
+  "While these errors can happen for a number of different reasons, one
+   potential cause is detailed by VMWare in their KB article, 1009996, 
+   for Linux kernels running on SMP enabled virtual machine. As mentioned, 
+   resources may be overcommitted across VMs resulting in some of them not 
+   being scheduled for a period of time." 
+
+The vmware solution can be found here:
+
+  > Soft lockup messages from Linux kernel running in an SMP-enabled virtual machine (1009996) 
+  _ https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1009996
+
+It is known that the ballooning driver, due to host memory pressure, can 
+cause such condition. If you believe the issue is not caused by high 
+levels of overcommitment, the only way we can help you is by analyzing a 
+vmcore captured at the moment the issue occurs. The easiest way is by 
+capturing a memory dump of the VM (giving solutions for both RHEV and 
+Vmware:
+
+  How to capture a vmcore of hung Red Hat Enterprise Linux VMware® guest system using VMware® "vmss2core" tool ? 
+  https://access.redhat.com/solutions/411653
+    
+  How do I capture a vmcore from a KVM or RHEV guest? 
+  https://access.redhat.com/solutions/39604 
+
+Another way to accomplish it is by configuring kdump to crash the system 
+and generate a vmcore:
+
+  > How to collect vmcore using kdump to troubleshoot kernel crashes, system hangs, or system reboots?
+  _ https://access.redhat.com/site/solutions/6038
+
+  > How do I automatically generate a vmcore to help analyse soft lockups?
+  _ https://access.redhat.com/site/solutions/19541
+
+Once you capture the vmcore, please upload to our dropbox:
+
+  > How to provide large files to Red Hat Support (vmcore, rhev logcollector, 
+  > large sosreports, heap dumps, large log files, etc.) 
+  _ https://access.redhat.com/solutions/2112
+
+What do we have:
+  1) soft lockup detected on vm (unable to login)
+  2) Red Hat team provided explanation for the particular type of error message (KBs 22621, 21849)
+  3) Further data is needed in order to troubleshoot the issue (KBs 411653, 39604, 6038, 19541, 2112)
+
+Action plan:
+  1) Capture and provide data for investigation
+
+After you provide the vmcore, I will do the first analysis and point out
+what I think is relevant. It would be appreciated if you could double check
+what is the current resource utilization on the hypervisor, or even check 
+the console for warnings and provide your findings so we can gather as 
+much data we can to have a clear picture of the situation.
+
+--
+Kind regards,
+Gustavo
+
+
+A softlockup means a kernel function is taking longer than expected to
+complete and the process is active and running on the CPU.  It cannot be
+backgrounded like a D state.  Since this is a virtual machine it has the
+hallmarks of resource contention on the hypervisor.
+
+1) You will want to utilize esxtop to examine the cpu %ready for this guest.
+I believe VMWare's baseline is 5 percent.  This value is the amount of time
+the guest is waiting to get time on the physical hardware for it's processing.
+So if the %ready is say 50 percent the guest would spend half of it's time
+waiting for the hypervisor to perform work for the guest.  VMWare has a guide
+here:
+
+  https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2001003
+
+  You may want to open a parallel case with VMWare to have them validate the
+  health of the hypervisor. 

@@ -1,0 +1,37 @@
+crash> sys
+      KERNEL: /cores/retrace/repos/kernel/x86_64/usr/lib/debug/lib/modules/2.6.18-238.el5/vmlinux
+    DUMPFILE: /cores/retrace/tasks/513746223/crash/vmcore
+
+        CPUS: 6 [OFFLINE: 4]    <---- 
+
+        DATE: Thu May 19 23:26:04 2016
+      UPTIME: 582 days, 03:01:26
+LOAD AVERAGE: 0.07, 0.04, 0.07
+       TASKS: 685
+    NODENAME: lboxapp02
+     RELEASE: 2.6.18-238.el5
+     VERSION: #1 SMP Sun Dec 19 14:22:44 EST 2010
+     MACHINE: x86_64  (2131 Mhz)
+      MEMORY: 23.7 GB
+       PANIC: "Kernel BUG at lib/list_debug.c:65"
+crash> 
+
+Edit:
+The above shows that 4 CPUs are offline.
+
+
+crash> p cpu_online_map
+cpu_online_map = $14 = {
+  bits = {0x30, 0x0, 0x0, 0x0}
+}
+crash> eval -b 0x30
+hexadecimal: 30  
+    decimal: 48  
+      octal: 60
+     binary: 0000000000000000000000000000000000000000000000000000000000110000
+   bits set: 5 4 
+crash> 
+
+CPUs 4 and 5 are still online. There are no offline messages in the ring buffer.
+
+

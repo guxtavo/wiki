@@ -1,0 +1,78 @@
+[collab notes - sched] - do not make it public.
+
+* Isolate housekeeping processes and application processes in different CPUs 
+
+
+Did they try to isolate housekeeping CPUs and application CPUs in different numa nodes? Tuna and tuned are available since 6.5 I think. You can use isolcpus in kernel command line to isolate the application CPUs (if not done yet). Then examine "pstree" output and usa tuna or taskset to start the hpc/performance application bound the the right cpus. The system has 16 cores and 17 running processes on average, and cache locality problems can exist in such workloads.
+
+Do they know abi between major versions is kept? There is a risk of a new bug being introduced in future versions, but the amount of improvements can generally outweigh the risk for new regressions/defects. Moreover if they have time to test they have time to reboot twice to rollback the kernel change.
+
+Changes in rhel6 kernel between 6.3 and 6.8:
+
+[rhel6]$ glo kernel-2.6.32-279.el6..kernel-2.6.32-358.el6 | wc -l
+5173 #patches from 6.3 until 6.4
+
+[rhel6]$ glo kernel-2.6.32-279.el6..kernel-2.6.32-431.el6 | wc -l
+11533 #patches from 6.3 until 6.5
+
+[rhel6]$ glo kernel-2.6.32-279.el6..kernel-2.6.32-504.el6 | wc -l
+17237#patches from 6.3 until 6.6
+
+[rhel6]$ glo kernel-2.6.32-279.el6..kernel-2.6.32-573.el6 | wc -l     
+23699 #patches from 6.3 until 6.7
+
+[rhel6]$ glo kernel-2.6.32-279.el6..kernel-2.6.32-642.el6 | wc -l                    
+28965 #patches from 6.3 until 6.8
+
+Do I get it right that there is a ~20% difference between good node and bad node regarding interruptions?
+
+  Bad node interrupts   ++++++++++ 16k
+  Good node interrupts  ++++++++   13k
+
+The more IRQs, the more time ksoftirqd will be called, thus less time for user-space (majority).
+
+
+
+
+
+- HPC has been facing performance issue and as due it, 6 nodes are been removed which had issue.
+   
+  > the hardware is from 2012 according to bios. When is the EOL? What lm_sensors is telling us during the tests?
+
+- Linpack is the tool used to measure the performance of the systems.
+
+  > What is the baseline? We need to set the expectation. This can go on and on until we draw the line.
+
+- Turbostat command has been used to measure wattage consumption of the per CPU (Expected = 110w to 115w, Current = 70w )
+
+  > Again, what is the core temperature according to lm_sensors? Any alarms in remote management console?
+
+- C-states has been disabled in the system from the hardware end itself.
+
+  > Does it mean they have the "performance" profile chosen in "IBM's remote management thingy"? I recommend checking our power management guide:
+
+  https://access.redhat.com/site/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Power_Management_Guide/index.html
+
+  If the application is IO bound it is recommended to disable power management for HBA. The same can be done for NIC and other peripherals. 
+
+- With the help of linpack tool computation should be more than 300 gflops
+
+  > It would be nice to have a table withe the hosts, time/tps to run the data set just for comparison.
+
+- In the call asked them to disable c-states by kernel command line but they said they can not reboot the node as issue is reproduced only after some uptime of about 50 days.
+
+  > You can ask them to double check the BIOS (in this case IBM's remote management console)
+
+    Kernel upgrade might be necessary:
+    
+    [rhel6]$ glo --grep="performance" kernel-2.6.32-279.el6.. | wc -l
+    542
+
+Checklist
+
+* bios performance settings
+* os performance settings
+* scheduler affinity in numa systems
+* cgroups and limits
+* updates
+* what are you measuring? 

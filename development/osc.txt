@@ -1,0 +1,52 @@
+# OBS/osc knowledge base
+
+## CI workflow:
+
+  * osc - create project
+  * osc add http://example.com/source.tgz
+  * create specfile
+  * osc add specfile
+  * build
+
+iosc meta prj -e
+
+## TODO
+
+* write spec file for vitetris and make it build
+* Finish OBS epub
+* create supportutils package for tumbleweed
+
+## osc usefull commands
+
+  osc co home:unixmonk3y
+  checkout home project
+
+  osc mkpac package_name
+  create package
+
+  osc ci -m "message"
+  comit changes
+
+  osc add file
+  add file
+
+  osc addremove
+  add and remove files :)
+
+  osc importsrcrpm file
+  import spec file from src rpm
+
+  osc copypac
+  copy package
+
+  osc build
+  build the package
+
+  osc results
+  show results on build server
+
+  osc prjresults
+  show results for all packages in build server
+
+  osc pr openSUSE:Factory
+  show prohect information for openSUSE user, Factory project

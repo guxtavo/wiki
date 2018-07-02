@@ -1,0 +1,6 @@
+systemctl set-property system.slice BlockIOWeight=200 
+systemctl set-property machine.slice BlockIOWeight=200 
+systemctl set-property user.slice BlockIOWeight=600 
+systemctl set-property system.slice MemoryLimit=1G
+systemctl set-property user-1001.slice MemoryLimit=2G 
+   -> stress

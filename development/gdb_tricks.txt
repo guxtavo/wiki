@@ -1,0 +1,28 @@
+# gdb tmux
+
+b - add breakpoint: b tmux.c:50
+d - disable all breakpoints
+r - run the program
+n - forward a block (next)
+s - forward one line (step)
+c - go to the end
+p - print or set variable
+l - list lines: l 12
+q - quit
+info locals - print all variables
+bt - backtrace
+enter - repeats the previous command
+make tmux
+
+What,s the drill with gdb and how this will show you the code.
+
+Steps:
+  * man 1p program
+  * download debuginfo package
+  * download source code
+  * locate break point
+  * gdb with break point
+
+The customer, will have to know exectly how to reproduce the behavior, by
+starting the program in a specific way and/or by scheduling a certain task or
+series of tasks to hit the spot.

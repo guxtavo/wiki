@@ -1,0 +1,171 @@
+Issue: there seems to be an overflow in tmux when copying text to tmux buffer
+
+Steps to reproduce:
+
+  1) Enter copy mode: Ctrl-b [
+  2) Move the cursor to the beginning of the text and hit space to start
+     marking
+  3) Hit enter to copy the text
+
+  Result: text is copied and panels around are filled with jibberish text
+  Expected result: no jibberish text in panels around
+
+To clear the jibberish text, one can switch to another window and back.
+
+The error occurs when a new buffer is created to hold the data which was
+selected.
+
+Questions:
+  1) how to debug this?
+
+How do I find which file or function has does this. I have found this file
+called windowr-copy.c in tmux' source code:
+
+        [tmux]$ global window_copy_
+        window_copy_add                         window_copy_mode
+        window_copy_adjust_selection            window_copy_mode_data
+        window_copy_append_selection            window_copy_move_left
+        window_copy_clear_marks                 window_copy_move_mouse
+        window_copy_clear_selection             window_copy_move_right
+        window_copy_command                     window_copy_next_paragraph
+        window_copy_copy_buffer                 window_copy_other_end
+        window_copy_copy_line                   window_copy_pagedown
+        window_copy_copy_pipe                   window_copy_pageup
+        window_copy_copy_selection              window_copy_previous_paragraph
+        window_copy_cursor_back_to_indentation  window_copy_rectangle_toggle
+        window_copy_cursor_down                 window_copy_redraw_lines
+        window_copy_cursor_end_of_line          window_copy_redraw_screen
+        window_copy_cursor_jump                 window_copy_redraw_selection
+        window_copy_cursor_jump_back            window_copy_resize
+        window_copy_cursor_jump_to              window_copy_scroll_down
+        window_copy_cursor_jump_to_back         window_copy_scroll_position
+        window_copy_cursor_left                 window_copy_scroll_to
+        window_copy_cursor_next_word            window_copy_scroll_up
+        window_copy_cursor_next_word_end        window_copy_search
+        window_copy_cursor_previous_word        window_copy_search_compare
+        window_copy_cursor_right                window_copy_search_down
+        window_copy_cursor_start_of_line        window_copy_search_jump
+        window_copy_cursor_up                   window_copy_search_lr
+        window_copy_drag_update                 window_copy_search_marks
+        window_copy_find_length                 window_copy_search_rl
+        window_copy_free                        window_copy_search_up
+        window_copy_get_selection               window_copy_start_drag
+        window_copy_goto_line                   window_copy_start_selection
+        window_copy_init                        window_copy_synchronize_cursor
+        window_copy_init_for_output             window_copy_update_cursor
+        window_copy_init_from_pane              window_copy_update_selection
+        window_copy_in_set                      window_copy_vadd
+        window_copy_is_lowercase                window_copy_write_line
+        window_copy_key_table                   window_copy_write_lines
+
+The text is copied in copy_selection, which puts the text in a buffer and
+calls copy_buffer.
+
+1651 static void
+1652 window_copy_copy_selection(struct window_pane *wp, const char *bufname)
+1653 {
+1654         void    *buf;
+1655         size_t   len;
+1656
+1657         buf = window_copy_get_selection(wp, &len);
+1658         if (buf == NULL)
+1659                 return;
+1660
+1661         window_copy_copy_buffer(wp, bufname, buf, len);   <===?
+1662 }
+
+copy_buffer then calls screen_write*. As the problem is a wrong write of
+jibberish text when copying, I assume one of those 3 functions are causing the
+issue.
+
+1614 static void
+1615 window_copy_copy_buffer(struct window_pane *wp, const char *bufname, void
+*buf,
+1616     size_t len)
+1617 {
+1618         struct screen_write_ctx ctx;
+1619
+1620         if (options_get_number(global_options, "set-clipboard")) {
+1621                 screen_write_start(&ctx, wp, NULL);
+1622                 screen_write_setselection(&ctx, buf, len);
+1623                 screen_write_stop(&ctx);
+1624         }
+1625
+1626         if (paste_set(buf, len, bufname, NULL) != 0)
+1627                 free(buf);
+1628 }
+
+
+
+  56 /* Initialize writing with a window. */
+  57 void
+  58 screen_write_start(struct screen_write_ctx *ctx, struct window_pane *wp,
+  59     struct screen *s)
+  60 {
+  61         char    tmp[16];
+  62         u_int   y;
+  63
+  64         memset(ctx, 0, sizeof *ctx);
+  65
+  66         ctx->wp = wp;
+  67         if (wp != NULL && s == NULL)
+  68                 ctx->s = wp->screen;
+  69         else
+  70                 ctx->s = s;
+  71
+  72         ctx->list = xcalloc(screen_size_y(ctx->s), sizeof *ctx->list);
+  73         for (y = 0; y < screen_size_y(ctx->s); y++)
+  74                 TAILQ_INIT(&ctx->list[y].items);
+  75         ctx->item = xcalloc(1, sizeof *ctx->item);
+  76
+  77         if (wp != NULL)
+  78                 snprintf(tmp, sizeof tmp, "pane %%%u", wp->id);
+  79         log_debug("%s: size %ux%u, %s", __func__, screen_size_x(ctx->s),
+  80             screen_size_y(ctx->s), wp == NULL ? "no pane" : tmp);
+  81 }
+
+If copying the selection, why a method called tty_write should be called? Why
+tmux should write to the terminal? Right after the text is copied, the text
+selection disappears, so maybe that's why. 
+
+1399 /* Set external clipboard. */
+1400 void
+1401 screen_write_setselection(struct screen_write_ctx *ctx, u_char *str, u_int len)
+1402 {
+1403         struct tty_ctx  ttyctx;
+1404
+1405         screen_write_initctx(ctx, &ttyctx);
+1406         ttyctx.ptr = str;
+1407         ttyctx.num = len;
+1408
+1409         tty_write(tty_cmd_setselection, &ttyctx);
+1410 }
+
+So something is going wrong when the screen is reset
+
+ 871 void
+ 872 tty_write(void (*cmdfn)(struct tty *, const struct tty_ctx *),
+ 873     struct tty_ctx *ctx)
+ 874 {
+ 875         struct window_pane      *wp = ctx->wp;
+ 876         struct client           *c;
+ 877
+ 878         /* wp can be NULL if updating the screen but not the terminal. */
+ 879         if (wp == NULL)
+ 880                 return;
+ 881
+ 882         if ((wp->flags & (PANE_REDRAW|PANE_DROP)) || !window_pane_visible(wp))
+ 883                 return;
+ 884
+ 885         TAILQ_FOREACH(c, &clients, entry) {
+ 886                 if (!tty_client_ready(c, wp))
+ 887                         continue;
+ 888
+ 889                 ctx->xoff = wp->xoff;
+ 890                 ctx->yoff = wp->yoff;
+ 891                 if (status_at_line(c) == 0)
+ 892                         ctx->yoff++;
+ 893
+ 894                 cmdfn(&c->tty, ctx);
+ 895         }
+ 896 }

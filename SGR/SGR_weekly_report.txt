@@ -1,0 +1,18 @@
+# 200 OK
+  - kicad for pcb
+  - openscad for case
+  - keycaps
+
+# sgr-shell
+  - move stuffs to sgr repo
+
+# sgr-david
+
+# sgr-boot
+  - create slow with go
+
+# sgr-remote
+
+# hawk1ng
+
+# wok

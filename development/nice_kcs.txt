@@ -1,0 +1,270 @@
+Know Kernel problems
+====================
+
+  2.6.32-573.18.1 or 2.6.32-504.43.1.el6
+  Kernel panic in unlink_anon_vmas() while freeing anonymous pages. 
+  https://access.redhat.com/solutions/2181181
+
+  Enabling Transparent huge page in Red Hat Enterprise Linux 6 causes cpu spike and performance problems, why? 
+  https://access.redhat.com/solutions/280443
+
+  RHEL6: race condition in hugetlb code in kernels newer than kernel-2.6.32-504.24.3 
+  https://access.redhat.com/solutions/1992703
+
+  Applications using IPC (semaphores, shared memory, message queues) have problems after update to RHEL 7.2 
+  https://access.redhat.com/solutions/2062273  
+
+  Load average is higher or more sporadic after updating to kernel-2.6.32-573.22.1.el6 
+  https://access.redhat.com/solutions/2253721
+
+  2.6.32-504 up to and including 2.6.32-504.12.2
+  Upgrading to RHEL 6.6, 7.0 or 7.1 may result in an application, using futexes, appearing to stall in futex_wait() 
+  https://access.redhat.com/solutions/1386323
+
+  Setting vm.swappiness=0 on RHEL-6.4 can cause OOM conditions. 
+  https://access.redhat.com/solutions/1149413
+
+  RHEL6: race condition in hugetlb code in kernels newer than kernel-2.6.32-504.24.3 
+  https://access.redhat.com/solutions/1992703  
+
+kernel internals
+================
+
+  What does the 'Scheduling while atomic' message mean?
+  https://access.redhat.com/solutions/45376
+
+  What is the kernel hard/soft lockup detector? 
+  https://access.redhat.com/articles/1353303
+
+  How do I increase the kernel log ring buffer size? 
+  https://access.redhat.com/solutions/47276
+
+  How to extract the kernel ring buffer from a vmcore file 
+  https://access.redhat.com/solutions/470073
+
+  Getting "BUG: soft lockup detected on CPU#N" messages running RHEL on VMWare
+  https://access.redhat.com/solutions/21849
+
+  System becomes unresponsive with message "INFO: task <process>:<pid> blocked for more than 120 seconds".
+  https://access.redhat.com/solutions/31453
+
+  What is the hung task watchdog?
+  https://access.redhat.com/articles/1353393
+
+  "At various times during a process's lifecycle it will stop while it waits
+  for an event to occur and cannot proceed until that event happens. If for
+  some reason the event does not occur within a reasonable timeframe the
+  process may experience some undesirable delays. The kernel hung task
+  watchdog is designed to detect these cases and report them to the system log
+  and optionally panic the system."
+
+Teaching customers
+==================
+
+  All about "min_free_kbytes" parameter 
+  https://access.redhat.com/solutions/336033
+
+  What is the hung task watchdog? 
+  https://access.redhat.com/articles/1353393
+
+  What is a CPU soft lockup? 
+  https://access.redhat.com/articles/371803
+
+  Is live kernel patching (kpatch) supported in RHEL 7? 
+  https://access.redhat.com/solutions/2206511
+
+  Red Hat Enterprise Linux Release Dates 
+  https://access.redhat.com/articles/3078
+ 
+  Red Hat Enterprise Linux technology capabilities and limits 
+  https://access.redhat.com/articles/rhel-limits
+
+  Kdump cannot start when booting the system, with error "kdump: mkdumprd: failed to make kdump initrd" 
+  https://access.redhat.com/solutions/180113
+
+  rhel6: How big can a kdump be, with the default "-c -d31" parameters?
+  https://access.redhat.com/solutions/1757593
+
+
+
+CPU Online
+==========
+
+  How can I disable (and re-enable) CPU in SMP mode without a reboot? 
+  https://access.redhat.com/articles/2089
+
+  How to disable Hyper-Threading with CPU hotplugging in Red Hat Enterprise Linux 5 and 6? 
+  https://access.redhat.com/solutions/352663
+
+  How do I limit the number of CPUs activated in Red Hat Enterprise Linux ? 
+  https://access.redhat.com/solutions/96133
+
+vmware kbs
+==========
+
+https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2050592
+https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1010398
+https://access.redhat.com/solutions/118843
+https://access.redhat.com/solutions/1241923
+https://access.redhat.com/solutions/406983
+https://access.redhat.com/solutions/69122
+
+vmware tools
+============
+	
+  How to determine what process caused an ext3, ext4, or xfs filesystem to freeze? 
+  https://access.redhat.com/solutions/729103
+
+  Deadlock with vmtoolsd, autofs and frozen filesystems 
+  https://access.redhat.com/solutions/498883
+
+  How can I determine if a filesystem is frozen in a vmcore? 
+  https://access.redhat.com/articles/1225503
+
+  RHEL6: Deadlock on frozen ext4 filesystem, one process stuck in thaw_bdev waiting on semaphore held by flush thread doing writeback and stuck in start_this_handle 
+  https://access.redhat.com/solutions/473213
+
+  Message "audit: backlog limit exceeded" reported and possibly hung system due to a frozen filesystem
+  https://access.redhat.com/solutions/473223
+
+  Why triggering panic using NMI switch on the machine is not working?
+  https://access.redhat.com/site/solutions/265173 
+
+  Filesystem on VMware Red Hat Enterprise Linux 4, 5, & 6 guests went read-only 
+  https://access.redhat.com/solutions/35329
+
+  Are hardware power management features causing latency spikes in my application? 
+  https://access.redhat.com/articles/65410
+
+  https://access.redhat.com/sites/default/files/attachments/rhel_5_6_7_cheatsheet_27x36_1014_jcs_web.pdf
+
+  http://oops.kernel.org/
+
+supportability
+==============
+
+  Red Hat Enterprise Linux technology capabilities and limits 
+  https://access.redhat.com/articles/rhel-limits
+
+  Red Hat Enterprise Linux Life Cycle
+  https://access.redhat.com/support/policy/updates/errata
+
+  What is the Red Hat Enterprise Linux Extended Life Cycle Support Add-On (ELS), and what is its support life cycle?
+  https://access.redhat.com/solutions/690063
+
+  Red Hat Enterprise Linux Release Dates 
+  https://access.redhat.com/articles/3078
+  
+
+vmware
+======
+
+  Determining if a High Availability Virtual Machine Monitoring event caused a virtual machine to reboot (1027734) 
+  https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1027734
+
+  System crash at activate_task() which was called from VMCI module 
+  https://access.redhat.com/solutions/1582653
+
+clusterha
+=========
+
+  Collecting supplemental system utilization statistics for fence events or performance problems in RHEL High Availability or Resilient Storage clusters 
+  https://access.redhat.com/solutions/368393
+
+memory
+======
+
+  How to prevent a process to be a target of oom-killer? 
+  https://access.redhat.com/solutions/1171183
+
+  How to check if system RAM is faulty in Red Hat Enterprise Linux? 
+  https://access.redhat.com/solutions/15693
+
+  Kernel panic with several MCE logs in Red Hat Enterprise Linux 
+  https://access.redhat.com/solutions/203833
+
+  Examining Huge Pages or Transparent Huge Pages performance
+  https://access.redhat.com/articles/781653
+
+CPU
+===
+
+  How can I dedicate one or more CPUs on a multi-processor system for exclusive use by one or more specific applications? 
+  https://access.redhat.com/solutions/15482
+
+  On an SMP system, how can I set processor affinity for a certain task or process in Red Hat Enterprise Linux?
+  https://access.redhat.com/solutions/1552
+
+systemd rhel7
+=============
+
+  How to analyse slow boot in RHEL7 
+  https://access.redhat.com/node/2478981
+
+
+
+  How to increase the entropy pool without using a keyboard or mouse? 
+  https://access.redhat.com/solutions/19866
+
+grub
+====
+
+  How to manually modify the boot parameter in grub before the system boots
+  https://access.redhat.com/solutions/32726
+
+hyperv
+======
+
+  Unaccounted memory usage when running Red Hat Enterprise Linux as a Hyper-V guest
+  https://access.redhat.com/solutions/877233
+
+console
+=======
+
+  How does one set up a serial terminal and/or console in Red Hat Enterprise Linux? 
+  https://access.redhat.com/node/7212
+
+
+cgroups
+=======
+
+  How do I limit the available CPUs with cgroups? 
+  https://access.redhat.com/solutions/356863
+
+  Limit single process CPU usage in RHEL6 with cgroups 
+  https://access.redhat.com/solutions/2608691
+
+  How to use cgroup cpusets with systemd in RHEL7? 
+  https://access.redhat.com/solutions/1445073
+
+
+  > What does the message "kernel: Machine check events logged" mean? 
+  _ https://access.redhat.com/solutions/39507z
+
+MOJO
+====
+
+  GSS - How to build a test kernel for customer use using brew and rhpkg
+  https://mojo.redhat.com/docs/DOC-994332
+
+  building test kernel (the lazy way)
+  https://mojo.redhat.com/docs/DOC-1049414
+
+portal
+======
+
+  Adding additional email contacts in a Support Case on the Customer Portal 
+  https://access.redhat.com/solutions/229113
+
+
+  Determine whether a task is getting all the CPU cycles of a processor 
+  https://access.redhat.com/articles/781943
+
+  Determining what code kernel kworker and softirq threads are executing 
+  https://access.redhat.com/articles/782003
+
+
+327 kernel
+  Kernel panic or soft lockup in netlink_compare in Red Hat Enterprise Linux 7
+  https://access.redhat.com/solutions/2647381
+

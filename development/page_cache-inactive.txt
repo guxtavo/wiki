@@ -1,0 +1,18 @@
+Dear customer, my name is Gustavo from the EMEA Kernel Team and I will assist
+you before an Engineer in your GEO and language can take this ticket.
+
+    "High "inactive memory" value"
+
+This is the behavior of the "page cache" when you work with big datasets:
+
+  Linux, therefore, implements a modified version of LRU, called the two-list
+  strategy . Instead of maintaining one list, the LRU list, Linux keeps two
+  lists: the active list and the inactive list . Pages on the active list are
+  considered “hot” and are not available for eviction. Pages on the inactive
+  list are available for cache eviction. Pages are placed on the active list
+  only when they are accessed while already residing on the inactive list.
+  o
+
+--
+Kind regards,
+Gustavo

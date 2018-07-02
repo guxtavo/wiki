@@ -1,0 +1,6 @@
+set number
+set ruler
+
+set shiftwidth=8
+
+map  :w!<CR>:!aspell check %<CR>:e! %<CR>

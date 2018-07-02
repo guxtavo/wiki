@@ -1,0 +1,84 @@
+01514491 - docker images not being created on a compute resource
+================================================================
+
+  == Related KCSes ==
+
+  Why container deployment fails with the following message "Check the Foreman logs: json: cannot unmarshal number into Go value of type string" ? 
+  https://access.redhat.com/solutions/1751453
+
+  katello-installer script reports error on elasticsearch
+  https://access.redhat.com/solutions/1262303
+
+  katello-installer fails starting elasticsearch and tomcat6 if IPv6 is not configured properly 
+  https://access.redhat.com/solutions/1129683
+
+  == KCS opportunity ==
+
+  Cannot delete container by name using hammer
+
+  I'd created a number of docker containers using the 'hammer' command - however, these do now appear on the web site. I've also tried to remove these using hammer (since they don't appear within Satellite -> Conatiners -> All Containers) but I get the following error message:
+
+  [root@server:~]#  hammer docker container delete --name='rhel6'
+  [Foreman] Username: username
+  [Foreman] Password for username:
+  Could not delete the container:
+    Error: container found more than once
+
+  Resolution: Try to delete by ide
+
+  # hammer -v -d docker container info --name="<your_container_name>"
+  # hammer docker container delete --id="<your_container_id>"
+
+ == Case history ==
+
+1) Using packages not provided by Red Hat caused "docker images not being created on a compute resource"
+"Error creating communicating with Docker. Check the Foreman logs: json: cannot unmarshal number into Go value of type string"
+
+2) First recomendation was to update satellite and katello as per KB 1.751.453, but update failed since packages were not provided by Red Hat. KB 1.262.303 was recommended to remidiate the situation, but firewall was also disabled.
+
+3) Once the right packages were installed container creation worked
+
+4) Another problem arised, some containers were not appearing in the web interface but were appearing in the CLI output. The issue is related to "BZ 1230915 - hammer container list does not show the id". When tried to delete via name the following error emerged:
+
+[15:40][root@brlhlsatp01:~]#  hammer docker container delete --name='rhel6test'
+[Foreman] Username: stephen.gibbs
+[Foreman] Password for stephen.gibbs:
+Could not delete the container:
+  Error: container found more than once
+
+The workaround was to delete the container by id:
+
+# hammer -v -d docker container info --name="<your_container_name>"
+# hammer docker container delete --id="<your_container_id>"
+
+Lessons learned:
+
+  1) Always check the installed packages - script package check on sosreport
+
+01569164 - Could not attach atomic host with proper subscription
+================================================================
+
+https://c.na7.visual.force.com/apex/Case_View?id=500A000000TQG3K&sfdc.override=1
+
+ == Case history ==
+
+1) Customer cannot register atomic host as he is confused between the difference of "Atomic Host" and "Atomic Enterprise Platform". He has AEP sub instead of AH:
+
+RH00500	5	Atomic Enterprise Platform High Touch Beta
+
+In order to be able to register the servers with Atomic Host, you will only need normal RHEL subscriptions (model 2013). 
+
+2) Customer cannot find ISO to download "Atomic Enterprise Platform".
+
+For Atomic Enterprise Platfrom  (EAP), you need Openshift, and there's no ISO to download, just a channel where the systems have to be registered.
+
+Lessons learned:
+
+  1) Have a clear view of what one might need to run containers/AH/AEP
+
+01585037 - Docker hangs up
+==========================
+
+
+
+

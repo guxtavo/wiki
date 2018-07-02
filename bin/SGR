@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# A Unix user always has a wiki and scripts. The wiki serves to document things
+# that might be necessary in the future. It is kind of a database. The scripts
+# come from bashrc in form of aliases and functions, or in .sh files inside the
+# bin directory when the task requires more than 10 lines of code.
+
+# A Unix user has BUGS and FATES assigned to him
+
+SGR()
+{
+  # new session
+  SESSION="SGR"
+  tmux new-session -d -s $SESSION
+
+  # FLIGHT
+  tmux rename-window -t $SESSION:1 '✈️ '
+  tmux split-window -h
+  tmux send-keys "vi ~/git/wiki/Zero512.md" C-m
+  tmux select-pane -t 0
+  tmux send-keys "journal" C-m
+
+  # CAPCOM
+  tmux new-window -t $SESSION:2 -n '⛑️ '
+  tmux split-window -h
+  tmux send-keys " ~/git/mps-youtube/mpsyt" C-m
+  tmux select-pane -t 0
+  tmux send-keys "vi ~/git/wiki/index.md" C-m
+
+  # FDO
+  tmux new-window -t $SESSION:3 -n 'FDO🚀'
+  tmux split-window -h
+  tmux send-keys "vi ~/git/wiki/hawk1ng.md" C-m
+  tmux select-pane -t 0
+  tmux send-keys "vi ~/git/wiki/to_sum_up-capcom.txt" C-m
+
+  # GPO
+  tmux new-window -t $SESSION:4 -n 'GPO🌎'
+  tmux split-window -h
+  tmux send-keys "vi ~/git/wiki/openscad_cheatsheet.md" C-m
+  tmux select-pane -t 0
+  tmux send-keys "vi ~/git/wiki/EVA_trainner.md" C-m
+
+  # Other windows
+  tmux new-window -t $SESSION:5 -n 'DPS🤖' 'vi ~/git/wiki/snes.txt'
+  tmux new-window -t $SESSION:6 -n 'Surgeon⚕️ ' 'vi ~/git/wiki/wok.txt'
+  tmux new-window -t $SESSION:7 -n 'Booster🔼' 'vi ~/git/wiki/profile/status-right-tumbleweed.sh'
+
+  # Payload
+  tmux new-window -t $SESSION:8 -n 'PDRS📦'
+  tmux split-window -h
+  tmux send-keys "vi ~/git/wiki/afh_epub/*" C-m
+  tmux select-pane -t 0
+  tmux send-keys "vi" C-m
+
+  # Finishing up
+  tmux select-window -t $SESSION:1
+  tmux attach-session -t $SESSION
+}
+
+SGR

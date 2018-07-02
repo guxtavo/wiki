@@ -1,0 +1,5 @@
+How to clear old keys from ssh in chrome:
+
+Ctrl+Shift+j
+
+term_.command.removeKnownHostByIndex(2)

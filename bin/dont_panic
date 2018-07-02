@@ -1,0 +1,11 @@
+#!/bin/bash
+
+help()
+{
+  echo"Unix has only 3 layers, the kernel, the shell and the utilities. Another
+  key concept of Unix are pipes."
+}
+
+80_columns.sh
+tmux select-pane 2
+scriptreplay -t $path/time.log -s $path/session.log -d 2 -m 1

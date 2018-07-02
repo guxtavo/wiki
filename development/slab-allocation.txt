@@ -1,0 +1,175 @@
+Greetings team,
+
+This is Charles Haithcock and I am part of the Kernel team in Global Support
+Services. I was the senior kernel resource that chatted over the phone with
+you. 
+
+Thank you again for your time on the phone as it was a pleasure chatting with
+you. 
+
+As a recap, the majority of the memory consumption is for slab. The slab usage
+in question was slab unreclaimable meaning the slab objects were locked and in
+use and can not be cleared out. This was determined via checking /proc/meminfo
+and seeing Slab usage was roughly 22 GiB. From there, to determine the main
+users of slab, slabtop was used to see the majority of slab was in use for
+generic size-64 slab and various veritas-related slab objects. Unfortunately,
+since the slab-64 objects are un-named, we can not determine what is using
+them or why; doing so would require extensive effort via a vmcore which would
+require downtime to crash the system and then potentially days of additional
+investigation from our end in checking the specific areas of memory
+constituting the slab objects. Even then, the data may be useful only to a
+specific entity and indiscernible otherwise. 
+
+In essence, even with a vmcore, we can not guarantee we can track down what is
+using the unanmed slab even with potentially days of investigation. 
+
+That being said, we also double checked to see if the system is having memory
+contention issues and thankfully confirmed the system is fine otherwise; 
+
+ (1) We check the logs to see if you have many instances of oom killer
+ invocation (a kernel facility whose only responsibility is to kill a process
+ when memory contention is far too drastic and the kernel attempt to save the
+ system). The system did not have many instances of oom-killer invocations
+
+ (2) You had no processes in D state meaning no processes were in direct
+ memory reclaim code paths. In other words, no processes were blocking
+ indefinitely waiting on memory to be available. 
+
+ (3) The system still has some page cache meaning memory was not completely
+ exhausted. 
+
+
+
+The above are the most prominent symptoms of memory contention. As such, the
+evidence seems to indicate the system is operating as expected and by design. 
+
+As a recap, slab is kernel infrastructure used to cache kernel-side objects
+(such as network sockets, scsi commands and request queues, and inodes, and
+anything else commonly used). Their use and existence are dictated by the
+workload and various programs installed on the system. As noted in the remote
+session, we saw veritas specific slab objects.
+
+Since the majority of memory usage was unreclaimable slab, the only way to
+clear out the memory usage is a restart of the system at this point. Even
+then, this action has no guarantee you will incur the same behavior afterward
+or not. 
+
+In summary; 
+ - The memory is in use for kernel caching (in this case, slab)
+ - The slab is unreclaimable in this instance 
+ - The majority of the slab usage is in an unamed slab as well as various
+ veritas related slabs
+ - Thankfully, the rest of your system does not show obvious signs of
+ memory contention
+ - As such, the system is operating as designed. 
+
+Because of the above, did you notice any actual behavioral problems with the
+system other than the memory usage? For example, are processes crashing or
+killed off, are applications or commands running more slowly, etc? 
+
+Please let us know if we can be of any further assistance in the mean time. 
+
+
+vxfsstat -m /boomi-prod
+
+1) Which process is caused for "slab is roughly 23G"
+2)How to restrict the vxfs (/boomi-prod) from highly using RAM. 
+
+At present vxfs usage info
+[root@acnjlappp031p ~]# date
+Fri Jan  6 08:29:50 PST 2017
+[root@acnjlappp031p ~]# vxfsstat -m /boomi-prod
+
+08:29:54.037 Fri 06 Jan 2017 08:29:54 AM PST -- absolute sample
+
+VxFS Pinned Memory Usage Statistics:
+
+Total Allocated:                29875030655
+Inode cache:                     1722172800
+Buffer cache:                    7614846144
+
+
+Hi Gopala,
+
+There are few ways we can track exactly how the "size-64" slab is increasing.
+I'd recommend a system tap script as this 
+does not require a reboot. I'll provide the script and instructions.
+
+  What is SystemTap and how to use it?
+    https://access.redhat.com/solutions/5441
+
+    ** Environment **
+
+    We'll need the following packages installed on the system (assuming
+    kernel-2.6.32-573.1.1.el6.x86_64):
+      o systemtap, systemtap-runtime (latest version)
+        o kernel-devel, kernel-debuginfo, kernel-debuginfo-common
+        (corresponding to kernel version)
+
+        The systemtap, systemtap-runtime and kernel-devel packages are
+        available from the regular server repository. You can install them
+        like below:
+          # yum install systemtap systemtap-runtime
+          kernel-devel-2.6.32-573.1.1.el6.x86_64
+
+          The debuginfo packages are located in the debug repository. I've
+          linked both below. Download both into the same directory on the
+          server and run this command:
+            # yum localinstall
+            ./kernel-debuginfo-2.6.32-573.1.1.el6.x86_64.rpm
+            ./kernel-debuginfo-common-x86_64-2.6.32-573.1.1.el6.x86_64.rpm
+
+            https://access.redhat.com/downloads/content/rhel---6/x86_64/163/kernel-debuginfo/2.6.32-573.1.1.el6/x86_64/fd431d51/package
+            https://access.redhat.com/downloads/content/rhel---6/x86_64/163/kernel-debuginfo-common-x86_64/2.6.32-573.1.1.el6/x86_64/fd431d51/package
+
+            Confirm the correct packages are installed with this command:
+              # rpm -qa | egrep -e kernel-'(devel|debug)' -e systemtap
+
+              This should return these packages (and some additional)
+                systemtap-runtime*
+                  systemtap*
+                    kernel-devel-2.6.32-573.1.1.el6.x86_64
+                      kernel-debuginfo-2.6.32-573.1.1.el6.x86_64
+                        kernel-debuginfo-common-x86_64-2.6.32-573.1.1.el6.x86_64
+
+** Script execution **
+I've attached a system tap script named 'kmem_alloc.stp.gz' to the case. After
+installation download the script onto the 
+server. We'll want to test the script prior to running to confirm it work as
+expected. I would recommend you do this on a 
+dev system to observe impact and confirm it functions as expected prior to the
+production machine. This is low level debugging 
+which will track the creation of any new slabs for whichever slab name we
+specify. We'll select 'size-64' when we run on 
+the prod machine. This will cause some overhead any time a new slab is
+allocated. We will need to run this for long enough 
+that we see some growth in the 'size-64' slab. Depending on how long we run
+the output file may be large. 
+
+On the test machine in the working directory run this:
+  # gzip -d ./kmem_alloc.stp.gz
+    # timeout 30 stap kmem_alloc.stp dentry > ./kmem_alloc_test.txt
+
+    This will take the foreground of the ssh session. In another session run
+    any command such as ls or find on any filesystem. 
+    The script will terminate after 30 seconds. Move back to the stap script
+    and hit [ctrl] + [c] to kill the script. You 
+    should see the output file populated with stack traces and other output
+    upon killing the script. You can attach this for 
+    review and I'll confirm it's as expected. 
+
+    On the production machine execute like this:
+      # timeout [seconds] stap kmem_alloc.stp size-64 >
+      /tmp/kmem_alloc_size-64.txt
+
+      You may monitor the size-64 slab total size in another window with
+      slabtop. Replace [seconds] with the amount of time required 
+      for the slab to grow by a substantial amount. Ideally we would want to
+      track a few GB growth but I think in our case 60 seconds
+      should suffice. If not we can run this again adjusting appropriately.
+      Once complete attach the output file under /tmp for review.
+
+
+      Best,
+
+      Nick

@@ -1,0 +1,7 @@
+I presume you agree that when the load isn't greater than the number of cores,
+it just represents all the cores are in use, which doesn't necessarily means
+you have a performance issue, as there is no waste in resources. Non
+starvation of cores can signify lack of capacity planning and performance
+management. The proper mitigation to assert which component of your
+distribution is causing the performance issue might incur in further
+degradation.

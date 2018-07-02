@@ -1,0 +1,59 @@
+WIP
+
+Greetings, my name is Gustavo from the EMEA Kernel Team and I will assist you with this service request until an Engineer in your GEO can take this case.
+
+Thanks for proactively uploading the sosreport and vmcore. The system panic because a hard lockup was detected on CPU #6. One common reason for hard lockups is to disable interrupts and not reenable them.
+
+        CPUS: 32
+        DATE: Tue Aug 16 21:25:14 2016
+      UPTIME: 247 days, 11:36:54
+LOAD AVERAGE: 3.02, 0.99, 0.35
+       TASKS: 940
+    NODENAME: emd2-ool022.srv.hcvlny.cv.net
+       PANIC: "[3361172.719735] Kernel panic - not syncing: Watchdog detected hard LOCKUP on cpu 6"
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^          
+You have one third party module. I suggest you to contact your third party module vendor and inquiry them about known bugs regarding "hard lockups|interrupts".
+
+  crash> mod -t
+  NAME      TAINTS
+  twnotify  (U)
+
+Let's examine the chain of events that led to the crash. First let's examine the important messages in the ring buffer:
+
+  crash> log | egrep "BUG|RIP|panic"
+  [3361044.284373] BUG: scheduling while atomic: swapper/0/0x10000100
+  [3361045.256983] RIP: 0010:[<ffffffff812c4a6e>]  [<ffffffff812c4a6e>] intel_idle+0xde/0x170
+  [3361172.719735] Kernel panic - not syncing: Watchdog detected hard LOCKUP on cpu 6
+  [3361174.321302] BUG: soft lockup - CPU#26 stuck for 67s! [java:31149]
+  [3361174.321331] RIP: 0010:[<ffffffff81047d2a>]  [<ffffffff81047d2a>] flush_tlb_others_ipi+0x11a/0x130
+
+  1) BUG: scheduling while atomic:
+
+"'Scheduling while atomic' is a debugging message related to atomicity issues. It means that schedule() was called while the current task was atomic. A task in the kernel can by definition not sleep if it is atomic. Atomic can refer to a number of things: the task holds a spinlock, holds the Big Kernel Lock or has explicitly disabled preemption. Further, interrupt handlers are not schedulable so they too are atomic. In other words, not willing to be scheduled."
+
+  What does the 'Scheduling while atomic' message mean?
+  https://access.redhat.com/solutions/45376
+
+  2) Kernel panic - Watchdog detected hard LOCKUP on CPU #6
+  3) BUG: soft lockup on CPU #26
+
+"Various hardware issues, bugs or poorly written code in the kernel can result in CPUs becoming stuck and not available for process switching for extended periods of time. This can cause symptoms that range from a temporarily unresponsive system to a total system lockup. The kernel lockup watchdog is designed to identify when a CPU is potentially stuck, report it to the system log and optionally invoke a kernel panic for analysis."
+
+  What is the kernel hard/soft lockup detector? 
+  https://access.redhat.com/articles/1353303
+
+If the watchdog timer interrupt is running, but the watchdog thread is not running for some period of time, then this is considered a soft lockup. Because the watchdog timer interrupt is running, we know that interrupts are enabled. The fact that the watchdog thread is not running means either that context switching has been disabled, or some interrupt or higher priority real-time thread is consuming 100% of the CPU.
+
+
+
+One common reason for soft lockup is when interrupts fire continuously
+(typically happens when writing a new drive and you forgot to deal
+with a particular interrupt source).
+
+  [rhel6]$ git log --oneline kernel-2.6.32-220.el6.. | grep -i hard | grep -i lockup
+  91e8424 [watchdog] add sysctl knob hardlockup_panic
+  1c2dcbe [watchdog] perform all-CPU backtrace in case of hard lockup
+  f9542c7 [x86] kvm: ensure hard lockup detection is disabled by default
+  16d001d [kernel] watchdog: control hard lockup detection default
+  a0f410d [kernel] lktdm: add support for hardlockup, softlockup and hung task crashes
+

@@ -1,0 +1,31 @@
+    "BUG: scheduling while atomic: java/15566/0x00000100"
+
+  Scheduling while atomic' is a debugging message related to atomicity issues. 
+  It means that schedule() was called while the current task was atomic. A 
+  task in the kernel can by definition not sleep if it is atomic. Atomic can 
+  refer to a number of things: the task holds a spinlock, holds the Big Kernel
+  Lock or has explicitly disabled preemption. Further, interrupt handlers are 
+  not schedulable so they too are atomic. In other words, not willing to be 
+  scheduled.
+
+If you don't have a vmcore, which is probably the case since you have kumdp service disabled, I recommend you to enable and test kdump to make sure the system is capturing vmcore. 
+
+The vmcore is a memory dump of the system from the moment it panics. Now that the system rebooted, there is no relevant information in the sosreport which could lead us to a conclusion.
+
+This can be a bug in the kernel or in one of your third party modules:
+
+  sisfim(P)(U)
+  sisips(P)(U)
+
+If you load a third party module in the kernel, and this module has a bug, it can cause unpredictable results in the system.
+
+  How does Red Hat Global Support Services handle third-party software, drivers, and/or uncertified hardware/hypervisors?
+  https://access.redhat.com/articles/1067
+
+From your current kernel version, until the latest, greping by "atomic", I see only one patch that could be related to the problem, 02eea1d, but I cannot be certain without a vmcore:
+
+RHEL7:
+
+
+  System crash at activate_task() which was called from VMCI module
+  https://access.redhat.com/solutions/1582653

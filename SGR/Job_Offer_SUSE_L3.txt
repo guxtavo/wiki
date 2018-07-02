@@ -1,0 +1,64 @@
+Containers Technologies Engineer - Level 3 Support
+
+SUSE L3 is a globally distributed team of highly skilled Linux developers who
+evaluate, analyze, and fix software defects reported by SUSE customers. The L3
+team is responsible for defect resolution in a wide range of SUSE products,
+technologies and areas, from core kernel bugs to issues with Cloud Foundry
+deployments.
+
+In the L3 Container Technologies Engineer role, your main focus will be not
+only on the container engine itself, but also on the underlying kernel
+interfaces, related network functionality and its storage drivers.
+
+If you consider yourself a fast-learner, if you like varied tasks and enjoy
+solving tricky technical problems, either on your own or in close cooperation
+with other excellent Linux engineers, and would like to deepen your knowledge
+of containers, their deployment and orchestration, then you should apply for
+this position.
+
+Key responsibilities:
+
+    * Technical analysis of customer-reported software issues in SUSE
+      Enterprise products, with main focus on container technologies
+    * Coordination of and active involvement in the bug-fixing proces
+    * Cooperation with other SUSE developers
+    * Fixing code defects and publishing patches
+    * Communication with SUSE Customer Care
+
+Required skills:
+
+    * Very good knowledge of the Linux operating system
+    * Good knowledge of the C programming language
+    * Knowledge of container engine (eg: lxc, docker, rocket, podman, cri-o)
+    * Understanding of the kernel components used to create and tame Linux
+      containers
+    * Strong communication, analytical and organizational skills
+    * Ability and willingness to quickly learn new technologies and work
+      independently with minimal supervision
+
+Desired skills:
+
+    * Understanding of the storage drivers used to create Linux containers
+    * Knowledge of the Go programming language
+
+What we offer:
+
+    * Direct contact with representatives of free/open-source software
+      projects worldwide
+    * Opportunity to participate in the development of Linux operating system
+    * A unique opportunity to become an expert in an area of your choice
+    * Access to new hardware architectures before they even reach the market
+    * Weekly-based flexible working time
+    * A fun, creative, friendly and informal working environment where how you
+      think is far more important than what you wear
+
+About SUSE
+
+SUSE, a pioneer in open source software, provides reliable, software-defined
+infrastructure and application delivery solutions that give enterprises
+greater control and flexibility. More than 25 years of engineering excellence,
+exceptional service and an unrivaled partner ecosystem power the products and
+support that help our customers manage complexity, reduce cost, and
+confidently deliver mission-critical services. The lasting relationships we
+build allow us to adapt and deliver the smarter innovation they need to
+succeed—today and tomorrow.
