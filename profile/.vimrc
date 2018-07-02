@@ -6,10 +6,10 @@ set expandtab
 set shiftround
 set nobackup
 " set relativenumber
+set ignorecase
+set noswapfile
 " set incsearch
-" set ignorecase
 " set smartcase
-" set noswapfile
 
 set tabstop=4
 set softtabstop=4

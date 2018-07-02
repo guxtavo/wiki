@@ -1,8 +1,0 @@
-type function - prints the function code
-
-bash completion is just a command which is called when tab tab is pressed. the
-command complete is the entry point. With it you define which bash function to
-call when tab tab is pressed in any command:
-
-        complete -F you_bash_function your_binary_name
-

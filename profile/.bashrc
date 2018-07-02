@@ -1,29 +1,31 @@
 # .bashrc
 
-# sourcing /etc/bashrc
 if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
 
-# variables
 export PS1="[\W]\$ "
-export HISTSIZE=9999999
+export HISTSIZE=9999
+export HISTFILESIZE=9999
+export HISTCONTROL=ignoreboth
+export HISTTIMEFORMAT='%F %T '
+shopt -s histappend
+shopt -s checkwinsize
 export DISABLE_AUTO_TITLE=true
 export EDITOR=vi
-# style and colors
 export LS_COLORS=$LS_COLORS:'di=0;37:'
+PATH="/home/gfigueira/bin/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/gfigueira/bin/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/gfigueira/bin/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/gfigueira/bin/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/gfigueira/bin/perl5"; export PERL_MM_OPT;
+export PATH="$PATH:/home/gfigueira/bin/suse:/home/gfigueira/bin/wiki"
 
 # fzf setup
 if [[ ! "$PATH" == */home/gfigueira/git/fzf/bin* ]]; then
   export PATH="$PATH:/home/gfigueira/git/fzf/bin"
 fi
-
-export PATH="$PATH:/home/gfigueira/bin/suse:/home/gfigueira/bin/wiki"
-
-# fzf auto-completion
 [[ $- == *i* ]] && source "/home/gfigueira/git/fzf/shell/completion.bash" 2> /dev/null
-
-# fzf key bindings
 source "/home/gfigueira/git/fzf/shell/key-bindings.bash"
 
 # bash completion for global
@@ -35,28 +37,13 @@ global_func()
 }
 complete -F global_func global
 
-# funcoeszz setup
-#export ZZOFF=""  # desligue funcoes indesejadas
-#export ZZPATH="/home/gfigueira/git/funcoeszz/funcoeszz"  # script
-#export ZZDIR="/home/gfigueira/git/funcoeszz/zz"
-#source "$ZZPATH"
-
-
-
-
-
-
-
-
 
 # aliases
 
 alias 512=" vi ~/git/wiki/Zero512.md"
-# servers
 alias pi="ssh pi@192.168.10.1"
 alias obsd="ssh root@192.168.1.243"
-
-# power aliases
+alias nocaps="setxkbmap -option ctrl:nocaps"
 alias psg="ps kstart_time -ef"
 alias pst="ps aux | sort -k10 | cut -b 1-79 | tail -11"
 alias ds="dstat -c -D sda -r --disk-util --top-bio --top-io-adv"
@@ -69,16 +56,12 @@ alias open="xdg-open"
 alias a1="awk '{print $1}'"
 alias a2="awk '{print $2}'"
 alias a3="awk '{print $3}'"
-
-# user specific
 alias edit_alias="vi ~/.bashrc;. ~/.bashrc; update_profile_git"
 alias source_bash="source ~/.bashrc"
 alias t_edit="vi ~/.tmux.conf; tmux source-file ~/.tmux.conf; update_profile_git"
-alias l="ls -lh" 
+alias l="ls -lh --group-directories-first" 
 alias lr="ls -ltr | tail -40" 
 alias ssh="ssh -X -o TCPKeepAlive=yes"
-
-# git
 alias glo="git log --oneline"
 alias gddir="git diff --dirstat=files,5,cumulative"
 #alias gddirroot="git diff  --dirstat=files,0.000001,cumulative kernel-3.10.0-327.37.1.el7..kernel-3.10.0-514.el7  | grep " [a-z]\+/$" | sort -n"
@@ -86,10 +69,7 @@ alias journal="vi ~/git/wiki/journal.txt"
 alias gbrl="git branch --remote --list"
 alias rec="recordmydesktop --no-sound"
 alias gitstat="~/git/wiki/profile/git-status.sh ~/git"
-alias 17="cal 2017"
 alias git_clean_all="git reset; git checkout .; git clean -fdx"
-
-# SUSE
 alias iosc="osc -A https://api.suse.de"
 alias ptf="ssh l3slave.suse.de"
 alias stel="ssh l3slave.suse.de /suse/bin/stel"
@@ -102,8 +82,6 @@ alias zypper="sudo zypper"
 alias pvirsh="sudo virsh -c qemu+ssh://gfigueira@polio.suse.cz/system"
 alias suse="vi ~/git/suse/suse.txt"
 alias progress="l3ls -m | egrep 'IN_PROGRESS|NEW|CONFIRM' | cut -b 1-80 | sort -k2"
-
-# SUSE documentation
 alias pes="w3m -M https://pes.suse.de/L3/"
 alias w3m_cheat_sheet="w3m -M https://github.com/janosgyerik/cheatsheets/blob/master/W3m-cheat-sheet.mediawiki"
 alias markdown="w3m -M https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"
@@ -112,66 +90,37 @@ alias rfc="elinks https://tools.ietf.org/rfc/index"
 alias aurelio="vi git/suse/aurelio.txt"
 alias script-save="script -t 2> time.log -a session.log"
 alias scriptreplay="scriptreplay -t time.log -s session.log -d 2 -m 1"
+alias vu="amixer -q sset Master 3%+"
+alias vd="amixer -q sset Master 3%-"
+alias use-e="egrep -i 'bug|error|warn|fatal'"
+alias search="s"
+alias google="s"
+alias translate="~/git/translate-shell/translate"
+alias pt="~/git/translate-shell/translate -t pt"
+alias cz="~/git/translate-shell/translate -t cs"
+alias st="~/git/wiki/profile/status-right-tumbleweed.sh"
+alias orthos="ssh l3slave.suse.de /mounts/users-space/archteam/bin/orthos"
 
-# funcoeszz
-alias dado=zzdado
+# functions
+
+dado()
+{
+  echo $(( ( RANDOM % 19 )  + 1 ))
+}
+
 define()
 {
   w3m -dump definr.com/$1
 }
 
-alias use-e="egrep -i 'bug|error|warn|fatal'"
-
-
-# Media
-alias vu="amixer -q sset Master 3%+"
-alias vd="amixer -q sset Master 3%-"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# functions
-
 bawk(){
-  awk '/'$1'/,/^$/' $2
+  awk '/"$1"/,/^$/' $2
 }
 
-
-wiki() { zzwikipedia -en $* | less ; }
-dict() { zzenglish $* | less ; }
-pt() { zzdicbabylon $* ; }
+di()
+{
+  w3m -dump "http://www.dict.org/bin/Dict?Form=Dict2&Database=*&Query=$1" | less
+}
 
 loc()
 {
@@ -219,7 +168,6 @@ iexec()
     rm -f $tmp_file ;
 }
 
-# tshark functions
 t_con()
 {
   tshark -tad -r $1 -z "conv,tcp" -q
@@ -301,6 +249,11 @@ s()
   # replace default functionality, open I
   #elinks --dump www.google.com/search?q=$1 | head -16 | tail -1
   w3m -M www.google.com/search?q="$(echo $*)"
+}
+
+wiki()
+{
+w3m -M https://en.wikipedia.org/wiki/Special:Search/"$(echo $*)"
 }
 
 fz()
@@ -408,7 +361,7 @@ countdown ()
     fi;
   done
 }
-#alias pomo="countdown 1500 &"
+
 pomo(){
   if [ -e /tmp/countdown ]; then
     kill -9 $(cat /tmp/pomo)
@@ -441,14 +394,7 @@ colors()
   for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i} "; done
 }
 
+# End of variables, aliases and functions
 
-
-
-## Perl 5
-
-
-PATH="/home/gfigueira/bin/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/gfigueira/bin/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/gfigueira/bin/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/gfigueira/bin/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/gfigueira/bin/perl5"; export PERL_MM_OPT;
+fortune ~/git/wiki/profile/quotes
+setxkbmap -option ctrl:nocaps

@@ -1,9 +1,0 @@
-ctags -x ~/git/linux/stable/kernel/sched/sched.h | less
-
-ctags -x /usr/src/sys/kern/* | less
-ctags -a /usr/src/sys/kern/*
-ctags -u /usr/src/sys/kern/*
-
-ctags in vi
-Ctrl-] -> go to tag
-Ctrl-t -> back

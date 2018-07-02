@@ -1,8 +1,0 @@
-Linux kernel compilation
-
-cd ~/git/linux-stable
-git checkout v3.10.104
-cp /boot/config-$(uname -r) ./.config
-make oldconfig 
-nice -n 5 make -j4     ###   make -j64 rpm - and skip last step
-sudo make modules_install install

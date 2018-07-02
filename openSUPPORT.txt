@@ -1,2 +1,0 @@
-Like openQA, openSUPPORT uses needles to capture "samples" from a system and
-try to describe the current state, 

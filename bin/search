@@ -1,4 +1,0 @@
-#!/bin/bash
-echo -n "Google: "
-read S
-w3m -M https://www.google.com/search?q="$S"

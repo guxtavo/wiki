@@ -1,6 +1,0 @@
-* Microcontroler
-* giroscope, velocity
-* fin mechanism
-* main engine
-* battery
-* shell
