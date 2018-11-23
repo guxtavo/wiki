@@ -7,7 +7,7 @@ set shiftround
 set nobackup
 " set relativenumber
 set ignorecase
-set noswapfile
+" set noswapfile
 " set incsearch
 " set smartcase
 
@@ -40,6 +40,7 @@ highlight Comment ctermfg=7
 highlight Search ctermbg=7
 match OverLength /\%80v.\+/
 autocmd FileType text,xml,tex setlocal textwidth=78
+au BufRead /tmp/mutt-* set tw=72
 
 " set style guide for each language
 autocmd FileType html setlocal shiftwidth=2 tabstop=2

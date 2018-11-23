@@ -18,6 +18,11 @@
 * Wait for merge
 * git pull (update from origin)
 
+## working with remotes
+
+git remote show origin | less
+git log origin/SOMETHINTG_FROM_LAST_COMMAND
+
 ## my tips
 
 # how to make diff between branches

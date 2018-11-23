@@ -21,14 +21,15 @@ test_size()
 {
   LINES=$(wc -l /tmp/weather | awk '{print $1}')
   if [ $LINES -lt 20 ]; then
-    B=-----
+    B="-----"
   fi
 }
 
 format_data2()
 {
   echo -n $(cat /tmp/weather | sed -n 16p | grep -o .[0-9]% | sort -n | sed '$!d')
-  echo -n  $(cat /tmp/weather | sed -n 13p | grep -o [0-9][0-9] |sort -n | sed -e 1b -e '$!d' | tr '\n' ' ' | awk '{print $1"/"$2}')
+  echo -n "☂️ "
+  echo -n  $(cat /tmp/weather | sed -n 13p | grep -o '[0-9][0-9]' |sort -n | sed -e 1b -e '$!d' | tr '\n' ' ' | awk '{print $1"/"$2}')
 }
 
 # main funtion

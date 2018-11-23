@@ -16,7 +16,7 @@ SGR()
   # FLIGHT
   tmux rename-window -t $SESSION:1 '✈️ '
   tmux split-window -h
-  tmux send-keys "vi ~/git/wiki/Zero512.md" C-m
+  tmux send-keys "vi ~/git/SGResearch_200OK/index.md" C-m
   tmux select-pane -t 0
   tmux send-keys "journal" C-m
 
@@ -25,25 +25,25 @@ SGR()
   tmux split-window -h
   tmux send-keys " ~/git/mps-youtube/mpsyt" C-m
   tmux select-pane -t 0
-  tmux send-keys "vi ~/git/wiki/index.md" C-m
+  tmux send-keys "vi ~/bin/wiki/SGR" C-m
 
   # FDO
   tmux new-window -t $SESSION:3 -n 'FDO🚀'
   tmux split-window -h
-  tmux send-keys "vi ~/git/wiki/hawk1ng.md" C-m
+  tmux send-keys "vi ~/git/wiki/SGR/hawk1ng.md" C-m
   tmux select-pane -t 0
-  tmux send-keys "vi ~/git/wiki/to_sum_up-capcom.txt" C-m
+  tmux send-keys "vi ~/git/wiki/SGR/to_sum_up-capcom.txt" C-m
 
   # GPO
   tmux new-window -t $SESSION:4 -n 'GPO🌎'
   tmux split-window -h
-  tmux send-keys "vi ~/git/wiki/openscad_cheatsheet.md" C-m
+  tmux send-keys "vi ~/git/wiki/development/openscad_cheatsheet.md" C-m
   tmux select-pane -t 0
-  tmux send-keys "vi ~/git/wiki/EVA_trainner.md" C-m
+  tmux send-keys "vi ~/git/wiki/SGR/EVA_trainner.md" C-m
 
   # Other windows
-  tmux new-window -t $SESSION:5 -n 'DPS🤖' 'vi ~/git/wiki/snes.txt'
-  tmux new-window -t $SESSION:6 -n 'Surgeon⚕️ ' 'vi ~/git/wiki/wok.txt'
+  tmux new-window -t $SESSION:5 -n 'DPS🤖' 'vi ~/git/wiki/SGR/snes.txt'
+  tmux new-window -t $SESSION:6 -n 'Surgeon⚕️ ' 'vi ~/git/wiki/SGR/wok.txt'
   tmux new-window -t $SESSION:7 -n 'Booster🔼' 'vi ~/git/wiki/profile/status-right-tumbleweed.sh'
 
   # Payload

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+source ~/git/wiki/bin/rall-cfg.sh
+
+CLUSTER_DOMAIN=arch.suse.de
+
+for i in ${!CLUSTER[*]}
+do
+  echo ${CLUSTER[$i]}.$CLUSTER_DOMAIN "###################"
+  ssh root@${CLUSTER[$i]}.$CLUSTER_DOMAIN $@
+done

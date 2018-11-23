@@ -4,7 +4,8 @@ if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
 
-export PS1="[\W]\$ "
+#export PS1="[\W]\$ "
+export PS1='$(echo "($?)") \W 🚀 '
 export HISTSIZE=9999
 export HISTFILESIZE=9999
 export HISTCONTROL=ignoreboth
@@ -20,6 +21,7 @@ PERL_LOCAL_LIB_ROOT="/home/gfigueira/bin/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOC
 PERL_MB_OPT="--install_base \"/home/gfigueira/bin/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/gfigueira/bin/perl5"; export PERL_MM_OPT;
 export PATH="$PATH:/home/gfigueira/bin/suse:/home/gfigueira/bin/wiki"
+LINUX_GIT=/home/gfigueira/git/linux
 
 # fzf setup
 if [[ ! "$PATH" == */home/gfigueira/git/fzf/bin* ]]; then
@@ -65,7 +67,7 @@ alias ssh="ssh -X -o TCPKeepAlive=yes"
 alias glo="git log --oneline"
 alias gddir="git diff --dirstat=files,5,cumulative"
 #alias gddirroot="git diff  --dirstat=files,0.000001,cumulative kernel-3.10.0-327.37.1.el7..kernel-3.10.0-514.el7  | grep " [a-z]\+/$" | sort -n"
-alias journal="vi ~/git/wiki/journal.txt"
+alias journal="vi ~/git/wiki/index.md"
 alias gbrl="git branch --remote --list"
 alias rec="recordmydesktop --no-sound"
 alias gitstat="~/git/wiki/profile/git-status.sh ~/git"
@@ -80,7 +82,7 @@ alias noe="ssh noe.suse.cz"
 alias vpn="sudo ~/git/suse/bin/manage_vpn.sh"
 alias zypper="sudo zypper"
 alias pvirsh="sudo virsh -c qemu+ssh://gfigueira@polio.suse.cz/system"
-alias suse="vi ~/git/suse/suse.txt"
+alias suse="vi ~/git/suse/index.md"
 alias progress="l3ls -m | egrep 'IN_PROGRESS|NEW|CONFIRM' | cut -b 1-80 | sort -k2"
 alias pes="w3m -M https://pes.suse.de/L3/"
 alias w3m_cheat_sheet="w3m -M https://github.com/janosgyerik/cheatsheets/blob/master/W3m-cheat-sheet.mediawiki"
@@ -100,8 +102,18 @@ alias pt="~/git/translate-shell/translate -t pt"
 alias cz="~/git/translate-shell/translate -t cs"
 alias st="~/git/wiki/profile/status-right-tumbleweed.sh"
 alias orthos="ssh l3slave.suse.de /mounts/users-space/archteam/bin/orthos"
+alias ism="ssh l3slave.suse.de /mounts/work/src/bin/is_maintained -b"
+alias vpns="sudo systemctl status openvpn@SUSE-PRG | tail -10 | cut -b64-144 | tail -1"
+alias b="bzg -b"
 
 # functions
+
+rpm_size()
+{
+  sudo  rpm -qia | \
+    awk '$1=="Name" { n=$3} $1=="Size" {s=$3} $1=="Description" {print s  " " n }' | \
+    sort -n
+  }
 
 dado()
 {
@@ -166,7 +178,7 @@ iexec()
     chmod +x $tmp_file ; \
     $tmp_file; \
     rm -f $tmp_file ;
-}
+  }
 
 t_con()
 {
@@ -253,7 +265,7 @@ s()
 
 wiki()
 {
-w3m -M https://en.wikipedia.org/wiki/Special:Search/"$(echo $*)"
+  w3m -M https://en.wikipedia.org/wiki/Special:Search/"$(echo $*)"
 }
 
 fz()
@@ -280,11 +292,11 @@ limit_io_pid()
 
   echo "${mm_ids} ${bw}" | sudo tee \
     ${blkio_path}/${cgroup_name}/blkio.throttle.write_bps_device 
-  echo "${mm_ids} ${bw}" | sudo tee \
-    ${blkio_path}/${cgroup_name}/blkio.throttle.read_bps_device 
-  echo ${pid} | sudo tee \
-    ${blkio_path}/${cgroup_name}/tasks
-}
+      echo "${mm_ids} ${bw}" | sudo tee \
+        ${blkio_path}/${cgroup_name}/blkio.throttle.read_bps_device 
+              echo ${pid} | sudo tee \
+                ${blkio_path}/${cgroup_name}/tasks
+              }
 
 # limit_io_run - blkio wrarpper for ephemeral processes
 # Usage: ./limit.io [bps] command [args]
@@ -301,17 +313,17 @@ limit_io_run()
 
   echo "${mm_ids} ${bw}" | sudo tee \
     ${blkio_path}/${cgroup_name}/blkio.throttle.write_bps_device
-  echo "${mm_ids} ${bw}" | sudo tee \
-    ${blkio_path}/${cgroup_name}/blkio.throttle.read_bps_device
+      echo "${mm_ids} ${bw}" | sudo tee \
+        ${blkio_path}/${cgroup_name}/blkio.throttle.read_bps_device
 
-  if [ $(id -u) != "0" ]
-  then 
-    sudo chown -R $(id -u) ${blkio_path}/${cgroup_name}/
-  fi
+      if [ $(id -u) != "0" ]
+      then 
+        sudo chown -R $(id -u) ${blkio_path}/${cgroup_name}/
+      fi
 
-  cgexec -g blkio:${cgroup_name} $command
-  sudo cgdelete -g blkio:${cgroup_name}
-}
+      cgexec -g blkio:${cgroup_name} $command
+      sudo cgdelete -g blkio:${cgroup_name}
+    }
 
 # lslimit - list blkio cgroups bw and pids
 # Usage: ./lslimit

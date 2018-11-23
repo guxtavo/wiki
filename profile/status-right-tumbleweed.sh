@@ -3,6 +3,12 @@
 #source ~/git/wiki/profile/temp_status.sh
 #source ~/git/wiki/profile/sys_status.sh # blocked tasks
 
+
+# How to fix st when vpn is down
+# check vpn every 5 seconds and display it on screen?
+
+# st code is ugly - refactor
+
 # Fix me: there should be a function to check internet connection, because this
 # is needed by other functions
 # separate server from client. The client should run as fast as possible. The
@@ -13,17 +19,17 @@
 
 print_laytency()
 {
-  echo -n "$(cat /tmp/latency)"
+  echo -n "📡$(cat /tmp/latency)"
 }
 
 hdd_led()
 {
-  echo -n $(cat /tmp/hdd_led)
+  echo -n "💾$(cat /tmp/hdd_led)"
 }
 
 temperature_cpu_hd()
 {
-  echo -n $(cat /tmp/temp_status) "|"
+  echo -n "🌡 $(cat /tmp/temp_status) |"
 }
 
 mps_whats_playing()
@@ -64,6 +70,7 @@ recording()
 
 alternate_performance()
 {
+
   SEC=$(date | awk '{print $4}' | cut -d ':' -f 3)
   if [ $SEC -ge 0 -a $SEC -le 9 ]; then
     print_laytency
@@ -129,7 +136,7 @@ do
   elif [ "$b" = 'active' ]; then
     ACTI=$(( $ACTI + $a ))
   fi
-  echo $ACTI/$PROC
+  echo ⛑️ $ACTI/$PROC
 done
 }
 
@@ -144,7 +151,7 @@ solid_ground_progress()
 {
   # check vpn connectivity
   if $(ip a | grep tun0 | grep -q UP); then
-    if test "`find /tmp/progress -mmin +15`"
+    if test "`find /tmp/progress -mmin +30`"
     then
       solid_ground_fix
     fi
@@ -165,7 +172,7 @@ git_changes()
     find ~/git/suse -ctime -1  | wc -l > /tmp/suse_git_changes
   fi
   B=$(cat /tmp/git_changes)
-  echo -n " $B/"
+  echo -n " 🎯$B/"
 
   C=$(cat /tmp/suse_git_changes)
   echo -n "$C/"

@@ -1,0 +1,8 @@
+#!/usr/bin/expect -f
+set timeout 60
+spawn ~/bin/wiki/scpall
+
+expect "Password: "
+send "Password\r"
+
+

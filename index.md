@@ -150,7 +150,12 @@ Recibo saida: 1803281003
 
 # BUGS #######################################################################
 
-  * OK - Finish Go basic training
+  * Use partitions
+  * l3ls relies too much on bugzilla
+  * bc in tmux status bar
+  * more peer-programing
+  * Move towards the unimportant, Don't be frightened of cliches
+  * Finish Go basic training
   * Go OOP training
   * Refactor ~/git/wiki
   * network ping fallback to DNS server if l3slave not available
@@ -167,15 +172,12 @@ Recibo saida: 1803281003
   * vim shortcut to save file and run Go script
   * vim how to autocomment
 
-celebrateFR33
+celebrateFR33DOM
 
-
-
-
-
+Gift Code: GIFT_WVC3F5BJ
+This gift is for: Andre Pina <andpina@gmail.com>
 
 SystemV shared memory is just a hidden tmpfs
-
 
 Gnome bug
          Synopsis: Workspace is not switched when chrome is fullscreen
@@ -319,15 +321,27 @@ Gnome bug
 
 ## timezone conversion
 
-    [~]$ date --date='TZ="Brazil/East" 14:00'
-    Mon 14 May 19:00:00 CEST 2018
+    # To make time convertions
 
     [~]$ date --date='TZ="Europe/London" 14:00'
     Mon 14 May 15:00:00 CEST 2018
 
-    # Provo:
-    [~]$ date --date='TZ="US/Mountain" 01:00'
-    Mon 14 May 09:00:00 CEST 2018
+    ~ 🚀 TZ=Brazil/East date --date='TZ="US/Mountain" 14:00'
+    Mon  1 Oct 17:00:00 -03 2018
+
+    # Manipulate TZ var before calling date to now() in timezones
+
+    ~ 🚀 TZ=Brazil/East date
+    Mon  1 Oct 12:26:07 -03 2018
+
+    ~ 🚀 TZ=Europe/Prague date
+    Mon  1 Oct 17:26:11 CEST 2018
+
+    ~ 🚀 TZ=Europe/London date
+    Mon  1 Oct 16:26:16 BST 2018
+
+    ~ 🚀 TZ=US/Mountain date
+    Mon  1 Oct 09:26:19 MDT 2018
 
 ## execsnoop
 
@@ -352,8 +366,6 @@ Gnome bug
 ## xrandr
 
     xrandr --auto
-
-
 
 # IDEAS
 

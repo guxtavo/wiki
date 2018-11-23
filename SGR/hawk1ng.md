@@ -1,9 +1,13 @@
-% hawk1ng project
+% hawk1ng project - making space cheaper
 % Gustavo Figueira
 
 # what is it?
 
-hawk1ng is the development platform to build a low cost cubesat. It is build
+hawk1ng is a DYI satellite platform. Using off the shelf, low cost SBCs and
+controllers. Integration and software which are part of a cubesat project is
+broken down.
+
+cubesat. It is build
 upon a Pi3, and currently it is working as a home router. It will also be a
 test bed for WoK. It runs DHCPD, HostAPD, SSHD, iptables, bandwidthd and
 apache2.

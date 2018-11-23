@@ -1,39 +1,31 @@
 capcom(7)                      GUSTAVO FIGUEIRA                      capcom(7)
 
 OBJECTIVE
-       1) Work as a consultant for the aerospace sector (*aaS / HPC / DevOps)
-       2) Work with cool things
+       DevOps cool things in a _customer_ centric organization
 
 SYNOPSIS
-       IEEE 1003          ######....           x86_64             ###.......
-       troubleshooting    #####.....           linux kernel       ####......
-       RFC IP/TCP/etc     ######....           benchmarking       #####.....
-       Storage*           ##........           c/python/ruby/js   ##........
-       bash/ksh/regex     #####.....           kubernetes         #.........
+       IEEE 1003          >>>>>>....           x86_64/virt        >>........
+       troubleshooting    >>>>>.....           linux kernel       >>>>......
+       Networking         >>>>>>....           benchmarking       >>>>>.....
+       Storage*           >>........           c/python/ruby/js   >>........
+       bash/ksh           >>>>>.....           kubernetes         >>........
 
        These are my long running studies / objectives and a measure of
-       how comfortable I feel working on them. *You* are looking for a
-       Senior Linux Engineer.
+       how comfortable I feel working on them. _You_ are looking at a
+       Senior Linux Engineer with background in operations, performance,
+       quality and infrastructure.
 
 DESCRIPTION
-       My introduction to Computer  Science was _HTML_, writing it.   After 2
-       years I was introduced to  switches,  routers and  _Unix_  servers.  I
-       worked replacing failing Unix  systems for  Linux appliances or adding
-       more Unix boxes, and this was  happening every 9 months or so. After 4
-       years I moved to an  ISP to  create  a   _network appliance_  and keep
-       hundreds of devices and  services in a reliable state.  In two years I
-       was entrusted with 400+ devices, taking care of disater recovery plans
-       and complex network maintenance and improvement.  I tried teaching PKI
-       and  _iptables_  at university, but didn't like because of the lack of
-       interest from the students.   This  happened  in  a period of about 11
-       years.  Since 2008 I spent 5 years  _integrating_  high-throughput SMS
-       gateways in  complex and  _mission-critical_   networks.   Then I  was
-       invited to move to Brno, to get more in depth with the  _Linux kernel_
-       and   x86_64  architecture  in Support,  but  also develop some people
-       skills. As I was eyeing a position at software maintenance team, I was
-       hired  by  SUSE  to work  with  _CI_,  maintainers  and  support team,
-       delivering   temporary  fixes  to customers and partners   and helping
-       coordination.
+       Working for Space Grade Research, I'm responsible for delivering 3
+       products. A computer, an IOT device and a Satellite Platform.
+
+       In my day-to-day at suse, I cobble things together with OBS, develop
+       my own scripts to deal with workflow and help optimize R&D resources
+       in an ever more challenging services department.
+
+       From HTML to switches. From Unix servers to routers and appliances.
+       From mission-critical to disater recovery and 24x7. From integration
+       to CI. From managing communities to DevOps.
 
 OPTIONS
        -a --architect (experienced beginner)
@@ -45,8 +37,8 @@ OPTIONS
               RDMS, Application Servers, SAN/LVM
 
        -d --development (practitioner)
-              Linux kernel internals, git, OBS-, vim, regex, quilt,
-              rpm-, strace, perf, gdb-, crash-, tcpdump
+              Linux kernel internals, git, OBS, vim, regex, quilt,
+              strace-, perf-, gdb-, crash-, tcpdump-
 
        -n --networking (knowledgeable practitioner)
               IPv4, firewall configuration (iptables, pf), routing- and
@@ -60,8 +52,8 @@ OPTIONS
               Debian, RHEL, SLES, OpenBSD, Solaris-, IOS-, AIX-, True64-
 
        -s --soft-skills (experienced beginner)
-              Documentation writing, time management, project management,
-              product management, incident management, customer oriented
+              Documentation writing, project management, incident management,
+              marketing, quality
 
        -i --interests
               philosophy, aviation, acoustic guitar and DIY eletronics
@@ -80,26 +72,23 @@ OPTIONS
                (architect, product manager)
 
 VERSIONS
-    SUSE R&D, CZ           1y~           Red Hat, CZ           2y+
+    SUSE, CZ           1y~               Red Hat, CZ           2y+
     > Linux Developer, L3 Support        > Kernel Support Engineer
                                          > Team Lead
     Gemalto, LATAM         4y+
     > Integration Engineer I and II      Drogarias Pacheco, BR 1y~
-                                         > SAP Basis Support
-    Fidelity IT, BR        1y~           > Site Reliability Engineer,
-    > Unix Support Engineer              > L2 Support
-    > Storage Support Engineer
-                                         INPI, BR              4y+
-    Kern Technologies, BR  2y+           > Team Lead
-    > Linux Engineer                     > Unix Support Engineer
-    > Site Reliability Engineer          > Network and Security Engineer
-
-    Various Companies, BR  2y+          Uniabeu, BR            1y~
-    > Webmaster / Web Developer          > Information Security Professor
-    > Sysadmin / Windows/Linux Support
+                                         > Unix Support Engineer
+    Fidelity IT, BR        1y~
+    > Unix Support Engineer              INPI, BR              4y+
+    > Storage Support Engineer           > Unix Support Engineer
+                                           Team Lead
+    Kern Technologies, BR  2y+
+    > Linux Engineer                     Various Companies, BR 3y+
+    > Site Reliability Engineer          > Information security Professor /
+                                           Webmaster / Web Developer /
+                                           Sysadmin /  Linux Support /
 
 SEE ALSO
-        https://github.com/guxtavo
-        https://www.linkedin.com/in/guxtavo
+        https://github.com/guxtavo  -  https://www.linkedin.com/in/guxtavo
 
 capcom(7)             capc8m@gmail.com / +420 774 091 877            capcom(7)
