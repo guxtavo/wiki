@@ -1,4 +1,4 @@
-personal_ws-1.1 en 140 
+personal_ws-1.1 en 146 
 CDR
 acks
 Comms
@@ -13,6 +13,7 @@ sqlite
 openQA
 kinit
 cd
+ifcfg
 linpack
 SES
 KPIs
@@ -43,10 +44,12 @@ dir
 TID
 irssi
 changelog
+hw
 DLM
 cron
 cgroup
 cgroups
+nd
 bze
 cupsd
 DHCP
@@ -56,6 +59,7 @@ CVE
 opensupport
 OpenSUPPORT
 symlinks
+virsh
 tmp
 pcap
 Tiago
@@ -88,6 +92,7 @@ CVEs
 vm
 localhost
 iptables
+eth
 ceph
 linux
 createrepo
@@ -104,6 +109,7 @@ MTU
 xen
 IBS
 Postgresql
+txt
 rpms
 stdin
 CEST

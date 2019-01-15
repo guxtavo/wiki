@@ -8,9 +8,9 @@ stop_recording()
 start_recording()
 {
   touch /tmp/recording && ffmpeg -probesize 30M \
-    -f x11grab -s 1920x1080 -r 1 \
-    -thread_queue_size 512 -draw_mouse 0 -i :0.0 \
-    -f alsa -ac 2  -thread_queue_size 256 \
+    -f x11grab -s 1920x1080 -r 10 \
+    -thread_queue_size 64000 -draw_mouse 0 -i :0.0 \
+    -f alsa -ac 2  -thread_queue_size 32000 \
     -guess_layout_max 0 -i hw:0 \
     -acodec libvorbis -qscale:a 5 \
     -vcodec theora -qscale:v 8 \

@@ -4,11 +4,10 @@ OBJECTIVE
        DevOps cool things in a _customer_ centric organization
 
 SYNOPSIS
-       IEEE 1003          >>>>>>....           x86_64/virt        >>........
-       troubleshooting    >>>>>.....           linux kernel       >>>>......
-       Networking         >>>>>>....           benchmarking       >>>>>.....
-       Storage*           >>........           c/python/ruby/js   >>........
-       bash/ksh           >>>>>.....           kubernetes         >>........
+       IEEE 1003          >>>>>.....           Troubleshooting    >>>>>.....
+       Networking         >>>>>>....           QA/Documentation   >>>>......
+       Linux kernel       >>>>......           x86_64/virt        >>........
+       bash / C           >>>>......           kubernetes         >>........
 
        These are my long running studies / objectives and a measure of
        how comfortable I feel working on them. _You_ are looking at a
@@ -25,16 +24,16 @@ DESCRIPTION
 
        From HTML to switches. From Unix servers to routers and appliances.
        From mission-critical to disater recovery and 24x7. From integration
-       to CI. From managing communities to DevOps.
+       to CI. From managing communities to DevOps. Focus on low-level.
 
 OPTIONS
        -a --architect (experienced beginner)
               Designing mission critical clusters for telcos, network design
               for ISPs
 
-       -c --configuration (knowledgeable practitioner)
-              KVM, HTTP, VPN (OpenVPN, IPsec-), DNS, SMTP, DHCP, NFS, Nagios,
-              RDMS, Application Servers, SAN/LVM
+       -s --system-configuration (knowledgeable practitioner)
+              KVM, HTTP, k8s, OpenVPN,  Bind, Postfix/sendmail, DHCP, NFS,
+              Nagios, RDMS, Application Servers, SAN/LVM
 
        -d --development (practitioner)
               Linux kernel internals, git, OBS, vim, regex, quilt,

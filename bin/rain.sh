@@ -10,6 +10,6 @@ while true; do
     for k in `seq $j`; do
       echo -n " "
     done
-    sleep .05
+    sleep .15
   done
 done

@@ -83,5 +83,5 @@ set statusline+=\ %p%%
 set statusline+=\ %l:%c
 
 " pathogen
-execute pathogen#infect()
-filetype plugin indent on
+" execute pathogen#infect()
+" filetype plugin indent on

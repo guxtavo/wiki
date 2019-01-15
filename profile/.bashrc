@@ -72,14 +72,6 @@ alias gbrl="git branch --remote --list"
 alias rec="recordmydesktop --no-sound"
 alias gitstat="~/git/wiki/profile/git-status.sh ~/git"
 alias git_clean_all="git reset; git checkout .; git clean -fdx"
-alias iosc="osc -A https://api.suse.de"
-alias ptf="ssh l3slave.suse.de"
-alias stel="ssh l3slave.suse.de /suse/bin/stel"
-alias tel="ssh l3slave.suse.de /suse/bin/tel"
-alias polio="ssh polio.suse.cz"
-alias l3vm="ssh polio.suse.cz l3vm"
-alias noe="ssh noe.suse.cz"
-alias vpn="sudo ~/git/suse/bin/manage_vpn.sh"
 alias zypper="sudo zypper"
 alias pvirsh="sudo virsh -c qemu+ssh://gfigueira@polio.suse.cz/system"
 alias suse="vi ~/git/suse/index.md"
@@ -101,10 +93,31 @@ alias translate="~/git/translate-shell/translate"
 alias pt="~/git/translate-shell/translate -t pt"
 alias cz="~/git/translate-shell/translate -t cs"
 alias st="~/git/wiki/profile/status-right-tumbleweed.sh"
-alias orthos="ssh l3slave.suse.de /mounts/users-space/archteam/bin/orthos"
-alias ism="ssh l3slave.suse.de /mounts/work/src/bin/is_maintained -b"
-alias vpns="sudo systemctl status openvpn@SUSE-PRG | tail -10 | cut -b64-144 | tail -1"
+
+# SDI
 alias b="bzg -b"
+
+## OBS
+alias iosc="osc -A https://api.suse.de"
+alias rpm-url="rpm -q --qf '%{DISTURL}\n'"
+
+## INFRA
+alias ptf="ssh l3slave.suse.de"
+alias lthree="ssh l3slave.suse.de"
+alias polio="ssh polio.suse.cz"
+alias l3vm="ssh polio.suse.cz l3vm"
+alias noe="ssh noe.suse.cz"
+alias vv="virt-viewer -c qemu+ssh://gfigueira@polio.suse.cz/system -w"
+alias ism="ssh l3slave.suse.de /mounts/work/src/bin/is_maintained -b"
+alias orthos="ssh l3slave.suse.de /mounts/users-space/archteam/bin/orthos"
+
+## VPN
+alias vpn="sudo ~/git/suse/bin/manage_vpn.sh"
+alias vpns="sudo systemctl status openvpn@SUSE-PRG | tail -10 | cut -b64-144 | tail -1"
+
+# LDAP
+alias stel="ssh l3slave.suse.de /suse/bin/stel"
+alias tel="ssh l3slave.suse.de /suse/bin/tel"
 
 # functions
 
@@ -380,10 +393,14 @@ pomo(){
     rm /tmp/pomo
     rm /tmp/countdown
   else
-    countdown 1500 &
+    countdown $1 &
     echo $! > /tmp/pomo
   fi
 }
+alias tea="pomo 300"
+alias pomodoro="pomo 1500"
+alias hour="pomo 3600"
+alias deep="pomo 5400"
 
 irc_get()
 {
