@@ -47,7 +47,6 @@
 
 # Unix Wiki - Directory structure
 
-  index.md     - this file you are reading
   afh_epub     - Airplaine Flying Handbook epub convertion efforts
   articles     - random texts
   bin          - scripts and prototypes
@@ -55,17 +54,15 @@
   development  - kernel and userspace tools tips
   profile      - sgr shell
   SGR          -
+  index.md     - this file you are reading
 
 ## FATES
-
   * pass: Before authenticating, save passwords in password-store
-  * wiki: SGR: organize folders and files
-  * wiki: fix weather plugin
-  * wiki: add encrypted password-store to profile/dotfiles
-  * wiki: add gimbal, attitude and altitude
-  * wiki: submit to github
-  * suse: organize folders and files
-  * git: wiki, suse, progit2, L3-CaaSP+CAP, kdump, caasp-openstack-heat-templates
+  * wiki: fix network check - show a DNS emoji if dns is up and responding
+
+  * wiki feature: 🎯 should have PRs and PTFs
+  * wiki feature: add gimbal🌎, attitude NNN and altitude
+  * wiki feature: create simultaneos alarms and use tmux to notify
   * hawk1ng:  httpd(gitlab, CMS), NTPD, DNS, DHCP and PXE
   * fElapsedTime
   * SGR Products
@@ -73,9 +70,27 @@
 
 
 
+### github warnings
 
-
-
+(0) wiki 🚀 git push origin master
+Username for 'https://github.com': guxtavo@gmail.com
+Password for 'https://guxtavo@gmail.com@github.com':
+Enumerating objects: 1606, done.
+Counting objects: 100% (1606/1606), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (1598/1598), done.
+Writing objects: 100% (1600/1600), 237.30 MiB | 188.00 KiB/s, done.
+Total 1600 (delta 42), reused 0 (delta 0)
+remote: Resolving deltas: 100% (42/42), completed with 4 local objects.
+remote: warning: GH001: Large files detected. You may want to try Git Large
+File Storage - https://git-lfs.github.com.
+remote: warning: See http://git.io/iEPt8g for more information.
+remote: warning: File SGR/EarthBound_-_1995_-_Nintendo.pdf is 58.43 MB; this is
+larger than GitHub's recommended maximum file size of 50.00 MB
+remote: warning: File afh_epub/afh/airplane_flying_handbook.pdf is 89.93 MB;
+this is larger than GitHub's recommended maximum file size of 50.00 MB
+To https://github.com/guxtavo/wiki.git
+   bca600a..7330c27  master -> master
 
 ### fElapsedTime
 
