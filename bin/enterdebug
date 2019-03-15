@@ -1,0 +1,53 @@
+#!/bin/bash
+#
+#NAME
+#       enterdebug - assist the system administrator performing advance
+#       debugging / system instrumentation
+#
+#SYNOPSIS
+#       enterdebug TODO
+#           supportconfig
+#               sendbug
+#
+#DESCRIPTION
+#       In order to make troubleshooting faster, enterdebug will automate the
+#       task of enabling certain debugging.
+#       debugging options will be enabled, like
+#
+# 1) enable debugging in kernel
+#   1.1) IO
+#   1.2) NET
+#   1.3) hypervisor
+# 2) enable debugging in user-space
+#   2.1) yast
+#   2.2) nfs/cifs
+#   2.3) dns/ntp
+# 3) network packet capture
+# 4) crash the system
+# 5) kubernetes
+#   5.1) orchestration
+#
+# After the debuging is done, use enddebug(8) to wrap all together. This will
+# mark the system out of maintenance and ask if you want to call sendbug(8) to
+# write the bug report. If you confirm the form will be opened and after saving
+# and quiting the editor, a supportconfig(8) will be attached to the bug.
+#
+# TODO - fecth last 1000 bugs and process
+
+vmcore()
+{
+  echo 'make sure kdump is configured and enabled'
+  echo 'c' > /proc/sysrq-trigger
+}
+
+kdump()
+{
+  echo 'set KDUMP_VERBOSE="31" in /etc/sysconfig/kdump'
+  echo 'systemctl restart kdump'
+  echo 'check /var/log/messages'
+}
+
+gdb()
+{
+  echo 'capture a core of the application'
+}

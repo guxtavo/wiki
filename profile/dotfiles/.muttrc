@@ -1,0 +1,47 @@
+set from = "gfigueira@suse.com"
+set realname = "Gustavo Figueira"
+set imap_user = 'gfigueira'
+
+set folder = imaps://imap.suse.de/
+set spoolfile = +INBOX
+set record= +INBOX/Sent
+
+set smtp_url = 'smtp://gfigueira@imap.suse.de:587/'
+
+bind editor <space> noop
+macro index gi "<change-folder>=INBOX<enter>" "Go to INBOX"
+macro index gs "<change-folder>=INBOX/Sent<enter>" "Go to Sent"
+macro index g3 "<change-folder>=INBOX/L3<enter>" "Go to L3"
+macro index gb "<change-folder>=INBOX/bugzilla<enter>" "Go to bugzilla"
+macro index gl "<change-folder>=INBOX/Lists<enter>" "Go to Lists"
+
+set editor = vim
+
+source ~/.mutt-color
+#set pager_index_lines=6
+bind pager <up> previous-line
+bind pager <down> next-line
+
+set sort="threads"
+set strict_threads="yes"
+set sort_browser="reverse-date"
+set sort_aux="last-date-received"
+unset collapse_unread
+bind index - collapse-thread
+bind index _ collapse-all
+
+auto_view text/html
+
+set imap_keepalive = 300
+
+# 12-19
+set ssl_starttls = 'yes'
+set ssl_force_tls = 'yes'
+set imap_check_subscribed=yes
+set mail_check = 120
+set timeout=30
+set message_cachedir = "~/.cache/mutt"
+set net_inc=5
+
+#set imap_authenticators = 'gssapi:cram-md5'
+#set smtp_authenticators = 'digest-md5:cram-md5'

@@ -1,0 +1,72 @@
+# status bar, general settings, colors and styles
+set -g pane-border-bg default
+set -g pane-border-fg '#73ba25'
+set -g pane-active-border-bg default
+set -g pane-active-border-fg colour7
+set -g window-status-current-attr bold
+set -g window-active-style 'fg=default,bg=default'
+set -g status-interval 5
+set -g status-bg '#81c13b'
+set -g status-right-length 200
+set -g status-position top
+set -g base-index 1
+set -g history-limit 9999
+set -g status-right '#(~/git/wiki/profile/shell.sh) %a %m-%d %H:%M W%V '
+set -g set-titles on
+set -sg escape-time 1               # set no delay for escape key press
+set-window-option -g window-status-current-bg default
+set-window-option -g window-status-current-fg colour7
+set-window-option -g automatic-rename on
+set-window-option -g mode-keys vi   # set vi mode
+
+# Function keys
+bind -n F1 copy-mode                   # enter copy mode
+bind -n F2 paste-buffer                # paste last buffer
+bind -n F3 split-window -h             # split pane vertically
+bind -n F4 split-window -v             # split pane horizontally
+bind -n F5 pipe-pane -o "amixer -q sset Master 3%-" # volume down
+bind -n F6 pipe-pane -o "amixer -q sset Master 3%+" # volume up
+bind -n F8 pipe-pane -o "screencast"   # toggle screencast
+# need to use "" for more than 1 search term
+bind -n F9 switch-client -p #command-prompt "new-window 'w3m -M www.google.com/search?q=%%'"
+# this is old search using a script
+#bind -n F9  new-window -n 🔎 \; send-keys -t right 'tmux-search' 'Enter'
+bind -n F10 new-window -n 💡           # creates new window
+bind -n F11 resize-pane -Z             # full screen pane
+bind -n F12 last-window                # go to last selected window
+
+# Navigation
+bind -n M-Left select-pane -L      # alt left to move to left
+bind -n M-Right select-pane -R     # alt right to move to right
+bind -n M-Up select-pane -U        # alt up to move up
+bind -n M-Down select-pane -D      # alt down to move down
+bind -n S-Left previous-window     # shift left to move to left window
+bind -n S-Right next-window        # shift right to move to right window
+bind -n C-Up resize-pane -U 3
+bind -n C-Down resize-pane -D 3
+bind -n C-Right resize-pane -R 7
+bind -n C-Left resize-pane -L 7
+
+# Other binds
+bind-key p choose-buffer
+bind k confirm kill-window
+bind r source-file ~/.tmux.conf
+bind j command-prompt -p "join pane from:"  "join-pane -s '%%'"
+bind s command-prompt -p "send pane to:"  "join-pane -t '%%'"
+bind -n S-Pageup copy-mode -u
+bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "xclip"
+unbind -T copy-mode-vi v
+bind -T copy-mode-vi 'v' send -X begin-selection # Begin selection in copy mode.
+bind -T copy-mode-vi 'C-v' send -X rectangle-toggle # Begin selection in copy mode.
+bind -T copy-mode-vi 'y' send -X copy-selection # Yank selection in copy mode.
+
+# copy mode search 🔎
+
+bind -T copy-mode-vi 'g' send -X copy-selection \; new-window -n 🔎google    \; send -t right 'w3m -M www.google.com/search?q="$(tmux show-buffer)"' 'Enter'
+bind -T copy-mode-vi '3' send -X copy-selection \; new-window -n 🔎w3m       \; send -t right 'w3m -M "$(tmux show-buffer)"' 'Enter'
+bind -T copy-mode-vi 'f' send -X copy-selection \; new-window -n 🔎firefox   \; send -t right 'firefox "$(tmux show-buffer)"' 'Enter'
+bind -T copy-mode-vi 'z' send -X copy-selection \; new-window -n 🔎fastzilla \; send -t right 'w3m fastzilla.suse.de/?q="$(tmux show-buffer)"' 'Enter'
+bind -T copy-mode-vi 'w' send -X copy-selection \; new-window -n 🔎wikipedia \; send -t right 'w3m -M https://en.wikipedia.org/wiki/Special:Search/"$(tmux show-buffer)"' 'Enter'
+bind -T copy-mode-vi 'd' send -X copy-selection \; new-window -n define \; send -t right 'define "$(tmux show-buffer)"' 'Enter'
+bind -T copy-mode-vi 'c' send -X copy-selection \; new-window -n define \; send -t right 'cz "$(tmux show-buffer)"' 'Enter'
+bind -T copy-mode-vi 'p' send -X copy-selection \; new-window -n define \; send -t right 'pt "$(tmux show-buffer)"' 'Enter'
