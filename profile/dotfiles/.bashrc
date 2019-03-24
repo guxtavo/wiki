@@ -24,7 +24,6 @@ export PATH="$PATH:/home/gfigueira/bin/suse:/home/gfigueira/bin/wiki"
 export LINUX_GIT=/home/gfigueira/git/linux
 export COMP_WORDBREAKERS=${COMP_WORKBREAKERS/:/}
 
-
 # fzf setup
 if [[ ! "$PATH" == */home/gfigueira/git/fzf/bin* ]]; then
   export PATH="$PATH:/home/gfigueira/git/fzf/bin"
@@ -105,12 +104,9 @@ alias date_provo="TZ=US/Mountain date"
 
 # SDI
 alias b="bzg -b"
-
-## OBS
 alias iosc="osc -A https://api.suse.de"
 alias rpm-url="rpm -q --qf '%{DISTURL}\n'"
-
-## INFRA
+alias MU="w3m https://maintenance.suse.de/search/?q="
 alias ptf="ssh l3slave.suse.de"
 alias lthree="ssh l3slave.suse.de"
 alias polio="ssh polio.suse.cz"
@@ -119,12 +115,8 @@ alias noe="ssh noe.suse.cz"
 alias vv="virt-viewer -c qemu+ssh://gfigueira@polio.suse.cz/system -w"
 alias ism="ssh l3slave.suse.de /mounts/work/src/bin/is_maintained -b"
 alias orthos="ssh l3slave.suse.de /mounts/users-space/archteam/bin/orthos"
-
-## VPN
 alias vpn="sudo ~/git/suse/bin/manage_vpn.sh"
 alias vpns="sudo systemctl status openvpn@SUSE-NUE | tail -10 | cut -b64-144 | tail -1"
-
-# LDAP
 alias stel="ssh l3slave.suse.de /suse/bin/stel"
 alias tel="ssh l3slave.suse.de /suse/bin/tel"
 
@@ -319,6 +311,11 @@ fz()
   w3m -M fastzilla.suse.de/?q="$@"
 }
 
+mu()
+{
+  w3m https://maintenance.suse.de/search/?q="$@"
+}
+
 set_target()
 {
   echo $1 > ~/.config/target
@@ -410,9 +407,9 @@ countdown ()
   local t=$1 remaining=$1;
   SECONDS=0;
   while sleep .9; do
-    echo $remaining > /tmp/countdown;
+    echo $remaining > /dev/shm/countdown;
     if (( (remaining=t-SECONDS) <= 0 )); then
-      rm -rf /tmp/countdown
+      rm -rf /dev/shm/countdown
       set AUDIODRIVER=oss
       play -q ~/git/wiki/profile/resources/space.wav
       break;
@@ -420,20 +417,20 @@ countdown ()
   done
 }
 
-pomo(){
-  if [ -e /tmp/countdown ]; then
-    kill -9 $(cat /tmp/pomo)
-    rm /tmp/pomo
-    rm /tmp/countdown
+timer_pomo()
+{
+  if [ -e /dev/shm/countdown ]; then
+    kill -9 $(cat /dev/shm/pomo)
+    rm /dev/shm/timer
+    rm /dev/shm/countdown
   else
     countdown $1 &
-    echo $! > /tmp/pomo
+    echo $! > /dev/shm/timer
   fi
 }
-alias tea="pomo 300"
-alias pomodoro="pomo 1500"
-alias hour="pomo 3600"
-alias deep="pomo 5400"
+alias tea="timer_pomo 300"
+alias pomodoro="timer_pomo 1500"
+alias deep="timer_pomo 5400"
 
 irc_get()
 {

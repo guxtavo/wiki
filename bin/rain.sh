@@ -1,4 +1,5 @@
 SS=$(stty size | awk '{print $2}')
+SLEEP=".12"
 while true; do
   for j in 4 8 16 24 32 24 16 8; do
     for k in `seq $j`; do
@@ -10,6 +11,6 @@ while true; do
     for k in `seq $j`; do
       echo -n " "
     done
-    sleep .15
+    sleep $SLEEP
   done
 done

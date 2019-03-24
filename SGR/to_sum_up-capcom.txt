@@ -1,26 +1,27 @@
 capcom(7)                      GUSTAVO FIGUEIRA                      capcom(7)
 
 OBJECTIVE
-       DevOps cool things in a _customer_ centric organization
+       Have fun as DevOps in a _customer_ centric organization
 
 SYNOPSIS
-       IEEE 1003          >>>>>.....           Troubleshooting    >>>>>.....
-       Networking         >>>>>>....           QA/Documentation   >>>>......
-       Linux kernel       >>>>......           x86_64/virt        >>........
-       bash / C           >>>>......           kubernetes         >>........
+       'UNIX'             >>>>>>>>..           Troubleshooting    >>>>>>....
+       Networking         >>>>>.....           QA/Documentation   >>>>......
+       bash / C           >>>>......           kubernetes/salt    >>........
+       Linux Kernel       >>>.......           x86_64 / virt      >.........
 
        These are my long running studies / objectives and a measure of
        how comfortable I feel working on them. _You_ are looking at a
-       Senior Linux Engineer with background in operations, performance,
-       quality and infrastructure.
+       Linux Software Engineer with background in 'Support', 'DevOps',
+       'Performance Tunning' and 'Infrastructure'.
 
 DESCRIPTION
-       Working for Space Grade Research, I'm responsible for delivering 3
-       products. A computer, an IOT device and a Satellite Platform.
+       I dream on building a Space Craft and a Computer for 'Linux Student's.
 
-       In my day-to-day at suse, I cobble things together with OBS, develop
-       my own scripts to deal with workflow and help optimize R&D resources
-       in an ever more challenging services department.
+       As an R&D Software Engineer in SUSE, I use OBS to _build_ anything,
+       help Support with advanced debugging, coordinate and help Develpers,
+       create _patches_ and do backports to different code streams,
+       participate in the developing and operation of my team's tools
+
 
        From HTML to switches. From Unix servers to routers and appliances.
        From mission-critical to disater recovery and 24x7. From integration
@@ -32,36 +33,34 @@ OPTIONS
               for ISPs
 
        -s --system-configuration (knowledgeable practitioner)
-              KVM, HTTP, k8s, OpenVPN,  Bind, Postfix/sendmail, DHCP, NFS,
-              Nagios, RDMS, Application Servers, SAN/LVM
+              KVM, K8S, HTTP, OpenVPN, Bind, Postfix, DHCP, NFS, Nagios
+              Database Servers, Application Servers, SAN/LVM
 
        -d --development (practitioner)
-              Linux kernel internals, git, OBS, vim, regex, quilt,
-              strace-, perf-, gdb-, crash-, tcpdump-
+              OBS, Linux kernel internals, git, vim
 
        -n --networking (knowledgeable practitioner)
-              IPv4, firewall configuration (iptables, pf), routing- and
-              switching (IOS)
+              IPv4, firewall configuration (iptables, pf), IOS
 
-       -t --troubleshooting (practitioner)
-              Performance profiling and tuning, stress tests, low level
-              packet/trace and vmcore analysis-, system hardening, RCA
+       -t --troubleshooting (experienced beginner)
+              Performance profiling and tuning, stress tests, strace, perf,
+              gdb, crash, tcpdump, system hardening, RCA
 
        -o --os-sysadmin (knowledgeable practitioner)
-              Debian, RHEL, SLES, OpenBSD, Solaris-, IOS-, AIX-, True64-
+              Debian, SLES, RHEL, OpenBSD, Solaris, AIX
 
        -s --soft-skills (experienced beginner)
               Documentation writing, project management, incident management,
               marketing, quality
 
        -i --interests
-              philosophy, aviation, acoustic guitar and DIY eletronics
+              philosophy, aviation and space exploration
 
        -p --projects
-              multikern/Kerntec, BR 2004 - hotspot with bandwidth throttling
+              multikern/Kerntec, BR 2004 - internet hotspot
                (bash, iptables, tc, snmp, apache, php, mysql)
 
-              uit/Fidelity IT, BR 2005 - ieee 1003 data collector
+              uit/Fidelity IT, BR 2005 - unix data collector
                (ksh, oracle, linux, sunos, aix, hp-ux, osf/1)
 
               aarav-csr/Red Hat, CZ 2013 - support automation cli
@@ -71,7 +70,7 @@ OPTIONS
                (architect, product manager)
 
 VERSIONS
-    SUSE, CZ           1y~               Red Hat, CZ           2y+
+    SUSE, CZ           2y~               Red Hat, CZ           2y+
     > Linux Developer, L3 Support        > Kernel Support Engineer
                                          > Team Lead
     Gemalto, LATAM         4y+
@@ -80,14 +79,15 @@ VERSIONS
     Fidelity IT, BR        1y~
     > Unix Support Engineer              INPI, BR              4y+
     > Storage Support Engineer           > Unix Support Engineer
-                                           Team Lead
+                                         > Team Lead
     Kern Technologies, BR  2y+
     > Linux Engineer                     Various Companies, BR 3y+
     > Site Reliability Engineer          > Information security Professor /
-                                           Webmaster / Web Developer /
-                                           Sysadmin /  Linux Support /
+                                           Webmaster / Sysadmin /
+                                           Linux Support /
 
 SEE ALSO
-        https://github.com/guxtavo  -  https://www.linkedin.com/in/guxtavo
+        https://github.com/guxtavo
+        https://www.linkedin.com/in/guxtavo
 
 capcom(7)             capc8m@gmail.com / +420 774 091 877            capcom(7)
