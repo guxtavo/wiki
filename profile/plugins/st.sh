@@ -208,13 +208,13 @@ run_start()
 
 gimbal()
 {
-  echo -n "FIT|TC|SVV | "
+  echo -n "😈FIT|TC|SVV | "
 }
 
 countdown()
 {
   # termdown -s '2019-03-31 17:00 CET' --no-text-magic -o /dev/shm/challenge
-  echo -n $(head -1 /dev/shm/challenge | cut -d ' ' -f1-2) "|"
+  echo -n "☯️ " $(head -1 /dev/shm/challenge | cut -d ' ' -f1-2) "|"
 }
 
 weather_get_the_data()

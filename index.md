@@ -9,7 +9,7 @@
 
                                sh  +  c   +  md
                                git + tmux + vim
-                               osc + salt + gdb?
+                               osc +
 
                              kernel and user-space
                                advanced debugging
@@ -39,12 +39,10 @@
 
 # Goals
 
-                         1.  TC  SVV  FIT RL  UWK
-
+                         1.  FIT TC  SVV  RL  UWK
                          2.  PLNNR GUI ARF  L3 NP
                              CZ  C  SIM  AFH  BKS
-
-                    Dreams.  MSC MFR  KRNL SGR 2∞
+                         3.  MSC MFR  KRNL SGR 2∞
                              RPG  JP  WS H1  SPCX
 
 # Directory structure
@@ -83,6 +81,7 @@
     * ECO12 show builds runnin in IBS📦
     * ECO13 intergrate calendaring from google (at least show and notify)
     * ECO14 weather - hide umbrella when chance is 0
+    * ECO15 move gmail to mutt
 
 ## BUGs
 

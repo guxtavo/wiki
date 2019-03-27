@@ -75,7 +75,8 @@ alias gitstat="~/git/wiki/profile/status-bar-plugins/git-status.sh ~/git"
 alias git_clean_all="git reset; git checkout .; git clean -fdx"
 alias zypper="sudo zypper"
 alias pvirsh="sudo virsh -c qemu+ssh://gfigueira@polio.suse.cz/system"
-alias suse="vi ~/git/suse/index.md"
+alias sdi="vi ~/git/suse/index.md"
+alias suse="vi ~/git/suse/wiki/calendar.md"
 alias progress="l3ls -m | egrep 'IN_PROGRESS|NEW|CONFIRM' | cut -b 1-80 | sort -k2"
 alias pes="w3m -M https://pes.suse.de/L3/"
 alias w3m_cheat_sheet="w3m -M https://github.com/janosgyerik/cheatsheets/blob/master/W3m-cheat-sheet.mediawiki"
@@ -400,18 +401,19 @@ stopwatch()
 
 countdown ()
 {
-  if (($# != 1)) || [[ $1 = *[![:digit:]]* ]]; then
+  if (($# != 2)) || [[ $1 = *[![:digit:]]* ]]; then
     echo "Usage: countdown seconds";
     return;
   fi;
   local t=$1 remaining=$1;
   SECONDS=0;
   while sleep .9; do
-    echo $remaining > /dev/shm/countdown;
+    echo $remaining > /dev/shm/countdown.$2;
     if (( (remaining=t-SECONDS) <= 0 )); then
-      rm -rf /dev/shm/countdown
+      rm -rf /dev/shm/countdown.$2
       set AUDIODRIVER=oss
       play -q ~/git/wiki/profile/resources/space.wav
+      tmux display-message "time is over"
       break;
     fi;
   done
@@ -419,18 +421,19 @@ countdown ()
 
 timer_pomo()
 {
-  if [ -e /dev/shm/countdown ]; then
-    kill -9 $(cat /dev/shm/pomo)
-    rm /dev/shm/timer
-    rm /dev/shm/countdown
+  if [ -e /dev/shm/countdown.$2 ]; then
+    kill -9 $(cat /dev/shm/timer.$2)
+    rm /dev/shm/timer.$2
+    rm /dev/shm/countdown.$2
   else
-    countdown $1 &
-    echo $! > /dev/shm/timer
+    countdown $1 $2 &
+    echo $! > /dev/shm/timer.$2
   fi
 }
-alias tea="timer_pomo 300"
-alias pomodoro="timer_pomo 1500"
-alias deep="timer_pomo 5400"
+alias teas="timer_pomo 10 tea"
+alias tea="timer_pomo 300 tea"
+alias pomodoro="timer_pomo 1500 pomo"
+alias deep="timer_pomo 5400 deep"
 
 irc_get()
 {

@@ -1,4 +1,4 @@
-## Working upstream
+# Working upstream
 
 1) Clone, fork, remote upstream
 * git clone https://github.com/brendangregg/perf-tools.git
@@ -18,10 +18,27 @@
 * Wait for merge
 * git pull (update from origin)
 
-## working with remotes
+# working with remotes
 
 git remote show origin | less
 git log origin/SOMETHINTG_FROM_LAST_COMMAND
+
+# pull requests from git
+
+Sometimes a pull request will be the patch you need for a PTF, but the pull
+request was not accepted already into the master repo.
+
+If you clone the master repo you won't be able to do a git show for that
+particular pull request. In order to make the pull request available after you
+clone the master, you need to check the github page for the patch, and it will
+say where the pull request can be found, e.g.:
+
+> tchaikov wants to merge 1 commit into ceph:master from tchaikov:wip-22354
+
+So after clonning master, you need to add this pull request so you can save
+the diff:
+
+> git fetch https://github.com/tchaikov/ceph wip-22354
 
 ## my tips
 
