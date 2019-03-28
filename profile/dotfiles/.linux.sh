@@ -1,13 +1,12 @@
-if [ -f /etc/bashrc ]; then
-  . /etc/bashrc
-fi
-
 export HISTSIZE=9999
 export HISTFILESIZE=9999
 export HISTCONTROL=ignoreboth
 export HISTTIMEFORMAT='%F %T '
+shopt -s histappend
+shopt -s checkwinsize
+
 export DISABLE_AUTO_TITLE=true
-export LS_COLORS=$LS_COLORS:'di=0;37:'
+
 export PATH="/home/gfigueira/bin/perl5/bin${PATH:+:${PATH}}"
 export PERL5LIB="/home/gfigueira/bin/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
 export PERL_LOCAL_LIB_ROOT="/home/gfigueira/bin/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
@@ -15,9 +14,7 @@ export PERL_MB_OPT="--install_base \"/home/gfigueira/bin/perl5\""
 export PERL_MM_OPT="INSTALL_BASE=/home/gfigueira/bin/perl5"
 export LINUX_GIT=/home/gfigueira/git/linux
 export COMP_WORDBREAKERS=${COMP_WORKBREAKERS/:/}
-
-shopt -s histappend
-shopt -s checkwinsize
+export LS_COLORS=$LS_COLORS:'di=0;37:'
 
 # fzf setup
 if [[ ! "$PATH" == */home/gfigueira/git/fzf/bin* ]]; then
@@ -108,6 +105,8 @@ update_profile_git()
 
   export SGR_shell_path="/home/gfigueira/git/wiki/profile"
   cp ~/.bashrc ${SGR_shell_path}/dotfiles/
+  cp ~/.linux.sh ${SGR_shell_path}/dotfiles/
+  cp ~/.common.sh ${SGR_shell_path}/dotfiles/
   cp ~/.vimrc ${SGR_shell_path}/dotfiles/
   cp -r ~/.vim ${SGR_shell_path}/dotfiles/
   cp ~/.tmux.conf ${SGR_shell_path}/dotfiles/
