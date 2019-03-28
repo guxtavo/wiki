@@ -13,7 +13,7 @@ cpu-hdd_temp()
       then
         B=$(sensors | grep CPU | awk '{print $2}' |  tr -d "+°C" | sed 's/\.0//g')
         C=$(sudo hddtemp /dev/sda| awk '{print $6}' | tr -d "°C")
-        echo "🔥$B/$C" > /dev/shm/cpu-hdd_temp
+        echo "$B/$C" > /dev/shm/cpu-hdd_temp
     fi
     echo -n " $(cat /dev/shm/cpu-hdd_temp) |"
   fi
@@ -61,7 +61,10 @@ battery()
 
   # update the battery status every minute
   if test "`find /dev/shm/battery -mmin +1`"
-     then acpi -b 0 > /dev/shm/battery
+    then
+      if [ $SYSTEM = "Linux" ]; then
+        acpi -b 0 > /dev/shm/battery
+      fi
   fi
 
   # parse the status
@@ -174,17 +177,19 @@ solidground_progress()
   if test ! -e /dev/shm/solidground
     then touch /dev/shm/solidground
   fi
-  # check vpn connectivity
-  if $(ip a | grep tun0 | grep -q UP); then
-    # check if progress is older than half hour
-    if test "`find /dev/shm/solidground -mmin +15`"
-    then
-      solidground_fix
+  if [ $SYSTEM = "Linux" ]; then
+    # check vpn connectivity
+    if $(ip a | grep tun0 | grep -q UP); then
+      # check if progress is older than half hour
+      if test "`find /dev/shm/solidground -mmin +15`"
+      then
+        solidground_fix
+      fi
+      B=$(solidground_fix2 | tail -1)
+      echo -n " $B"
+    else
+      echo -n " ?"
     fi
-    B=$(solidground_fix2 | tail -1)
-    echo -n " $B"
-  else
-    echo -n " ?"
   fi
 }
 
@@ -213,7 +218,7 @@ targets()
   # Commits - FIXME: track PRs/pushes
   A=4
   B=$(cat /dev/shm/ptfs)
-  echo -n " 🎯$A/$B"
+  echo -n " $A/$B"
 }
 
 run_start()
@@ -223,13 +228,13 @@ run_start()
 
 gimbal()
 {
-  echo -n "😈FIT|TC|SVV | "
+  echo -n "FIT|TC|SVV | "
 }
 
 countdown()
 {
   # termdown -s '2019-03-31 17:00 CET' --no-text-magic -o /dev/shm/challenge
-  echo -n "☯️ " $(head -1 /dev/shm/challenge | cut -d ' ' -f1-2) "|"
+  echo -n " " $(head -1 /dev/shm/challenge | cut -d ' ' -f1-2) "|"
 }
 
 weather_get_the_data()
