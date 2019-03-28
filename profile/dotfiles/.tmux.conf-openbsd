@@ -1,51 +1,87 @@
-# status bar settings
+# tmux configuration for OpenBSD
+
+# terminal type and vi mode
+set -g default-terminal "screen"    # "tmux-256color"
+set-window-option -g mode-keys vi   # set vi mode
+
+# colour    map
+# colour0 = black
+# colour1 = red
+# colour2 = green
+# colour3 = yellow
+# colour4 = blue
+# colour5 = magenta
+# colour6 = cyan
+# colour7 = white
+# colour8 = gray
+
+# colours
+set -g pane-border-bg colour0 # black
+set -g pane-border-fg colour2 # green
+set -g pane-active-border-bg colour0 # black
+set -g pane-active-border-fg colour7 # white
+set -g status-bg colour0 # black
+set -g status-fg colour3 # yellow
+set -g window-status-current-bg colour3 # yellow
+set -g window-status-current-fg colour0 # black
+set -g window-active-style 'fg=default,bg=default'
+
+# status bar, general settings
+#set -g status-right '#(uptime) %a W%V %Y-%m-%d %H:%M'
+set -g status-right '%a W%V %Y-%m-%d %H:%M'
+set -g window-status-current-attr bold
 set -g status-right-length 200
-set-option -g status-position top
+set -g status-position top
+set -g automatic-rename on
+set -g history-limit 9999
+set -g status-interval 15
+set -sg escape-time 1
+set -g set-titles on
 set -g base-index 1
 
-# automatically set window titles
-set-window-option -g automatic-rename on
-set-option -g set-titles on
+# Function keys
+bind -n F1 copy-mode                   			# enter copy mode
+bind -n F2 paste-buffer           		        # paste last buffer
+bind -n F3 split-window -h              		# split pane vertically
+bind -n F4 split-window -v             			# split pane horizontally
+bind -n F5 pipe-pane -o "amixer -q sset Master 3%-" 	# volume down
+bind -n F6 pipe-pane -o "amixer -q sset Master 3%+" 	# volume up
+bind -n F8 pipe-pane -o "screencast"   			# toggle screencast
+bind -n F9 switch-client -p 				# switch sessions
+bind -n F10 new-window -n 💡           	# creates new window
+bind -n F11 resize-pane -Z             			# full screen pane
+bind -n F12 last-window                			# go to last selected window
 
-## Navigation
-# use alt-arrow keys without prefix to select panels
-bind -n M-Left select-pane -L
-bind -n M-Right select-pane -R
-bind -n M-Up select-pane -U
-bind -n M-Down select-pane -D
+# Navigation
+bind -n M-Left select-pane -L      # alt left to move to left
+bind -n M-Right select-pane -R     # alt right to move to right
+bind -n M-Up select-pane -U        # alt up to move up
+bind -n M-Down select-pane -D      # alt down to move down
+bind -n S-Left previous-window     # shift left to move to left window
+bind -n S-Right next-window        # shift right to move to right window
+bind -n C-Up resize-pane -U 3      # ctrl up resizes the pane up
+bind -n C-Down resize-pane -D 3    # ctrl down resizes the pane down
+bind -n C-Right resize-pane -R 7   # ctrl right resizes the pane right
+bind -n C-Left resize-pane -L 7    # ctrl left resizes the pane left
 
-# use shift-arrow keys without prefix to switch windows
-bind -n S-Left previous-window
-bind -n S-Right next-window
-# todo
-#bind -n S-up previous-session
-#bind -n S-Left previous-session
-
-# paging up and putting into copy mode
+# Other binds
+bind-key p choose-buffer
+bind k confirm kill-window
 bind -n S-Pageup copy-mode -u
-
-# reload tmux config
 bind r source-file ~/.tmux.conf
+bind j command-prompt -p "join pane from:"  "join-pane -s '%%'"
+bind s command-prompt -p "send pane to:"  "join-pane -t '%%'"
 
-# split window
-bind-key v split-window -h
-bind-key h split-window -v
+# copy mode
+unbind -T copy-mode-vi v
+bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "xclip"
+bind -T copy-mode-vi 'v' send -X begin-selection # Begin selection in copy mode.
+bind -T copy-mode-vi 'C-v' send -X rectangle-toggle # Begin selection in copy mode.
+bind -T copy-mode-vi 'y' send -X copy-selection # Yank selection in copy mode.
 
-# set no delay for escape key press
-set -sg escape-time 0
+# copy mode search
 
-set-window-option -g mode-keys vi
-
-# status bar script
-# set -g status-right 
-#	 '#(cd #{pane_current_path}; git rev-parse --abbrev-ref HEAD) 
-#	  #(cd #{pane_current_path}; git status --porcelain | wc -l)
-#	     |
-#	   #(~/git/wiki/profile/status-right.sh) 
-#	   %a %m-%d %H:%M'
-#
-set -g status-right '#(~/git/wiki/profile/status-right-openbsd.sh) [%V] %a %m-%d %H:%M'
-
-# clipboard integration
-# C-b-p to paste buffer from xclip:
-bind C-p run-shell "tmux set-buffer \"$(xclip -o)\"; tmux paste-buffer"
+# google search with 'g'
+bind -T copy-mode-vi 'g' send -X copy-selection \; new-window -n google \; send -t right 'w3m -M www.google.com/search?q="$(tmux show-buffer)"' 'Enter'
+# open in w3m with '3'
+bind -T copy-mode-vi '3' send -X copy-selection \; new-window -n w3m    \; send -t right 'w3m -M "$(tmux show-buffer)"' 'Enter'

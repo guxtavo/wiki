@@ -9,3 +9,11 @@ alias vpn_on="doas openvpn --daemon --config /etc/openvpn/SUSE.conf.PRG"
 alias vpn_off="doas pkill openvpn"
 alias vpn-dns="doas ksh /etc/openvpn/dns.suse"
 alias vpn-dns-home="doas ksh /etc/openvpn/dns.home"
+
+update_profile_git_openbsd()
+{
+  export SGR_shell_path="/home/gfigueira/git/wiki/profile"
+  cp ~/.profile ${SGR_shell_path}/dotfiles/
+  cp ~/.openbsd.sh ${SGR_shell_path}/dotfiles/
+  cp ~/.tmux.conf ${SGR_shell_path}/dotfiles/.tmux.conf-openbsd
+}
