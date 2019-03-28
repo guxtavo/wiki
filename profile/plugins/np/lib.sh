@@ -65,6 +65,7 @@ function trigger_vpn_probe()
   NET_UNR="Network is unreachable"
   RESTART="Restart pause, 5 second"
   CONNECTING="Attempting to establish TCP connection with"
+  NOTE1="NOTE: --mute triggered"
 
   LINE=$(sudo systemctl status openvpn@SUSE-$VPNGW | tail -1)
 
