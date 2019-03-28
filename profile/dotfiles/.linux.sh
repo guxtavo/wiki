@@ -1,3 +1,5 @@
+export EDITOR=vi
+
 export HISTSIZE=9999
 export HISTFILESIZE=9999
 export HISTCONTROL=ignoreboth
@@ -36,7 +38,7 @@ complete -F global_func global
 
 alias webserver="python -m SimpleHTTPServer 8000"
 alias open="xdg-open"
-alias edit_alias="vi ~/.bashrc;. ~/.bashrc; update_profile_git"
+alias edit_alias="vi ~/.linux.sh;. ~/.bashrc; update_profile_git"
 alias source_bash="source ~/.bashrc"
 alias l="ls -lh --group-directories-first" 
 alias lr="ls -ltr | tail -40" 

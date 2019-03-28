@@ -4,8 +4,6 @@
 
 # basic setup
 export PS1='$(echo "($?)") \W $ '
-export EDITOR=vi
-set -o vi
 export PATH="$PATH:/home/gfigueira/bin/suse:/home/gfigueira/bin/wiki"
 
 # aliases
