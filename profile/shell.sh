@@ -51,4 +51,6 @@ if [ $SYSTEM = "Linux" ]; then
   # output the line preceeded by the runtime in ms
   echo -n $(( ($FINISH - $START)/1000000 ))
   echo -n ms $(cat /dev/shm/shell-status)
+  else
+  echo -n $(cat /dev/shm/shell-status)
 fi
