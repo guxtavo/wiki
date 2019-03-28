@@ -1,15 +1,19 @@
 #!/bin/bash
 
+export SYSTEM=$(uname -s)
+
 # record time to calculate elapsed time
 export START=$(date +%s%N)
 
-# create lock to avoid concurrent running
-set -e
-scriptname=$(basename $0)
-lock="/dev/shm/${scriptname}"
-exec 200>$lock
-# if lock is taken, second instance will exit with 1
-flock -n 200 || exit 1
+if [ $SYSTEM = "Linux" ]; then
+  # create lock to avoid concurrent running
+  set -e
+  scriptname=$(basename $0)
+  lock="/dev/shm/${scriptname}"
+  exec 200>$lock
+  # if lock is taken, second instance will exit with 1
+  flock -n 200 || exit 1
+fi
 
 # sourcing plugins to cleanup the main script
 source ~/git/wiki/profile/plugins/st.sh

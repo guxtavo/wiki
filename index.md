@@ -82,6 +82,11 @@
     * ECO13 intergrate calendaring from google (at least show and notify)
     * ECO14 weather - hide umbrella when chance is 0
     * ECO15 move gmail to mutt
+    * ECO16 port .tmux-openbsd to linux, change color scheme
+    * ECO17 port vimrc from linux to openbsd
+    * ECO18 cleaup bash history
+    * ECO19 do not depende on fuzzy finder
+    * ECO20 what is .nexrc in openbsd?
 
 ## BUGs
 

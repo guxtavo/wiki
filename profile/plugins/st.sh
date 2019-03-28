@@ -2,19 +2,21 @@
 
 cpu-hdd_temp()
 {
-  # create control file if doesn't exist
-  if test ! -e /dev/shm/cpu-hdd_temp
-    then touch /dev/shm/cpu-hdd_temp
-  fi
+  if [ $SYSTEM = "Linux" ]; then
+    # create control file if doesn't exist
+    if test ! -e /dev/shm/cpu-hdd_temp
+      then touch /dev/shm/cpu-hdd_temp
+    fi
 
-  # update the temperatures every minute
-  if test "`find /dev/shm/cpu-hdd_temp -mmin +1`"
-    then
-      B=$(sensors | grep CPU | awk '{print $2}' |  tr -d "+°C" | sed 's/\.0//g')
-      C=$(sudo hddtemp /dev/sda| awk '{print $6}' | tr -d "°C")
-      echo "🔥$B/$C" > /dev/shm/cpu-hdd_temp
+    # update the temperatures every minute
+    if test "`find /dev/shm/cpu-hdd_temp -mmin +1`"
+      then
+        B=$(sensors | grep CPU | awk '{print $2}' |  tr -d "+°C" | sed 's/\.0//g')
+        C=$(sudo hddtemp /dev/sda| awk '{print $6}' | tr -d "°C")
+        echo "🔥$B/$C" > /dev/shm/cpu-hdd_temp
+    fi
+    echo -n " $(cat /dev/shm/cpu-hdd_temp) |"
   fi
-  echo -n " $(cat /dev/shm/cpu-hdd_temp) |"
 }
 
 # shows reconding time, of countdowns or battery status
@@ -84,7 +86,7 @@ dns()
   DNS_SERVER=$(cat $RESOLV | grep nameserver | awk '{print $2}')
   PING_OK="0"
   NSLOOKUP_OK="0"
-  ON="🕷  "
+  ON="D "
 
   # create control file if doesn't exist
   if test ! -e /dev/shm/dns
@@ -116,17 +118,30 @@ dns()
 
 network-status()
 {
-  ip link show > /dev/shm/ip_link_show
-  echo -n " "
-  if $(cat /dev/shm/ip_link_show | grep wlp1s0 | grep LOWER_UP > /dev/null); then
-    echo -n "🛰 "
+  if [ $SYSTEM = "Linux" ]; then
+    ip link show > /dev/shm/ip_link_show
+    echo -n " "
+    if $(cat /dev/shm/ip_link_show | grep wlp1s0 | grep LOWER_UP > /dev/null); then
+      echo -n "W"
+    fi
+    if $(cat /dev/shm/ip_link_show | grep tun0 | grep LOWER_UP > /dev/null); then
+      echo -n "V"
+    fi
+    # dns status
+    dns
+    echo -n "  |"
   fi
-  if $(cat /dev/shm/ip_link_show | grep tun0 | grep LOWER_UP > /dev/null); then
-    echo -n 🔐
+
+  if [ $SYSTEM = "OpenBSD" ]; then
+    ifconfig > /dev/shm/ip_link_show
+    echo -n " "
+    if $(cat /dev/shm/ip_link_show | grep em0 | grep RUNNING > /dev/null); then
+      echo -n "E"
+    fi
+    if $(cat /dev/shm/ip_link_show | grep tun0 | grep RUNNING > /dev/null); then
+      echo -n "V"
+    fi
   fi
-  # dns status
-  dns
-  echo -n "  |"
 }
 
 # update file with l3ls content
