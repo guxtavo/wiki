@@ -20,10 +20,10 @@ set -g pane-border-bg colour0 # black
 set -g pane-border-fg colour2 # green
 set -g pane-active-border-bg colour0 # black
 set -g pane-active-border-fg colour7 # white
-set -g status-bg colour0 # black
-set -g status-fg colour3 # yellow
-set -g window-status-current-bg colour3 # yellow
-set -g window-status-current-fg colour0 # black
+set -g status-bg colour3 # -black
+set -g status-fg colour0 # -yellow
+set -g window-status-current-bg colour2 # -yellow
+set -g window-status-current-fg colour0 # -black
 set -g window-active-style 'fg=default,bg=default'
 
 # status bar, general settings
@@ -47,7 +47,7 @@ bind -n F4 split-window -v             			# split pane horizontally
 bind -n F5 pipe-pane -o "amixer -q sset Master 3%-" 	# volume down
 bind -n F6 pipe-pane -o "amixer -q sset Master 3%+" 	# volume up
 bind -n F8 pipe-pane -o "screencast"   			# toggle screencast
-bind -n F9 switch-client -p 				# switch sessions
+bind -n F9 set-option -g status 			# toggle the status bar
 bind -n F10 new-window -n 💡           	# creates new window
 bind -n F11 resize-pane -Z             			# full screen pane
 bind -n F12 last-window                			# go to last selected window
