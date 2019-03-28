@@ -2,10 +2,9 @@
 
 export SYSTEM=$(uname -s)
 
-# record time to calculate elapsed time
-export START=$(date +%s%N)
-
 if [ $SYSTEM = "Linux" ]; then
+  # record time to calculate elapsed time
+  export START=$(date +%s%N)
   # create lock to avoid concurrent running
   set -e
   scriptname=$(basename $0)
@@ -48,6 +47,8 @@ export FINISH=$(date +%s%N)
 #echo -n $(( ($FINISH - $ANOTHER)/1000000 ))
 #echo -n "/"
 
-# output the line preceeded by the runtime in ms
-echo -n $(( ($FINISH - $START)/1000000 ))
-echo -n ms $(cat /dev/shm/shell-status)
+if [ $SYSTEM = "Linux" ]; then
+  # output the line preceeded by the runtime in ms
+  echo -n $(( ($FINISH - $START)/1000000 ))
+  echo -n ms $(cat /dev/shm/shell-status)
+fi
