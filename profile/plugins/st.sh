@@ -18,7 +18,8 @@ cpu-hdd_temp()
     echo -n " $(cat /dev/shm/cpu-hdd_temp) |"
   else
     B=$(sysctl hw.sensors.cpu0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
-    echo "$B" > /dev/shm/cpu-hdd_temp
+    C=$(sysctl hw.sensors.pchtemp0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
+    echo "$B/$C" > /dev/shm/cpu-hdd_temp
     echo -n " $(cat /dev/shm/cpu-hdd_temp) |"
   fi
 
@@ -79,7 +80,7 @@ battery()
       echo -n " ${B::-3} |"
     else
       B=$(cat /dev/shm/battery | grep -v "unavai" | awk '{print $4}' | tr -d "%,")
-      echo -n " $B∞ |"
+      echo -n " $B% |"
   fi
 }
 
