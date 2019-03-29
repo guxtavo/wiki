@@ -16,23 +16,7 @@ export PERL_MB_OPT="--install_base \"/home/gfigueira/bin/perl5\""
 export PERL_MM_OPT="INSTALL_BASE=/home/gfigueira/bin/perl5"
 export LINUX_GIT=/home/gfigueira/git/linux
 export COMP_WORDBREAKERS=${COMP_WORKBREAKERS/:/}
-export LS_COLORS=$LS_COLORS:'di=0;37:'
-
-# fzf setup
-if [[ ! "$PATH" == */home/gfigueira/git/fzf/bin* ]]; then
-  export PATH="$PATH:/home/gfigueira/git/fzf/bin"
-fi
-[[ $- == *i* ]] && source "/home/gfigueira/git/fzf/shell/completion.bash" 2> /dev/null
-source "/home/gfigueira/git/fzf/shell/key-bindings.bash"
-
-# bash completion for global
-global_func()
-{
-  local cur
-  cur=${COMP_WORDS[COMP_CWORD]}
-  COMPREPLY=(`global -c $cur`)
-}
-complete -F global_func global
+#export LS_COLORS=$LS_COLORS:'di=0;37:'
 
 # aliases
 
@@ -40,8 +24,8 @@ alias webserver="python -m SimpleHTTPServer 8000"
 alias open="xdg-open"
 alias edit_alias="vi ~/.linux.sh;. ~/.bashrc; update_profile_git"
 alias source_bash="source ~/.bashrc"
-alias l="ls -lh --group-directories-first" 
-alias lr="ls -ltr | tail -40" 
+alias l="ls -1F --group-directories-first" 
+alias ll="ls -lF --group-directories-first" 
 alias zypper="sudo zypper"
 alias translate="~/git/translate-shell/translate"
 alias pt="~/git/translate-shell/translate -t pt"

@@ -16,7 +16,12 @@ cpu-hdd_temp()
         echo "$B/$C" > /dev/shm/cpu-hdd_temp
     fi
     echo -n " $(cat /dev/shm/cpu-hdd_temp) |"
+  else
+    B=$(sysctl hw.sensors.cpu0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1
+-d".")
+    echo "$B/" > /dev/shm/cpu-hdd_temp
   fi
+
 }
 
 # shows reconding time, of countdowns or battery status
@@ -144,6 +149,7 @@ network-status()
     if $(cat /dev/shm/ip_link_show | grep tun0 | grep RUNNING > /dev/null); then
       echo -n "V"
     fi
+    echo -n " |"
   fi
 }
 
@@ -166,9 +172,9 @@ solidground_fix2()
   ACTIVE=$(cat $FILE | grep active | awk '{print $1}')
   DONE=$(( $PROCESSED + $SLEEPING ))
   if [ $ACTIVE -gt $OVERLOADED ]
-    then echo -n "👀"
+    then echo -n "!"
   fi
-  echo ⚙️ $ACTIVE/$DONE
+  echo $ACTIVE/$DONE
 }
 
 solidground_progress()
@@ -257,13 +263,15 @@ weather_test_size()
 
 weather_format_data()
 {
-  echo -n $(cat /dev/shm/weather | sed -n 16p | grep -o .[0-9]% | sort -n | sed '$!d')
-  echo -n "☂️ "
-
+  RAIN_CHANCE=$(cat /dev/shm/weather | sed -n 16p | grep -o .[0-9]% | sort -n | sed '$!d' | tr -d " %")
+  if [ $RAIN_CHANCE -get 0 ]; then
+  	echo -n $RAIN_CHANGE"%T"
+  fi
+  # echo -n $RAIN_CHANCE " "
   # winter and temperatures bellow 0
   #echo -n  $(cat /dev/shm/weather | sed -n 13p | grep -o '\-[0-9]' |sort -n | sed -e 1b -e '$!d' | tr '\n' ' ' | awk '{print $1"/"$2}')
   # temperatures above 0
-  echo -n  $(cat /dev/shm/weather | sed -n 13p | grep -o '[0-9]' |sort -n | sed -e 1b -e '$!d' | tr '\n' ' ' | awk '{print $1"-"$2}')
+  echo -n  $(cat /dev/shm/weather | sed -n 13p | grep -o '[0-9]' |sort -n | sed -e 1b -e '$!d' | tr '\n' ' ' | awk '{print $1"-"$2"°"}')
   #echo -n  $(cat /dev/shm/weather | sed -n 13p | grep -o '[0-9][0-9]' |sort -n | sed -e 1b -e '$!d' | tr '\n' ' ' | awk '{print $1"/"$2}')
 }
 
