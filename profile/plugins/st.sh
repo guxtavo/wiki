@@ -291,7 +291,7 @@ weather_format_data()
 	else
 	 RAW=$(sed -n 13p /dev/shm/weather | strings | grep -o 'm[0-9]\{1,2\}')
 	 BETTER=$(echo $RAW | tr -d "m" | perl -pe 's/ /\n/g' | sort -n | sed -e 1b -e '$!d')
-	 ENHANCE=$(echo $BETTER | tr '\n' ' ' | awk '{print $1"/"$2"."}') 
+	 ENHANCE=$(echo $BETTER | tr '\n' ' ' | awk '{print $1"-"$2"."}') 
 	 echo -n $ENHANCE
 	fi
 }
