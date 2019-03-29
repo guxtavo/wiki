@@ -13,7 +13,7 @@ if [ $SYSTEM = "Linux" ]; then
 		# if lock is taken, second instance will exit with 1
 		flock -n 200 || exit 1
 	else
-		export START=$(/home/gfigueira/date)
+		export START=$(/home/gfigueira/git/wiki/bin/date)
 fi
 
 # sourcing plugins to cleanup the main script
@@ -42,7 +42,7 @@ main > /dev/shm/shell-status
 if [ $SYSTEM = "Linux" ]; then
 		export FINISH=$(date +%s%N)
 	else
-		export FINISH=$(/home/gfigueira/date)
+		export FINISH=$(/home/gfigueira/git/wiki/bin/date)
 fi
 
 # output the line preceeded by the runtime in ms
