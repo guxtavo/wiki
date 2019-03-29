@@ -184,6 +184,7 @@ solidground_progress()
   if test ! -e /dev/shm/solidground
     then touch /dev/shm/solidground
   fi
+
   if [ $SYSTEM = "Linux" ]; then
     # check vpn connectivity
     if $(ip a | grep tun0 | grep -q UP); then
@@ -285,8 +286,11 @@ weather_format_data()
   # winter and temperatures bellow 0
   #echo -n  $(cat /dev/shm/weather | sed -n 13p | grep -o '\-[0-9]' |sort -n | sed -e 1b -e '$!d' | tr '\n' ' ' | awk '{print $1"/"$2}')
   # temperatures above 0
-  echo -n  $(cat /dev/shm/weather | sed -n 13p | grep -o '[0-9]' |sort -n | sed -e 1b -e '$!d' | tr '\n' ' ' | awk '{print $1"-"$2"."}')
-  #echo -n  $(cat /dev/shm/weather | sed -n 13p | grep -o '[0-9][0-9]' |sort -n | sed -e 1b -e '$!d' | tr '\n' ' ' | awk '{print $1"/"$2}')
+  if [ $SYSTEM = "Linux" ]; then
+  echo -n  $(sed -n 13p /dev/shm/weather | grep -o '[0-9]\{1,2\}' |sort -n | sed -e 1b -e '$!d' | tr '\n' ' ' | awk '{print $1"-"$2"."}')
+	else
+	 echo -n  $(sed -n 13p /dev/shm/weather | strings| grep -o 'm[0-9]\{1,2\}')
+	fi
 }
 
 weather_main(){
