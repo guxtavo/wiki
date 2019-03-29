@@ -3,15 +3,17 @@
 export SYSTEM=$(uname -s)
 
 if [ $SYSTEM = "Linux" ]; then
-  # record time to calculate elapsed time
-  export START=$(date +%s%N)
-  # create lock to avoid concurrent running
-  set -e
-  scriptname=$(basename $0)
-  lock="/dev/shm/${scriptname}"
-  exec 200>$lock
-  # if lock is taken, second instance will exit with 1
-  flock -n 200 || exit 1
+		# record time to calculate elapsed time
+		export START=$(date +%s%N)
+		# create lock to avoid concurrent running
+		set -e
+		scriptname=$(basename $0)
+		lock="/dev/shm/${scriptname}"
+		exec 200>$lock
+		# if lock is taken, second instance will exit with 1
+		flock -n 200 || exit 1
+	else
+		export START=$(/home/gfigueira/date)
 fi
 
 # sourcing plugins to cleanup the main script
@@ -37,20 +39,12 @@ main(){
 main > /dev/shm/shell-status
 
 # record time to calculate elapsed time
-export FINISH=$(date +%s%N)
-
-# extra debugging
-#echo -n $(( ($MIDDLE - $START)/1000000 ))
-#echo -n "/"
-#echo -n $(( ($ANOTHER - $MIDDLE)/1000000 ))
-#echo -n "/"
-#echo -n $(( ($FINISH - $ANOTHER)/1000000 ))
-#echo -n "/"
-
 if [ $SYSTEM = "Linux" ]; then
-  # output the line preceeded by the runtime in ms
-  echo -n $(( ($FINISH - $START)/1000000 ))
-  echo -n ms $(cat /dev/shm/shell-status)
-  else
-  echo -n $(cat /dev/shm/shell-status)
+		export FINISH=$(date +%s%N)
+	else
+		export FINISH=$(/home/gfigueira/date)
 fi
+
+# output the line preceeded by the runtime in ms
+echo -n $(( ($FINISH - $START)/1000000 ))
+echo -n ms $(cat /dev/shm/shell-status)

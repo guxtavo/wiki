@@ -61,6 +61,7 @@
         * check DNS connectivity
         * check NIC status
         * check VPN status
+	* ECO21 np for OpenBSD
     * ECO2 commit-pull-request-tracker
         * tracks positive feedback PTFs
         * tracks pull requests made
@@ -87,6 +88,10 @@
     * ECO18 cleaup bash history
     * ECO19 do not depende on fuzzy finder
     * ECO20 what is .nexrc in openbsd?
+	* ECO22 write a C program to print date -r with nanoseconds
+	* ECO23 what to show instead of battery percentage/remaining time?
+	* ECO24 display-message when battery goes bellow 30 minutes
+	* ECO25
 
 ## BUGs
 
