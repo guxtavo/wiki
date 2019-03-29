@@ -157,7 +157,7 @@ network-status()
 # update file with l3ls content
 solidground_fix()
 {
-  l3ls -m  | grep "^\[" | tr -d "[" | while read a b c; do
+  ssh l3slave.suse.de l3ls -m  | grep "^\[" | tr -d "[" | while read a b c; do
   echo $a $b
   done > /dev/shm/solidground
 }
@@ -187,6 +187,19 @@ solidground_progress()
   if [ $SYSTEM = "Linux" ]; then
     # check vpn connectivity
     if $(ip a | grep tun0 | grep -q UP); then
+      # check if progress is older than half hour
+      if test "`find /dev/shm/solidground -mmin +15`"
+      then
+        solidground_fix
+      fi
+      B=$(solidground_fix2 | tail -1)
+      echo -n " $B"
+    else
+      echo -n " ?"
+    fi
+  else
+	# check vpn connectivity
+    if $(ifconfig | grep tun0 | grep -q RUNNING); then
       # check if progress is older than half hour
       if test "`find /dev/shm/solidground -mmin +15`"
       then
