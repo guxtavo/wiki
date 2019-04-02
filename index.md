@@ -9,7 +9,7 @@
 
                                sh  +  c   +  md
                                git + tmux + vim
-                               osc +
+                               osc + gdb
 
                              kernel and user-space
                                advanced debugging
@@ -72,26 +72,31 @@
         * count time between items in the main loop
         * improve performance to < 50ms when power is connected
         * improve performance to < 150ms when power is disconnected
-    * ECO5 simultaneous alarms with descriptions
     * ECO6 pass: Before authenticating, save passwords in password-store
     * ECO7 AFH epub
     * ECO8 enterdebug
     * ECO9 calendar integration
     * ECO10 ditch gnome and gnome-terminal for something faster (i3 and st?)
     * ECO11 run rain.sh in realtime, no delays
-    * ECO12 show builds runnin in IBS📦
+    * ECO12 show builds runnin in IBS
     * ECO13 intergrate calendaring from google (at least show and notify)
     * ECO14 weather - hide umbrella when chance is 0
     * ECO15 move gmail to mutt
-    * ECO16 port .tmux-openbsd to linux, change color scheme
-    * ECO17 port vimrc from linux to openbsd
     * ECO18 cleaup bash history
-    * ECO19 do not depende on fuzzy finder
     * ECO20 what is .nexrc in openbsd?
 	* ECO22 write a C program to print date -r with nanoseconds
-	* ECO23 what to show instead of battery percentage/remaining time?
 	* ECO24 display-message when battery goes bellow 30 minutes
-	* ECO25
+	* ECO26 enterdebug prototype before hackweek starts
+	* ECO28 suspending when lid is closed (also run i3lock)
+	* ECO29 make shell.sh behave like i3status
+
+    * OK: ECO5 simultaneous alarms with descriptions
+    * OK: ECO19 do not depende on fuzzy finder
+	* OK: ECO25 volume and brightness in i3
+	* OK: ECO27 locking screen in i3
+    * OK: ECO17 port vimrc from openbsd to linux
+    * OK: ECO16 port .tmux-openbsd to linux, change color scheme
+	* OK: ECO23 what to show instead of battery percentage/remaining time? -> alarms
 
 ## BUGs
 

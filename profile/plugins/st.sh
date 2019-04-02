@@ -39,19 +39,23 @@ battery-countdown-recording()
     else
       echo -n " $MIN:$SEC 🔴 |"
     fi
-  # bug
-  # if any file named /dev/shm/countdown.* exist, the alarms should be
-  # shown
   fi
+
   COUNT=$(ls /dev/shm/countdown* | wc -l | awk '{print $1}')
   if [ $COUNT -gt 0 ]; then
-    B=$(cat /dev/shm/countdown*)
+    # show how many countdowns are running
+	echo -n " $COUNT "
+	NEXT=$(( ( RANDOM % $COUNT ) + 1 ))
+	ID_NEXT=$(ls /dev/shm/countdown.* | sed -n ${NEXT}p | cut -f2 -d".")
+	echo $ID_NEXT > /dev/shm/cd-last
+	ID=$(cat /dev/shm/cd-last)
+   	B=$(cat /dev/shm/countdown.$ID)
     MIN=$(( $B/60 ))
     SEC=$(( $B%60 ))
     if [ $SEC -lt 10 ]; then
-      echo -n " $MIN:0$SEC |"
+      echo -n " $MIN:0$SEC $ID |"
     else
-      echo -n " $MIN:$SEC |"
+      echo -n " $MIN:$SEC $ID |"
     fi
   else
     battery

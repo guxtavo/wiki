@@ -24,7 +24,7 @@ source ~/git/wiki/profile/plugins/st.sh
 main(){
   run_start                    # 19ms
   gimbal                       # 01ms
-  countdown                    # 08ms
+  #countdown                    # 08ms
   export MIDDLE=$(date +%s%N)
   weather                      # 46ms
   solidground_progress         # 25ms

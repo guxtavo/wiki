@@ -26,6 +26,7 @@ alias edit_alias="vi ~/.linux.sh;. ~/.bashrc; update_profile_git"
 alias source_bash="source ~/.bashrc"
 alias l="ls -1F --group-directories-first" 
 alias ll="ls -lF --group-directories-first" 
+alias ls="ls -F --group-directories-first"
 alias zypper="sudo zypper"
 alias translate="~/git/translate-shell/translate"
 alias pt="~/git/translate-shell/translate -t pt"
@@ -40,6 +41,12 @@ alias vpn="sudo ~/git/suse/bin/manage_vpn.sh"
 alias vpns="sudo systemctl status openvpn@SUSE-NUE | tail -10 | cut -b64-144 | tail -1"
 
 # functions
+
+# brightness
+bright ()
+{
+    echo $1 | sudo tee -a /sys/class/backlight/intel_backlight/brightness
+}
 
 rpm_size()
 {

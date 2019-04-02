@@ -94,39 +94,30 @@ stopwatch()
 
 countdown ()
 {
-  if (($# != 2)) || [[ $1 = *[![:digit:]]* ]]; then
+  id=$(od -vAn -N2 -tx1 < /dev/urandom | sed 's/ //g')
+  tmux display-message "Timer $id created"
+  if (($# != 1)) || [[ $1 = *[![:digit:]]* ]]; then
     echo "Usage: countdown seconds";
     return;
   fi;
   local t=$1 remaining=$1;
   SECONDS=0;
   while sleep .9; do
-    echo $remaining > /dev/shm/countdown.$2;
+    echo $remaining > /dev/shm/countdown.$id;
     if (( (remaining=t-SECONDS) <= 0 )); then
-      rm -rf /dev/shm/countdown.$2
+      rm -rf /dev/shm/countdown.$id
       set AUDIODRIVER=oss
       play -q ~/git/wiki/profile/resources/space.wav
-      tmux display-message "time is over"
+      tmux display-message "Timer $id is over"
       break;
     fi;
   done
 }
 
-timer_pomo()
-{
-  if [ -e /dev/shm/countdown.$2 ]; then
-    kill -9 $(cat /dev/shm/timer.$2)
-    rm /dev/shm/timer.$2
-    rm /dev/shm/countdown.$2
-  else
-    countdown $1 $2 &
-    echo $! > /dev/shm/timer.$2
-  fi
-}
-alias teas="timer_pomo 10 tea"
-alias tea="timer_pomo 300 tea"
-alias pomodoro="timer_pomo 1500 pomo"
-alias deep="timer_pomo 5400 deep"
+alias ten="countdown 10 &"
+alias tea="countdown 300 &"
+alias pomodoro="countdown 1500 &"
+alias deep="countdown 5400 &"
 
 e8()
 {
