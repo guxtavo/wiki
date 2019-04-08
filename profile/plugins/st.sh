@@ -13,6 +13,10 @@ cpu-hdd_temp()
       then
         B=$(sensors | grep CPU | awk '{print $2}' |  tr -d "+°C" | sed 's/\.0//g')
         C=$(sudo hddtemp /dev/sda| awk '{print $6}' | tr -d "°C")
+		if [ $B -gt 50 ]; then
+			tmux display-message "sudo systemctl restart NetworkManager"
+			B="!$B"
+		fi
         echo "$B/$C" > /dev/shm/cpu-hdd_temp
     fi
     echo -n " $(cat /dev/shm/cpu-hdd_temp) |"
@@ -173,6 +177,11 @@ solidground_fix2()
   OVERLOADED=3
   FILE=/dev/shm/solidground
   SLEEPING=$(cat $FILE | grep sleeping | awk '{print $1}')
+  if [ $SLEEPING -gt 0 ]; then
+	echo ok >/dev/null
+  else
+	SLEEPING=0
+  fi 
   PROCESSED=$(cat $FILE | grep processed | awk '{print $1}')
   ACTIVE=$(cat $FILE | grep active | awk '{print $1}')
   DONE=$(( $PROCESSED + $SLEEPING ))
@@ -284,7 +293,7 @@ weather_format_data()
 {
   RAIN_CHANCE=$(cat /dev/shm/weather | sed -n 16p | grep -o .[0-9]% | sort -n | sed '$!d' | tr -d " %")
   if [ $RAIN_CHANCE -gt 0 ]; then
-  	echo -n $RAIN_CHANGE"%T"
+  	echo -n $RAIN_CHANGE"%${RAIN_CHANCE}T "
   fi
   # echo -n $RAIN_CHANCE " "
   # winter and temperatures bellow 0
