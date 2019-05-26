@@ -1,38 +1,49 @@
-Linux Developer at SuSE, from Rio de Janeiro - Brazil, living in Brno - Czech
-Republic. 
+Dear recruiter,
 
-My stack is built around Tumbleweed, tmux(1), vim(1), git(1) and global(1), and
-I'm getting proficient with gdb(1), perf(1) and strace(1).
+My name is Gustavo (capcom on IRC), and I'm currently employed as a Linux
+Developer, L3 Support at SUSE, based in Brno - Czech Republic, reporting
+remotely to office in Prague.
 
-Markets I have worked for:
-        * Open Source
-        * Telecom/Networking
-        * Mission critical
+I'm currently looking into re-locating back to Brazil in August 2021, so I'm
+interest in remote positions only. I understand that some positions require
+some "office dynamics", in which case I appreciate the attention.
 
-Currently I'm hacking:
-        * The Linux Kernel
-        * C language
+My stack is built around OpenSUSE Tumbleweed (I'm an agile person), tmux (that
+lives in the shell), vim and git, and I have great curiosity for kernels (not
+just Linux) and low-level protocols.
 
-Open Source projects I subscribe and/or do pull request:
-        * linux-stable
-        * RT Patch
-        * funcoeszz
-        * obs-build
-        * perf-tools
-        * tmux
-        * cfs-osal
+I'm rooted in some niches:
+    * Unix              20+ years
+    * ISP / Net.Mgmt.    7+ years
+    * Telecom            5+ years
+    * Open Source        5+ years
+
+The years in Open Source are working in SUSE and Red Hat.
+
+Currently I'm honing my skills at:
+    * ftrace - tracing framework for the Linux kernel
+    * C language - K&R
+    * git - ProGit2
+
+Doing DevOps and some management:
+    * Helping release code and coordination of the L3 tooling team
+    * Sharing bugfixing/maintainership of a few packages with 10+ other devs
 
 Projects I've hacked in the past:
-        * Captive portal
-        * Diagnostic information tool for Unix
-        * Collaborative template system
+    * Captive portal (circa 2003, closed source)
+    * Diagnostic information tool for Unix (circa 2005, open source)
 
 I'm also know for:
-        * doing table tennis trick shots 
-        * artful basketball player
-        * aerospace geek
+    * Doing table tennis trick shots
+    * Artful basketball player
+    * Chiptune music enthusiast
+    * Aerospace geek
+    * Building an opensource computer hardware platform
 
-Happy hacking!
+I hope I could give some clarity to ease your decision process, but if you
+have any questions don't hesitate to ask for further details. I hope this will
+enable you to select a position that could align with my skills so we can
+hopefuly come to a final agreement.
 
--- 
-capcom
+--
+Gustavo (capcom) Figueira

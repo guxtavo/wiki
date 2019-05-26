@@ -1,0 +1,22 @@
+
+perf:
+	pkg.installed: 
+    	- pkg: perf
+
+gdb:
+	pkg.installed: 
+    	- pkg: gdb
+
+tcpdump:
+	pkg.installed: 
+    	- pkg: tcpdump
+
+# dynamic and static tracepoints
+# /sys/kernel/debug/tracing
+# tracing_on -> file to use when enabling/disabling kprobes
+# subsystems: sched, irq
+
+kprobe:
+	file.managed:
+		- name:
+		- source:

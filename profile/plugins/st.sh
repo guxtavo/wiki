@@ -229,6 +229,7 @@ solidground_progress()
 
 targets()
 {
+  GITLAB="https://gitlab.suse.de/gfigueir.atom?feed_token=26rq5ZPRvrhci2NsSFQ1"
   # create control file if doesn't exist
   if test ! -e /dev/shm/targets
     then touch /dev/shm/targets
@@ -247,10 +248,11 @@ targets()
     # If VPN is not on, ptfdb will fail
     # positive feedback ptfs
     ~/git/wiki/profile/plugins/ptfs.sh > /dev/shm/ptfs
+	w3m -dump $GITLAB | grep opened > /dev/shm/PR
   fi
 
   # Commits - FIXME: track PRs/pushes
-  A=4
+  A=$(wc -l /dev/shm/PR | awk '{print $1}')
   B=$(cat /dev/shm/ptfs)
   echo -n " $A/$B"
 }
@@ -262,7 +264,7 @@ run_start()
 
 gimbal()
 {
-  echo -n "FIT|TC|SVV | "
+  echo -n "DP|GUI|FIT | "
 }
 
 countdown()

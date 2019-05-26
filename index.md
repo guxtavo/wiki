@@ -8,8 +8,8 @@
                       ######    ##    ###   ##   ## wiki ##
 
                                sh  +  c   +  md
-                               git + tmux + vim
-                               osc + dbg  +
+                               vim + tmux + git
+                                 osc + ftrace
 
                   ######  ######  ##  ##  #####    #####  #######
                  ##    ## ##  ##  ##  ##  ##  ##  ##    # ##
@@ -36,11 +36,10 @@
 
 # Directives
 
-                         1.  FIT  TC  GUI  SVV NP
-                         2.  ARF  RL  CZ   C  AFH
-						 3.  PLNNR UWK L3 SIM BKS
-                             MSC MFR  KRNL SGR 2∞
-                             RPG  JP  WS H1  SPCX
+                         1.  TC  FIT  GUI  DP  NP
+                         2.  MFR SVV  ARF  C  AFH 
+						 3.  MSC H1 SPCX PLNNR L3
+							 RL BKS  UWK  SIM  2∞
 
 # Structure
 
@@ -52,6 +51,12 @@
   SGR          - Space Grade Research
   index.md     -
 
+## BUGs
+
+	BUG03 solidground data is wrong during vpn reconnect. The timer for refresh
+	is 30 minutes, so this can lead to wrong information displayed for a long
+	time.
+
 ## ECOs
 
     * ECO02 network-status-probe (np)
@@ -61,10 +66,9 @@
         * check l3slave connectivity
 		* port for for OpenBSD
         * Integrate other plugins with netstat-probe
-    * ECO03 commit-pull-request-tracker
-        * tracks pull requests made in gitlab and github
     * ECO4 elapsedtime
 		* make shell.sh behave like i3status (run in a loop)
+		* show screen refresh rate in FPS
 
 	* ECO05 dbg - getopts (copy from someone)
 	* ECO06 bkp ~/.l3t.conf , i3 config and i3status config to dotfiles
