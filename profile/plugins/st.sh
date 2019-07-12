@@ -14,7 +14,7 @@ cpu-hdd_temp()
         B=$(sensors | grep CPU | awk '{print $2}' |  tr -d "+°C" | sed 's/\.0//g')
         C=$(sudo hddtemp /dev/sda| awk '{print $6}' | tr -d "°C")
 		if [ $B -gt 50 ]; then
-			tmux display-message "sudo systemctl restart NetworkManager"
+			tmux display-message "CPU temp above 50C"
 			B="!$B"
 		fi
         echo "$B/$C" > /dev/shm/cpu-hdd_temp
@@ -45,7 +45,10 @@ battery-countdown-recording()
     fi
   fi
 
-  COUNT=$(ls /dev/shm/countdown* | wc -l | awk '{print $1}')
+  COUNT=$(ls /dev/shm/countdown* 2>/dev/null| wc -l | awk '{print $1}')
+  if [ -z $COUNT ] ; then
+    COUNT=0
+  fi
   if [ $COUNT -gt 0 ]; then
     # show how many countdowns are running
 	echo -n " $COUNT "
@@ -168,6 +171,10 @@ solidground_fix()
   ssh l3slave.suse.de l3ls -m  | grep "^\[" | tr -d "[" | while read a b c; do
   echo $a $b
   done > /dev/shm/solidground
+
+  BZ="https://bugzilla.suse.com"
+  BZST=$(curl -m 5 -sIL $BZ | grep HTTP | tail -1 | cut -d " " -f 2)
+  echo $BZST > /dev/shm/bugzilla_http_status
 }
 
 solidground_fix2()
@@ -177,18 +184,27 @@ solidground_fix2()
   OVERLOADED=3
   FILE=/dev/shm/solidground
   SLEEPING=$(cat $FILE | grep sleeping | awk '{print $1}')
-  if [ $SLEEPING -gt 0 ]; then
-	echo ok >/dev/null
+  if [ -z $SLEEPING ]; then
+    SLEEPING=0
   else
-	SLEEPING=0
-  fi 
+    if [ $SLEEPING -gt 0 ]; then
+        echo ok >/dev/null
+    else
+        SLEEPING=0
+    fi 
+  fi
   PROCESSED=$(cat $FILE | grep processed | awk '{print $1}')
   ACTIVE=$(cat $FILE | grep active | awk '{print $1}')
   DONE=$(( $PROCESSED + $SLEEPING ))
+  BZST=$(cat /dev/shm/bugzilla_http_status)
+
+  echo -n "["$BZST"] "
+
   if [ $ACTIVE -gt $OVERLOADED ]
     then echo -n "!"
   fi
-  echo $ACTIVE/$DONE
+
+  echo -n $ACTIVE/$DONE
 }
 
 solidground_progress()
@@ -244,11 +260,10 @@ targets()
   if test "`find /dev/shm/targets -mmin +30`"
   then
     touch /dev/shm/targets
-    # BUG
-    # If VPN is not on, ptfdb will fail
-    # positive feedback ptfs
+    # BUG: If VPN is not on, ptfdb will fail
+    # BUG: rss feed on gitlab no reliable -> use git log on repos locally
     ~/git/wiki/profile/plugins/ptfs.sh > /dev/shm/ptfs
-	w3m -dump $GITLAB | grep opened > /dev/shm/PR
+	w3m -dump $GITLAB | grep "<title>gfigueir" > /dev/shm/PR
   fi
 
   # Commits - FIXME: track PRs/pushes
@@ -264,7 +279,7 @@ run_start()
 
 gimbal()
 {
-  echo -n "DP|GUI|FIT | "
+  echo -n "DP|FIT|L3ech | "
 }
 
 countdown()
