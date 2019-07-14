@@ -1,3 +1,5 @@
+source ~/.mutt.gpg
+
 set from = "gfigueira@suse.com"
 set realname = "Gustavo Figueira"
 set imap_user = 'gfigueira'

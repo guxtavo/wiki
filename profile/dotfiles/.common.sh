@@ -13,7 +13,7 @@ alias date_london="TZ=Europe/London date"
 alias date_prague="TZ=Europe/Prague date"
 alias date_brazil="TZ=Brazil/East date"
 alias date_provo="TZ=US/Mountain date"
-#alias date_beij="TZ= date"
+alias date_beijing="TZ=Asia/Beijing date"
 
 # journals
 alias journal="vi ~/git/wiki/index.md"
@@ -49,6 +49,7 @@ alias ism="ssh l3slave.suse.de /mounts/work/src/bin/is_maintained -b"
 alias orthos="ssh l3slave.suse.de /mounts/users-space/archteam/bin/orthos"
 alias stel="ssh l3slave.suse.de /suse/bin/stel"
 alias tel="ssh l3slave.suse.de /suse/bin/tel"
+alias orthos="ssh sconsole1.arch.suse.de"
 
 # functions
 

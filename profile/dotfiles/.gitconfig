@@ -9,3 +9,5 @@
 	askpass = 
 [merge]
 	tool = meld
+[credential]
+	helper = cache

@@ -36,6 +36,7 @@ alias st="~/git/wiki/profile/shell.sh"
 # SDI
 alias b="bzg -b"
 alias iosc="osc -A https://api.suse.de"
+alias oosc="osc -A https://api.opensuse.org"
 alias rpm-url="rpm -q --qf '%{DISTURL}\n'"
 alias vpn="sudo ~/git/suse/bin/manage_vpn.sh"
 alias vpns="sudo systemctl status openvpn@SUSE-NUE | tail -10 | cut -b64-144 | tail -1"

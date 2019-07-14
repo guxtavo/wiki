@@ -158,9 +158,9 @@ channels = (
 
   { name = "#suse-labs"; chatnet = "suse"; autojoin = "yes"; },
   { name = "#sdi"; chatnet = "suse"; autojoin = "yes"; },
-#  { name = "#docker"; chatnet = "suse"; autojoin = "yes"; },
-#  { name = "#nts"; chatnet = "suse"; autojoin = "yes"; }
-#  { name = "#infra"; chatnet = "suse"; autojoin = "yes"; }
+  #  { name = "#docker"; chatnet = "suse"; autojoin = "yes"; },
+  #  { name = "#nts"; chatnet = "suse"; autojoin = "yes"; }
+  #  { name = "#infra"; chatnet = "suse"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -432,3 +432,4 @@ settings = {
   };
 };
 logs = { };
+hilights = ( { text = "help"; nick = "yes"; word = "yes"; } );

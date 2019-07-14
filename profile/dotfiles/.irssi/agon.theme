@@ -48,12 +48,12 @@ abstracts = {
   ##
 
   # highlighted nick/host is printed (joins)
-  channick_hilight = "%K$0-%n";
-  chanhost_hilight = "{nickhost %K$0-%n}";
+  channick_hilight = "%y$0-%n";
+  chanhost_hilight = "{nickhost %y$0-%n}";
 
   # nick/host is printed (parts, quits, etc.)
-  channick = "%K$*";
-  chanhost = "%K{nickhost $*}";
+  channick = "%y$*";
+  chanhost = "%y{nickhost $*}";
 
   # highlighted channel name is printed
   channelhilight = "%r$*%n";
@@ -101,10 +101,10 @@ abstracts = {
   pubmsghinick = "{msgnick $1 $0$2-%n}";
 
   # channel name is printed with message
-  msgchannel = "%K:%c$*%n";
+  msgchannel = "%w:%c$*%n";
 
   # private message, $0 = nick, $1 = host
-  privmsg = "[%R$0%K(%W$1-%K)%n] ";
+  privmsg = "[%R$0%w(%W$1-%K)%n] ";
 
   # private message from you, $0 = "msg", $1 = target nick
   ownprivmsg = "[%n$0%K(%n$1-%K)%n] ";
@@ -150,7 +150,7 @@ abstracts = {
   # notices
   ownnotice = "[%r$0%K(%R$1-%K)]%n ";
   notice = "%K-%C$*%K-%n ";
-  pubnotice_channel = "%K:%m$*";
+  pubnotice_channel = "%w:%m$*";
   pvtnotice_host = "%K(%m$*%K)";
   servernotice = "%g!$*%n ";
 

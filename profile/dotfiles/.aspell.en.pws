@@ -1,4 +1,4 @@
-personal_ws-1.1 en 147 
+personal_ws-1.1 en 151 
 CDR
 acks
 Comms
@@ -15,6 +15,7 @@ kinit
 cd
 ifcfg
 linpack
+perf
 SES
 KPIs
 br
@@ -42,6 +43,7 @@ fs
 xeon
 dir
 TID
+basesystem
 irssi
 changelog
 hw
@@ -49,6 +51,7 @@ DLM
 cron
 cgroup
 cgroups
+javascript
 nd
 bze
 cupsd
@@ -101,6 +104,7 @@ hostname
 filesystem
 VMs
 backporting
+backports
 PES
 Kukuk
 usr
