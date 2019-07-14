@@ -274,8 +274,14 @@ How to change volume: mixerctl outputs.master=255,25
 [~]$ start-pulseaudio-x11 
 [~]$ pavucontrol 
 
+## youtube on OpenBSD
 
-########
+youtube-dl "ytsearch:OpenBSD"
+mixerctl outputs.master=255,255
+youtube-dl -f 18 http://www.youtube.com/watch?v=mahBZ4lSZHQ
+
+
+#######c
 # todo #
 ########
 
@@ -293,3 +299,4 @@ How to change volume: mixerctl outputs.master=255,25
   * find out hdd_led alternative
   * git log on cvs
 
+# 

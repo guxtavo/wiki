@@ -1,9 +1,20 @@
 #include <stdio.h>
 #include <sys/time.h>
 
+/*
+	How to use clock_gettime(2)
+
+	It can be called with CLOCK_REALTIME, which is the a clock
+	that increments 'as a wall clock should'. 
+ 
+*/
+
+/* emulates +%s%N from linux */
+
 int
 main()
 {
+		/* where to find this? */
         struct timespec ts;
         long now;
  
@@ -14,4 +25,5 @@ main()
         /* man 3 printf */
         printf("%ld\n", now);
         return 0;
+k
 }
