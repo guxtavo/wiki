@@ -112,11 +112,13 @@ update_profile_git()
   cp ~/.rpmmacros ${SGR_shell_path}/dotfiles/
   cp ~/.mutt-color ${SGR_shell_path}/dotfiles/
   cp ~/.mailcap ${SGR_shell_path}/dotfiles/
-  cp ~/.l3t.conf ${SGR_shell_path}/dotfiles/
+  cp ~/.i3status.conf ${SGR_shell_path}/dotfiles/
+  cp ~/.config/i3/config ${SGR_shell_path}/dotfiles/.config/i3/
   cat ~/.muttrc | egrep -v "imap_pass|smtp_pass" > ${SGR_shell_path}/dotfiles/.muttrc
   cat ~/.oscrc | egrep -v "pass =" > ${SGR_shell_path}/dotfiles/.oscrc
+  cat ~/.l3t.yaml | egrep -v "auth-token" > ${SGR_shell_path}/dotfiles/.l3t.yaml
 
-  echo "refresh store.data?"
+  echo -n "refresh store.data <y/n>? "
   read answer
   if [ "$answer" = "y" ]
     then

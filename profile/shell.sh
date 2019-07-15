@@ -1,7 +1,6 @@
 #!/bin/bash
 source ~/git/wiki/profile/plugins/time.sh
 source ~/git/wiki/profile/plugins/st.sh
-source ~/git/wiki/bin/openbsd_list_hogs.sh
 
 # bug: optimize weather and network-status
 # main loop
@@ -25,10 +24,11 @@ show_line()
 		main > /dev/shm/shell-status
 		record_end_time
 		if [ $SYSTEM = "OpenBSD" ]; then
+                source ~/git/wiki/bin/openbsd_list_hogs.sh
 				echo -n $(show_hogs)
 				echo -n "   "
 		fi
-		echo -n $(( ($FINISH - $START)/1000000 ))ms
+		echo -n $(( ($FINISH - $START)/1000000 ))ms" "
 		echo -n $(cat /dev/shm/shell-status)
 }
 

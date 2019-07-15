@@ -1,0 +1,119 @@
+cache:
+  enable: true
+
+l3t:
+  # Generate your API token in Solid Ground -> Preferences -> API
+  api-url: https://l3support.nue.suse.com/api/1/
+  
+  # "Currently working bug" base directory
+  # When the CWD is under $work-dir/<bug-id>/, all l3t commands that operate
+  # on bugs or incidents can implicitly use <bug-id>, so "l3t ac"  can
+  # be used instead of "l3t ac -b <bug-id>"
+  bugs-dir: ~/tmp/
+
+  incident-template: |4
+      ID: {{ .ID }}
+      Summary: {{ .BugSummary }}
+      Request Type: {{ .RequestType }}
+      Bug: {{ .BugID }}
+      {{ with .SR -}}
+      SR: {{ .ID }}
+      {{ end -}}
+      Customer name: {{ .CustomerName }}
+      Customer domain: {{ .CustomerDomain | C 42 }}
+      Agents: {{ join .Agents ", " }}
+      State: {{ .State | C 42 }}
+      RAG flag: {{ .RAGFlag }}
+      Created: {{ .TsNew }}
+      Last ping: {{ .LastPing }}
+      Processed: {{ .Processed }}
+      Needs backup: {{ .NeedBackup }}
+      Product category: {{ .ProductCategory }}
+      Product: {{ .Bug.Product }}
+      {{ if ne .Bug.Priority .RequestedPriority -}}
+      Requested priority: {{ .RequestedPriority }}
+      Bug priority: {{ .Bug.Priority }}
+      {{ else -}}
+      Priority: {{ .ComputedPriority }}
+      {{ end -}}
+      {{ with .AffectedPackages -}}
+      Affected packages: {{ . }}
+      {{ end -}}
+      {{ with .InitialComment -}}
+      Initial comment: {{ wrap 70 .  | indent "    " }}
+      {{ end -}}
+      {{ if .AgentsAbsent -}}
+      Agents absent: {{ "true" | C 1 }}
+      {{ end -}}
+      {{ with .LastStatus -}}
+      Status:
+         {{ wrap 70 .Status | indent "   " }}
+      Next:
+         {{ wrap 70 .Next | indent "   " }}
+      {{ end -}}
+
+bugzilla:
+  url: https://apibugzilla.novell.com/
+  # leave them empty to use ~/.oscrc or ~/.config/osc/oscrc:
+  username: 'gfigueir'
+  password: 'aer0space#1'
+  sort: newest_to_oldest_desc_first
+  template: |4
+      [{{ .BugID | C 78}}] {{ .ShortDesc | C 41}}
+      Status: {{ .BugStatus}} assignee: {{ .AssignedTo.Email }} needinfo: {{ .Needinfo }}
+      {{ if .Resolution -}}
+      Resolution: {{ .Resolution }}
+      {{ if eq .Resolution "DUPLICATE" -}}
+      Duplicate: {{ .DupID }}
+      {{ end -}}
+      {{ end -}}
+      {{ $agents := .Agents -}}
+      {{ range $incident := .Incidents -}}
+      {{ set "state" .State -}}
+      {{ if (after .SleepUntil now) -}}
+      {{ set "state" "ZZz" -}}
+      {{ end -}}
+      {{ $incident.RequestType | C 2}}:{{ $incident.ID }} {{ $incident.CustomerDomain }} {{ join (index $agents .ID) ", " | spaced }}{{get "state" | C 42}}
+      {{ with .SR -}}
+      SR: {{ .ID }}
+      {{ end -}}
+      {{ end -}}
+      {{ with .Needinfo -}}
+      Needinfo: {{ . }}
+      {{ end -}}
+      Assigned-To: {{ .AssignedTo.Name }} <{{ .AssignedTo.Email }}>
+      Cc-List: {{ join .Cc ", " }}
+      {{ with .BugFileLoc -}}
+      URL: {{ . }}
+      {{ end -}}
+      Product: {{ .Product }}
+      {{ with .Component -}}
+      Component: {{ . }}
+      {{ end -}}
+      {{ with .StatusWhiteboard -}}
+      Whiteboard: {{ . }}
+      {{ end -}}
+      {{ if or (eq .Priority "P0 - Crit Sit") (eq .Priority "P1 - Urgent") -}}
+      {{ S 1 -}}
+      {{ end -}}
+      Priority: {{ .Priority }}{{ R }}
+      {{ if .Attachments -}}
+      Attachments:
+      {{ range $_, $att := .Attachments -}}
+      - {{ $att.AttachID }}: {{ $att.Filename }} ({{ $att.Desc }}) from {{ $att.Attacher.Email }}
+      {{ end -}}
+      {{ end }}
+      {{ range $comment := .Comments -}}
+      {{ set "private" "" -}}
+      {{ if (eq .IsPrivate 1) -}}
+      {{ set "private" " (private)" -}}
+      {{ end -}}
+      {{ S 42 }}==== Comment {{ $comment.Count }} from {{ $comment.Who.Name | once | spaced}}<{{ $comment.Who.Email }}> {{ $comment.BugWhen.Format "2006-01-02 15:04" }}{{ get "private" | C 35 }}{{ R }}
+      {{ $comment.TheText }}
+      
+      {{ end -}}
+
+log:
+  level: info
+
+# In order to see all configuration options available, run "l3t config".

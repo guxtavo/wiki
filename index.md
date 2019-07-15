@@ -36,57 +36,58 @@
 
 # Directives
 
-                         1.  TC  FIT  GUI  DP  NP
-                         2.  MFR SVV  ARF  C  AFH 
-						 3.  MSC H1 SPCX PLNNR L3
-							 RL BKS  UWK  SIM  2∞
+                    DP FIT ARF                       UWK L3 C
+                    SVV  RL NP                   SIM BKS PLNN
+                    GUI                                   AFH
 
 # Structure
 
-  afh          - Airplaine Flying Handbook epub convertion efforts
-  articles     - random blog texts
-  bin          - scripts and prototypes
-  development  - kernel and userspace tools tips
-  profile      - status bar for tmux
-  SGR          - Space Grade Research
-  index.md     -
+    afh             - FAA's Airplaine Flying Handbook epub convertion efforts
+    articles        - random blog texts
+    bin             - scripts and prototypes
+    development     - kernel and userspace tools tips
+    profile         - status bar for tmux
+    SGR             - Space Grade Research
+    1-feedback.md   - Feedback system
+    index.md        - This file
 
-## BUGs
+# BUGs
 
-	BUG03 solidground data is wrong during vpn reconnect. The timer for refresh
+	BUG01 depends on ECO01
+
+    solidground data is wrong during vpn reconnect. The timer for refresh
 	is 30 minutes, so this can lead to wrong information displayed for a long
 	time.
 
-## ECOs
+    The script which waits 30 minutes, has to interact with the network-probe
+    in order to know what's going on and maybe try again soonish than the 30
+    minutes (more granular).
 
-    * ECO02 network-status-probe (np)
+    Make sure to count PTFs only when connected.
+
+# ECOs
+
+    * ECO01 network-status-probe (np)
         * check DNS connectivity
         * check NIC status
         * check VPN status
         * check l3slave connectivity
 		* port for for OpenBSD
         * Integrate other plugins with netstat-probe
-    * ECO4 elapsedtime
-		* make shell.sh behave like i3status (run in a loop)
-		* show screen refresh rate in FPS
+    * ECO02 - C programming language - exercise 1-6
+    * ECO03 show screen FTPS (refresh rate from X11?)
 
-	* ECO05 dbg - getopts (copy from someone)
-	* ECO06 bkp ~/.l3t.conf , i3 config and i3status config to dotfiles
-    * ECO07 intergrate calendaring from google (at least show and notify)
-	* ECO13 suspending when lid is closed (also run i3lock)
-    * ECO11 cleaup bash history configuration
-	* ECO14 display-message when battery goes bellow 30 minutes
-    * ECO10 move gmail to mutt
-    * ECO09 show builds running in IBS
-    * ECO08 AFH epub
-
-## BUGs
-
-  * Count PTF only when connected -> Depends on ECO1
-  * NetworkManager 100% CPU utilization
+    * ECO05 intergrate calendaring from google (at least show and notify)
+	* ECO06 suspending when lid is closed (also run i3lock)
+    * ECO07 cleaup bash history configuration
+	* ECO08 display-message when battery goes bellow 30 minutes
+    * ECO09 move gmail to mutt
+    * ECO10 show builds running in IBS
+    * ECO11 AFH epub
 
 ### SGR products
 
+  200OK ticket     ticket.sgr.cz
   200OK Wiki	     wiki.sgr.cz
   200OK git           git.sgr.cz
   200OK Hardware  3dprint.sgr.cz
