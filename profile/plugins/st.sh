@@ -24,7 +24,7 @@ cpu-hdd_temp()
     B=$(sysctl hw.sensors.cpu0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
     C=$(sysctl hw.sensors.pchtemp0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
     echo "$B/$C" > /dev/shm/cpu-hdd_temp
-    echo -n " $(cat /dev/shm/cpu-hdd_temp) |"
+    echo -n " $(cat /dev/shm/cpu-hdd_temp)c |"
   fi
 
 }
@@ -71,33 +71,34 @@ battery-countdown-recording()
 
 battery()
 {
-  # create control file if doesn't exist
-  if test ! -e /dev/shm/battery
-    then touch /dev/shm/battery
-  fi
+  if [ $SYSTEM = "Linux" ]; then
+    # create control file if doesn't exist
+    if test ! -e /dev/shm/battery
+      then touch /dev/shm/battery
+    fi
 
-  # update the battery status every minute
-  if test "`find /dev/shm/battery -mmin +1`"
-    then
-      if [ $SYSTEM = "Linux" ]; then
-        acpi -b 0 > /dev/shm/battery
-      fi
-  fi
+    # update the battery status every minute
+    if test "`find /dev/shm/battery -mmin +1`"
+	   then acpi -b 0 > /dev/shm/battery
+    fi
 
-  # parse the status
-  if $(cat /dev/shm/battery | grep -q Discharging)
-    then
-      B=$(cat /dev/shm/battery | grep -v "unavai" | awk '{print $5}')
-      echo -n " ${B::-3} |"
-    else
-      B=$(cat /dev/shm/battery | grep -v "unavai" | awk '{print $4}' | tr -d "%,")
-      echo -n " $B% |"
+	if $(cat /dev/shm/battery | grep -q Discharging)
+      then
+        B=$(cat /dev/shm/battery | grep -v "unavai" | awk '{print $5}')
+        echo -n " ${B::-3} |"
+      else
+        B=$(cat /dev/shm/battery | grep -v "unavai" | awk '{print $4}' | tr -d "%,")
+        echo -n " $B% |"
+    fi
+  else
+     B=$(sysctl | grep cpuspeed | cut -d "=" -f 2)
+	 echo -n " $B |"
   fi
 }
 
 weather()
 {
-  echo -n " $(weather_main) |"
+  echo -n " + $(weather_main) |"
 }
 
 dns()
@@ -238,7 +239,8 @@ solidground_progress()
       B=$(solidground_fix2 | tail -1)
       echo -n " $B"
     else
-      echo -n " ?"
+      echo -n " AWAY |"
+	  export AWAY="Y"
     fi
   fi
 }
@@ -266,10 +268,15 @@ targets()
 	w3m -dump $GITLAB | grep "<title>gfigueir" > /dev/shm/PR
   fi
 
-  # Commits - FIXME: track PRs/pushes
-  A=$(wc -l /dev/shm/PR | awk '{print $1}')
-  B=$(cat /dev/shm/ptfs)
-  echo -n " $A/$B"
+  if [ $AWAY = "Y" ]; then
+    echo -n "AWAY |" > /dev/null
+  else
+    # Commits - FIXME: track PRs/pushes
+    A=$(wc -l /dev/shm/PR | awk '{print $1}')
+    B=$(cat /dev/shm/ptfs)
+    echo -n " $A/$B |"
+  fi
+
 }
 
 run_start()
@@ -279,7 +286,7 @@ run_start()
 
 gimbal()
 {
-  echo -n "DP|FIT|L3ech | "
+  echo -n "DP|FIT|ARF | "
 }
 
 countdown()
