@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Input: .c file
+# Output: compile, run and delete bin
+
+BIN_NAME=${1%.c}
+gcc $1 -Wconversion -o $BIN_NAME
+# bug: if ctrl+c is input while bin is running, next step isn't executed
+./$BIN_NAME
+rm ./$BIN_NAME
