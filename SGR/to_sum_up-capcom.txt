@@ -1,13 +1,14 @@
 capcom(7)                      GUSTAVO FIGUEIRA                      capcom(7)
 
 OBJECTIVE
-       Have fun as DevOps in a _customer_ centric organization
+       Have fun in the command line in a _customer_ centric organization,
+       reporting weekly as a remotee.
 
 SYNOPSIS
-       'UNIX'             >>>>>>>>..           Troubleshooting    >>>>>>....
-       Networking         >>>>>.....           QA/Documentation   >>>>......
-       bash / C           >>>>......           kubernetes/salt    >>........
-       Linux Kernel       >>>.......           x86_64 / virt      >.........
+       Linux/POSIX        >>>>>>>...           Shell Scripting    >>>>>>....
+       Debugging          >>>>>.....           Networking         >>>>>>....
+       Linux Kernel       >>>.......           x86_64/C           >>........
+       k8s/salt           >>........           People mgmnt       >>........
 
        These are my long running studies / objectives and a measure of
        how comfortable I feel working on them. _You_ are looking at a
@@ -15,17 +16,16 @@ SYNOPSIS
        'Performance Tunning' and 'Infrastructure'.
 
 DESCRIPTION
-       I dream on building a Space Craft and a Computer for 'Linux Student's.
+       I dream on building a Space Craft and a Computer for Linux Student's.
 
        As an R&D Software Engineer in SUSE, I use OBS to _build_ anything,
-       help Support with advanced debugging, coordinate and help Develpers,
+       help Support with advanced debugging, coordinate and help Developers,
        create _patches_ and do backports to different code streams,
-       participate in the developing and operation of my team's tools
+       participate in the developing of my team's tooling and operation.
 
-
-       From HTML to switches. From Unix servers to routers and appliances.
-       From mission-critical to disater recovery and 24x7. From integration
-       to CI. From managing communities to DevOps. Focus on low-level.
+       From HTML to switches. From Unix servers to Appliances. From
+       mission-critical to disater recovery. From Integration to CICD.
+       From managing Communities to DevOps. Focus on the low-level.
 
 OPTIONS
        -a --architect (experienced beginner)
@@ -37,26 +37,27 @@ OPTIONS
               Database Servers, Application Servers, SAN/LVM
 
        -d --development (practitioner)
-              OBS, Linux kernel internals, git, vim
+              bash, ksh, vim, git, Linux kernel internals, OBS (CICD), C
 
        -n --networking (knowledgeable practitioner)
-              IPv4, firewall configuration (iptables, pf), IOS
+              IPv4, firewall configuration (iptables), packet analysis
 
        -t --troubleshooting (experienced beginner)
               Performance profiling and tuning, stress tests, strace, perf,
               gdb, crash, tcpdump, system hardening, RCA
 
        -o --os-sysadmin (knowledgeable practitioner)
-              Debian, SLES, RHEL, OpenBSD, Solaris, AIX
+              Debian, SLES, RHEL, OpenBSD, (defunct: Solaris, AIX, OSF1 :))
 
        -s --soft-skills (experienced beginner)
               Documentation writing, project management, incident management,
               marketing, quality
 
        -i --interests
-              philosophy, aviation and space exploration
+              psychology, aviation and space exploration
 
-       -p --projects
+       -p --projects-I-developed
+
               multikern/Kerntec, BR 2004 - internet hotspot
                (bash, iptables, tc, snmp, apache, php, mysql)
 
@@ -71,7 +72,7 @@ OPTIONS
 
 VERSIONS
     SUSE, CZ           2y~               Red Hat, CZ           2y+
-    > Linux Developer, L3 Support        > Kernel Support Engineer
+    > Linux Developer, L3 Support        > Kernel/Net Support Engineer
                                          > Team Lead
     Gemalto, LATAM         4y+
     > Integration Engineer I and II      Drogarias Pacheco, BR 1y~
@@ -81,8 +82,8 @@ VERSIONS
     > Storage Support Engineer           > Unix Support Engineer
                                          > Team Lead
     Kern Technologies, BR  2y+
-    > Linux Engineer                     Various Companies, BR 3y+
-    > Site Reliability Engineer          > Information security Professor /
+    > Linux Engineer                     Other Companies, BR 3y+
+    > Site Reliability Engineer          > Information Security Professor /
                                            Webmaster / Sysadmin /
                                            Linux Support /
 

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+sites="https://www.google.com https://l3support.nue.suse.com/short/ https://build.suse.de/"
+
+for url in $sites
+do
+    CODE=$(curl -m 2 -sIL $url | grep HTTP | tail -1 | awk '{print $2}')
+    echo $CODE $url
+done
+
+# now do imap.suse.de, irc, and think about what impacts your work

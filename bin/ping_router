@@ -1,0 +1,6 @@
+#!/bin/bash
+
+ROUTER=$(ip route show | grep default | awk '{print $3}')
+VPN_ROUTER=$(ip  --oneline a | grep tun0 | awk '{print $6}' | cut -f 1 -d /)
+ping -c 2 $ROUTER
+ping -c 2 $VPN_ROUTER

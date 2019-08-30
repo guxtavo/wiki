@@ -19,7 +19,7 @@ cpu-hdd_temp()
 		fi
         echo "$B/$C" > /dev/shm/cpu-hdd_temp
     fi
-    echo -n " $(cat /dev/shm/cpu-hdd_temp) |"
+    echo -n " $(cat /dev/shm/cpu-hdd_temp)c |"
   else
     B=$(sysctl hw.sensors.cpu0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
     C=$(sysctl hw.sensors.pchtemp0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
@@ -178,7 +178,8 @@ solidground_fix()
   echo $BZST > /dev/shm/bugzilla_http_status
 }
 
-solidground_fix2()
+# should rename to display_targets()
+display_targets()
 {
   # trace point
   # set -xv
@@ -198,12 +199,18 @@ solidground_fix2()
   ACTIVE=$(cat $FILE | grep active | awk '{print $1}')
   DONE=$(( $PROCESSED + $SLEEPING ))
   BZST=$(cat /dev/shm/bugzilla_http_status)
+  SPECIAL="l3ech"
 
-  echo -n "["$BZST"] "
+  echo -n "["$BZST"] $SPECIAL '*' "
 
+  if [ -z $ACTIVE ]; then
+    ACTIVE=0
+  else
   if [ $ACTIVE -gt $OVERLOADED ]
     then echo -n "!"
   fi
+  fi
+
 
   echo -n $ACTIVE/$DONE
 }
@@ -223,7 +230,7 @@ solidground_progress()
       then
         solidground_fix
       fi
-      B=$(solidground_fix2 | tail -1)
+      B=$(display_targets | tail -1)
       echo -n " $B"
     else
       echo -n " ?"
@@ -236,7 +243,7 @@ solidground_progress()
       then
         solidground_fix
       fi
-      B=$(solidground_fix2 | tail -1)
+      B=$(display_targets | tail -1)
       echo -n " $B"
     else
       echo -n " AWAY |"
@@ -268,13 +275,16 @@ targets()
 	w3m -dump $GITLAB | grep "<title>gfigueir" > /dev/shm/PR
   fi
 
+  if [ -z $AWAY ]; then
+    AWAY=N
+  fi 
   if [ $AWAY = "Y" ]; then
     echo -n "AWAY |" > /dev/null
   else
     # Commits - FIXME: track PRs/pushes
     A=$(wc -l /dev/shm/PR | awk '{print $1}')
     B=$(cat /dev/shm/ptfs)
-    echo -n " $A/$B |"
+    echo -n " $A/$B"
   fi
 
 }

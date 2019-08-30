@@ -1,5 +1,15 @@
 
 
+                                       C
+                                  sh   +   md
+                                  vim  + tmux
+                                  git  +  osc
+
+
+
+    FLIGHT CAPCOM FDO GPO DPS Surgeon Booster PDRS PROP GNC EECOM EGIL INCO
+
+
                      ##    ##   ###    ##   ##   ##      ##
                      ##    ##   ####   ##   ##    ##    ##
                      ##    ##   ##  #  ##   ##     ##.###
@@ -7,17 +17,31 @@
                      ##    ##   ##    ###   ##    ##    ##
                       ######    ##    ###   ##   ## wiki ##
 
-                               sh  +  c   +  md
-                               vim + tmux + git
-                                 osc + ftrace
 
-                  ######  ######  ##  ##  #####    #####  #######
-                 ##    ## ##  ##  ##  ##  ##  ##  ##    # ##
-                 ##       ##  ##  ##  ##  ##  ##  ##      ##
-                 ######   ##  ##  ##  ##  #####   ##      ######
-                      ##  ##  ##  ##  ##  ##   #  ##      ##
-                #     ##  ##  ##  ##  ##  ##   #  ##    # ##
-                 #####    ######  #####   ##   #   #####  #######
+               [HELM] 2:CAPCOM    * 248ms | !7/9 21/68 | 33/33c |
+               |                        |                       |
+               |                        |          c            |
+               |                        |     sh   +  md        |
+               |                        |     vim  + tmux       |
+               |                        |     git  +  osc       |
+               |                        |                       |
+               |________________________|   FLIGHT CAPCOM FDO   |
+               |*                       |                       |
+               |________________________|_______________________|
+
+                my tmux status bar, measuring how long it takes
+                 to run (in ms) | my active and processed bugs
+                  other work status and hardware temperatures,
+                
+
+
+               ######   ######   ##  ##   #####     ####   ######
+              ##    ##  ##  ##   ##  ##   ##  ##   ##   #  ##
+              ##        ##  ##   ##  ##   ##  ##   ##      ##
+              ######    ##  ##   ##  ##   #####    ##      ######
+                   ##   ##  ##   ##  ##   ##   #   ##      ##
+             #     ##   ##  ##   ######   ##   #   ##   #  ##
+              #####     ######   #####    ##   #    ####   ######
 
                    ######      ######      ######      ########
                   ########    ########     #######     #######
@@ -36,8 +60,8 @@
 
 # Directives
 
-                    DP FIT ARF                       UWK L3 C
-                    SVV  RL NP                   SIM BKS PLNN
+                    FIT ARF DP                   PLNN BKS SIM
+                    SVV RL MA                        UWK L3 C
                     GUI                                   AFH
 
 # Structure
@@ -65,6 +89,8 @@
 
     Make sure to count PTFs only when connected.
 
+    200 OK - this workstation is not for everybody, it is a niche product
+
 # ECOs
 
     * ECO01 network-status-probe (np)
@@ -84,6 +110,7 @@
     * ECO09 move gmail to mutt
     * ECO10 show builds running in IBS
     * ECO11 AFH epub
+    * ECO12 multipath or LVM for rootfs
 
 ### SGR products
 
@@ -94,3 +121,63 @@
   200OK CI          build.sgr.cz
   200OK sgr-david   david.sgr.cz
   200OK sgr-remote  tmate.sgr.cz
+
+#### 200 OK
+
+                 ______________________________________________
+                |                                              |
+                | [_] [_][_][_][_][_][_][_][_][_][_][_][_] [_] |
+                |                                         ___  |
+                | [ ][1][2][3][4][5][6][7][8][9][0][ ][ ][___] |
+                | [__][q][w][e][r][t][y][u][i][o][p][ ][ ][  | |
+                | [___][a][s][d][f][g][h][j][k][l][ ][ ][ ][_] |
+                | [___][z][x][c][v][b][n][m][ ][ ][ ][ ][^][ ] |
+                | [__][_][__][____________][_][_][__][<][_][>] |
+                |______________________________________________|
+
+                                     79
+
+
+      -------------------------------------------------------------------
+     |   =============================================================   |
+     |   =============================================================   |
+     |   ,---, ,---,---,---,---,---,---,---,---,---,---,---,---, ,---,   |
+     |   |   | |   |   |   |   |   |   |   |   |   |   |   |   | |   |   |
+     |   '---' '---'---'---'---'---'---'---'---'---'---'---'---' '---'   |
+     |                                                                   |
+     |   ,---,---,---,---,---,---,---,---,---,---,---,---,---,-------,   |
+     |   | ~ | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | - | = | back  |   |
+     |   |---'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-----|   |
+     |   | --> | q | w | e | r | t | y | u | i | o | p | [ | ] | ent |   |
+     |   |-----',--',--',--',--',--',--',--',--',--',--',--',--',    |   |
+     |   | fn   | a | s | d | f | g | h | j | k | l | ; | ' | | |    |   |
+     |   |------',--'---'---'---'---'---'---'---'---'---'---',---,---|   |
+     |   | swift | z | x | c | v | b | n | m | , | . | / |   | ^ |   |   |
+     |   |----,--',---,--'---'---'---'---'---'---'---'---,---,---,---|   |
+     |   | ct | s | a |                     | a | s | ct | < |   | > |   |
+     |   '----'---'---'---------------------'---'---'----'---'---'---'   |
+     |                                                                   |
+      -------------------------------------------------------------------
+
+                                     79
+
+##### Objectives
+
+  * Make a student computer, affordable, flexible
+  * Production with off-the-shelv parts (pi0)
+  * Focus on reduced price, quality and ease of use
+  * Make 2 versions
+    * 1 pi's
+    * 3 pi's
+    * icecream installed by default (distributed OBS)
+
+
+  * Make it redundant with 3 pi0's (and a version for only 1)
+
+
+##### Next steps
+
+  * Design PCB and Case
+  * Parts list
+    * 79 leds
+  * Finalize layout
