@@ -1,10 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/home/gfigueira'
-let g:netrw_dirhist_2='/home/gfigueira/git/suse/security'
-let g:netrw_dirhist_3='/home/gfigueira/debug'
-let g:netrw_dirhist_4='/home/gfigueira'
-let g:netrw_dirhist_5='/home/gfigueira/git/suse/wiki'
-let g:netrw_dirhist_6='/home/gfigueira/.vim'
-let g:netrw_dirhist_7='/home/gfigueira/git/progit2'
-let g:netrw_dirhist_8='/home/gfigueira/git/suse/L3/input/old'
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/gfigueira'
+let g:netrw_dirhist_4='/'
+let g:netrw_dirhist_3='/home/gfigueira/git/l3ech'
+let g:netrw_dirhist_2='/mnt2/etc/systemd/system/getty@tty1.service.d'
+let g:netrw_dirhist_1='/mnt2/opt/retropie/configs/all/retroarch/autoconfig'

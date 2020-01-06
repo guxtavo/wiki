@@ -17,6 +17,7 @@ export PERL_MM_OPT="INSTALL_BASE=/home/gfigueira/bin/perl5"
 export LINUX_GIT=/home/gfigueira/git/linux
 export COMP_WORDBREAKERS=${COMP_WORKBREAKERS/:/}
 #export LS_COLORS=$LS_COLORS:'di=0;37:'
+export PROMPT_COMMAND="history -a; history -n"
 
 # aliases
 

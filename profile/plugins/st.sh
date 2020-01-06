@@ -19,13 +19,16 @@ cpu-hdd_temp()
 		fi
         echo "$B/$C" > /dev/shm/cpu-hdd_temp
     fi
-    echo -n " $(cat /dev/shm/cpu-hdd_temp)c |"
+    D=$(df -h / | tail -1 | awk '{print $4}')
+    echo -n " $(cat /dev/shm/cpu-hdd_temp)c $D |"
   else
     B=$(sysctl hw.sensors.cpu0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
     C=$(sysctl hw.sensors.pchtemp0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
     echo "$B/$C" > /dev/shm/cpu-hdd_temp
     echo -n " $(cat /dev/shm/cpu-hdd_temp)c |"
   fi
+
+
 
 }
 
@@ -98,7 +101,7 @@ battery()
 
 weather()
 {
-  echo -n " + $(weather_main) |"
+  echo -n " $(weather_main) |"
 }
 
 dns()
@@ -139,18 +142,39 @@ dns()
 
 network-status()
 {
+    # show the contents of the nmcli plugin
+
+    # (0) ~ $ time git/wiki/profile/plugins/nmcli.sh
+    # ▂▄▆█
+    # real    0m0.216s
+    # user    0m0.132s
+    # sys     0m0.059s
+
   if [ $SYSTEM = "Linux" ]; then
-    ip link show > /dev/shm/ip_link_show
-    echo -n " "
-    if $(cat /dev/shm/ip_link_show | grep wlp1s0 | grep LOWER_UP > /dev/null); then
-      echo -n "W"
-    fi
-    if $(cat /dev/shm/ip_link_show | grep tun0 | grep LOWER_UP > /dev/null); then
-      echo -n "V"
-    fi
-    # dns status
-    dns
-    echo -n "  |"
+    # BUG - if SSID has two words, signal strengh is shown 
+    #B=$(~/git/wiki/profile/plugins/nmcli.sh)
+    B=$( tail -1 /dev/shm/connectivity  | tr -d " ")
+    echo -n " $B"
+
+    # connectivity watchdog will write fo a file
+    # (0) ~ $ tail -1 /dev/shm/connectivity
+    # 0 0 0 0 0
+
+    # you must read this file and arbitrate the status
+
+    #STATUS=$(tail -1 /dev/shm/connectivity)
+    # BUG - at home I have only 1 DNS
+    # 0 0 -> at home, all good, vpn disconnected
+    # Connected but no VPN
+    # ▂▄▆█■
+    #if [ "$STATUS" = "0 0 " ]; then
+    #    echo -n "■"
+    #fi
+
+    # Connected even to the vpn
+    # 0 0 0 0 0 -> all good
+    echo -n " |"
+
   fi
 
   if [ $SYSTEM = "OpenBSD" ]; then
@@ -169,7 +193,8 @@ network-status()
 # update file with l3ls content
 solidground_fix()
 {
-  ssh l3slave.suse.de l3ls -m  | grep "^\[" | tr -d "[" | while read a b c; do
+  ssh -o connecttimeout=2 l3slave.suse.de l3ls -m  \
+  | grep "^\[" | tr -d "[" | while read a b c; do
   echo $a $b
   done > /dev/shm/solidground
 
@@ -199,7 +224,7 @@ display_targets()
   ACTIVE=$(cat $FILE | grep active | awk '{print $1}')
   DONE=$(( $PROCESSED + $SLEEPING ))
   BZST=$(cat /dev/shm/bugzilla_http_status)
-  SPECIAL="l3ech"
+  SPECIAL="tooling"
 
   echo -n "["$BZST"] $SPECIAL '*' "
 
@@ -254,7 +279,7 @@ solidground_progress()
 
 targets()
 {
-  GITLAB="https://gitlab.suse.de/gfigueir.atom?feed_token=26rq5ZPRvrhci2NsSFQ1"
+  #GITLAB="https://gitlab.suse.de/gfigueir.atom?feed_token=26rq5ZPRvrhci2NsSFQ1"
   # create control file if doesn't exist
   if test ! -e /dev/shm/targets
     then touch /dev/shm/targets
@@ -272,7 +297,7 @@ targets()
     # BUG: If VPN is not on, ptfdb will fail
     # BUG: rss feed on gitlab no reliable -> use git log on repos locally
     ~/git/wiki/profile/plugins/ptfs.sh > /dev/shm/ptfs
-	w3m -dump $GITLAB | grep "<title>gfigueir" > /dev/shm/PR
+	#w3m -dump $GITLAB | grep "<title>gfigueir" > /dev/shm/PR
   fi
 
   if [ -z $AWAY ]; then
@@ -282,9 +307,9 @@ targets()
     echo -n "AWAY |" > /dev/null
   else
     # Commits - FIXME: track PRs/pushes
-    A=$(wc -l /dev/shm/PR | awk '{print $1}')
+    #A=$(wc -l /dev/shm/PR | awk '{print $1}')
     B=$(cat /dev/shm/ptfs)
-    echo -n " $A/$B"
+    echo -n " $B"
   fi
 
 }
@@ -296,7 +321,7 @@ run_start()
 
 gimbal()
 {
-  echo -n "DP|FIT|ARF | "
+  echo -n "FIT|ARF|SVV | "
 }
 
 countdown()
@@ -334,7 +359,10 @@ weather_format_data()
   #echo -n  $(cat /dev/shm/weather | sed -n 13p | grep -o '\-[0-9]' |sort -n | sed -e 1b -e '$!d' | tr '\n' ' ' | awk '{print $1"/"$2}')
   # temperatures above 0
   if [ $SYSTEM = "Linux" ]; then
-  echo -n  $(sed -n 13p /dev/shm/weather | grep -o '[0-9]\{1,2\}' |sort -n | sed -e 1b -e '$!d' | tr '\n' ' ' | awk '{print $1"-"$2"."}')
+    # if we are december 1st until february 28
+  echo -n  $(cat /dev/shm/weather | sed -n 13p | grep -o '\-[0-9]' |sort -n | sed -e 1b -e '$!d' | tr '\n' ' ' | awk '{print $1"/"$2}')
+    # elseif we are between march 1st and november 30
+    #echo -n  $(sed -n 13p /dev/shm/weather | grep -o '[0-9]\{1,2\}' |sort -n | sed -e 1b -e '$!d' | tr '\n' ' ' | awk '{print $1"-"$2"."}')
 	else
 	 RAW=$(sed -n 13p /dev/shm/weather | strings | grep -o 'm[0-9]\{1,2\}')
 	 BETTER=$(echo $RAW | tr -d "m" | perl -pe 's/ /\n/g' | sort -n | sed -e 1b -e '$!d')

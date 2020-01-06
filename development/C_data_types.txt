@@ -1,0 +1,36 @@
+                    C Language Numeric Data Types
+
+
+    When programming with C, keywords and variables go together.
+
+    The following table shows C keywords, their variable types, and
+    their ranges:
+
+    Keywork             Variable Type               Range
+    =============       ======================      ==================
+
+    char                Character (or string)       -128 to 127
+
+    int                 Integer                     -32,768 to 32,767
+
+    short               Short integer               -32,768 to 32,767
+    short int
+
+    long                Long integer                -2,147,483,648
+                                                    to 2,147,483,647
+
+    unsigned char       Unsigned character          0 to 255
+
+    unsigned int        Unsigned integer            0 to 65,535
+
+    unsigned short      Unsigned short integer      0 to 65,535
+
+    unsigned long       Unsigned long integer       0 to 4,294,967,295
+
+    float               Single precision            +-3.4 x 10^-38 to
+                        floating point              +-3.4 x 10^38
+                        (accurale to 7 digits)
+
+    double              Double precisvon            +-1.7x10^-308 to
+                        floating point              +-1.7x10^308
+                        (accurate to 15 digits)

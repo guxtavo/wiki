@@ -3,7 +3,7 @@
 # variables
 
 # basic setup
-export PS1='$(echo "($?)") \W $ '
+export PS1="$(echo '($?)') \W \$(__git_ps1 '(%s)')$ "
 export PATH="$PATH:/home/gfigueira/bin/suse:/home/gfigueira/bin/wiki"
 
 # aliases
@@ -24,7 +24,7 @@ alias 512=" vi ~/git/wiki/Zero512.md"
 # random stuff
 alias w3m="w3m -M"
 alias 80="cut -b1-80"
-alias ssh="ssh -X -o TCPKeepAlive=yes"
+alias ssh="ssh -X -o ServerAliveInterval=5"
 alias use-e="egrep -i 'bug|error|warn|fatal'"
 
 # web favourites

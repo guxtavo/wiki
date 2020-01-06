@@ -16,16 +16,10 @@ SYNOPSIS
        'Performance Tunning' and 'Infrastructure'.
 
 DESCRIPTION
-       I dream on building a Space Craft and a Computer for Linux Student's.
-
        As an R&D Software Engineer in SUSE, I use OBS to _build_ anything,
        help Support with advanced debugging, coordinate and help Developers,
        create _patches_ and do backports to different code streams,
-       participate in the developing of my team's tooling and operation.
-
-       From HTML to switches. From Unix servers to Appliances. From
-       mission-critical to disater recovery. From Integration to CICD.
-       From managing Communities to DevOps. Focus on the low-level.
+       participate in the development of tooling and operations.
 
 OPTIONS
        -a --architect (experienced beginner)
@@ -33,7 +27,7 @@ OPTIONS
               for ISPs
 
        -s --system-configuration (knowledgeable practitioner)
-              KVM, K8S, HTTP, OpenVPN, Bind, Postfix, DHCP, NFS, Nagios
+              KVM, k8s, HTTP, OpenVPN, Bind, Postfix, DHCP, NFS, Nagios
               Database Servers, Application Servers, SAN/LVM
 
        -d --development (practitioner)
@@ -47,7 +41,7 @@ OPTIONS
               gdb, crash, tcpdump, system hardening, RCA
 
        -o --os-sysadmin (knowledgeable practitioner)
-              Debian, SLES, RHEL, OpenBSD, (defunct: Solaris, AIX, OSF1 :))
+              Debian, SLES, RHEL, OpenBSD, (defunct: Solaris, AIX, OSF1)
 
        -s --soft-skills (experienced beginner)
               Documentation writing, project management, incident management,

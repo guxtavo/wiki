@@ -9,9 +9,9 @@ main(){
   gimbal                       # 01ms
   #countdown                   # 08ms
   weather                      # 46ms
-  solidground_progress         # 25ms
-  targets                      # 15ms
-  cpu-hdd_temp                 # 12ms
+  solidground_progress         # 25ms # bz
+  targets                      # 15ms # sg # successful builds
+  cpu-hdd_temp                 # 12ms # and storage
   battery-countdown-recording  # 23ms
   network-status               # 50ms
 }

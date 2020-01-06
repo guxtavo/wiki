@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "start to execute the commands and use Ctrl+d once you finish"
+
+output=$(mktemp -d)
+script -q -t 2> "$output"/time.log -a "$output"/session.log
+
+echo ########## share these files with your support representative:"
+echo "$output"/time.log "$output"/session.log

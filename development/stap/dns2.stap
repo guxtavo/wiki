@@ -1,0 +1,10 @@
+probe
+  process("/lib64/libc.so.6").function("__gethostbyname_r").call,
+  process("/lib64/libc.so.6").function("gethostbyname").call,
+  process("/lib64/libc.so.6").function("__gethostbyname2_r").call,
+  process("/lib64/libc.so.6").function("gethostbyname2").call,
+  process("/lib64/libc.so.6").function("__new_gethostbyname2_r").call
+{
+    printf("[%s][%d]->%s(%s)\n", execname(), pid(),
+user_string(pointer_arg(1)), kernel_string(pointer_arg(1)))
+}
