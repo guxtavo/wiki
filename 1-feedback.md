@@ -3,6 +3,13 @@
 % Feed this from "journal"
 % Feed this from "git log -p"
 
+# 2020-01-07
+
+    * screencast fixed for arm, but it uses all cpu
+    * vim-runtime package is needed to syntax highlight
+    * rpi doesn't have Master volume, find a way to control volume
+    * git_ps1 not found
+
 # 2019-07-15
 
 Tried adding "master volume" to i3status but although I follow the links and

@@ -34,7 +34,7 @@ alias vim_cheat_sheet="w3m https://vim.rtorr.com/"
 alias rfc="w3m https://tools.ietf.org/rfc/index"
 
 # script
-alias script-save="script -t 2> time.log -a session.log"
+alias script-save="script -t 2> time_$(date +%s).log -a session_$(date +%s).log"
 alias scriptreplay="scriptreplay -t time.log -s session.log -d 2 -m 1"
 
 # git

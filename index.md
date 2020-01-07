@@ -62,9 +62,9 @@
 
 # Directives
 
-                    GUI FIT DP                   AFH  C PLNN
-                    MA  SVV RL                   UWK BKS SIM
-                    ARF                                   L3
+                    FIT ARF SVV                   SIM  L3   C
+                    GUI  MA  RL                   PLN BKS AFH
+                         DP                           UWK 
 
 
 ### Plan and anti-plan
@@ -107,7 +107,7 @@
                     main id on suse
                     main id on github (2 factor)
 
-
+    tumbleweed
     tmux 2.9a-2.5 NOK
     tmux 2.9a-1.2 OK -> zypper la tmux
 

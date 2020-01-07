@@ -1,9 +1,25 @@
 #!/bin/bash
 
+ARCH=$(uname -m)
+PID=$(pidof ffmpeg)
+
 stop_recording()
 {
-  kill -15 $(pidof ffmpeg)
-  rm /tmp/recording
+    if [ ! -z $PID ]; then
+        kill -15 $PID
+    fi
+
+    rm /tmp/recording
+    echo Stopping
+}
+
+start_recording_arm()
+{
+  touch /tmp/recording && ffmpeg -probesize 30M \
+    -f x11grab -s 1920x1080 -r 5 \
+    -thread_queue_size 64000 -draw_mouse 0 -i :0.0 \
+    -vcodec theora -qscale:v 8 \
+    -loglevel warning ~/screencast_$(date +%s).ogv &
 }
 
 start_recording()
@@ -23,7 +39,11 @@ main()
   if [ -f /tmp/recording ]; then
     stop_recording
   else
-    start_recording
+    if [ $ARCH = "armv6l" ] ; then
+        start_recording_arm
+    else
+        start_recording
+    fi
   fi
 }
 
