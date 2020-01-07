@@ -1,7 +1,36 @@
 #!/bin/bash
 
+ARCH=$(uname -m)
+
+isabove50()
+{
+    if [ $1 -gt 46 ]; then
+        tmux display-message "CPU temp above 50C"
+        echo "!$1"
+    fi
+}
+
+ioping()
+{
+    A=$(sudo ioping -c1 /dev/$1)
+    B=$(echo $A | head -1 | cut -d " " -f 10-11 | cut -d "=" -f 2)
+    echo $B
+}
+
+ioping_arch()
+{
+    if [ $ARCH = "armv6l" ]; then
+        B=$(ioping mmcblk0p1)
+    else
+        B=$(ioping sda1)
+    fi
+    echo -n $B
+}
+
 cpu-hdd_temp()
 {
+    
+  IOPING=$(ioping_arch)
   if [ $SYSTEM = "Linux" ]; then
     # create control file if doesn't exist
     if test ! -e /dev/shm/cpu-hdd_temp
@@ -11,16 +40,18 @@ cpu-hdd_temp()
     # update the temperatures every minute
     if test "`find /dev/shm/cpu-hdd_temp -mmin +1`"
       then
-        B=$(sensors | grep CPU | awk '{print $2}' |  tr -d "+°C" | sed 's/\.0//g')
-        C=$(sudo hddtemp /dev/sda| awk '{print $6}' | tr -d "°C")
-		if [ $B -gt 50 ]; then
-			tmux display-message "CPU temp above 50C"
-			B="!$B"
-		fi
-        echo "$B/$C" > /dev/shm/cpu-hdd_temp
+        if [ $ARCH = "armv6l" ]; then
+            B=$(sudo vcgencmd measure_temp | cut -f 2 -d "=" | cut -f 1 -d .)
+            echo "$B" > /dev/shm/cpu-hdd_temp
+        else
+            B=$(sensors | grep CPU | awk '{print $2}' |  tr -d "+°C" | sed 's/\.0//g')
+            C=$(sudo hddtemp /dev/sda| awk '{print $6}' | tr -d "°C")
+            D=$(isabove50 $B)
+            echo "$D/$C" > /dev/shm/cpu-hdd_temp
+        fi
     fi
-    D=$(df -h / | tail -1 | awk '{print $4}')
-    echo -n " $(cat /dev/shm/cpu-hdd_temp)c $D |"
+    E=$(df -h / | tail -1 | awk '{print $4}')
+    echo -n " $(cat /dev/shm/cpu-hdd_temp)c $E $IOPING |"
   else
     B=$(sysctl hw.sensors.cpu0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
     C=$(sysctl hw.sensors.pchtemp0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")

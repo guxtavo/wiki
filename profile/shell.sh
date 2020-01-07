@@ -8,11 +8,17 @@ main(){
   run_start                    # 19ms
   gimbal                       # 01ms
   #countdown                   # 08ms
-  weather                      # 46ms
-  solidground_progress         # 25ms # bz
-  targets                      # 15ms # sg # successful builds
+  if [ $ARCH = "x86_64" ]; then
+    weather                    # 46ms
+  fi
+  if [ $ARCH = "x86_64" ]; then
+    solidground_progress         # 25ms # bz
+    targets                      # 15ms # sg # successful builds
+  fi
   cpu-hdd_temp                 # 12ms # and storage
-  battery-countdown-recording  # 23ms
+  if [ $ARCH = "x86_64" ]; then
+    battery-countdown-recording  # 23ms
+  fi
   network-status               # 50ms
 }
 
