@@ -15,11 +15,14 @@ stop_recording()
 
 start_recording_arm()
 {
-  touch /tmp/recording && ffmpeg -probesize 30M \
-    -f x11grab -s 1920x1080 -r 1 -video_size 1024x576 \
+  touch /tmp/recording
+  date=$(date +%s)
+  ffmpeg -probesize 30M \
+    -f x11grab -s 1920x1080 -r 0.2 -video_size 1024x576 \
     -thread_queue_size 64000 -draw_mouse 0 -i :0.0 \
-    -vcodec theora -qscale:v 8 \
-    -loglevel warning ~/screencast_$(date +%s).ogv &
+    -vcodec huffyuv -qscale:v 31 \
+    -loglevel info ~/screencast_$date.avi > ~/s.log 2>&1 &
+  echo mpv  ~/screencast_$date.avi
 }
 
 start_recording()
