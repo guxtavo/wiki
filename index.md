@@ -64,7 +64,7 @@
 
                     FIT ARF SVV                   SIM  L3   C
                     GUI  MA  RL                   PLN BKS AFH
-                         DP                           UWK 
+                         DP                           UWK
 
 
 ### Plan and anti-plan
@@ -76,9 +76,8 @@
         ARF --'         '-- DP         BKS --'   |   '-- SIM
                                                 L3
                                                  |
-    Week: RL FIT SVV                             |
-    Trim: DP MA PLNNR SIM                        C
-    Year: GUI AFH |C| ARF L3 BKS UWK
+                                                 |
+                                                 C
 
 # Structure
 
@@ -91,17 +90,11 @@
     index.md        - This file
 
 # BUGs
-
-    network-manager asking for password after joining another network
-        -> use nmcli -> man nmcli
-
-    # to find what networks are available:
-    sudo nmcli device wifi list
-
-    # to connect to an exisint wifi
-    sudo nmcli device wifi connect
+    vim - replace ^M for carriage return
+    :%s/<Ctrl-V><Ctrl-M>/\r/g
 
 
+    screencast script doesn't quit ffmpeg -> final file with less time
 
     new passwords - main id on google and amazon
                     main id on suse
@@ -111,7 +104,6 @@
     tmux 2.9a-2.5 NOK
     tmux 2.9a-1.2 OK -> zypper la tmux
 
-    screencast script after called does not change tmux status bar
 
 	BUG01 depends on ECO01
 

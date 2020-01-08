@@ -42,6 +42,10 @@ alias rpm-url="rpm -q --qf '%{DISTURL}\n'"
 alias vpn="sudo ~/git/suse/bin/manage_vpn.sh"
 alias vpns="sudo systemctl status openvpn@SUSE-NUE | tail -10 | cut -b64-144 | tail -1"
 
+alias nmcli-show="nmcli device show wlp1s0"
+alias nmcli-list="nmcli device wifi list"
+alias nmcli-connect="sudo nmcli device wifi connect"
+
 # functions
 
 # brightness

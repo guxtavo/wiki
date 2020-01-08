@@ -6,7 +6,7 @@ PID=$(pidof ffmpeg)
 stop_recording()
 {
     if [ ! -z $PID ]; then
-        kill -15 $PID
+        kill -s SIGINT $PID
     fi
 
     rm /tmp/recording
@@ -16,7 +16,7 @@ stop_recording()
 start_recording_arm()
 {
   touch /tmp/recording && ffmpeg -probesize 30M \
-    -f x11grab -s 1920x1080 -r 5 \
+    -f x11grab -s 1920x1080 -r 1 -video_size 1024x576 \
     -thread_queue_size 64000 -draw_mouse 0 -i :0.0 \
     -vcodec theora -qscale:v 8 \
     -loglevel warning ~/screencast_$(date +%s).ogv &
@@ -24,14 +24,17 @@ start_recording_arm()
 
 start_recording()
 {
-  touch /tmp/recording && ffmpeg -probesize 30M \
-    -f x11grab -s 1920x1080 -r 10 \
+  touch /tmp/recording
+  date=$(date +%s)
+  ffmpeg -probesize 30M -analyzeduration 10M \
+    -f x11grab -threads 0 -s 1920x1080 -r 2 -video_size 1280x720 \
     -thread_queue_size 64000 -draw_mouse 0 -i :0.0 \
     -f alsa -ac 2  -thread_queue_size 32000 \
     -guess_layout_max 0 -i hw:0 \
     -acodec libvorbis -qscale:a 5 \
     -vcodec theora -qscale:v 8 \
-    -loglevel warning ~/screencast_$(date +%s).ogv &
+    -loglevel info ~/screencast_$date.ogv > ~/s.log 2>&1 &
+  echo mpv  ~/screencast_$date.ogv
 }
 
 main()
