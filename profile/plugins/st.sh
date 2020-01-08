@@ -4,9 +4,11 @@ ARCH=$(uname -m)
 
 isabove50()
 {
-    if [ $1 -gt 46 ]; then
+    if [ $1 -ge 50 ]; then
         tmux display-message "CPU temp above 50C"
         echo "!$1"
+    else
+        echo $1
     fi
 }
 
