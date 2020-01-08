@@ -105,10 +105,14 @@
 
 	BUG01 depends on ECO01
 
-    find shortcuts in vim for:  gqip
-                                set nonu
-                                set textwidth=72
-                                set autoindent
+    find shortcuts in vim for:  gqip = ctrl+x
+                                set nonu = ctrl+n ctrl+n
+                                set textwidth=72 = ctrl+m ctrl+m
+                                set autoindent = ctrl+a
+
+    rsync alias
+    pi - disable ipv6
+    pi - fix volume control (F5 and F6)
 
     solidground data is wrong during vpn reconnect. The timer for refresh
 	is 30 minutes, so this can lead to wrong information displayed for a long

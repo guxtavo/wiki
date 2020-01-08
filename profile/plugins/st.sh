@@ -12,97 +12,69 @@ isabove50()
     fi
 }
 
-ioping()
-{
-    A=$(sudo ioping -c1 /dev/$1)
-    B=$(echo $A | head -1 | cut -d " " -f 10-11 | cut -d "=" -f 2)
-    echo $B
-}
-
-ioping_arch()
-{
-    if [ $ARCH = "armv6l" ]; then
-        B=$(ioping mmcblk0p1)
-    else
-        B=$(ioping sda1)
-    fi
-    echo -n $B
-}
-
 cpu-hdd_temp()
 {
-    
-  IOPING=$(ioping_arch)
   if [ $SYSTEM = "Linux" ]; then
     # create control file if doesn't exist
     if test ! -e /dev/shm/cpu-hdd_temp
       then touch /dev/shm/cpu-hdd_temp
     fi
 
-    # update the temperatures every minute
-    if test "`find /dev/shm/cpu-hdd_temp -mmin +1`"
-      then
-        if [ $ARCH = "armv6l" ]; then
-            B=$(sudo vcgencmd measure_temp | cut -f 2 -d "=" | cut -f 1 -d .)
-            echo "$B" > /dev/shm/cpu-hdd_temp
-        else
-            B=$(sensors | grep CPU | awk '{print $2}' |  tr -d "+°C" | sed 's/\.0//g')
-            C=$(sudo hddtemp /dev/sda| awk '{print $6}' | tr -d "°C")
-            D=$(isabove50 $B)
-            echo "$D/$C" > /dev/shm/cpu-hdd_temp
-        fi
-    fi
-    E=$(df -h / | tail -1 | awk '{print $4}')
-    echo -n " $(cat /dev/shm/cpu-hdd_temp)c $E $IOPING |"
+    temp=$(tail -1 /dev/shm/cpu-hdd_temp)
+    diskspace=$(tail -1 /dev/shm/diskspace)
+    ioping=$(tail -1 /dev/shm/ioprobe)
+    echo -n " ${temp}c $diskspace $ioping |"
+    isrecording
   else
     B=$(sysctl hw.sensors.cpu0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
     C=$(sysctl hw.sensors.pchtemp0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
     echo "$B/$C" > /dev/shm/cpu-hdd_temp
     echo -n " $(cat /dev/shm/cpu-hdd_temp)c |"
   fi
-
-
-
 }
 
-# shows reconding time, of countdowns or battery status
-battery-countdown-recording()
+isrecording()
 {
-  if [ -f /dev/shm/recording ]; then
-    CREATED=$(find /dev/shm/recording -printf '%C@\n' | cut -f 1 -d .)
+  if [ -f /tmp/recording ]; then
+    CREATED=$(find /tmp/recording -printf '%C@\n' | cut -f 1 -d .)
     NOW=$(date +%s)
     DIF=$(( $NOW - $CREATED ))
     MIN=$(( $DIF/60 ))
     SEC=$(( $DIF%60 ))
     if [ $SEC -lt 10 ]; then
-      echo -n " $MIN:0$SEC 🔴 |"
+      echo -n " SCREENCASTING $MIN:0$SEC |"
     else
-      echo -n " $MIN:$SEC 🔴 |"
+      echo -n " SCREENCASTING $MIN:$SEC |"
     fi
   fi
+}
 
-  COUNT=$(ls /dev/shm/countdown* 2>/dev/null| wc -l | awk '{print $1}')
-  if [ -z $COUNT ] ; then
-    COUNT=0
-  fi
-  if [ $COUNT -gt 0 ]; then
-    # show how many countdowns are running
-	echo -n " $COUNT "
-	NEXT=$(( ( RANDOM % $COUNT ) + 1 ))
-	ID_NEXT=$(ls /dev/shm/countdown.* | sed -n ${NEXT}p | cut -f2 -d".")
-	echo $ID_NEXT > /dev/shm/cd-last
-	ID=$(cat /dev/shm/cd-last)
-   	B=$(cat /dev/shm/countdown.$ID)
-    MIN=$(( $B/60 ))
-    SEC=$(( $B%60 ))
-    if [ $SEC -lt 10 ]; then
-      echo -n " $MIN:0$SEC $ID |"
-    else
-      echo -n " $MIN:$SEC $ID |"
+# shows reconding time, of countdowns or battery status
+battery-countdown-recording()
+{
+    isrecording
+    COUNT=$(ls /dev/shm/countdown* 2>/dev/null| wc -l | awk '{print $1}')
+    if [ -z $COUNT ] ; then
+        COUNT=0
     fi
-  else
-    battery
-  fi
+    if [ $COUNT -gt 0 ]; then
+      # show how many countdowns are running
+  	echo -n " $COUNT "
+  	NEXT=$(( ( RANDOM % $COUNT ) + 1 ))
+  	ID_NEXT=$(ls /dev/shm/countdown.* | sed -n ${NEXT}p | cut -f2 -d".")
+  	echo $ID_NEXT > /dev/shm/cd-last
+  	ID=$(cat /dev/shm/cd-last)
+     	B=$(cat /dev/shm/countdown.$ID)
+        MIN=$(( $B/60 ))
+      SEC=$(( $B%60 ))
+      if [ $SEC -lt 10 ]; then
+        echo -n " $MIN:0$SEC $ID |"
+      else
+        echo -n " $MIN:$SEC $ID |"
+      fi
+    else
+      battery
+    fi
 }
 
 battery()
