@@ -94,8 +94,6 @@
     :%s/<Ctrl-V><Ctrl-M>/\r/g
 
 
-    screencast script doesn't quit ffmpeg -> final file with less time
-
     new passwords - main id on google and amazon
                     main id on suse
                     main id on github (2 factor)

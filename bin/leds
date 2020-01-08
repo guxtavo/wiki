@@ -1,0 +1,84 @@
+#/bin/bash
+
+
+turnonnum()
+{
+    echo 1 | sudo tee /sys/class/leds/input0\:\:numlock/brightness
+}
+
+turnoffnum()
+{
+    echo 0 | sudo tee /sys/class/leds/input0\:\:numlock/brightness
+}
+
+
+turnoncaps()
+{
+    echo 1 | sudo tee /sys/class/leds/input0\:\:capslock/brightness
+}
+
+turnoffcaps()
+{
+    echo 0 | sudo tee /sys/class/leds/input0\:\:capslock/brightness
+}
+
+turnonscroll()
+{
+    echo 1 | sudo tee /sys/class/leds/input0\:\:scrolllock/brightness
+}
+
+turnoffscroll()
+{
+    echo 0 | sudo tee /sys/class/leds/input0\:\:scrolllock/brightness
+}
+
+
+sleep_half()
+{
+    sleep 0.5
+}
+
+sleep_one()
+{
+    sleep 1
+}
+
+my_sleep()
+{
+    sleep $1
+}
+
+my_sequence1()
+{
+    turnonnum
+    my_sleep 0.5
+    turnoncaps
+    my_sleep 0.5
+    turnonscroll
+    my_sleep 0.5
+
+    turnoffscroll
+    my_sleep 0.5
+    turnoffcaps
+    my_sleep 0.5
+    turnoffnum
+}
+
+setzeroes()
+{
+    turnoffnum
+    turnoffcaps
+    turnoffscroll
+}
+
+my_sequence2()
+{
+    turnoncaps
+    sleep_half
+    turnoffcaps
+    sleep_half
+}
+
+my_sequence2
+my_sequence2
+my_sequence2
