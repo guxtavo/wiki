@@ -391,8 +391,8 @@ upon, as it might be disallowed when processing actually takes place.
 
 ##### Objectives
 
-  * Make a student computer, affordable, flexible
-  * Production with off-the-shelv parts (pi0)
+  * Make a computer for students - DYI, affordable and flexible
+  * Production with off-the-shelve parts
   * Focus on reduced price, quality and ease of use
   * Make 2 versions
     * 1 pi's
@@ -405,9 +405,27 @@ upon, as it might be disallowed when processing actually takes place.
 
 ##### Next steps
 
-  * Design PCB and Case
+  * how to fit a raspberry pi 4 inside the raspberry pi keyboard
+  * install power button on mark 1
+  * change hostname to mk1 - hostnamectl
+  * make ping_sites behave like its simblings
+  * fix weather plugin in arm6vl - add to connectivity.sh
+  * change the backgroumd
+  * i3status - show volume - find correct device for rpi
+  * configure prtscn shortcut in i3
+
+
+
   * Parts list
-    * 79 leds
+    * raspberry pi zero w          400czk
+    * raspberry pi uk keyboard     500czk
+    * micro sd card 32 gb          400czk
+    * micro hdmi to hdmi adapter   200czk
+    * usb otg adapter              120czk
+                                  1620czk ~= 64 EURO
+                
+    * monitor                     2700czk
+
   * Finalize layout
   * https://howchoo.com/g/zgmzytq1mmy/raspberry-pi-in-official-pi-keyboard
   * https://blog.pimoroni.com/putting-a-raspberry-pi-3-a-in-the-raspberry-pi-keyboard/

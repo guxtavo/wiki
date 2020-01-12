@@ -42,9 +42,9 @@ isrecording()
     MIN=$(( $DIF/60 ))
     SEC=$(( $DIF%60 ))
     if [ $SEC -lt 10 ]; then
-      echo -n " SCREENCASTING $MIN:0$SEC |"
+      echo -n " RECORDING $MIN:0$SEC |"
     else
-      echo -n " SCREENCASTING $MIN:$SEC |"
+      echo -n " RECORDING $MIN:$SEC |"
     fi
   fi
 }

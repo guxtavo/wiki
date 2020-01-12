@@ -6,7 +6,7 @@ source ~/git/wiki/profile/plugins/st.sh
 # main loop
 main(){
   run_start                    # 19ms
-  gimbal                       # 01ms
+  #gimbal                       # 01ms
   #countdown                   # 08ms
   if [ $ARCH = "x86_64" ]; then
     weather                    # 46ms
