@@ -114,33 +114,25 @@
 
 # ECOs
 
-    * ECO?? fix 
-    * ECO01 connectivity.sh
+    * pi - install gpg and use password-store
+    * create wrapper for volume control that works with any arch
+    * pi - fix volume control (F5 and F6)
+    * fix weather plugin in arm6vl - add to connectivity.sh
+    * find correct audio device for armv6l in ~/.i3status.conf
+    * rsync alias
+    * connectivity.sh
         * check l3slave connectivity
 		* port for for OpenBSD
+        * make ping_sites behave like its simblings
         * Integrate other plugins with netstat-probe
-    * ECO02 - C programming language - exercise 1-6
-    * ECO03 show screen FTPS (refresh rate from X11?)
-
-    * ECO05 intergrate calendaring from google (at least show and notify)
-	* ECO06 suspending when lid is closed (also run i3lock)
-    * ECO07 cleaup bash history configuration
-	* ECO08 display-message when battery goes bellow 30 minutes
-    * ECO09 move gmail to mutt
-    * ECO10 show builds running in IBS
-    * ECO12 multipath or LVM for rootfs
-    * how to fit a raspberry pi 4 inside the raspberry pi keyboard
-      * make a 3d copy of the bottom of the rpi keyboard
-      * alter the design to be taller in order to fit the pi 4
-    * install power button on mk1
-    * change hostname to mk1 - hostnamectl
-    * make ping_sites behave like its simblings
-    * fix weather plugin in arm6vl - add to connectivity.sh
-    * change the backgroumd
-    * find correct audio device for armv6l in ~/.i3status.conf
-    * automate prtscn shortcut in ~/.config/i3/config
-    * rsync alias
-    * pi - fix volume control (F5 and F6)
+    * C programming language - exercise 1-6
+    * show screen FTPS (refresh rate from X11?)
+    * intergrate calendaring from google (at least show and notify)
+	* suspending when lid is closed (also run i3lock)
+	* display-message when battery goes bellow 30 minutes
+    * move gmail to mutt
+    * show builds running in IBS
+    * multipath or LVM for rootfs
 
 # SGR development
 
@@ -177,6 +169,11 @@ For mk2 I will try to fit a rpi4 inside the official rpi keyboard.
 
 I will reproduce in 3D the bottom of the rpi official keyboard case and
 then change it to allow fitting a rpi0w and a pi4.
+
+    * how to fit a raspberry pi 4 inside the raspberry pi keyboard
+      * make a 3d copy of the bottom of the rpi keyboard
+      * alter the design to be taller in order to fit the pi 4
+    * install power button on mk2
 
 # mk3
 
