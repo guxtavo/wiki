@@ -46,74 +46,96 @@ temperatures()
 
 }
 
+weather_format_data()
+{
+    # here we are sure the file exists from a sucessful run of
+    # weather_get_the_data
+    # Calculate and display rain chance if exists
+    RAIN=$(cat /dev/shm/weather \
+              | sed -n 16p | grep -o .[0-9]% | sort -n \
+              | sed '$!d' | tr -d " %")
+    if [ ! -z $RAIN ] ; then
+        if [ $RAIN -gt 0 ]; then
+            echo -n $RAIN"%${RAIN}T "
+        fi
+    fi
+
+    MONTH=$(date +%m)
+    # if we are between december and february
+    if [ $MONTH -eq 12 ] || [ $MONTH -le 2 ] ; then
+        if [ $SYSTEM = "Linux" ]; then
+            TEMP_STEP1=$(cat /dev/shm/weather | sed -n 13p \
+                         | grep -o '\-[0-9]' \
+                         | sort -n | sed -e 1b -e '$!d' | tr '\n' ' ' \
+                         | awk '{print $1"/"$2}')
+            echo $TEMP_STEP1 >> /dev/shm/weather_final
+        else
+            RAW=$(sed -n 13p /dev/shm/weather | strings | grep -o 'm[0-9]\{1,2\}')
+            BETTER=$(echo $RAW | tr -d "m" | perl -pe 's/ /\n/g' | sort -n | sed -e 1b -e '$!d')
+            ENHANCE=$(echo $BETTER | tr '\n' ' ' | awk '{print $1"-"$2"."}')
+            echo $ENHANCE >> /dev/shm/weather_final
+        fi
+    else
+        echo -n positive >> /dev/shm/weather_final
+    fi
+}
+
 weather_get_the_data()
 {
+    # Curl the data or fail
     LOCATION=Brno
     #LOCATION=Prague
     #LOCATION=Nova_iguacu
     curl -m 2 wttr.in/"$LOCATION" | \
       sed -r "s/\x1B\[(([0-9]+)(;[0-9]+)*)?[m,K,H,f,J]//g" \
       > /dev/shm/weather
-}
-
-weather_format_data()
-{
-    # Calculate and display rain chance if exists
-    CONTENT=$(cat /dev/shm/weather \
-              | sed -n 16p | grep -o .[0-9]% | sort -n \
-              | sed '$!d' | tr -d " %")
-    if [ ! -z $CONTENT ] ; then
-        if [ $CONTENT -gt 0 ]; then
-            echo -n $CONTENT"%${CONTENT}T "
-        fi
-    fi
-
-    # winter and temperatures bellow 0
-    #echo -n  $(cat /dev/shm/weather | sed -n 13p | grep -o '\-[0-9]' |sort -n | sed -e 1b -e '$!d' | tr '\n' ' ' | awk '{print $1"/"$2}')
-    # temperatures above 0
-    if [ $SYSTEM = "Linux" ]; then
-        # if we are december 1st until february 28
-        TEMP_STEP1=$(cat /dev/shm/weather | sed -n 13p | grep -o '\-[0-9]' \
-                     |sort -n | sed -e 1b -e '$!d' | tr '\n' ' ' \
-                     | awk '{print $1"/"$2}')
-        # elseif we are between march 1st and november 30
-        #echo -n  $(sed -n 13p /dev/shm/weather | grep -o '[0-9]\{1,2\}' |sort -n | sed -e 1b -e '$!d' | tr '\n' ' ' | awk '{print $1"-"$2"."}')
-        echo $TEMP_STEP1 >> /dev/shm/weather_final
+    if [ $? -gt 0 ] ; then
+        echo "N/A" > /dev/shm/weather_final
     else
-        RAW=$(sed -n 13p /dev/shm/weather | strings | grep -o 'm[0-9]\{1,2\}')
-        BETTER=$(echo $RAW | tr -d "m" | perl -pe 's/ /\n/g' | sort -n | sed -e 1b -e '$!d')
-        ENHANCE=$(echo $BETTER | tr '\n' ' ' | awk '{print $1"-"$2"."}')
-        echo $ENHANCE >> /dev/shm/weather_final
+        weather_format_data
     fi
 }
 
-weather_main()
+
+check_expired_data()
 {
     # fetch data if files is 30 minutes old
     if test "`find /dev/shm/weather -mmin +30`"
     then
-      weather_get_the_data
-    fi
-
-    # if the file is empty, try again to fetch the data
-    if test ! -s /dev/shm/weather
-    then
-      weather_get_the_data
-    fi
-
-    # weather_test_size
-
-    # check size of the file before setting the variables
-    if [ $(cat /dev/shm/weather | wc -l) -lt 20 ]; then
-      B="-----"
-      # retry in less time
-      if test "`find /dev/shm/weather -mmin +5`"
-      then
         weather_get_the_data
-      fi
-    else
-      weather_format_data
     fi
+}
+
+populate()
+{
+    # Populate the file with N/A if it doesn't exist
+    if [ ! -f /dev/shm/weather ] ; then
+        echo "N/A" > /dev/shm/weather
+        echo "N/A" > /dev/shm/weather_final
+    fi
+}
+
+checkforNA()
+{
+    if [ $(head -1 /dev/shm/weather | sed 's/.//4g') = "N/A" ] ; then
+        weather_get_the_data
+    fi
+}
+
+# TODO: the script should cool down in case weather_get_the_data keeps failing
+
+# timer()
+# {
+#     # 15 sec - initialize
+#     # 15 sec - check for N/A
+#     # 30 min - download expired data
+# }
+
+weather_main()
+{
+    populate
+    checkforNA # will call weather_get_the_data if N/A
+    check_expired_data # might call weather_get_the_data
 }
 
 

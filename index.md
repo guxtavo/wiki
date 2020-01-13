@@ -114,8 +114,7 @@
 
 # ECOs
 
-    * add weather to connectivity.sh
-    * fix weather plugin in arm6vl
+    * change enc in openssl to a good one
     * rsync alias
     * pi - install gpg and use password-store
     * fix ~/.i3status.conf on armv6l to show correct percentage
