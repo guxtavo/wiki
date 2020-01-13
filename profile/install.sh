@@ -25,6 +25,8 @@ install_raspbian()
     sudo apt install tmux strace ioping fortune ffmpeg w3m vim-runtime i3 \
                      aspell
     dotfiles
+    mkdir -p ~/.config/i3
+    cp dotfiles/armv6l/.config/i3/config ~/.config/i3/
     defaultwm
 }
 
@@ -35,6 +37,8 @@ install_opensuse()
                         sensors acpi aspell
 
     dotfiles
+    mkdir -p ~/.config/i3
+    cp dotfiles/.config/i3/config ~/.config/i3/
 }
 
 if [ $ID = "raspbian" ]; then
