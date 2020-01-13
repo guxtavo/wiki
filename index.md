@@ -114,12 +114,11 @@
 
 # ECOs
 
-    * pi - install gpg and use password-store
-    * create wrapper for volume control that works with any arch
-    * pi - fix volume control (F5 and F6)
-    * fix weather plugin in arm6vl - add to connectivity.sh
-    * find correct audio device for armv6l in ~/.i3status.conf
+    * add weather to connectivity.sh
+    * fix weather plugin in arm6vl
     * rsync alias
+    * pi - install gpg and use password-store
+    * fix ~/.i3status.conf on armv6l to show correct percentage
     * connectivity.sh
         * check l3slave connectivity
 		* port for for OpenBSD
@@ -129,10 +128,8 @@
     * show screen FTPS (refresh rate from X11?)
     * intergrate calendaring from google (at least show and notify)
 	* suspending when lid is closed (also run i3lock)
-	* display-message when battery goes bellow 30 minutes
     * move gmail to mutt
     * show builds running in IBS
-    * multipath or LVM for rootfs
 
 # SGR development
 
