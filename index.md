@@ -406,13 +406,17 @@ upon, as it might be disallowed when processing actually takes place.
 ##### Next steps
 
   * how to fit a raspberry pi 4 inside the raspberry pi keyboard
-  * install power button on mark 1
+    * make a 3d copy of the bottom of the rpi keyboard
+    * alter the design to be taller in order to fit the pi 4
+  * install power button on mk1
   * change hostname to mk1 - hostnamectl
   * make ping_sites behave like its simblings
   * fix weather plugin in arm6vl - add to connectivity.sh
   * change the backgroumd
-  * i3status - show volume - find correct device for rpi
-  * configure prtscn shortcut in i3
+  * find correct audio device for armv6l in ~/.i3status.conf
+  * automate prtscn shortcut in ~/.config/i3/config
+  * sync differences in bashrc .tmux.conf and other files
+  * adapt .tmux.conf in x86_64 to use different terminal pallet
 
 
 
@@ -423,7 +427,7 @@ upon, as it might be disallowed when processing actually takes place.
     * micro hdmi to hdmi adapter   200czk
     * usb otg adapter              120czk
                                   1620czk ~= 64 EURO
-                
+
     * monitor                     2700czk
 
   * Finalize layout
@@ -444,11 +448,15 @@ upon, as it might be disallowed when processing actually takes place.
      ################################################################
      #                                                              #
      #  FIT - 50 squats and yoga                  gpi case - SIM    #
-     #  ARF - diet                             organize ~/ - L3     #
+     #  ARF - diet                                         - L3     #
      #  SVV - order                              sololearn - C      #
      #  GUI - plan vacations                      attitude - PLNNR  #
      #   MA -                     Vso Vs Vfe Va Vx Vy Trim - AFH    #
      #   RL - cuddles and walks            how music works - BKS    #
-     #   DP - dieta                       act let to sound - UWK    #
+     #   DP -                                          mk1 - UWK    #
      #                                                              #
      ################################################################
+
+## Milestones
+
+    2020-01-04   mk1 assembly

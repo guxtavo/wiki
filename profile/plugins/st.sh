@@ -52,7 +52,7 @@ isrecording()
 # shows reconding time, of countdowns or battery status
 battery-countdown-recording()
 {
-    isrecording
+    #isrecording
     COUNT=$(ls /dev/shm/countdown* 2>/dev/null| wc -l | awk '{print $1}')
     if [ -z $COUNT ] ; then
         COUNT=0

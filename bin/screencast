@@ -10,34 +10,41 @@ stop_recording()
     fi
 
     rm /tmp/recording
-    echo Stopping
+    leds > /dev/null 2>&1
+}
+recordinit()
+{
+    leds > /dev/null 2>&1
+    touch /tmp/recording
 }
 
 start_recording_arm()
 {
-  touch /tmp/recording
-  date=$(date +%s)
-  ffmpeg -probesize 30M \
-    -f x11grab -s 1920x1080 -r 0.2 -video_size 1024x576 \
-    -thread_queue_size 64000 -draw_mouse 0 -i :0.0 \
-    -vcodec huffyuv -qscale:v 31 \
-    -loglevel info ~/screencast_$date.avi > ~/s.log 2>&1 &
-  echo mpv  ~/screencast_$date.avi
+    recordinit
+    date=$(date +%s)
+    echo ~/screencast_$date.avi
+    # 0.2 fps
+    ffmpeg -probesize 30M \
+      -f x11grab -s 1920x1080 -r 0.2 -video_size 1024x576 \
+      -thread_queue_size 64000 -draw_mouse 0 -i :0.0 \
+      -vcodec huffyuv -qscale:v 31 \
+      -loglevel info ~/screencast_$date.avi > ~/s.log 2>&1 &
 }
 
 start_recording()
 {
-  touch /tmp/recording
-  date=$(date +%s)
-  ffmpeg -probesize 30M -analyzeduration 10M \
-    -f x11grab -threads 0 -s 1920x1080 -r 2 -video_size 1280x720 \
-    -thread_queue_size 64000 -draw_mouse 0 -i :0.0 \
-    -f alsa -ac 2  -thread_queue_size 32000 \
-    -guess_layout_max 0 -i hw:0 \
-    -acodec libvorbis -qscale:a 5 \
-    -vcodec theora -qscale:v 8 \
-    -loglevel info ~/screencast_$date.ogv > ~/s.log 2>&1 &
-  echo mpv  ~/screencast_$date.ogv
+    recordinit
+    date=$(date +%s)
+    echo ~/screencast_$date.ogv
+    # 2 fps
+    ffmpeg -probesize 30M -analyzeduration 10M \
+      -f x11grab -threads 0 -s 1920x1080 -r 2 -video_size 1280x720 \
+      -thread_queue_size 64000 -draw_mouse 0 -i :0.0 \
+      -f alsa -ac 2  -thread_queue_size 32000 \
+      -guess_layout_max 0 -i hw:0 \
+      -acodec libvorbis -qscale:a 5 \
+      -vcodec theora -qscale:v 8 \
+      -loglevel info ~/screencast_$date.ogv > ~/s.log 2>&1 &
 }
 
 main()
