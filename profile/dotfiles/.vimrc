@@ -23,7 +23,6 @@ match OverLength /\%80v.\+/
 autocmd FileType text,xml,tex setlocal textwidth=78
 
 map <C-l> :w!<CR>:!aspell check %<CR>:e! %<CR>
-map <F7> mzgg=G`z
 
 au InsertEnter * hi StatusLine ctermfg=7
 au InsertLeave * hi StatusLine ctermfg=2

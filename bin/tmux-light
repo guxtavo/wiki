@@ -1,0 +1,41 @@
+#!/bin/bash
+
+sdi()
+{
+    # display profile
+    #  - 42x174 chars (40 lines in vi)
+    #  - 14"  display
+    # new session
+    SESSION="HELM"
+    tmux new-session -d -s $SESSION
+
+    # FLIGHT
+    tmux rename-window -t $SESSION:1 'FLIGHT:' #'✈️ '
+
+    # CAPCOM
+    tmux new-window -t $SESSION:2 -n 'CAPCOM:' #'⛑️ '
+
+    # FDO
+    tmux new-window -t $SESSION:3 -n 'FDO:' #🚀
+
+    # GPO
+    tmux new-window -t $SESSION:4 -n 'GPO:' #🌎'
+
+    # DPS
+    tmux new-window -t $SESSION:5 -n 'DPS:' #🤖'
+
+    # Surgeon
+    tmux new-window -t $SESSION:6 -n 'Surgeon:' #⚕️ '
+
+    # Booster
+    tmux new-window -t $SESSION:7 -n 'Booster:' # 🔼'
+
+    # Payload
+    tmux new-window -t $SESSION:8 -n 'PDRS:' # 📦'
+
+    # Finishing up
+    tmux select-window -t $SESSION:1
+    tmux attach-session -t $SESSION
+}
+
+sdi

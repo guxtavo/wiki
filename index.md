@@ -40,34 +40,12 @@
                     ######   ######  ######   ######  #######
 
 
-# tmux
-
-                FLIGHT CAPCOM FDO GPO DPS Surgeon Booster PDRS
-
-
-               [HELM] 2:CAPCOM    * 248ms | !7/9 21/68 | 33/33c |
-               |                        |                       |
-               |                        |          c            |
-               |                        |     sh   +  md        |
-               |                        |     vim  + tmux       |
-               |                        |     git  +  osc       |
-               |                        |                       |
-               |________________________|   FLIGHT CAPCOM FDO   |
-               |*                       |                       |
-               |________________________|_______________________|
-
-                my tmux status bar, measuring how long it takes
-                 to run (in ms) | my active and processed bugs
-                  other work status and hardware temperatures
-
 # Directives
 
                     FIT ARF SVV                   SIM  L3   C
                     GUI  MA  RL                   PLN BKS AFH
                          DP                           UWK
 
-
-### Plan and anti-plan
 
                         .-- MA         AFH --.       .-- UWK
                        /                      \     /
@@ -78,6 +56,18 @@
                                                  |
                                                  |
                                                  C
+
+     ################################################################
+     #                                                              #
+     #  FIT - 50 squats and yoga                  gpi case - SIM    #
+     #  ARF - diet                                         - L3     #
+     #  SVV - order                              sololearn - C      #
+     #  GUI - plan vacations                      attitude - PLNNR  #
+     #   MA -                     Vso Vs Vfe Va Vx Vy Trim - AFH    #
+     #   RL - cuddles and walks            how music works - BKS    #
+     #   DP -                                          mk1 - UWK    #
+     #                                                              #
+     ################################################################
 
 # Structure
 
@@ -90,9 +80,9 @@
     index.md        - This file
 
 # BUGs
+
     vim - replace ^M for carriage return
     :%s/<Ctrl-V><Ctrl-M>/\r/g
-
 
     new passwords - main id on google and amazon
                     main id on suse
@@ -110,9 +100,6 @@
                                 set textwidth=72 = ctrl+m ctrl+m
                                 set autoindent = ctrl+a
 
-    rsync alias
-    pi - disable ipv6
-    pi - fix volume control (F5 and F6)
 
     solidground data is wrong during vpn reconnect. The timer for refresh
 	is 30 minutes, so this can lead to wrong information displayed for a long
@@ -146,50 +133,33 @@
     * ECO10 show builds running in IBS
     * ECO11 AFH epub
     * ECO12 multipath or LVM for rootfs
+    * how to fit a raspberry pi 4 inside the raspberry pi keyboard
+      * make a 3d copy of the bottom of the rpi keyboard
+      * alter the design to be taller in order to fit the pi 4
+    * install power button on mk1
+    * change hostname to mk1 - hostnamectl
+    * make ping_sites behave like its simblings
+    * fix weather plugin in arm6vl - add to connectivity.sh
+    * change the backgroumd
+    * find correct audio device for armv6l in ~/.i3status.conf
+    * automate prtscn shortcut in ~/.config/i3/config
+    * sync differences in bashrc .tmux.conf and other files
+    * adapt .tmux.conf in x86_64 to use different terminal pallet
+    * adapt .vimrc in x86_64 to use different terminal pallet
+    * add vim shortcuts from armv6l to x86_64 (set nonu and others)
+    * merge what's next with ECOS
+    * rsync alias
+    * pi - disable ipv6
+    * pi - fix volume control (F5 and F6)
 
+# SGR development
 
-### UWK
-     * shell.sh -> execute in a loop, move the cursor to the beginning
-after
-       printing (so it behaves like i3status)
+    Github can offer:                    Hosting
+        Issue tracking                      Website
+        Wiki                                tmate
+        git hosting                         Billing
 
-
-
-### SGR products
-
-  200OK ticket     ticket.sgr.cz     ?
-  200OK Wiki	     wiki.sgr.cz     mediawiki
-  200OK git           git.sgr.cz     gitlab
-  200OK CI          build.sgr.cz     OBS
-  200OK sgr-david   david.sgr.cz     ?
-  200OK sgr-remote  tmate.sgr.cz     tmate
-  200OK billing         ?.sgr.cz     ?
-
-### piOS
-
-Initializing piOS v2.1.01p
-
-Disk check: okay
-Memory check: okay
-Network check: okay
-
-
-
-
-                            88    ,ad888ba,      ad88888ba
-                            ""   d8"'   `"8b    d8"     "8b
-                                d8'       `8b   Y8,
-               8b,dPPYba,   88  88         00   `Y8aaaaa,
-               88P'    "8a  88  88         88     `"""""8b,
-               88       d8  88  Y8,       ,8P           `8b
-               88b,   ,a8"  88  Y8a.    .a8P    Y8a     a8P
-               88`YbbdP"'   88   `"Y8888Y"'      "Y88888P"
-               88
-               88
-
-                     "operating sytem of the future (TM)"
-
-#### 200 OK
+# 200 OK prototype
 
                        ______________________________________________
     tmux              | [200 OK]         #########             [   ] |
@@ -203,224 +173,42 @@ Network check: okay
                       | [__][_][__][____________][_][_][__][<][_][>] |
                       |______________________________________________|
 
+# mk1
+
+mk1 is a rpi official keyboard with a rpi zero w inside it:
+
+  * https://howchoo.com/g/zgmzytq1mmy/raspberry-pi-in-official-pi-keyboard
+  * https://blog.pimoroni.com/putting-a-raspberry-pi-3-a-in-the-raspberry-pi-keyboard/
+  * https://howchoo.com/g/mwnlytk3zmm/how-to-add-a-power-button-to-your-raspberry-pi
+
 # mk2
 
+For mk2 I will try to fit a rpi4 inside the official rpi keyboard.
 
+I will reproduce in 3D the bottom of the rpi official keyboard case and
+then change it to allow fitting a rpi0w and a pi4.
 
+# mk3
 
-                Phone holder ----+     2xAA battery slot ------------------+
-                                 |                                         |
-                                 |                                         |
-                        Pen slot |                                         |
-       8 char LED          |     |  HDMI    USB-C (power)     USB-A (data) |
-            |              |     |   |      |                      |       |
-            |              |     |   |      |                      |       |
-            |              |     |   |      |                      |       |
-      ------+--------------+-----+---------------------------------+-----  |
-     |   |[200 OK]|        |     ##############                 [    ]   | |
-     |   =============================================================   +-+
-     |   =============================================================   |
-     |   ,---, ,---,---,---,---,---,---,---,---,---,---,---,---, ,---,   |
-     |   '---' '---'---'---'---'---'---'---'---'---'---'---'---' '---'   |
-     |   ,---,---,---,---,---,---,---,---,---,---,---,---,---,-------,   |
-     |   | ~ | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | - | = |  back |   |
-     |   |---'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-----|   |
-     |   | --> | q | w | e | r | t | y | u | i | o | p | [ | ] | ent |   |
-     |   |-----',--',--',--',--',--',--',--',--',--',--',--',--',    |   |
-     |   |   fn | a | s | d | f | g | h | j | k | l | ; | ' | | |    |   |
-     |   |------',--',--',--',--',--',--',--',--',--',--',--',---,---|   |
-     |   | shift | z | x | c | v | b | n | m | , | . | / |shi| ^ | fn|   |
-     |   |----,--',---,--'---'---'---'---'--,'--,'--,'---,---,---,---|   |
-     |   |ctrl|sup|alt|                     |alt|sup|ctrl| < | v | > |   |
-     |   '----'---'---'---------------------'---'---'----'---'---'---'   |
-     |                         |                                         |
-      -------------------------+-----------------------------------------
-                               |                   |
-                               |                   |
-                               |                   |
-                        79 backlit keys      3.5 mm (audio)
+Build a version which can fit 3 rpi0w inside the keyboard.
 
-                         __________________________
-                        |OFFo oON                  |
-                        | .----------------------. |
-                        | |  .----------------.  | |
-                        | |  |                |  | |
-                        | |))|                |  | |
-                        | |  |                |  | |
-                        | |  |                |  | |
-                        | |  |                |  | |
-                        | |  |                |  | |
-                        | |  |                |  | |
-                        | |  '----------------'  | |
-                        | |__GAME BOY____________/ |
-                        |          ________        |
-                        |    .    (Nintendo)       |
-                        |  _| |_   """"""""   .-.  |
-                        |-[_   _]-       .-. (   ) |
-                        |   |_|         (   ) '-'  |
-                        |    '           '-'   A   |
-                        |                 B        |
-                        |          ___   ___       |
-                        |         (___) (___)  ,., |
-                        |        select start ;:;: |
-                        |                    ,;:;' /
-                        |                   ,:;:'.'
-                        '-----------------------`
+# LED
 
+The capslock led can be used to relay information to the user. Currently
+it is used for the screencast script (brink 3 times to warn the user the
+screencast has started/stopped.
 
-                            _n_________________
-                           |_|_______________|_|
-                           |  ,-------------.  |
-                           | |  .---------.  | |
-                           | |  |         |  | |
-                           | |  |         |  | |
-                           | |  |         |  | |
-                           | |  |         |  | |
-                           | |  `---------'  | |
-                           | `---------------' |
-                           |   _ GAME BOY      |
-                           | _| |_         ,-. |
-                           ||_ O _|   ,-. "._,"|
-                           |  |_|    "._,"   A |
-                           |            B      |
-                           |       _  _        |
-                           |      // //     ///|
-                           |      `  `     /// ,
-                           |________...______,"
+My idea is to use the leds script when the wait time is higher than 30%.
 
-##### LED
+# Objectives
 
-With 1 byte of data, the intention is to display a code akin to the http
-protocol status codes. This data would be pulled from a lightweight
-watchdog running in userspace (with higher priority), pulling data from
-the system periodically to display a guestimate on the general usability
-of the system. The system will be measured and report will appear in a
-grade:
+    * Allow programming students to build an affordable computer system
+      with off-the-shelve parts
+    * 3D design a under-case for the rpi official keyboard
+    * Flexibility
 
-    [200 OK] - OK                                 status is fine
-    [201 CR] - New issue created     status is ok, warning found
-    [400 Ba] - Bad request                        status unknown
-    [404 NF] - Not found                  call back didn't occur
-    [500 IE] - Internal server error                cannot probe
-    [503 SU] - Service Unavailable  overloaded or in maintenance
-    [507 IS] - Insufficient Storage
+# mk1 parts list
 
-Other codes can be implemented through scripting:
-
-    * Temperature 
-
-The watchdog will determine how the system is behaving and give one of
-the five answers depending on how it rates the condition.
-
-The big question here is how to represent the usability of a system in a
-5 tier set, from "you should be good to go" to "you are doing something
-wrong or we are"
-
-    [200 OK] status is fine
-    [201 CR] there is lag
-    [202 AC] lag intensifies
-    [203 NA] processed with data from
-
-Is it useful to know the status of the system? Is http codes the best
-way to 
-
-The green led can be used by any program through a library. The library
-will allow suspending the watchdog (or other running program accessing
-the display) to display your data.
-
-The display should support up to 140 chars for scrolling.
-
-The speed in each the pulling and refreshing the display can be
-modified.
-
-The user can also choose the display the values like:
-
-    * show per-cpu kernel stack value
-    * show per process stack pointer
-    * you can script any output to it
-
-##### http codes
-
-2xx Success - the watchdog is 
-
-This class of status codes indicates the action requested by the client
-was received, understood, accepted and processed successfully.
-
-200 OK
-
-The request has succeeded. The information returned with the response is
-dependent on the method used in the request, for example:
-
-  • GET an entity corresponding to the requested resource is sent in the
-    response;
-
-  • HEAD the entity-header fields corresponding to the requested
-    resource are sent in the response without any message-body;
-
-  • POST an entity describing or containing the result of the action;
-
-  • TRACE an entity containing the request message as received by the
-    end server.
-
-
-Standard response for successful HTTP requests. The actual response will
-depend on the request method used. In a GET request, the response will
-contain an entity corresponding to the requested resource. In a POST
-request the response will contain an entity describing or containing the
-result of the action.
-
-201 Created
-
-The request has been fulfilled and resulted in a new resource being
-created.
-
-202 Accepted
-
-The request has been accepted for processing, but the processing has not
-been completed.  The request might or might not eventually be acted
-upon, as it might be disallowed when processing actually takes place.
-
-203 Non-Authoritative Information
-
-    The server successfully processed the request, but is returning
-    information that may be from another source.
-
-204 No Content
-
-
-
-##### Objectives
-
-  * Make a computer for students - DYI, affordable and flexible
-  * Production with off-the-shelve parts
-  * Focus on reduced price, quality and ease of use
-  * Make 2 versions
-    * 1 pi's
-    * 3 pi's
-    * icecream installed by default (distributed OBS)
-
-
-  * Make it redundant with 3 pi0's (and a version for only 1)
-
-
-##### Next steps
-
-  * how to fit a raspberry pi 4 inside the raspberry pi keyboard
-    * make a 3d copy of the bottom of the rpi keyboard
-    * alter the design to be taller in order to fit the pi 4
-  * install power button on mk1
-  * change hostname to mk1 - hostnamectl
-  * make ping_sites behave like its simblings
-  * fix weather plugin in arm6vl - add to connectivity.sh
-  * change the backgroumd
-  * find correct audio device for armv6l in ~/.i3status.conf
-  * automate prtscn shortcut in ~/.config/i3/config
-  * sync differences in bashrc .tmux.conf and other files
-  * adapt .tmux.conf in x86_64 to use different terminal pallet
-
-
-
-  * Parts list
     * raspberry pi zero w          400czk
     * raspberry pi uk keyboard     500czk
     * micro sd card 32 gb          400czk
@@ -430,33 +218,6 @@ upon, as it might be disallowed when processing actually takes place.
 
     * monitor                     2700czk
 
-  * Finalize layout
-  * https://howchoo.com/g/zgmzytq1mmy/raspberry-pi-in-official-pi-keyboard
-  * https://blog.pimoroni.com/putting-a-raspberry-pi-3-a-in-the-raspberry-pi-keyboard/
-  * https://howchoo.com/g/mwnlytk3zmm/how-to-add-a-power-button-to-your-raspberry-pi
-
-
-  Grateful for:
-
-     * Studying 10 minutes of C last Sunday
-     * Finishing   many SVV tasks yesterday
-     * Having great yoga and exercise today
-     * Having great fun with pokemo
-     * Reading good books in the morning
-
-
-     ################################################################
-     #                                                              #
-     #  FIT - 50 squats and yoga                  gpi case - SIM    #
-     #  ARF - diet                                         - L3     #
-     #  SVV - order                              sololearn - C      #
-     #  GUI - plan vacations                      attitude - PLNNR  #
-     #   MA -                     Vso Vs Vfe Va Vx Vy Trim - AFH    #
-     #   RL - cuddles and walks            how music works - BKS    #
-     #   DP -                                          mk1 - UWK    #
-     #                                                              #
-     ################################################################
-
-## Milestones
+# Milestones
 
     2020-01-04   mk1 assembly
