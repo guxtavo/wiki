@@ -93,7 +93,6 @@
     tmux 2.9a-1.2 OK -> zypper la tmux
 
 
-	BUG01 depends on ECO01
 
     find shortcuts in vim for:  gqip = ctrl+x
                                 set nonu = ctrl+n ctrl+n
@@ -116,10 +115,7 @@
 # ECOs
 
     * ECO?? fix 
-    * ECO01 network-status-probe (np)
-        * check DNS connectivity
-        * check NIC status
-        * check VPN status
+    * ECO01 connectivity.sh
         * check l3slave connectivity
 		* port for for OpenBSD
         * Integrate other plugins with netstat-probe
@@ -132,7 +128,6 @@
 	* ECO08 display-message when battery goes bellow 30 minutes
     * ECO09 move gmail to mutt
     * ECO10 show builds running in IBS
-    * ECO11 AFH epub
     * ECO12 multipath or LVM for rootfs
     * how to fit a raspberry pi 4 inside the raspberry pi keyboard
       * make a 3d copy of the bottom of the rpi keyboard
@@ -144,13 +139,7 @@
     * change the backgroumd
     * find correct audio device for armv6l in ~/.i3status.conf
     * automate prtscn shortcut in ~/.config/i3/config
-    * sync differences in bashrc .tmux.conf and other files
-    * adapt .tmux.conf in x86_64 to use different terminal pallet
-    * adapt .vimrc in x86_64 to use different terminal pallet
-    * add vim shortcuts from armv6l to x86_64 (set nonu and others)
-    * merge what's next with ECOS
     * rsync alias
-    * pi - disable ipv6
     * pi - fix volume control (F5 and F6)
 
 # SGR development

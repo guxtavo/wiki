@@ -1,1 +1,6 @@
-maim ~/screenshot-$(date +%s).png
+systemarch=$(uname -m)
+if [ $systemarch = "armv6l" ] ; then
+    maim ~/screenshot-$(date +%s).png
+else
+    gnome-screenshot -f ~/screenshot-$(date +%s).jpg
+fi
