@@ -81,24 +81,34 @@
 
 # BUGs
 
+## after reboot
+
+    tail: cannot open '/dev/shm/weather_final' for reading: No such file or directory
+    tail: cannot open '/dev/shm/diskspace' for reading: No such file or directory
+
+## memorize this
+
     vim - replace ^M for carriage return
     :%s/<Ctrl-V><Ctrl-M>/\r/g
-
-    new passwords - main id on google and amazon
-                    main id on suse
-                    main id on github (2 factor)
-
-    tumbleweed
-    tmux 2.9a-2.5 NOK
-    tmux 2.9a-1.2 OK -> zypper la tmux
-
-
 
     find shortcuts in vim for:  gqip = ctrl+x
                                 set nonu = ctrl+n ctrl+n
                                 set textwidth=72 = ctrl+m ctrl+m
                                 set autoindent = ctrl+a
 
+
+## deploy new passwords
+
+    main id on google and amazon
+    main id on suse
+    main id on github (2 factor)
+
+## tmux
+
+    tmux 2.9a-2.5 NOK -> problems with irssi scrolling
+    tmux 2.9a-1.2 OK -> zypper la tmux
+
+## sg
 
     solidground data is wrong during vpn reconnect. The timer for refresh
 	is 30 minutes, so this can lead to wrong information displayed for a long
@@ -109,8 +119,6 @@
     minutes (more granular).
 
     Make sure to count PTFs only when connected.
-
-    200 OK - this workstation is not for everybody, it is a niche product
 
 # ECOs
 

@@ -86,9 +86,9 @@ weather_get_the_data()
     LOCATION=Brno
     #LOCATION=Prague
     #LOCATION=Nova_iguacu
-    curl -m 2 wttr.in/"$LOCATION" | \
+    curl -m 2 -s wttr.in/"$LOCATION" | \
       sed -r "s/\x1B\[(([0-9]+)(;[0-9]+)*)?[m,K,H,f,J]//g" \
-      > /dev/shm/weather
+      > /dev/shm/weather 2>/dev/null
     if [ $? -gt 0 ] ; then
         echo "N/A" > /dev/shm/weather_final
     else

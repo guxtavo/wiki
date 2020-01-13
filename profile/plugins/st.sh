@@ -20,6 +20,16 @@ cpu-hdd_temp()
       then touch /dev/shm/cpu-hdd_temp
     fi
 
+    # create control file if doesn't exist
+    if test ! -e /dev/shm/diskspace
+      then touch /dev/shm/diskspace
+    fi
+
+    # create control file if doesn't exist
+    if test ! -e /dev/shm/ioprobe
+      then touch /dev/shm/ioprobe
+    fi
+
     temp=$(tail -1 /dev/shm/cpu-hdd_temp)
     diskspace=$(tail -1 /dev/shm/diskspace)
     ioping=$(tail -1 /dev/shm/ioprobe)
@@ -106,12 +116,24 @@ battery()
 
 weather()
 {
-  echo -n " $(tail -1 /dev/shm/weather_final) |"
+    # create control file if doesn't exist
+    if test ! -e /dev/shm/weather_final
+      then touch /dev/shm/weather_final
+    fi
+
+    echo -n " $(tail -1 /dev/shm/weather_final) |"
 }
 
 network-status()
 {
   if [ $SYSTEM = "Linux" ]; then
+
+
+    # create control file if doesn't exist
+    if test ! -e /dev/shm/connectivity
+      then touch /dev/shm/connectivity
+    fi
+
     B=$( tail -1 /dev/shm/connectivity  | tr -d " ")
     echo -n " $B"
     echo -n " |"
