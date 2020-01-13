@@ -1,3 +1,8 @@
+systemarch=$(uname -m)
+if [ "$systemarch" = "armv6l" ] ; then
+    source /etc/bash_completion.d/git-prompt
+fi
+
 export EDITOR=vi
 
 export HISTSIZE=9999
@@ -21,6 +26,7 @@ export PROMPT_COMMAND="history -a; history -n"
 
 # aliases
 
+alias fax="ps fax | grep"
 alias webserver="python -m SimpleHTTPServer 8000"
 alias open="xdg-open"
 alias edit_alias="vi ~/.linux.sh;. ~/.bashrc; update_profile_git"
@@ -41,10 +47,6 @@ alias oosc="osc -A https://api.opensuse.org"
 alias rpm-url="rpm -q --qf '%{DISTURL}\n'"
 alias vpn="sudo ~/git/suse/bin/manage_vpn.sh"
 alias vpns="sudo systemctl status openvpn@SUSE-NUE | tail -10 | cut -b64-144 | tail -1"
-
-alias nmcli-show="nmcli device show wlp1s0"
-alias nmcli-list="nmcli device wifi list"
-alias nmcli-connect="sudo nmcli device wifi connect"
 
 # functions
 

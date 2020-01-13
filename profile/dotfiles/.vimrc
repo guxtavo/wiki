@@ -4,6 +4,7 @@ set hlsearch
 setlocal smarttab
 setlocal expandtab
 setlocal shiftround
+syntax on
 
 setlocal tabstop=4
 setlocal softtabstop=4
@@ -23,6 +24,11 @@ match OverLength /\%80v.\+/
 autocmd FileType text,xml,tex setlocal textwidth=78
 
 map <C-l> :w!<CR>:!aspell check %<CR>:e! %<CR>
+
+nmap <C-N><C-N> :set invnumber<CR>
+nmap <C-M><C-M> :set textwidth=72<CR>
+nmap <C-a> :set autoindent<CR>
+nmap <C-x> gqip<CR>
 
 au InsertEnter * hi StatusLine ctermfg=7
 au InsertLeave * hi StatusLine ctermfg=2
