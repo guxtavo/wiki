@@ -13,3 +13,7 @@ for x in $FILES; do
         fi
     fi
 done
+
+if ! diff ~/.config/i3/config ~/git/wiki/profile/dotfiles/.config/i3/config >/dev/null 2>&1; then
+    echo cp ~/.config/i3/config ~/git/wiki/profile/dotfiles/.config/i3/
+fi

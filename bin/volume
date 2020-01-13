@@ -1,0 +1,20 @@
+#!/bin/bash
+systemarch=$(uname -m)
+
+if [ $systemarch = "armv6l" ]; then
+
+    if [ "$1" = "up" ]; then
+        amixer set PCM -- $[$(amixer get PCM|grep -o [0-9]*%|sed 's/%//')+3]%
+    else
+        amixer set PCM -- $[$(amixer get PCM|grep -o [0-9]*%|sed 's/%//')-3]%
+    fi
+
+else
+
+    if [ "$1" = "up" ]; then
+        amixer -q sset Master 3%+ unmute
+    else
+        amixer -q sset Master 3%- unmute
+    fi
+
+fi

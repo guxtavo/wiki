@@ -46,6 +46,8 @@ bindsym $mod+d exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+bindsym Print exec /home/gfigueira/bin/wiki/screenshot
+
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
