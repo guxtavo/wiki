@@ -26,6 +26,7 @@ alias w3m="w3m -M"
 alias 80="cut -b1-80"
 alias ssh="ssh -X -o ServerAliveInterval=5"
 alias use-e="egrep -i 'bug|error|warn|fatal'"
+alias rsyncssh="rsync -r -a -v -e ssh --delete --info=progress2"
 
 # web favourites
 alias pes="w3m https://pes.suse.de/L3/"
