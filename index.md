@@ -81,21 +81,45 @@
 
 # BUGs
 
-## after reboot
+## sysrq
 
-    tail: cannot open '/dev/shm/weather_final' for reading: No such file or directory
-    tail: cannot open '/dev/shm/diskspace' for reading: No such file or directory
+Press Fn + Alt
+Press SysRq
+Release SysRq and Fn
+Press and release a letter
+Release Alt
 
-## memorize this
+poweroff(o)
+show-blocked-tasks(w)
+show-task-states(t)
+show-memory-usage(m)
+reboot(b)
+
+loglevel(0-9)
+crash(c)
+terminate-all-tasks(e)
+memory-full-oom-kill(f)
+kill-all-tasks(i)
+thaw-filesystems(j)
+sak(k)
+nice-all-RT-tasks(n)
+show-registers(p)
+show-all-timers(q)
+unraw(r)
+sync(s)
+unmount(u)
+dump-ftrace-buffer(z)
+
+
+## memorize shortcuts
 
     vim - replace ^M for carriage return
     :%s/<Ctrl-V><Ctrl-M>/\r/g
 
-    find shortcuts in vim for:  gqip = ctrl+x
-                                set nonu = ctrl+n ctrl+n
-                                set textwidth=72 = ctrl+m ctrl+m
-                                set autoindent = ctrl+a
-
+    ctrl+x            = gqip
+    ctrl+n twice      = set nonu
+    ctrl+m twice      = set textwidth=72
+    ctrl+a            = set autoindent
 
 ## deploy new passwords
 
@@ -123,7 +147,6 @@
 # ECOs
 
     * change enc in openssl to a good one
-    * rsync alias
     * pi - install gpg and use password-store
     * fix ~/.i3status.conf on armv6l to show correct percentage
     * connectivity.sh
@@ -133,32 +156,21 @@
         * Integrate other plugins with netstat-probe
     * improve execution time in mk1
     * C programming language - exercise 1-6
-    * show screen FTPS (refresh rate from X11?)
+    * show screen FPS (refresh rate from X11?)
     * intergrate calendaring from google (at least show and notify)
 	* suspending when lid is closed (also run i3lock)
     * move gmail to mutt
-    * show builds running in IBS
 
-# SGR development
+# IT
 
-    Github can offer:                    Hosting
-        Issue tracking                      Website
-        Wiki                                tmate
-        git hosting                         Billing
-
-# 200 OK prototype
-
-                       ______________________________________________
-    tmux              | [200 OK]         #########             [   ] |
-    and               | -------------------------------------------- |
-    vim               | [_] [_][_][_][_][_][_][_][_][_][_][_][_] [_] |
-                      |                                         ___  |
-    integration       | [ ][1][2][3][4][5][6][7][8][9][0][ ][ ][___] |
-    economy           | [__][q][w][e][r][t][y][u][i][o][p][ ][ ][  | |
-    orders            | [___][a][s][d][f][g][h][j][k][l][ ][ ][ ][_] |
-                      | [___][z][x][c][v][b][n][m][ ][ ][ ][ ][^][ ] |
-                      | [__][_][__][____________][_][_][__][<][_][>] |
-                      |______________________________________________|
+    Git              github
+    Wiki             github
+    Issue Tracking   github
+    Project Managent github
+    Public Website   google
+    Public tmate     google
+    Marketing        google
+    Payment          paypal
 
 # mk1
 
@@ -206,9 +218,10 @@ My idea is to use the leds script when the wait time is higher than 30%.
     * micro sd card 32 gb          400czk
     * micro hdmi to hdmi adapter   200czk
     * usb otg adapter              120czk
-                                  1620czk ~= 64 EURO
+                                  1620czk ~=  64 EURO
 
-    * monitor                     2700czk
+    * monitor                     2700czk ~= 110 EURO
+      total                       4320czk    174 EURO
 
 # Milestones
 
