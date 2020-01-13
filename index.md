@@ -123,6 +123,7 @@
 		* port for for OpenBSD
         * make ping_sites behave like its simblings
         * Integrate other plugins with netstat-probe
+    * improve execution time in mk1
     * C programming language - exercise 1-6
     * show screen FTPS (refresh rate from X11?)
     * intergrate calendaring from google (at least show and notify)
