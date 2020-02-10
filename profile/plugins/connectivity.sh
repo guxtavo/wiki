@@ -43,20 +43,29 @@ temperatures()
         #D=$(isabove50 $B)
         echo "$tempcpu/$temphd" >> /dev/shm/cpu-hdd_temp
     fi
+}
 
+positive_temps()
+{
+    cat /dev/shm/weather | sed -n 13p | grep -o '[0-9]\{1,2\}'
+}
+
+negative_temps()
+{
+    cat /dev/shm/weather | sed -n 13p | grep -o '\-[0-9]'
+}
+
+rain_chance()
+{
+    cat /dev/shm/weather | sed -n 16p | grep -o '.[0-9]%'
 }
 
 weather_format_data()
 {
-    # here we are sure the file exists from a sucessful run of
-    # weather_get_the_data
-    # Calculate and display rain chance if exists
-    RAIN=$(cat /dev/shm/weather \
-              | sed -n 16p | grep -o .[0-9]% | sort -n \
-              | sed '$!d' | tr -d " %")
+    RAIN=$(rain_chance | sort -n | sed '$!d' | tr -d " %")
     if [ ! -z $RAIN ] ; then
         if [ $RAIN -gt 0 ]; then
-            echo -n $RAIN"%${RAIN}T "
+            echo -n $RAIN"% " >> /dev/shm/weather_final
         fi
     fi
 
@@ -64,19 +73,19 @@ weather_format_data()
     # if we are between december and february
     if [ $MONTH -eq 12 ] || [ $MONTH -le 2 ] ; then
         if [ $SYSTEM = "Linux" ]; then
-            TEMP_STEP1=$(cat /dev/shm/weather | sed -n 13p \
-                         | grep -o '\-[0-9]' \
+            MEASURED_TEMP=$(positive_temps \
                          | sort -n | sed -e 1b -e '$!d' | tr '\n' ' ' \
                          | awk '{print $1"/"$2}')
-            echo $TEMP_STEP1 >> /dev/shm/weather_final
+            echo $MEASURED_TEMP >> /dev/shm/weather_final
         else
-            RAW=$(sed -n 13p /dev/shm/weather | strings | grep -o 'm[0-9]\{1,2\}')
-            BETTER=$(echo $RAW | tr -d "m" | perl -pe 's/ /\n/g' | sort -n | sed -e 1b -e '$!d')
-            ENHANCE=$(echo $BETTER | tr '\n' ' ' | awk '{print $1"-"$2"."}')
-            echo $ENHANCE >> /dev/shm/weather_final
+            MEASURED_TEMP=$(positive_temps \
+                         | tr -d "m" | perl -pe 's/ /\n/g' | sort -n \
+                         | sed -e 1b -e '$!d'| tr '\n' ' ' \
+                         | awk '{print $1"-"$2"."}')
+            echo $MEASURED_TEMP >> /dev/shm/weather_final
         fi
     else
-        echo -n positive >> /dev/shm/weather_final
+        echo positive
     fi
 }
 
