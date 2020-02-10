@@ -136,7 +136,7 @@ network-status()
 
     B=$( tail -1 /dev/shm/connectivity  | tr -d " ")
     echo -n " $B"
-    echo -n " |"
+    #echo -n " |"
   fi
 
   if [ $SYSTEM = "OpenBSD" ]; then
