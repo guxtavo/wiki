@@ -132,6 +132,8 @@ colors()
   for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i} "; done
 }
 
-# run fortune and set caps as ctrl
+# run fortune
+# strfile -c % quotes quotes.dat # to rebuild file
 fortune ~/git/wiki/profile/resources/quotes
+# set caps as ctrl
 setxkbmap -option ctrl:nocaps

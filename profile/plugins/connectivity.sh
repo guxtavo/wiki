@@ -117,6 +117,7 @@ populate()
 
 checkforNA()
 {
+    # BUG: if this file is empty, we get an error: unary operator expected
     if [ $(head -1 /dev/shm/weather | sed 's/.//4g') = "N/A" ] ; then
         weather_get_the_data
     fi
