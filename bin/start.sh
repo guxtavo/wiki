@@ -1,5 +1,10 @@
 #!/bin/bash
 
+
+if [ ! -f /dev/shm/start ]; then
+    touch /dev/shm/start
+fi
+
 disable()
 {
     tmux last-window
