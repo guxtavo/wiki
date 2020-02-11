@@ -3,6 +3,54 @@
 % Feed this from "journal"
 % Feed this from "git log -p"
 
+# New vim shortcuts
+
+    vim - replace ^M for carriage return
+    :%s/<Ctrl-V><Ctrl-M>/\r/g
+
+    ctrl+x            = gqip
+    ctrl+n twice      = set nonu
+    ctrl+m twice      = set textwidth=72
+    ctrl+a            = set autoindent
+
+# Outstading bugs
+
+    * posite and negative temp in weather_parse_data()
+    * remove wallpaper from dm
+    * add plymouth animation to initrd
+    * deploy new passwords
+    * tumbleweek tmux 2.9a-2.5 bad, 2.9a-1.2 good (irssi scrolling mess)
+    * solidground data is lost during reconnect
+    * find a sound for start.sh
+    * auto start terminal with "tmux-light" at i3 startup
+
+# ECOs
+
+    * create script to create plymouth animation by reading the filesystem
+      files
+    * change enc in openssl to a good one
+    * pi - install gpg and use password-store
+    * fix ~/.i3status.conf on armv6l to show correct percentage
+    * connectivity.sh
+        * check l3slave connectivity
+        * port for for OpenBSD
+        * make ping_sites behave like its simblings
+        * Integrate other plugins with netstat-probe
+    * improve execution time in mk1
+    * C programming language - exercise 1-6
+    * show screen FPS (refresh rate from X11?)
+    * intergrate calendaring from google (at least show and notify)
+    * suspending when lid is closed (also run i3lock)
+    * move gmail to mutt
+
+# 2020-02-11
+
+    * Move wiki/SGR to wiki/RTFM
+    * Move wiki/profile to wiki/devkit
+    * Implement f9.sh and start.sh
+    * Write on wiki/RTFM/benheck.md
+    * Workaround weather_parse_data() bug
+
 # 2020-01-07
 
     * screencast fixed for arm, but it uses all cpu
