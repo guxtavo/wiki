@@ -17,6 +17,8 @@ enable()
     tmux select-window -t HELM:99
     tmux split-window -h
     tmux send-keys "less ~/git/wiki/index.md" C-m
+    tmux select-pane -t 0
+    tmux send-keys "less ~/git/wiki/1-feedback.md" C-m
 }
 
 check_status()

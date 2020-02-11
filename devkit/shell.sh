@@ -1,6 +1,6 @@
 #!/bin/bash
-source ~/git/wiki/profile/plugins/time.sh
-source ~/git/wiki/profile/plugins/st.sh
+source ~/git/wiki/devkit/plugins/time.sh
+source ~/git/wiki/devkit/plugins/st.sh
 
 # bug: optimize weather and network-status
 # main loop
