@@ -2,7 +2,7 @@
 
 
 if [ ! -f /dev/shm/start ]; then
-    touch /dev/shm/start
+    echo disabled > /dev/shm/start
 fi
 
 disable()
