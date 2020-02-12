@@ -23,6 +23,8 @@
     * solidground data is lost during reconnect
     * find a sound for start.sh
     * auto start terminal with "tmux-light" at i3 startup
+    * auto start devkit/plugins/connectivity.sh at i3 startup
+    * fix fortune path in .common.sh
 
 # ECOs
 
