@@ -109,7 +109,7 @@ countdown ()
     if (( (remaining=t-SECONDS) <= 0 )); then
       rm -rf /dev/shm/countdown.$id
       set AUDIODRIVER=oss
-      play -q ~/git/wiki/profile/resources/space.wav
+      play -q ~/git/wiki/devkit/resources/space.wav
       tmux display-message "Timer $id is over"
       break;
     fi;
@@ -134,6 +134,6 @@ colors()
 
 # run fortune
 # strfile -c % quotes quotes.dat # to rebuild file
-fortune ~/git/wiki/profile/resources/quotes
+fortune ~/git/wiki/devkit/resources/quotes
 # set caps as ctrl
 setxkbmap -option ctrl:nocaps
