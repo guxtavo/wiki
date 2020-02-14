@@ -60,8 +60,19 @@ rain_chance()
     cat /dev/shm/weather | sed -n 16p | grep -o '.[0-9]%'
 }
 
+check_file_size()
+{
+    if [ ! -s /dev/shm/weather ] ; then
+        # file is size zero
+        rm /dev/shm/weather
+    fi
+}
+
 weather_format_data()
 {
+
+    check_file_size
+
     RAIN=$(rain_chance | sort -n | sed '$!d' | tr -d " %")
     if [ ! -z $RAIN ] ; then
         if [ $RAIN -gt 0 ]; then
