@@ -1,7 +1,4 @@
-% status-report and feedback system
-%
-% Feed this from "journal"
-% Feed this from "git log -p"
+% Boot camp status-report and feedback system
 
 # New vim shortcuts
 
@@ -13,21 +10,32 @@
     ctrl+m twice      = set textwidth=72
     ctrl+a            = set autoindent
 
-# Outstading bugs
+# w3m shortcuts
+
+    c - show the URL
+
+# mutt shortcuts
+
+    * - selects the last message
+
+# devktit's bugs
 
     * posite and negative temp in weather_parse_data()
     * remove wallpaper from dm
-    * add plymouth animation to initrd
-    * deploy new passwords
     * tumbleweek tmux 2.9a-2.5 bad, 2.9a-1.2 good (irssi scrolling mess)
     * solidground data is lost during reconnect
-    * find a sound for start.sh
+
+# devkit's ECOs
+
+    * RTFM mk-2 - Ben Heck
+    * github.com/llap/devkit
+    * github.com/llap/pmc
+    * github.com/llap/bootcamp
+    * add plymouth animation to initrd
+    * deploy new passwords
     * auto start terminal with "tmux-light" at i3 startup
-    * auto start devkit/plugins/connectivity.sh at i3 startup
-    * fix fortune path in .common.sh
-
-# ECOs
-
+    * find a sound for start.sh
+    * create a systemd service for connectivity.sh
     * create script to create plymouth animation by reading the filesystem
       files
     * change enc in openssl to a good one
