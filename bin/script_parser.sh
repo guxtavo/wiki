@@ -1,22 +1,26 @@
 #!/bin/bash
 # https://www.fesliyanstudios.com/royalty-free-sound-effects-download/keyboard-typing-6
+# TODO lower sample rate and bit depth,  stereo to mono
+KB4SEC=$HOME"/git/wiki/devkit/resources/4sec.wav"
+KB8SEC=$HOME"/git/wiki/devkit/resources/8sec.wav"
 start_script()
 {
     file="$1"
     while read -r a b; do
-        container=$(echo "$b")
-        chars="${#container}"
-        seconds="$(( chars / 6 ))"
+        chars="${#b}"
+        seconds="$(( chars / 5 ))"
         sleep "$a"
-        echo $seconds
+        #echo $seconds
         if [ "$seconds" -gt 4 ]; then
-            aplay --duration="$seconds" ~/tmp/o2.wav -q &
+            aplay --duration="$seconds" "$KB8SEC" -q &
         else
-            aplay --duration="$seconds" ~/tmp/o.wav -q &
+            aplay --duration="$seconds" "$KB4SEC" -q &
         fi
-        for (( i=0; i<${#container}; i++ )); do
-            echo -n "${container:$i:1}"
-            sleep 0.1
+        sleep 1
+        for (( i=0; i<${#b}; i++ )); do
+            echo -n "${b:$i:1}"
+            rand=$(( (RANDOM %10 ) +1 ))
+            sleep 0.1"$rand"
         done
     echo
     done < "$file"
