@@ -26,8 +26,8 @@
 
 # devkit's ECOs
 
-    * github.com/llap/bootcamp - write 1000 scripts
-    * mk-2 -
+    * github.com/RTFM/bootcamp - write 1000 scripts
+    * mk-2 -> git/wiki/RTFM/index.md
     * github.com/llap/devkit
     * github.com/llap/pmc
     * add plymouth animation to initrd
