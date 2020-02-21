@@ -1,14 +1,14 @@
-% Boot camp status-report and feedback system
+% bootcamp feedback system
 
-# New vim shortcuts
-
-    vim - replace ^M for carriage return
-    :%s/<Ctrl-V><Ctrl-M>/\r/g
+# vim shortcuts
 
     ctrl+x            = gqip
     ctrl+n twice      = set nonu
     ctrl+m twice      = set textwidth=72
     ctrl+a            = set autoindent
+
+    vim - replace ^M for carriage return
+    :%s/<Ctrl-V><Ctrl-M>/\r/g
 
 # w3m shortcuts
 
@@ -21,16 +21,15 @@
 # devktit's bugs
 
     * posite and negative temp in weather_parse_data()
-    * remove wallpaper from dm
     * tumbleweek tmux 2.9a-2.5 bad, 2.9a-1.2 good (irssi scrolling mess)
     * solidground data is lost during reconnect
 
 # devkit's ECOs
 
-    * RTFM mk-2 - Ben Heck
+    * github.com/llap/bootcamp - write 1000 scripts
+    * mk-2 -
     * github.com/llap/devkit
     * github.com/llap/pmc
-    * github.com/llap/bootcamp
     * add plymouth animation to initrd
     * deploy new passwords
     * auto start terminal with "tmux-light" at i3 startup

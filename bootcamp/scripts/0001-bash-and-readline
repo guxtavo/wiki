@@ -1,0 +1,9 @@
+0 When you start a new shell, you are given a prompt
+1 What bash is running in the prompt is called readline
+0.1 We can do nice things with readline
+0.1 If you want to search the history, type Ctrl-r
+0.1 readline will show a different prompt ...
+0.1 (reverse-i-search)`':
+0.1 Start typing a command you already typed before
+0.1 To undo an edit in readline, type ctrl + alt + -
+0.1 To loggout from a shell, use ctrl + d

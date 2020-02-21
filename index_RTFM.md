@@ -1,13 +1,14 @@
 # Milestones
 
-    2020-01-04   mk1 assembly
+    2020-01-04  mk1 assembly - rpi0w
+    2020-02-21  mk2 start assembly - rpi3A+
 
 # RTFM IT
 
     Git              github
     Wiki             github
     Issue Tracking   github
-    Project Managent github
+    Project Managent pmc
     Public Website   google
     Public tmate     google
     Marketing        google
