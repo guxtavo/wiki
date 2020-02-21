@@ -1,0 +1,26 @@
+#/bin/bash
+
+turnoncaps()
+{
+    echo 1 | sudo tee /sys/class/leds/input0\:\:capslock/brightness
+}
+
+turnoffcaps()
+{
+    echo 0 | sudo tee /sys/class/leds/input0\:\:capslock/brightness
+}
+
+sleep_half()
+{
+    sleep 0.5
+}
+
+start-led-sequence()
+{
+    turnoncaps
+    sleep_half
+    turnoffcaps
+    sleep_half
+}
+
+start-led-sequence

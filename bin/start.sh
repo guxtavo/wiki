@@ -7,6 +7,7 @@ fi
 
 disable()
 {
+    #start-led &
     tmux last-window
     tmux set-option -g status on
     echo disabled > /dev/shm/start
@@ -16,6 +17,7 @@ disable()
 
 enable()
 {
+    #start-led &
     echo enabled > /dev/shm/start
     tmux set-option -g status off
     tmux new-window -t HELM:99 -n 'start'

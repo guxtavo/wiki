@@ -1,6 +1,8 @@
 #!/bin/bash
 
-~/git/wiki/devkit/plugins/connectivity.sh &
+if ! ps fax | grep [c]onnectivity.sh; then
+    ~/git/wiki/devkit/plugins/connectivity.sh &
+fi
 
 sdi()
 {
