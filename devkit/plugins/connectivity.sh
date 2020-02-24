@@ -135,6 +135,14 @@ populate()
     fi
 }
 
+out_of_queries()
+{
+    if ! grep "we are running out" /dev/shm/weather >/dev/null;  then
+        checkforNA
+    fi
+}
+
+
 checkforNA()
 {
     # BUG: if this file is empty, we get an error: unary operator expected
@@ -155,7 +163,8 @@ checkforNA()
 weather_main()
 {
     populate
-    checkforNA # will call weather_get_the_data if N/A
+    out_of_queries
+    # checkforNA # will call weather_get_the_data if N/A
     check_expired_data # might call weather_get_the_data
 }
 
