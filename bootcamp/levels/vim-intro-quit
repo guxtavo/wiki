@@ -1,0 +1,3 @@
+ENUNCIATE="How to quit vim without saving?
+OPTIONS=[:w!, :q!, :x!]
+ANSWER=":q!"

@@ -1,4 +1,6 @@
-0 The tmux shortcut is Ctrl+b
+0 devkit is a group of scripts to engage you into software development
+1 The main result of running devkit is to open tmux
+0.1 The tmux shortcut is Ctrl+b
 0.1 To see a list with all tmux's shortcuts, use shortcut + ?
 3 ...
 0.1 To navigate tmux panes, use Alt + arrow
@@ -7,4 +9,4 @@
 0.1 Pay attention to the pane borders, they will change color
 0 when you navigate the different panes
 5 To resize the panes use Ctrl + arrow
-0.1 And to change windows Shift + left or right arrow
+.1 And to change windows Shift + left or right arrow
