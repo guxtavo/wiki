@@ -1,0 +1,57 @@
+💀 - CliNic
+           _   _                                     __             _
+     ___  | | (_)      ___ _ __   __ _  ___ ___     / /   ___ _ __ | |_
+    / __| | | | |     / __| '_ \ / _` |/ __/ _ \   / /   / _ \ '_ \| __|
+   | (__  | | | |  _  \__ \ |_) | (_| | (_|  __/  / /   |  __/ | | | |_
+    \___| |_| |_| (_) |___/ .__/ \__,_|\___\___| /_/     \___|_| |_|\__|
+                          |_|
+
+ ent -> django website
+   ent: the client -> post jobs
+   expert: works on jobs
+
+   Modules:
+    * project management (worflow)
+    * bidding
+    * payment
+
+Every job is processed by the CliNic before it is posted for bidding. "Nic"
+selects free experts and after the client selects the bid, work can start.
+
+These are the types of experts:
+
+    * Project Manager
+    * Product Manager
+    * Service Manager
+    * Delivery Manager
+    * Developer
+    * Support
+    * QA
+
+Each type has 3 levels
+The PM type is mandatory for all projects.
+
+Jobs can be of the following types:
+
+    * Request
+    * Question
+    * Coaching
+    * Fix
+
+The PM must break down the tasks into chunks that can be executed within 25
+minutes (1 pomodoro)
+
+Each task can then enter the bid process to select an expert (unless one was
+already selected in the task creation).
+
+Experts have 3 days to deliver the work, upon which the PM and Client will
+review and rate. It is an interative process, as the Project advances, more
+tasks and bids will help you progress until completion (or "checkpoint" in
+case you have an ongoing project).
+
+Experts can request an invitation.
+
+Service fee: We take 5% after taxes and fees.
+
+There are no returns (when you work for a company and something goes wrong
+they don't ask you to return part of your salary).

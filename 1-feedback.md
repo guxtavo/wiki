@@ -10,6 +10,10 @@
     vim - replace ^M for carriage return
     :%s/<Ctrl-V><Ctrl-M>/\r/g
 
+# tmux shortcuts
+
+    ctrl+b e - capture the contents of pane to ~/tmux-pane-<timestamp>
+
 # w3m shortcuts
 
     c - show the URL
@@ -26,7 +30,18 @@
 
 # devkit's ECOs
 
-    * github.com/RTFM/bootcamp - write 1000 scripts
+    * https://ntmlabs.com/w3m-tricks/
+    * https://github.com/vparnas/jrnl2
+    * presentations - fiddle with ~/git/sent (inst
+    * w3m - research how to use tabs
+    * w3m - research how to show numbers before links (how to use)
+    * w3m - research how to show line numbers
+    * Boot RTFM under 5 seconds for a Commodore 64 like experience
+    * Buy Edimax EW-7811Un wifi usb for workstation
+    * cli.space services: pmo(hire), rtfm, botcamper
+    * domain name registration: {cli|cli_|cli_mates}.space
+    * github.com/RTFM/botcamper - write 1000 scripts
+    * github.com/RTFM/botcamper - write django "exercise editor"
     * mk-2 -> git/wiki/RTFM/index.md
     * github.com/llap/devkit
     * github.com/llap/pmc

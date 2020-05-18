@@ -8,7 +8,7 @@ state=$(cat /dev/shm/f9)
 
 if [ "$state" -eq 2 ]; then
     tmux set-option -g status on
-    tmux set -g status-right '#(~/git/wiki/devkit/shell_wrap.sh) ≡ '
+    tmux set -g status-right '#(~/git/wiki/devkit/shell_wrap.sh) | %H:%M ≡ '
     echo 0 > /dev/shm/f9
 fi
 

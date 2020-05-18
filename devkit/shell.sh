@@ -8,7 +8,7 @@ main(){
   run_start
   #gimbal
   #countdown
-  weather
+  #weather
   if [ $ARCH = "x86_64" ]; then
     solidground_progress
     targets

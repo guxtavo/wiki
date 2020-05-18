@@ -186,7 +186,7 @@ display_targets()
   ACTIVE=$(cat $FILE | grep active | awk '{print $1}')
   DONE=$(( $PROCESSED + $SLEEPING ))
   BZST=$(cat /dev/shm/bugzilla_http_status)
-  SPECIAL="tooling"
+  SPECIAL="CODE"
 
   echo -n "["$BZST"] $SPECIAL '*' "
 

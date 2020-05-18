@@ -5,10 +5,9 @@ OBJECTIVE
        reporting weekly as a remotee.
 
 SYNOPSIS
-       Linux/POSIX        >>>>>>>...           Shell Scripting    >>>>>>....
+       Linux              >>>>>>>...           Shell Scripting    >>>>>>....
        Debugging          >>>>>.....           Networking         >>>>>>....
        Linux Kernel       >>>.......           x86_64/C           >>........
-       k8s/salt           >>........           People mgmnt       >>........
 
        These are my long running studies / objectives and a measure of
        how comfortable I feel working on them. _You_ are looking at a
@@ -18,40 +17,28 @@ SYNOPSIS
 DESCRIPTION
        As an R&D Software Engineer in SUSE, I use OBS to _build_ anything,
        help Support with advanced debugging, coordinate and help Developers,
-       create _patches_ and do backports to different code streams,
-       participate in the development of tooling and operations.
+       create _patches_, do backports to different code streams, participate
+       in the development of tooling and operations and more.
 
 OPTIONS
-       -a --architect (experienced beginner)
-              Designing mission critical clusters for telcos, network design
-              for ISPs
+       -d --development (practitioner)
+              bash/ksh, python, git, OBS, C
+
+       -o --os-sysadmin (knowledgeable practitioner)
+              Debian, SLES, RHEL, OpenBSD, (defunct: Solaris, AIX, OSF1)
 
        -s --system-configuration (knowledgeable practitioner)
-              KVM, k8s, HTTP, OpenVPN, Bind, Postfix, DHCP, NFS, Nagios
+              KVM, HTTP, OpenVPN, Bind, Postfix, DHCP, NFS, Nagios,
               Database Servers, Application Servers, SAN/LVM
-
-       -d --development (practitioner)
-              bash, ksh, vim, git, Linux kernel internals, OBS (CICD), C
-
-       -n --networking (knowledgeable practitioner)
-              IPv4, firewall configuration (iptables), packet analysis
 
        -t --troubleshooting (experienced beginner)
               Performance profiling and tuning, stress tests, strace, perf,
               gdb, crash, tcpdump, system hardening, RCA
 
-       -o --os-sysadmin (knowledgeable practitioner)
-              Debian, SLES, RHEL, OpenBSD, (defunct: Solaris, AIX, OSF1)
-
        -s --soft-skills (experienced beginner)
-              Documentation writing, project management, incident management,
-              marketing, quality
-
-       -i --interests
-              psychology, aviation and space exploration
+              Documentation writing, project management, incident management
 
        -p --projects-I-developed
-
               multikern/Kerntec, BR 2004 - internet hotspot
                (bash, iptables, tc, snmp, apache, php, mysql)
 
@@ -66,7 +53,7 @@ OPTIONS
 
 VERSIONS
     SUSE, CZ           2y~               Red Hat, CZ           2y+
-    > Linux Developer, L3 Support        > Kernel/Net Support Engineer
+    > L3 Support, Tooling Developer      > Kernel Support Engineer
                                          > Team Lead
     Gemalto, LATAM         4y+
     > Integration Engineer I and II      Drogarias Pacheco, BR 1y~
@@ -77,10 +64,9 @@ VERSIONS
                                          > Team Lead
     Kern Technologies, BR  2y+
     > Linux Engineer                     Other Companies, BR 3y+
-    > Site Reliability Engineer          > Information Security Professor /
+                                         > Information Security Professor /
                                            Webmaster / Sysadmin /
                                            Linux Support /
-
 SEE ALSO
         https://github.com/guxtavo
         https://www.linkedin.com/in/guxtavo
