@@ -1,0 +1,33 @@
+#!/bin/bash
+# read the f*****g manual
+# bootcamp - linux-learning platform
+# there will be many levels (exercises)
+# there will be a progression system in place
+# each level has an enunciate, options and answer
+#
+#   enunciate="How to quit without saving?"
+#   options=[:w!, :q!, :x!]
+#   answer=":q!"
+
+# metadata will be saved on each level played
+
+
+# showmainscreen
+# followscript
+scriptspath="$HOME/git/wiki/bootcamp/scripts"
+collectionspath="$HOME/git/wiki/bootcamp/collections"
+
+playcollection()
+{
+    # open the file
+    # each line is a script
+    # play each one in order
+    for i in $1
+        
+        script_parser.sh
+}
+
+thefirst()
+{
+    playcollection welcome
+}
