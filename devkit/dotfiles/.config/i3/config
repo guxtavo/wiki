@@ -171,4 +171,6 @@ exec_always "setxkbmap -layout gb"
 exec --no-startup-id xsetroot -solid "#333333"
 # start polkit agent so I can use virt-manager
 exec /usr/lib/polkit-gnome-authentication-agent-1
+for_window [class="gnome-terminal"] fullscreen enabled
+exec /usr/bin/gnome-terminal
 exec --no-startup-id nm-applet --sm-disable

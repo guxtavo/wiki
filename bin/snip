@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# https://python-gitlab.readthedocs.io/en/stable/cli.html
+
+id=$(gitlab-3.8 snippet create --title $1 --file-name $1 --content @$1 \
+    --visibility public | grep id | cut -f 2 -d " ")
+
+echo https://gitlab.suse.de/snippets/$id

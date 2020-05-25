@@ -14,4 +14,4 @@
 #     fi
 # done
 
-diff ~/$1 ~/git/wiki/profile/dotfiles/$1
+diff ~/$1 ~/git/wiki/devkit/dotfiles/$1

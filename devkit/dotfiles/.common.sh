@@ -5,6 +5,7 @@
 # basic setup
 export PS1="$(echo '($?)') \W \$(__git_ps1 '(%s)')$ "
 export PATH="$PATH:/home/gfigueira/bin/suse:/home/gfigueira/bin/wiki"
+export DEVKIT="/home/gfigueira/git/wiki/devkit"
 
 # aliases
 
@@ -96,12 +97,16 @@ stopwatch()
 
 countdown ()
 {
-  id=$(od -vAn -N2 -tx1 < /dev/urandom | sed 's/ //g')
-  tmux display-message "Timer $id created"
-  if (($# != 1)) || [[ $1 = *[![:digit:]]* ]]; then
+  if [[ $1 = *[![:digit:]]* ]]; then
+  #if (($# != 1)) || [[ $1 = *[![:digit:]]* ]]; then
     echo "Usage: countdown seconds";
     return;
   fi;
+  TIMER_TRACKING="$HOME/git/wiki/timer_tracking.db"
+  STAMP=$(date '+%Y W%V %m/%d')
+  id=$(od -vAn -N2 -tx1 < /dev/urandom | sed 's/ //g')
+  tmux display-message "Timer $id created"
+  echo "$STAMP" "$*" >> "$TIMER_TRACKING"
   local t=$1 remaining=$1;
   SECONDS=0;
   while sleep .9; do
@@ -109,17 +114,32 @@ countdown ()
     if (( (remaining=t-SECONDS) <= 0 )); then
       rm -rf /dev/shm/countdown.$id
       set AUDIODRIVER=oss
-      play -q ~/git/wiki/devkit/resources/space.wav
+      play -q "$DEVKIT"/resources/metronome.wav
       tmux display-message "Timer $id is over"
       break;
     fi;
   done
 }
 
-alias ten="countdown 10 &"
-alias tea="countdown 300 &"
-alias pomodoro="countdown 1500 &"
-alias deep="countdown 5400 &"
+countdown_wrapper()
+{
+  countdown $* &
+}
+
+tea()
+{
+  countdown_wrapper 300 $* &
+}
+
+pomo()
+{
+  countdown_wrapper 1500 $* &
+}
+
+deep()
+{
+  countdown_wrapper 5400 $* &
+}
 
 e8()
 {

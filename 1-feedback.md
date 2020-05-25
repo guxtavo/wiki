@@ -67,6 +67,12 @@
     * suspending when lid is closed (also run i3lock)
     * move gmail to mutt
 
+# 2020-05-25
+
+    * DONE - add task description to countdown()
+    * DONE - create wrarper function for countdown()
+    * DONE - rewrite tea, pomodoro and deep aliases as functions
+
 # 2020-02-11
 
     * Move wiki/SGR to wiki/RTFM
