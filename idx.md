@@ -25,10 +25,17 @@
 
         (where you want to go)
 
-            1) disrupt education: linux developing skillS
+            1) help new linux developers rump-up their skills
+
+            2) help new linux developers populate their wiki
+
+            3) help new linux developers learn cli tools in a
+               duolingo-like feel
 
                show people that want to become open source developers
                that one doesn't need much to start
+
+               having a wiki like this is the objective
 
             2) make it easy to start (bite sizes)
             3) join hardware and software to create a nice product
