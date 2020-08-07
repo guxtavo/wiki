@@ -12,9 +12,10 @@ networkprobe()
 
 ioping()
 {
-    A=$(sudo ioping -c1 /dev/$1)
-    B=$(echo $A | head -1 | cut -d " " -f 10-11 | cut -d "=" -f 2)
-    echo $B
+    A=$(sudo ioping -B -c1 /dev/$1)
+    B=$(echo $A |  cut -d " " -f 10)
+    mili=$(echo "scale=2; $B/1000000" | bc)
+    echo ${mili}ms
     # Output example: "1.35 ms"
 }
 
