@@ -114,29 +114,45 @@ battery-countdown-recording()
 
 battery()
 {
-  if [ $SYSTEM = "Linux" ]; then
-    # create control file if doesn't exist
-    if test ! -e /dev/shm/battery
-      then touch /dev/shm/battery
-    fi
+    for battery in /sys/class/power_supply/BAT?
+    do
+        capacity=$(cat "$battery"/capacity) || exit
+        status=$(cat "$battery"/status)
 
-    # update the battery status every minute
-    if test "`find /dev/shm/battery -mmin +1`"
-	   then acpi -b 0 > /dev/shm/battery
-    fi
+        if [ "$status" = "Discharging" ]; then
+            echo -n " !"${capacity}%" |"
+        else
+            echo -n " "${capacity}%" |"
+        fi
 
-	if $(cat /dev/shm/battery | grep -q Discharging)
-      then
-        B=$(cat /dev/shm/battery | grep -v "unavai" | awk '{print $5}')
-        echo -n " ${B::-3} |"
-      else
-        B=$(cat /dev/shm/battery | grep -v "unavai" | awk '{print $4}' | tr -d "%,")
-        echo -n " $B% |"
-    fi
-  else
-     B=$(sysctl | grep cpuspeed | cut -d "=" -f 2)
-	 echo -n " $B |"
-  fi
+    done
+}
+
+battery_old()
+{
+   if [ $SYSTEM = "Linux" ]; then
+     # create control file if doesn't exist
+     if test ! -e /dev/shm/battery
+       then touch /dev/shm/battery
+     fi
+
+     # update the battery status every minute
+     if test "`find /dev/shm/battery -mmin +1`"
+ 	   then acpi -b 0 > /dev/shm/battery
+     fi
+
+ 	if $(cat /dev/shm/battery | grep -q Discharging)
+       then
+         B=$(cat /dev/shm/battery | grep -v "unavai" | awk '{print $5}')
+         echo -n " ${B::-3} |"
+       else
+         B=$(cat /dev/shm/battery | grep -v "unavai" | awk '{print $4}' | tr -d "%,")
+         echo -n " $B% |"
+     fi
+   else
+      B=$(sysctl | grep cpuspeed | cut -d "=" -f 2)
+ 	 echo -n " $B |"
+   fi
 }
 
 weather()

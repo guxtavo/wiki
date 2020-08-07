@@ -8,7 +8,7 @@
 
             bin/               - bash script collection
             blg/               - ops and dev articles
-            devkit/            - custom rice and status bar
+            devkit/            - shell and tmux rice
             rtm/               - read the manual (experiment)
 
             cal.md             - open mode tracking

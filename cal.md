@@ -41,6 +41,9 @@
     * wiki: how to start breathing.sh after a timer?
     * wiki: how to block distractions with devkit
 
+    * devkit: refactor st.sh battery() - query from /sys files
+    * devkit: Only show CPU/HDD temp if higher than 40 degrees, show in the
+      battery position.
     * devkit: normalize ioping output
     * devkit: refactor display_targets()
     * devkit: fix bug where solidground data is lost during reconnect
