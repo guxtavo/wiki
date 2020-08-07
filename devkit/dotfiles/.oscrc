@@ -6,19 +6,13 @@ build-jobs = 7
 user = gfigueir
 email = gfigueira@suse.com
 aliases = ibs
-trusted_prj=SUSE:SLE-11:SP2 SUSE:SLE-11:GA SUSE:SLE-11-SP3:GA SUSE:SLE-11-SP1:GA SUSE:SLE-11-SP1:Update SUSE:SLE-11:Update SUSE:SLE-11-SP2:GA SUSE:SLE-11-SP2:Update SUSE:SLE-11-SP3:Update SUSE:Factory:Head SUSE:SLE-10-SP2:GA SUSE:SLE-10-SP2:Update SUSE:SLE-10-SP4:GA SUSE:SLE-10-SP3:Update SUSE:SLE-10-SP3:GA SUSE:SLE-10-SP2:Update:Test SUSE:SLE-12:GA SUSE:SLE-12:Update SUSE:SLE-12-SP1:GA SUSE:SLE-11-SP4:GA openSUSE.org:openSUSE:Factory SUSE:SLE-12-SP2:Update
+trusted_prj=SUSE:SLE-11:SP2 SUSE:SLE-11:GA SUSE:SLE-11-SP3:GA SUSE:SLE-11-SP1:GA SUSE:SLE-11-SP1:Update SUSE:SLE-11:Update SUSE:SLE-11-SP2:GA SUSE:SLE-11-SP2:Update SUSE:SLE-11-SP3:Update SUSE:Factory:Head SUSE:SLE-10-SP2:GA SUSE:SLE-10-SP2:Update SUSE:SLE-10-SP4:GA SUSE:SLE-10-SP3:Update SUSE:SLE-10-SP3:GA SUSE:SLE-10-SP2:Update:Test SUSE:SLE-12:GA SUSE:SLE-12:Update SUSE:SLE-12-SP1:GA SUSE:SLE-11-SP4:GA openSUSE.org:openSUSE:Factory SUSE:SLE-12-SP2:Update openSUSE.org:openSUSE:Tumbleweed
 
 [https://api.opensuse.org]
 user = gfigueir
 email = gfigueira@suse.com
 aliases = obs
 trusted_prj=openSUSE:13.1 openSUSE:13.1:Update
-
-
-
-
-
-
 # URL to access API server, e.g. https://api.opensuse.org
 # you also need a section [https://api.opensuse.org] with the credentials
 # Downloaded packages are cached here. Must be writable by you.

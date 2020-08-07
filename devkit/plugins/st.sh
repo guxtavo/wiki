@@ -12,12 +12,38 @@ isabove50()
     fi
 }
 
-cpu-hdd_temp()
+cpu-stat()
 {
   if [ $SYSTEM = "Linux" ]; then
     # create control file if doesn't exist
-    if test ! -e /dev/shm/cpu-hdd_temp
-      then touch /dev/shm/cpu-hdd_temp
+    if test ! -e /dev/shm/cpu_temp
+      then touch /dev/shm/cpu_temp
+    fi
+
+    temp=$(tail -1 /dev/shm/cpu_temp)
+    cpu_freq=$(cat /dev/shm/cpu_probe)
+    freq=$(( cpu_freq / 1000 ))
+    if [ $freq -gt 1000 ]; then
+        freqG=$(echo "scale=1; $freq/1000" | bc)
+        echo -n " ${temp}c ${freqG}GHz |"
+    else
+        echo -n " ${temp}c ${freq}MHz |"
+    fi
+    isrecording
+  else
+    B=$(sysctl hw.sensors.cpu0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
+    C=$(sysctl hw.sensors.pchtemp0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
+    echo "$B/$C" > /dev/shm/cpu-hdd_temp
+    echo -n " $(cat /dev/shm/cpu-hdd_temp)c |"
+  fi
+}
+
+hdd-stat()
+{
+  if [ $SYSTEM = "Linux" ]; then
+    # create control file if doesn't exist
+    if test ! -e /dev/shm/hdd_temp
+      then touch /dev/shm/hdd_temp
     fi
 
     # create control file if doesn't exist
@@ -30,11 +56,10 @@ cpu-hdd_temp()
       then touch /dev/shm/ioprobe
     fi
 
-    temp=$(tail -1 /dev/shm/cpu-hdd_temp)
+    temp=$(tail -1 /dev/shm/hdd_temp)
     diskspace=$(tail -1 /dev/shm/diskspace)
-    ioping=$(tail -1 /dev/shm/ioprobe)
-    echo -n " ${temp}c $diskspace $ioping |"
-    isrecording
+    ioping=$(tail -1 /dev/shm/ioprobe|tr -d " ")
+    echo -n " ${temp}c $ioping $diskspace |"
   else
     B=$(sysctl hw.sensors.cpu0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
     C=$(sysctl hw.sensors.pchtemp0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
@@ -116,19 +141,14 @@ battery()
 
 weather()
 {
-    # create control file if doesn't exist
-    if test ! -e /dev/shm/weather_final
-      then touch /dev/shm/weather_final
+    if [ -e /dev/shm/weather_final ]; then
+        echo -n " $(tail -1 /dev/shm/weather_final) |"
     fi
-
-    echo -n " $(tail -1 /dev/shm/weather_final) |"
 }
 
 network-status()
 {
   if [ $SYSTEM = "Linux" ]; then
-
-
     # create control file if doesn't exist
     if test ! -e /dev/shm/connectivity
       then touch /dev/shm/connectivity
@@ -155,9 +175,7 @@ network-status()
 # update file with l3ls content
 solidground_fix()
 {
-  ssh -o connecttimeout=2 l3slave.suse.de l3ls -m  \
-  | grep "^\[" | tr -d "[" | while read a b c; do
-  echo $a $b
+  l3ls -m | grep "\[[0-9]" | tr -d "[" | while read a b c; do echo $a $b
   done > /dev/shm/solidground
 
   BZ="https://bugzilla.suse.com"
@@ -188,18 +206,18 @@ display_targets()
   BZST=$(cat /dev/shm/bugzilla_http_status)
   SPECIAL="CODE"
 
-  echo -n "["$BZST"] $SPECIAL '*' "
+  #echo -n "["$BZST"] $SPECIAL '*'"
 
   if [ -z $ACTIVE ]; then
     ACTIVE=0
   else
-  if [ $ACTIVE -gt $OVERLOADED ]
-    then echo -n "!"
-  fi
+    if [ $ACTIVE -gt $OVERLOADED ]
+      then OVER="!"
+    fi
   fi
 
-
-  echo -n $ACTIVE/$DONE
+  # Where the magic happen
+  echo -n ["$BZST"] ${OVER}${ACTIVE}/${DONE} " |"
 }
 
 solidground_progress()
@@ -211,7 +229,8 @@ solidground_progress()
 
   if [ $SYSTEM = "Linux" ]; then
     # check vpn connectivity
-    if $(ip a | grep tun0 | grep -q UP); then
+    status=$(tail -1 /dev/shm/connectivity|tr -d " ")
+    if [ $status = "00" ] ; then
       # check if progress is older than half hour
       if test "`find /dev/shm/solidground -mmin +15`"
       then
@@ -281,9 +300,18 @@ run_start()
   echo -n " " "| "
 }
 
+show_hogs()
+{
+  A=$(cat /dev/shm/hogs)
+
+  if [ $A != "empty" ]; then
+    echo $A "| "
+  fi
+}
+
 gimbal()
 {
-  echo -n "FIT|ARF|SVV | "
+  echo -n "CODE | "
 }
 
 countdown()

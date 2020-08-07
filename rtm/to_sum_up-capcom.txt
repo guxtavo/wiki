@@ -5,14 +5,15 @@ OBJECTIVE
        reporting weekly as a remotee.
 
 SYNOPSIS
-       Linux              >>>>>>>...           Shell Scripting    >>>>>>....
-       Debugging          >>>>>.....           Networking         >>>>>>....
-       Linux Kernel       >>>.......           x86_64/C           >>........
+       Linux              >>>>>>....           Shell Scripting    >>>>>.....
+       Debugging          >>>>......           Networking         >>>>>.....
+       Linux Kernel       >>........           x86_64/C           >.........
 
        These are my long running studies / objectives and a measure of
-       how comfortable I feel working on them. _You_ are looking at a
-       Linux Software Engineer with background in 'Support', 'DevOps',
-       'Performance Tunning' and 'Infrastructure'.
+       how comfortable I feel working on them. You are looking at a
+       _generalist_ with background in 'Unix Support', 'DevOps',
+       'Performance Tunning' and 'Infrastructure'. Thanks to Open
+       Source.
 
 DESCRIPTION
        As an R&D Software Engineer in SUSE, I use OBS to _build_ anything,

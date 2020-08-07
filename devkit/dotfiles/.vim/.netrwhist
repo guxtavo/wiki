@@ -1,7 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =5
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/home/gfigueira/git'
+let g:netrw_dirhist_1='/home/gfigueira/git/wiki/development'
+let g:netrw_dirhist_0='/home/gfigueira/git/resource-agents/heartbeat'
+let g:netrw_dirhist_9='/home/gfigueira/git/ptfutils/ptfutils'
+let g:netrw_dirhist_8='/home/gfigueira/git'
+let g:netrw_dirhist_7='/home/gfigueira/arduino/blink'
+let g:netrw_dirhist_6='/home/gfigueira/tmp/1161675/nts_LISSUFRESHMAG02_200121_1254/rootdir/etc'
 let g:netrw_dirhist_5='/home/gfigueira'
 let g:netrw_dirhist_4='/'
 let g:netrw_dirhist_3='/home/gfigueira/git/l3ech'
-let g:netrw_dirhist_2='/mnt2/etc/systemd/system/getty@tty1.service.d'
-let g:netrw_dirhist_1='/mnt2/opt/retropie/configs/all/retroarch/autoconfig'

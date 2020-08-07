@@ -4,16 +4,19 @@ source ~/git/wiki/devkit/plugins/st.sh
 
 # bug: optimize weather and network-status
 # main loop
+netstatus=$(tail -1 /dev/shm/connectivity| tr -d " ")
 main(){
   run_start
+  show_hogs
   #gimbal
   #countdown
-  #weather
-  if [ $ARCH = "x86_64" ]; then
+  weather
+  if [ $netstatus = "00" ]; then
     solidground_progress
     targets
   fi
-  cpu-hdd_temp
+  hdd-stat
+  cpu-stat
   if [ $ARCH = "x86_64" ]; then
     battery-countdown-recording
   fi

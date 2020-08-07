@@ -156,7 +156,7 @@ channels = (
   { name = "#oftc"; chatnet = "OFTC"; autojoin = "No"; },
   { name = "silc"; chatnet = "SILC"; autojoin = "No"; },
 
-  { name = "#suse-labs"; chatnet = "suse"; autojoin = "yes"; },
+  # { name = "#suse-labs"; chatnet = "suse"; autojoin = "yes"; },
   { name = "#sdi"; chatnet = "suse"; autojoin = "yes"; },
   #  { name = "#docker"; chatnet = "suse"; autojoin = "yes"; },
   #  { name = "#nts"; chatnet = "suse"; autojoin = "yes"; }

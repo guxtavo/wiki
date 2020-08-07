@@ -7,6 +7,7 @@
 	status = always
 [core]
 	askpass = 
+	pager = less -F -X
 [merge]
 	tool = meld
 [credential]

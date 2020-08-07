@@ -17,7 +17,7 @@ alias date_provo="TZ=US/Mountain date"
 alias date_beijing="TZ=Asia/Beijing date"
 
 # journals
-alias journal="vi ~/git/wiki/index.md"
+alias journal="vi ~/git/wiki/idx.md"
 alias suse="vi ~/git/suse/wiki/calendar.md"
 alias sdi="vi ~/git/suse/index.md"
 alias 512=" vi ~/git/wiki/Zero512.md"
@@ -43,15 +43,16 @@ alias scriptreplay="scriptreplay -t time.log -s session.log -d 2 -m 1"
 alias git_clean_all="git reset; git checkout .; git clean -fdx"
 
 # sdi
-alias lthree="ssh l3slave.suse.de"
+alias lthree="ssh l3mule.suse.de"
 alias polio="ssh polio.suse.cz"
 alias l3vm="ssh polio.suse.cz l3vm"
 alias vv="virt-viewer -c qemu+ssh://gfigueira@polio.suse.cz/system -w"
-alias ism="ssh l3slave.suse.de /mounts/work/src/bin/is_maintained -b"
-alias orthos="ssh l3slave.suse.de /mounts/users-space/archteam/bin/orthos"
-alias stel="ssh l3slave.suse.de /suse/bin/stel"
-alias tel="ssh l3slave.suse.de /suse/bin/tel"
+alias ism="ssh l3mule.suse.de /mounts/work/src/bin/is_maintained -b"
+alias orthos="ssh l3mule.suse.de /mounts/users-space/archteam/bin/orthos"
+alias stel="ssh l3mule.suse.de /suse/bin/stel"
+alias tel="ssh l3mule.suse.de /suse/bin/tel"
 alias orthos="ssh sconsole1.arch.suse.de"
+alias wgetziu="wget -r -l1 --no-parent"
 
 # functions
 
@@ -102,7 +103,7 @@ countdown ()
     echo "Usage: countdown seconds";
     return;
   fi;
-  TIMER_TRACKING="$HOME/git/wiki/timer_tracking.db"
+  TIMER_TRACKING="$HOME/git/wiki/trc.db"
   STAMP=$(date '+%Y W%V %m/%d')
   id=$(od -vAn -N2 -tx1 < /dev/urandom | sed 's/ //g')
   tmux display-message "Timer $id created"
@@ -157,3 +158,23 @@ colors()
 fortune ~/git/wiki/devkit/resources/quotes
 # set caps as ctrl
 setxkbmap -option ctrl:nocaps
+function dec-to-bin()
+{
+    echo "obase=2;$1" | bc
+}
+
+function bin-to-dec()
+{
+    echo "ibase=2;obase=A;$1" | bc
+}
+
+function hex-to-dec()
+{
+    caps_on=$(echo $1 | tr a-z A-Z)
+    echo "ibase=16;obase=A;$caps_on" | bc
+}
+
+function dec-to-hex()
+{
+    echo "obase=16;$1" | bc
+}

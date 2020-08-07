@@ -1,0 +1,118 @@
+2020 W22 05/25 10 test
+2020 W22 05/25 300
+2020 W22 05/25 10 testing things
+2020 W22 05/25 10 another test
+2020 W22 05/25 300 another one bites the dust
+2020 W22 05/25 300 timers with tracking complete :D
+2020 W22 05/25 300 mutt
+2020 W22 05/25 1500 mutt and workday
+2020 W22 05/25 1500 1170354 check how ocf_ver_level works
+2020 W22 05/25 1500 1170354 explain what ocf_ver2num does
+2020 W22 05/25 5400 break
+2020 W22 05/25 1500 1169538 git bisect bad and build
+2020 W22 05/25 300 1169538 git bisect bad and build
+2020 W22 05/25 300 1170354 validate test results in prototype
+2020 W22 05/25 300 1170354 validate test results in prototype
+2020 W22 05/25 1500 1170354 make prototype simpler to execute
+2020 W22 05/26 1500 1129302 setup polio vm and find startwm.sh package
+2020 W22 05/26 1500 L3 workshop feedback and workday fto
+2020 W22 05/26 1500 1129302 finish writting the bug review
+2020 W22 05/26 5400 break
+2020 W22 05/26 300 1169538 git bisect good and build
+2020 W22 05/26 300 1169538 git bisect good and build
+2020 W22 05/26 1500 1169538 git bisect bad and build
+2020 W22 05/27 10 test
+2020 W22 05/27 10 test
+2020 W22 05/27 1500 l3-tooling - add new things to l3config
+2020 W22 05/27 1500 1169538 git bisect bad and build
+2020 W22 05/27 1500 l3-tooling - write prototype for create_cprepo
+2020 W22 05/27 1500 1169538 git bisect good and build
+2020 W22 05/27 5400 break
+2020 W22 05/27 300 1169538 git bisect good and build
+2020 W22 05/27 300 1169538 git bisect bad and build
+2020 W22 05/28 1500 status report
+2020 W22 05/28 1500 status report
+2020 W22 05/28 300 break
+2020 W22 05/28 1500 status report
+2020 W22 05/28 1500 l3config changes
+2020 W22 05/29 1500 status report
+2020 W23 06/01 5400 wiki
+2020 W23 06/01 5400 wiki rewrite index
+2020 W23 06/02 1500 1169538 git bisect find whats going on
+2020 W23 06/02 1500 1169538 git bisect help and build
+2020 W23 06/02 300 1170354 look into ptfutils/rpmver.py
+2020 W23 06/02 5400 break
+2020 W23 06/02 1500 1170354 rewrite ocf_version_cmp with sort
+2020 W23 06/02 300 1170354 needinfo maintainers to review your patch
+2020 W23 06/02 5400 break
+2020 W23 06/03 300 review calendar
+2020 W23 06/03 1500 tooling debug why sle-module-development-tools-obs is not finding linuxrc
+2020 W23 06/03 300 1169538 git bisect good and build
+2020 W23 06/03 1500 tooling sle-module-development-tools-obs ptfsetup search
+2020 W23 06/03 1500 1169538 build TEST without 91f446a
+2020 W23 06/03 5400 break
+2020 W23 06/04 1500 1129302 fix SR
+2020 W23 06/04 1500 1129302 how to revert my branch back to what it was
+2020 W23 06/04 1500 1129302 write patch - start dbus if not running
+2020 W23 06/04 1500 1129302 try a new bco and submitrequest
+2020 W23 06/04 300 1129302 fix SR 219528
+2020 W24 06/08 1500 inbox
+2020 W24 06/08 300 1170270 build TEST
+2020 W24 06/08 1500 writting appraisal for August 31st
+2020 W24 06/08 1500 timesheet may
+2020 W24 06/08 300 timesheet send email
+2020 W24 06/08 300 buy new battery for laptop
+2020 W24 06/08 1500 1172653 check upstream
+2020 W24 06/08 1500 1172653 apps/snmpwalk.c
+2020 W24 06/09 1500 1172653 source code review
+2020 W24 06/09 300 1172653 source code review
+2020 W24 06/09 300 1172653 finish bz update
+2020 W24 06/09 5400 break
+2020 W24 06/09 1500 1172653 review bug and address concerns
+2020 W24 06/09 300 1172691 TEST build
+2020 W24 06/10 300 tooling open prototype
+2020 W24 06/10 300 tooling save meta from PTF:Release:L3
+2020 W24 06/10 1500 tooling create_cprepo function
+2020 W24 06/10 1500 tooling create_cprepo proto works
+2020 W24 06/10 300 tooling port create_cprepo from proto to topic branch
+2020 W24 06/10 1500 tooling cprepo and how to name variables intelligibly
+2020 W24 06/10 1500 tooling describe terminologies better
+2020 W24 06/12 1500 write status report
+2020 W24 06/12 5400 break
+2020 W25 06/15 1500 tooling ptfutils review merge 154
+2020 W25 06/15 1500 1172204 assign, setup polio vms, compile reproducer, source code analysis
+2020 W25 06/15 1500 1172869 write bug report
+2020 W25 06/15 5400 break
+2020 W25 06/15 1500 1168155 build sles12-sp3 TEST
+2020 W25 06/16 1500 1166480 review bug and write .L3/1166480.md
+2020 W25 06/16 1500 1166480 finish /home/gfigueira/.L3/1166480.md
+2020 W25 06/16 1500 1166480 continue with /home/gfigueira/.L3/1166480.md
+2020 W25 06/16 1500 1166480 finish reviwing bug
+2020 W25 06/18 1500 1166480 executive summary
+2020 W25 06/18 1500 1166480 executive summary
+2020 W25 06/18 5400 break
+2020 W25 06/19 1500 1172869 rewrite bug report, what's next
+2020 W25 06/19 1500 1172869 rewrite bug report, what's next
+2020 W25 06/19 5400 break
+2020 W25 06/19 1500 1172869 rewrite bug report, what's next
+2020 W25 06/19 1500 1172869 find channel state and repo info in server s supportconfig
+2020 W26 06/24 1500 tooling ptfrepos good variable names
+2020 W26 06/24 1500 tooling ptfrepos plan renaming 3 important variables
+2020 W26 06/27 1500 wiki sort 1-feedback.md
+2020 W26 06/27 1500 wiki 1-feedback.md
+2020 W27 06/29 1500 1172204 work on a plan
+2020 W27 06/29 300 break
+2020 W27 06/29 1500 1172204 review session and do 1st recording
+2020 W30 07/20 1500 1170354 identation, remove tr and squash the branch
+2020 W31 07/29 300
+2020 W31 07/29 1500 break
+2020 W31 07/29 300
+2020 W31 07/29 300
+2020 W32 08/03 1500 1129302
+2020 W32 08/04 1500 1172653 plan the steps
+2020 W32 08/04 1500 C - chapter 6: structures
+2020 W32 08/04 1500 C - chapter 6: structures
+2020 W32 08/05 1500 tooling IBSProduct
+2020 W32 08/05 1500 tooling IBSProduct
+2020 W32 08/06 1500 focus
+2020 W32 08/07 300 test

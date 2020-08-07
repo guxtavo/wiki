@@ -47,6 +47,7 @@ alias oosc="osc -A https://api.opensuse.org"
 alias rpm-url="rpm -q --qf '%{DISTURL}\n'"
 alias vpn="sudo ~/git/suse/bin/manage_vpn.sh"
 alias vpns="sudo systemctl status openvpn@SUSE-NUE | tail -10 | cut -b64-144 | tail -1"
+alias alsamixer="alsamixer -g"
 
 # functions
 
@@ -104,7 +105,7 @@ update_profile_git()
   # find . | egrep "*.pack|*.idx" | grep "objects/pack/" | while read a; do \
   # chmod 644 $a; done
 
-  export SGR_shell_path="/home/gfigueira/git/wiki/profile"
+  export SGR_shell_path="/home/gfigueira/git/wiki/devkit"
   cp ~/.bashrc ${SGR_shell_path}/dotfiles/
   cp ~/.linux.sh ${SGR_shell_path}/dotfiles/
   cp ~/.common.sh ${SGR_shell_path}/dotfiles/
@@ -132,7 +133,8 @@ update_profile_git()
       tar cf ~/store.tgz ~/.password-store/
       openssl enc -aes-256-cbc \
         -in ~/store.tgz \
-        -out $SGR_shell_path/dotfiles/.store.data
+        -out $SGR_shell_path/dotfiles/.store.data \
+        -salt -iter 29
       rm ~/store.tgz
       # openssl enc -d -aes-256-cbc -in .store.data -out store.tgz
   fi

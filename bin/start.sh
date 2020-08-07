@@ -19,6 +19,7 @@ enable()
 {
     #start-led &
     echo enabled > /dev/shm/start
+    play -q ~/git/wiki/devkit/resources/temple.wav &
     tmux set-option -g status off
     tmux new-window -t HELM:99 -n 'start'
     tmux select-window -t HELM:99

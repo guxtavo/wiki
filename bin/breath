@@ -1,0 +1,64 @@
+#!/bin/bash
+
+INHALE=$1
+EXHALE=$1
+TOT_TIME=$2
+END_TIME=$(( $(date +%s) + TOT_TIME ))
+
+function print_help() {
+    echo "
+    $0 <frequency> <time>
+    arguments in seconds
+    animation: i - inhale
+               o - exhale
+    "
+}
+
+function initialize() {
+    tput init
+    tput clear
+    tput civis
+}
+
+function enter_breathing() {
+    inhale
+    exhale
+}
+
+function inhale() {
+    for ((i=0; i<"$EXHALE"; i++)); do
+        write-dot 0 "$i" i
+        sleep 1
+    done
+}
+
+function exhale() {
+    for ((i="$(( INHALE -1 ))"; i>=0; i--)); do
+        write-dot 0 "$i" o
+        sleep 1
+    done
+}
+
+function write-dot() {
+    tput cup "$1" "$2"
+    echo "$3"
+}
+
+function exit-and-clean() {
+    tput cup 0 0
+    tput cnorm
+    exit 0
+}
+
+# main loop
+case $1 in
+    -[h?] | --help)
+        print_help
+        exit 0;;
+esac
+
+initialize
+while [ "$(date +%s)" -lt $END_TIME ]; do
+    enter_breathing
+done
+exit-and-clean
