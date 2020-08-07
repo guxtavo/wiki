@@ -15,7 +15,7 @@ ioping()
     A=$(sudo ioping -B -c1 /dev/$1)
     B=$(echo $A |  cut -d " " -f 10)
     mili=$(echo "scale=2; $B/1000000" | bc)
-    echo ${mili}ms
+    echo $mili
     # Output example: "1.35 ms"
 }
 
@@ -26,7 +26,12 @@ ioprobe()
     else
         B=$(ioping sda1)
     fi
-    echo $B >> /dev/shm/ioprobe
+
+    if [ ${B:0:1} = "." ]; then
+        echo 0${B}ms >> /dev/shm/ioprobe
+    else
+        echo ${B}ms >> /dev/shm/ioprobe
+    fi
 
     diskspace=$(df -h / | tail -1 | awk '{print $4}')
     echo $diskspace >> /dev/shm/diskspace
