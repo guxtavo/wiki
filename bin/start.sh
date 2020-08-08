@@ -24,9 +24,9 @@ enable()
     tmux new-window -t HELM:99 -n 'start'
     tmux select-window -t HELM:99
     tmux split-window -h
-    tmux send-keys "less ~/git/wiki/index.md" C-m
+    tmux send-keys "less ~/git/wiki/idx.md" C-m
     tmux select-pane -t 0
-    tmux send-keys "less ~/git/wiki/1-feedback.md" C-m
+    tmux send-keys "less ~/git/wiki/nws.md" C-m
 }
 
 check_status()
