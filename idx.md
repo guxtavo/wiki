@@ -25,7 +25,7 @@
 
         (where you want to go)
 
-            1) help new linux developers rump-up their skills
+            1) help new linux developers learn git
 
             2) help new linux developers populate their wiki
 

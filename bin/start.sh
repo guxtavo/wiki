@@ -25,8 +25,12 @@ enable()
     tmux select-window -t HELM:99
     tmux split-window -h
     tmux send-keys "less ~/git/wiki/idx.md" C-m
+    tmux split-window -v
+    tmux send-keys "tail -50 ~/git/wiki/cal.md" C-m
     tmux select-pane -t 0
     tmux send-keys "less ~/git/wiki/nws.md" C-m
+    tmux split-window -v
+    tmux send-keys "tail -50 ~/git/wiki/trc.db" C-m
 }
 
 check_status()

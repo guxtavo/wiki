@@ -22,8 +22,6 @@
 
 # undone tasks
 
-    * devkit: fix wrong paths in start.sh
-    * devkit: add cal.md and trc.db to start.sh
     * devkit: remove "|" separator from individual functions and add to main
     * devkit: refactor display_targets()
     * devkit: fix bug where solidground data is lost during reconnect
