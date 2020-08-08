@@ -25,9 +25,17 @@ cpu-stat()
     freq=$(( cpu_freq / 1000 ))
     if [ $freq -gt 1000 ]; then
         freqG=$(echo "scale=1; $freq/1000" | bc)
-        echo -n " ${temp}c ${freqG}GHz |"
+        if [ $temp -gt 50 ]; then
+            echo -n " ${temp}c ${freqG}GHz |"
+        else
+            echo -n " ${freqG}GHz |"
+        fi
     else
-        echo -n " ${temp}c ${freq}MHz |"
+        if [ $temp -gt 50 ]; then
+            echo -n " ${temp}c ${freq}MHz |"
+        else
+            echo -n " ${freq}MHz |"
+        fi
     fi
     isrecording
   else
@@ -59,7 +67,11 @@ hdd-stat()
     temp=$(tail -1 /dev/shm/hdd_temp)
     diskspace=$(tail -1 /dev/shm/diskspace)
     ioping=$(tail -1 /dev/shm/ioprobe|tr -d " ")
-    echo -n " ${temp}c $ioping $diskspace |"
+    if [ $temp -gt 40 ]; then
+        echo -n " ${temp}c $ioping $diskspace |"
+    else
+        echo -n " $ioping $diskspace |"
+    fi
   else
     B=$(sysctl hw.sensors.cpu0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
     C=$(sysctl hw.sensors.pchtemp0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
@@ -124,7 +136,6 @@ battery()
         else
             echo -n " "${capacity}%" |"
         fi
-
     done
 }
 
