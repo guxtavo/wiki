@@ -22,29 +22,9 @@
 
 # undone tasks
 
-    * website: register cli.support
-    * website: create CNAME for lrn.cli.support
-    * website: create CNAME for git.cli.support
-    * website: create CNAME for www.cli.support
-    * website: spin a vm in gcn - which distro?
-    * website: write salt pillars for git.cli.support
-    * website: write salt pillars for www.cli.support
-    * website: write salt pillars for lrn.cli.support
-
-    * lrn: write the "quiz editor"
-    * lrn: write status report
-    * lrn: write the "multiplayer layer"
-    * lrn: write the "cli frontend app"
-    * lrn: status report: suggest next 3 areas of improvement based on history
-
-    * wiki: index.md: add objectives and key results
-    * wiki: how to start breathing.sh after a timer?
-    * wiki: how to block distractions with devkit
-
-    * devkit: refactor st.sh battery() - query from /sys files
-    * devkit: Only show CPU/HDD temp if higher than 40 degrees, show in the
-      battery position.
-    * devkit: normalize ioping output
+    * devkit: fix wrong paths in start.sh
+    * devkit: add cal.md and trc.db to start.sh
+    * devkit: remove "|" separator from individual functions and add to main
     * devkit: refactor display_targets()
     * devkit: fix bug where solidground data is lost during reconnect
     * devkit: refactor solidground_progress()
@@ -65,3 +45,22 @@
     * lrn: w3m - research how to show line numbers
     * lrn: cli.space services: pmo(hire), rtfm, botcamper
     * mk-2 -> git/wiki/RTFM/index.md
+
+    * website: register cli.support
+    * website: create CNAME for lrn.cli.support
+    * website: create CNAME for git.cli.support
+    * website: create CNAME for www.cli.support
+    * website: spin a vm in gcn - which distro?
+    * website: write salt pillars for git.cli.support
+    * website: write salt pillars for www.cli.support
+    * website: write salt pillars for lrn.cli.support
+
+    * lrn: write the "quiz editor"
+    * lrn: write status report
+    * lrn: write the "multiplayer layer"
+    * lrn: write the "cli frontend app"
+    * lrn: status report: suggest next 3 areas of improvement based on history
+
+    * wiki: index.md: add objectives and key results
+    * wiki: how to start breathing.sh after a timer?
+    * wiki: how to block distractions with devkit
