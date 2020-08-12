@@ -37,8 +37,8 @@
       - alt+b - move backward a word    - echo "obase=2;32" | bc # 100000
       - alt+f - move forward a word
                                         binary to decimal:
-                                        - echo 'ibase=2;obase=A;101' | bc # 5
-
+    git:                                - echo 'ibase=2;obase=A;101' | bc # 5
+      git commit -p
                                         hexa to decimal
                                         - echo 'ibase=16;obase=A;FF' | bc # 255
 

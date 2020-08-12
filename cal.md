@@ -22,19 +22,10 @@
 
 # undone tasks
 
-    * devkit: remove "|" separator from individual functions and add to main
     * devkit: refactor display_targets()
     * devkit: fix bug where solidground data is lost during reconnect
     * devkit: refactor solidground_progress()
-    * devkit: create a systemd service for connectivity.sh
-    * devkit: change enc in openssl to a good one
-    * devkit: bug: fix ~/.i3status.conf on armv6l to show correct percentage
-    * devkit: connectivity.sh
-        * check l3slave connectivity
-        * make ping_sites behave like its simblings
-        * Integrate other plugins with netstat-probe
-    * devkit: intergrate calendaring from google (at least show and notify)
-    * devkit: suspending when lid is closed (also run i3lock)
+    * connectivity.sh: check l3slave connectivity
 
     * lrn: vim "coc" plugin
     * tools: ~/git/sent (presentations made easy)
