@@ -15,6 +15,3 @@ while true; do
     sleep $SLEEP
     RESULT=$(/home/gfigueira/git/wiki/devkit/shell.sh)
 done
-
-
-
