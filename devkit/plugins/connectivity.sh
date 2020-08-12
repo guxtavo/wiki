@@ -33,7 +33,7 @@ ioprobe()
         echo ${B}ms >> /dev/shm/ioprobe
     fi
 
-    diskspace=$(df -h / | tail -1 | awk '{print $4}')
+    diskspace=$(df -BG / | tail -1 | awk '{print $4}')
     echo $diskspace >> /dev/shm/diskspace
 }
 
