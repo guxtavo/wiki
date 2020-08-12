@@ -26,15 +26,15 @@ cpu-stat()
     if [ $freq -gt 1000 ]; then
         freqG=$(echo "scale=1; $freq/1000" | bc)
         if [ $temp -gt 50 ]; then
-            echo -n " ${temp}c ${freqG}GHz |"
+            echo -n " ${temp}c ${freqG}GHz"
         else
-            echo -n " ${freqG}GHz |"
+            echo -n " ${freqG}GHz"
         fi
     else
         if [ $temp -gt 50 ]; then
-            echo -n " ${temp}c ${freq}MHz |"
+            echo -n " ${temp}c ${freq}MHz"
         else
-            echo -n " ${freq}MHz |"
+            echo -n " ${freq}MHz"
         fi
     fi
     isrecording
@@ -42,7 +42,7 @@ cpu-stat()
     B=$(sysctl hw.sensors.cpu0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
     C=$(sysctl hw.sensors.pchtemp0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
     echo "$B/$C" > /dev/shm/cpu-hdd_temp
-    echo -n " $(cat /dev/shm/cpu-hdd_temp)c |"
+    echo -n " $(cat /dev/shm/cpu-hdd_temp)c"
   fi
 }
 
@@ -68,15 +68,15 @@ hdd-stat()
     diskspace=$(tail -1 /dev/shm/diskspace)
     ioping=$(tail -1 /dev/shm/ioprobe|tr -d " ")
     if [ $temp -gt 40 ]; then
-        echo -n " ${temp}c $ioping $diskspace |"
+        echo -n " ${temp}c $ioping $diskspace"
     else
-        echo -n " $ioping $diskspace |"
+        echo -n " $ioping $diskspace"
     fi
   else
     B=$(sysctl hw.sensors.cpu0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
     C=$(sysctl hw.sensors.pchtemp0.temp0 | cut -f1 -d" " | cut -f2 -d"=" | cut -f1 -d".")
     echo "$B/$C" > /dev/shm/cpu-hdd_temp
-    echo -n " $(cat /dev/shm/cpu-hdd_temp)c |"
+    echo -n " $(cat /dev/shm/cpu-hdd_temp)c"
   fi
 }
 
@@ -89,9 +89,9 @@ isrecording()
     MIN=$(( $DIF/60 ))
     SEC=$(( $DIF%60 ))
     if [ $SEC -lt 10 ]; then
-      echo -n " RECORDING $MIN:0$SEC |"
+      echo -n " RECORDING $MIN:0$SEC"
     else
-      echo -n " RECORDING $MIN:$SEC |"
+      echo -n " RECORDING $MIN:$SEC"
     fi
   fi
 }
@@ -115,9 +115,9 @@ battery-countdown-recording()
         MIN=$(( $B/60 ))
       SEC=$(( $B%60 ))
       if [ $SEC -lt 10 ]; then
-        echo -n " $MIN:0$SEC $ID |"
+        echo -n " $MIN:0$SEC $ID"
       else
-        echo -n " $MIN:$SEC $ID |"
+        echo -n " $MIN:$SEC $ID"
       fi
     else
       battery
@@ -132,9 +132,9 @@ battery()
         status=$(cat "$battery"/status)
 
         if [ "$status" = "Discharging" ]; then
-            echo -n " !"${capacity}%" |"
+            echo -n " "${capacity}%
         else
-            echo -n " "${capacity}%" |"
+            echo -n " "${capacity}%
         fi
     done
 }
@@ -155,21 +155,21 @@ battery_old()
  	if $(cat /dev/shm/battery | grep -q Discharging)
        then
          B=$(cat /dev/shm/battery | grep -v "unavai" | awk '{print $5}')
-         echo -n " ${B::-3} |"
+         echo -n " ${B::-3}"
        else
          B=$(cat /dev/shm/battery | grep -v "unavai" | awk '{print $4}' | tr -d "%,")
-         echo -n " $B% |"
+         echo -n " $B%"
      fi
    else
       B=$(sysctl | grep cpuspeed | cut -d "=" -f 2)
- 	 echo -n " $B |"
+ 	 echo -n " $B"
    fi
 }
 
 weather()
 {
     if [ -e /dev/shm/weather_final ]; then
-        echo -n " $(tail -1 /dev/shm/weather_final) |"
+        echo -n " $(tail -1 /dev/shm/weather_final)"
     fi
 }
 
@@ -183,7 +183,7 @@ network-status()
 
     B=$( tail -1 /dev/shm/connectivity  | tr -d " ")
     echo -n " $B"
-    #echo -n " |"
+    #echo -n " "
   fi
 
   if [ $SYSTEM = "OpenBSD" ]; then
@@ -195,7 +195,7 @@ network-status()
     if $(cat /dev/shm/ip_link_show | grep tun0 | grep RUNNING > /dev/null); then
       echo -n "V"
     fi
-    echo -n " |"
+    echo -n " "
   fi
 }
 
@@ -244,7 +244,7 @@ display_targets()
   fi
 
   # Where the magic happen
-  echo -n ["$BZST"] ${OVER}${ACTIVE}/${DONE} " |"
+  echo -n ["$BZST"] ${OVER}${ACTIVE}/${DONE}
 }
 
 solidground_progress()
@@ -279,7 +279,7 @@ solidground_progress()
       B=$(display_targets | tail -1)
       echo -n " $B"
     else
-      echo -n " AWAY |"
+      echo -n " AWAY"
 	  export AWAY="Y"
     fi
   fi
@@ -310,9 +310,9 @@ targets()
 
   if [ -z $AWAY ]; then
     AWAY=N
-  fi 
+  fi
   if [ $AWAY = "Y" ]; then
-    echo -n "AWAY |" > /dev/null
+    echo -n "AWAY" > /dev/null
   else
     # Commits - FIXME: track PRs/pushes
     #A=$(wc -l /dev/shm/PR | awk '{print $1}')
