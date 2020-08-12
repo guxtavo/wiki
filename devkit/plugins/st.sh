@@ -65,8 +65,14 @@ hdd-stat()
     fi
 
     temp=$(tail -1 /dev/shm/hdd_temp)
-    diskspace=$(tail -1 /dev/shm/diskspace)
+    diskspace=$(tail -1 /dev/shm/diskspace| tr -d [A-Z])
     ioping=$(tail -1 /dev/shm/ioprobe|tr -d " ")
+
+    if [ $diskspace -lt 10 ]; then
+        diskspace="${diskspace}G"
+    else
+        diskspace=""
+    fi
     if [ $temp -gt 40 ]; then
         echo -n " ${temp}c $ioping $diskspace"
     else
