@@ -54,7 +54,7 @@ temperatures()
 weather_get_the_data()
 {
     LOCATION=Brno
-    curl -m 2 -s wttr.in/"$LOCATION"?format="%f+%p+%w\n" > \
+    curl -m 2 -s wttr.in/"$LOCATION"?format="%f+%p\n" > \
         /dev/shm/weather_final 2>/dev/null
 
     if [ $? -gt 0 ] ; then
