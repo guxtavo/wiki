@@ -22,9 +22,11 @@
 
 # undone tasks
 
+    * devkit: split weather info in two, only show rain if not 0.0mm
+    * devkit: create new nmcli aliases in dotfiles (~/wiki-nmcli.md)
     * devkit: refactor display_targets()
-    * devkit: fix bug where solidground data is lost during reconnect
     * devkit: refactor solidground_progress()
+    * devkit: fix bug where solidground data is lost during reconnect
     * connectivity.sh: check l3slave connectivity
 
     * lrn: vim "coc" plugin
