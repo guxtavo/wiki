@@ -175,7 +175,14 @@ battery_old()
 weather()
 {
     if [ -e /dev/shm/weather_final ]; then
-        echo -n " $(tail -1 /dev/shm/weather_final)"
+        data=$(tail -1 /dev/shm/weather_final)
+        temp=${data% *}
+        rain=${data#* }
+        if [ $rain != "0.0mm" ]; then
+            echo -n $temp $rain
+        else
+            echo -n $temp
+        fi
     fi
 }
 
