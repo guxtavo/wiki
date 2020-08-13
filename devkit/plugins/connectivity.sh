@@ -69,7 +69,7 @@ weather_get_the_data()
         echo "NULL" > /dev/shm/weather_final
     fi
 
-    if [ "$first" != "+" ] || [ "$first" != "-" ]; then
+    if [ "$first" != "+" ] && [ "$first" != "-" ]; then
         # response most be wrong
         echo "ERR" > /dev/shm/weather_final
     fi
