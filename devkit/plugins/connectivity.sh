@@ -58,19 +58,20 @@ weather_get_the_data()
         /dev/shm/weather_final 2>/dev/null
 
     if [ $? -gt 0 ] ; then
+        # curl cannot fetch
         echo "N/A" >> /dev/shm/weather_final
     fi
 
-    first=$(cut -b 1 /dev/shm/weather_final)
+    first=$(tail -1 /dev/shm/weather_final | cut -b 1)
 
     if [ -z $first ]; then
         #null data
-        echo "NULL" >> /dev/shm/weather_final
+        echo "NULL" > /dev/shm/weather_final
     fi
 
     if [ "$first" != "+" ] || [ "$first" != "-" ]; then
         # response most be wrong
-        echo "ERR" >> /dev/shm/weather_final
+        echo "ERR" > /dev/shm/weather_final
     fi
 }
 
