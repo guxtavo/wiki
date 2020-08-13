@@ -360,7 +360,7 @@ show_hogs()
   A=$(cat /dev/shm/hogs)
 
   if [ $A != "empty" ]; then
-    echo $A "| "
+    echo $A " "
   fi
 }
 
