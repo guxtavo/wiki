@@ -175,14 +175,29 @@ battery_old()
 weather()
 {
     if [ -e /dev/shm/weather_final ]; then
-        data=$(tail -1 /dev/shm/weather_final)
-        temp=${data% *}
-        rain=${data#* }
-        if [ $rain != "0.0mm" ]; then
-            echo -n $temp $rain
-        else
-            echo -n $temp
-        fi
+        # check if file contains errors
+        content=$(tail -1 /dev/shm/weather_final)
+        case "$content" in
+            "ERR")
+                echo -n ERROR
+                ;;
+            "N/A")
+                echo -n ERROR
+                ;;
+            "NULL")
+                echo -n ERROR
+                ;;
+            *)
+                data=$(tail -1 /dev/shm/weather_final)
+                temp=${data% *}
+                rain=${data#* }
+                if [ $rain != "0.0mm" ]; then
+                    echo -n $temp # $rain
+                else
+                    echo -n $temp
+                fi
+                ;;
+        esac
     fi
 }
 

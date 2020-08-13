@@ -60,6 +60,18 @@ weather_get_the_data()
     if [ $? -gt 0 ] ; then
         echo "N/A" > /dev/shm/weather_final
     fi
+
+    first=$(cut -b 1 /dev/shm/weather_final)
+
+    if [ -z $first ]; then
+        #null data
+        echo "NULL" > /dev/shm/weather_final
+    fi
+
+    if [ "$first" != "+" ] || [ "$first" != "-" ]; then
+        # response most be wrong
+        echo "ERR" > /dev/shm/weather_final
+    fi
 }
 
 check_expired_data()
