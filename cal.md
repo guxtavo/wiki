@@ -22,12 +22,11 @@
 
 # undone tasks
 
-    * ~/nmcli-up.sh - list, select and activate a connection
-    * ~/nmcli-add.sh - add a new connection
+    * connectivity.sh: check l3slave connectivity
+    * connectivity.sh refactor bugzilla check
     * devkit: refactor display_targets()
     * devkit: refactor solidground_progress()
     * devkit: fix bug where solidground data is lost during reconnect
-    * connectivity.sh: check l3slave connectivity
 
     * lrn: vim "coc" plugin
     * tools: ~/git/sent (presentations made easy)
