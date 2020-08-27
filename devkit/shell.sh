@@ -26,10 +26,10 @@ main(){
     fi
     hdd-stat
     cpu-stat
+    network-status
     if [ $ARCH = "x86_64" ]; then
       battery-countdown-recording
     fi
-    network-status
 }
 
 show_line()
