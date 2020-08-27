@@ -1,29 +1,29 @@
-capcom(7)                      GUSTAVO FIGUEIRA                      capcom(7)
+capcom(7)                    GUSTAVO FIGUEIRA                    capcom(7)
 
 OBJECTIVE
-       Have fun in the command line in a _customer_ centric organization,
-       reporting weekly as a remotee.
+       Have fun in the command line in a customer-centric organisation,
+       reporting weekly and remotely.
 
 SYNOPSIS
-       Linux              >>>>>>....           Shell Scripting    >>>>>.....
-       Debugging          >>>>......           Networking         >>>>>.....
-       Linux Kernel       >>........           x86_64/C           >.........
+       Linux              >>>>>>....       Shell Scripting    >>>>>.....
+       Debugging          >>>>......       Networking         >>>>>.....
+       Linux Kernel       >>........       x86_64/C           >.........
 
        These are my long running studies / objectives and a measure of
        how comfortable I feel working on them. You are looking at a
-       _generalist_ with background in 'Unix Support', 'DevOps',
-       'Performance Tunning' and 'Infrastructure'. Thanks to Open
-       Source.
+       _generalist_ with background in 'Unix Support' and
+       'Infrastructure'.
 
 DESCRIPTION
-       As an R&D Software Engineer in SUSE, I use OBS to _build_ anything,
-       help Support with advanced debugging, coordinate and help Developers,
-       create _patches_, do backports to different code streams, participate
-       in the development of tooling and operations and more.
+       As an R&D Software Engineer in SUSE, I use OBS to _build_
+       anything, help Support with advanced debugging, coordinate and
+       help Developers, create _patches_, do backports to different code
+       streams, participate in the development of tooling and operations
+       and more.
 
 OPTIONS
        -d --development (practitioner)
-              bash/ksh, python, git, OBS, C
+              shell scripting, python, git, C, rpm, OBS(build system)
 
        -o --os-sysadmin (knowledgeable practitioner)
               Debian, SLES, RHEL, OpenBSD, (defunct: Solaris, AIX, OSF1)
@@ -33,11 +33,12 @@ OPTIONS
               Database Servers, Application Servers, SAN/LVM
 
        -t --troubleshooting (experienced beginner)
-              Performance profiling and tuning, stress tests, strace, perf,
-              gdb, crash, tcpdump, system hardening, RCA
+              Performance profiling and tuning, stress tests, strace,
+              perf, gdb, crash, tcpdump, system hardening, RCA
 
        -s --soft-skills (experienced beginner)
-              Documentation writing, project management, incident management
+              Documentation writing, project management, incident
+              management
 
        -p --projects-I-developed
               multikern/Kerntec, BR 2004 - internet hotspot
@@ -52,24 +53,66 @@ OPTIONS
               sto/Red Hat, CZ 2015 - template system for salesforce
                (architect, product manager)
 
+              ptfutils/SUSE, CZ 2019 - frontend to the Build System
+               (python)
+
+
+
 VERSIONS
-    SUSE, CZ           2y~               Red Hat, CZ           2y+
-    > L3 Support, Tooling Developer      > Kernel Support Engineer
-                                         > Team Lead
-    Gemalto, LATAM         4y+
-    > Integration Engineer I and II      Drogarias Pacheco, BR 1y~
-                                         > Unix Support Engineer
-    Fidelity IT, BR        1y~
-    > Unix Support Engineer              INPI, BR              4y+
-    > Storage Support Engineer           > Unix Support Engineer
-                                         > Team Lead
-    Kern Technologies, BR  2y+
-    > Linux Engineer                     Other Companies, BR 3y+
-                                         > Information Security Professor /
-                                           Webmaster / Sysadmin /
-                                           Linux Support /
+    SUSE, CZ               3y~           Red Hat, CZ           2y+
+    > L3 Support                         > Kernel Support Engineer
+    > Tooling Developer                  > Team Lead
+
+    Gemalto, LATAM         4y+           Drogarias Pacheco, BR 1y~
+    > Unix Integration                   > Unix Support Engineer
+      Engineer I and II
+                                         INPI, BR              4y+
+    Fidelity IT, BR        1y~           > Unix Support Engineer
+    > Unix Support Engineer              > Team Lead
+    > Storage Support Engineer
+                                         Other Companies, BR   3y+
+    Kern Technologies, BR  2y+           > Information Security Professor
+    > Linux Engineer                     > Linux Support
+                                         > Webmaster
+
 SEE ALSO
         https://github.com/guxtavo
+        https://github.com/gfigueira/
         https://www.linkedin.com/in/guxtavo
 
-capcom(7)             capc8m@gmail.com / +420 774 091 877            capcom(7)
+capcom(7)           guxtavo@gmail.com / +420 774 091 877         capcom(7)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Introduction letter
+
+Gustavo (alias 'capcom' on IRC) is a self-reliant hacker (RFC 1983),
+business-savvy, excels in communication (which enables him to easily
+work with customers, partners, R&D and Support) and is always focused on
+results.
+
+Born in Brazil he works under a sponsored visa in Brno/CZ, where he has
+been for the past 7 years, give or take.
+
+    "While my first priority is to excel at my current role, my
+    short-term objective (end of 2021) is to become proficient in _C_
+    and increase my efforts towards system programming
+    (kernel/low-level)."
+
+When he is not working, Gustavo reads books, plays video games, watches
+youtube hoping one day building his own camper van and enjoys flight
+simulators.

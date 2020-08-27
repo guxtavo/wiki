@@ -22,6 +22,7 @@
 
 # undone tasks
 
+    * bin: nmcli-add.sh doesn't work if ssid has " " (spaces)
     * connectivity.sh: check l3slave connectivity
     * connectivity.sh refactor bugzilla check
     * devkit: refactor display_targets()
