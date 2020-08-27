@@ -24,4 +24,4 @@ echo
 echo -n "Type connection password: "
 read password
 
-sudo nmcli d wifi connect ${ssid[$id]} bssid ${bssid[$id]} password $password
+sudo nmcli d wifi connect "${ssid[$id]}" bssid ${bssid[$id]} password $password
