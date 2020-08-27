@@ -1,15 +1,6 @@
 
-sar.conf:
-
-set terminal png truecolor
-set output "sarimage.png"
-set autoscale
-set xdata time
-set timefmt "%H:%M:%S %p"
-set style data lines
-plot "iface.txt" using 1:6 title "rxkB/s", '' using 1:7 title "txkB/s"
-
 Example of input:
+
 #12:00:01 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s
 #12:10:01 AM      eth0  38363.95   9658.27  54790.18   9004.60      0.00      0.00      0.00
 #12:20:01 AM      eth0  24797.51   9595.73  34371.68  10635.23      0.00      0.00      0.00
@@ -21,13 +12,39 @@ Example of input:
 #01:20:01 AM      eth0   7424.56  15396.33   7464.35  20868.24      0.00      0.00      0.00
 #01:30:01 AM      eth0  29178.87  17791.22  39166.39  21634.87      0.00      0.00      0.00
 
+sar.conf:
+
+set terminal png truecolor
+set output "sarimage.png"
+set autoscale
+set xdata time
+set timefmt "%H:%M:%S %p"
+set style data lines
+plot "eth0" using 1:6 title "rxdrop/s", '' using 1:7 title "txkB/s"
+
+Example of input:
+
+00:00:02        IFACE   rxerr/s   txerr/s    coll/s  rxdrop/s  txdrop/s txcarr/s  rxfram/s  rxfifo/s  txfifo/s
+00:10:02         eth0      0.00      0.00      0.00    356.24      0.00 0.00      0.00      0.00      0.00
+00:20:02         eth0      0.00      0.00      0.00    360.03      0.00 0.00      0.00      0.00      0.00
+00:30:01         eth0      0.00      0.00      0.00    652.55      0.00 0.00      0.00      0.00      0.00
+00:40:01         eth0      0.00      0.00      0.00    477.42      0.00 0.00      0.00      0.00      0.00
+
+sar.conf:
+
+set terminal png truecolor
+set output "sarimage.png"
+set autoscale
+#set xdata time
+set timefmt "%H:%M:%S"
+set style data lines
+plot "eth0" using (column(0)):6
 
 Script to remove AM|PM:
 
 awk '{time = $1; pm = $2; if (pm == "PM" && substr(time,1,2) < 12) add = 12;
 else add = 0; $1 = substr(time,1,2)+add "" substr(time,3,6); $2 = NULL; print
 $0 }' iface.txt
-
 
 $ cat sar.conf |gnuplot
 $ shotwell sarimage.png
