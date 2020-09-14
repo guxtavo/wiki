@@ -3,7 +3,7 @@ source ~/git/wiki/devkit/plugins/time.sh
 source ~/git/wiki/devkit/plugins/st.sh
 
 show_separator(){
-    echo -n ' |'
+    echo -n ' | '
 }
 
 # main loop
@@ -13,16 +13,20 @@ if [ -z $netstatus ]; then
 fi
 
 main(){
-    #show_separator
+    show_separator
+    calendar_now_or_next
+    show_separator
     show_hogs
     #gimbal
     #countdown
     weather
     #show_separator
-    if [ $netstatus = "00" ]; then
-        solidground_progress
-        targets
-        #show_separator
+    if [ ${#netstatus} = 2 ]; then
+        l3mule=${netstatus:1}
+        if [ "$l3mule" = 0 ]; then
+            solidground_progress
+            targets
+        fi
     fi
     hdd-stat
     cpu-stat
