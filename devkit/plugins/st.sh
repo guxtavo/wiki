@@ -2,6 +2,11 @@
 
 ARCH=$(uname -m)
 
+calendar_now_or_next()
+{
+    echo $(cat /dev/shm/calendar)
+}
+
 isabove50()
 {
     if [ $1 -ge 50 ]; then

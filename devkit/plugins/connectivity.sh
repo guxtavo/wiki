@@ -3,6 +3,12 @@
 
 ARCH=$(uname -m)
 
+calendar()
+{
+    A=$(calendar-wrapper.sh)
+    echo "$A" > /dev/shm/calendar
+}
+
 networkprobe()
 {
     R1=$(ping_router)
@@ -122,6 +128,7 @@ function main()
         cpu_freq
         weather_main
         hogs
+        calendar
         sleep 15
     done
 }
