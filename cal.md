@@ -65,54 +65,65 @@
       * Add a hook to shell.sh
 
 ## W38
-    * Monday
-        * Work on ping_router -> hardcode l3mule in the ping_router script
-        * how to call parse-todays-calcurse.sh in a systemd timer
-        * Persistent=True
-        * create a service file at .config/systemd/user
-        * call it with: "systemctl --user start calcurse.service"
-        * create a timer file at .config/systemd/user (same name as the service)
-        * systemctl --user start calcurse.timer
-        * systemctl --user enable calcurse.timer
+    * Monday - Programmer
+      * Work on ping_router -> hardcode l3mule in the ping_router script
+      * how to call parse-todays-calcurse.sh in a systemd timer
+      * https://medium.com/@thiagokokada/systemd-timers-are-awesome-b2e79737a869
+      * Persistent=True
+      * create a service file at .config/systemd/user
+      * call it with: "systemctl --user start calcurse.service"
+      * create a timer file at .config/systemd/user (same name as the service)
+      * systemctl --user start calcurse.timer
+      * systemctl --user enable calcurse.timer
+      * shell.sh: enhance netstatus check
+      * create ~/wiki-proto-status.sh
+    * Monday - Project Manager
+      * git commit -p
+      * git push (16 commits)
+      * git log --pretty=format:"%h%x09%an%x09%ad%x09%s"
 
+# Modes to think about
 
+    * Programmer - writes code fixing bugs
+    * Project Manager - writes status report, push commits
+    * Product Manager - plans the vision and next steps
 
-# undone tasks
+# Undone tasks
 
+## Bugs
 
-    * connectivity.sh: new openvpn doesn't let me ping my router (ping l3mule)
+    * bin: nmcli-add.sh doesn't work if ssid has " " (spaces)
+    * devkit: fix bug where solidground data is lost during reconnect
 
-(0) ~ $ ip a show dev tun0
-19: tun0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast
-state UNKNOWN group default qlen 100
-    link/none
-    inet 10.163.16.46 peer 10.163.16.45/32 scope global tun0
-       valid_lft forever preferred_lft forever
-    inet6 2620:113:80c0:8350::100a/64 scope global
-       valid_lft forever preferred_lft forever
-    inet6 fe80::9848:d9a0:6176:69aa/64 scope link stable-privacy
-       valid_lft forever preferred_lft forever
+## Features
 
+    * connectivity.sh refactor bugzilla check
+    * devkit: refactor display_targets()
+    * devkit: refactor solidground_progress()
+
+    * vim "coc" plugin
+    * w3m - research how to use tabs
+    * w3m - research how to show numbers before links (how to use)
+    * w3m - research how to show line numbers
+    * tools: ~/git/sent (presentations made easy)
+
+    * mk-2 -> git/wiki/RTFM/index.md
+
+    * wiki: index.md: add objectives and key results
+    * wiki: how to start breathing.sh after a timer?
+    * wiki: how to block distractions with devkit
 
     * moodle: create a sample course
     * moodle: setup dark theme
     * moodle: setup google oauth2
     * moodle: configure self-signed certificate
 
-    * bin: nmcli-add.sh doesn't work if ssid has " " (spaces)
-    * connectivity.sh: check l3slave connectivity
-    * connectivity.sh refactor bugzilla check
-    * devkit: refactor display_targets()
-    * devkit: refactor solidground_progress()
-    * devkit: fix bug where solidground data is lost during reconnect
-
-    * lrn: vim "coc" plugin
-    * tools: ~/git/sent (presentations made easy)
-    * lrn: w3m - research how to use tabs
-    * lrn: w3m - research how to show numbers before links (how to use)
-    * lrn: w3m - research how to show line numbers
     * lrn: cli.space services: pmo(hire), rtfm, botcamper
-    * mk-2 -> git/wiki/RTFM/index.md
+    * lrn: write the "quiz editor"
+    * lrn: write status report
+    * lrn: write the "multiplayer layer"
+    * lrn: write the "cli frontend app"
+    * lrn: status report: suggest next 3 areas of improvement based on history
 
     * website: register cli.support
     * website: create CNAME for lrn.cli.support
@@ -122,19 +133,3 @@ state UNKNOWN group default qlen 100
     * website: write salt pillars for git.cli.support
     * website: write salt pillars for www.cli.support
     * website: write salt pillars for lrn.cli.support
-
-    * lrn: write the "quiz editor"
-    * lrn: write status report
-    * lrn: write the "multiplayer layer"
-    * lrn: write the "cli frontend app"
-    * lrn: status report: suggest next 3 areas of improvement based on history
-
-    * wiki: index.md: add objectives and key results
-    * wiki: how to start breathing.sh after a timer?
-    * wiki: how to block distractions with devkit
-
-# template
-## W
-    * Thursday - write code (execution)
-    * Friday - status report (pmo)
-    * Saturday - plan next week (vision)

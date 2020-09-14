@@ -1,16 +1,20 @@
 
 
          _ __   _____      _____
-        | '_ \ / _ \ \ /\ / / __|     New weather functions for devkit
-        | | | |  __/\ V  V /\__ \     available 2020-08-7
+        | '_ \ / _ \ \ /\ / / __|
+        | | | |  __/\ V  V /\__ \
         |_| |_|\___| \_/\_/ |___/
 
 
-  70109b0 (HEAD -> master) st.sh: show cpu and hdd temp only if above threshold
-  e5df87b (origin/master, origin/HEAD) st.sh: use /sys to read battery information
-  9d78c88 devkit: refactor documentation
-  c085e25 connectivity.sh: print a 0 if ioping is less than 0
-  9cf8ecc connectivity.sh: normalize ioping output
+            * Under construction
+               _     _
+        __   _(_)___(_) ___  _ __
+        \ \ / / / __| |/ _ \| '_ \
+         \ V /| \__ \ | (_) | | | |
+          \_/ |_|___/_|\___/|_| |_|
+
+
+            * Under construction
 
           __               _ _                _
          / _| ___  ___  __| | |__   __ _  ___| | __
