@@ -290,14 +290,17 @@ solidground_progress()
   if [ $SYSTEM = "Linux" ]; then
     # check vpn connectivity
     status=$(tail -1 /dev/shm/connectivity|tr -d " ")
-    if [ $status = "00" ] ; then
-      # check if progress is older than half hour
-      if test "`find /dev/shm/solidground -mmin +15`"
-      then
-        solidground_fix
+    if [ ${#status} = 2 ] ; then
+      l3mule=${status:1}
+      if [ "$l3mule" = 0 ]; then
+        # check if progress is older than half hour
+        if test "`find /dev/shm/solidground -mmin +15`"
+        then
+          solidground_fix
+        fi
+        B=$(display_targets | tail -1)
+        echo -n " $B"
       fi
-      B=$(display_targets | tail -1)
-      echo -n " $B"
     else
       echo -n " ?"
     fi

@@ -75,12 +75,29 @@
       * create a timer file at .config/systemd/user (same name as the service)
       * systemctl --user start calcurse.timer
       * systemctl --user enable calcurse.timer
+
+        09:56 <mkoutny_away> hi, and I see there can be hooks in
+        /usr/lib/systemd/system-sleep/ but that's not how this is implemented,
+        maybe it's just that internal timer timed out, as a control you'd need
+        to try suspend-resume with Peristent=no
+
       * shell.sh: enhance netstatus check
       * create ~/wiki-proto-status.sh
     * Monday - Project Manager
       * git commit -p
       * git push (16 commits)
       * git log --pretty=format:"%h%x09%an%x09%ad%x09%s"
+
+## W40
+    * Tuesday - C
+      [ ] cdecl explain 'static int nums[5];'
+      [x] annotate sololearn-return-a-pointer.c with cdecl
+      [x] open sololearn lesson
+      [x] add ITER as argument to get_evens()
+      [x] add one argument to get_evens() -> int inter
+      [ ] improve your artifact and understanding
+    * Wednesday - w3schools
+      [ ] bootstrap 4 example plage
 
 # Modes to think about
 
@@ -90,10 +107,18 @@
 
 # Undone tasks
 
+
+https://github.com/visit1985/mdp
+https://wiki.odroid.com/odroid_go/odroid_go
+
 ## Bugs
 
+    * [ ] webserver alias - add iptables rule and key to exit
     * bin: nmcli-add.sh doesn't work if ssid has " " (spaces)
     * devkit: fix bug where solidground data is lost during reconnect
+    * /dev/shm/ doesn't survice reboots ->
+         systemctl --user start calcurse.service
+         bugzilla info and incidents gets broken too:x
 
 ## Features
 
