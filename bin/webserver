@@ -1,0 +1,16 @@
+#!/bin/bash
+sudo iptables -I INPUT -p tcp --dport 8000 -j ACCEPT
+python -m SimpleHTTPServer 8000 &
+PID=$?
+sleep 2
+echo "Your IP addresses are:"
+ip a show wlp1s0 | grep inet
+ip a show tun0 | grep inet
+while true; do
+    echo -n "Press q to quit: "
+    read -r keypress
+    if [ "$keypress" == "q" ]; then
+        sudo iptables -D INPUT -p tcp --dport 8000 -j ACCEPT
+        kill -15 $PID
+    fi
+done
