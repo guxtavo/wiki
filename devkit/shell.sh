@@ -16,7 +16,6 @@ main(){
     show_separator
     calendar_now_or_next
     show_separator
-    show_hogs
     #gimbal
     #countdown
     weather
@@ -30,6 +29,7 @@ main(){
     fi
     hdd-stat
     cpu-stat
+    #show_hogs
     network-status
     if [ $ARCH = "x86_64" ]; then
       battery-countdown-recording

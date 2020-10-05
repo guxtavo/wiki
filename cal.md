@@ -99,6 +99,13 @@
     * Wednesday - w3schools
       [ ] bootstrap 4 example plage
 
+## W41
+    * Monday - bash
+      [x] webserver script - add iptables rule and key to exit
+      [x] change l3mule fqdn for the IP: 10.160.3.98
+      [x] do not show hogs, show as 0 or 1
+      [x] move hogs output next to netstatus
+
 # Modes to think about
 
     * Programmer - writes code fixing bugs
@@ -107,13 +114,8 @@
 
 # Undone tasks
 
-
-https://github.com/visit1985/mdp
-https://wiki.odroid.com/odroid_go/odroid_go
-
 ## Bugs
 
-    * [ ] webserver alias - add iptables rule and key to exit
     * bin: nmcli-add.sh doesn't work if ssid has " " (spaces)
     * devkit: fix bug where solidground data is lost during reconnect
     * /dev/shm/ doesn't survice reboots ->

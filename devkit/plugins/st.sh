@@ -213,9 +213,9 @@ network-status()
     if test ! -e /dev/shm/connectivity
       then touch /dev/shm/connectivity
     fi
-
+    HOGS=$(show_hogs)
     B=$( tail -1 /dev/shm/connectivity  | tr -d " ")
-    echo -n " $B"
+    echo -n " ${HOGS}${B}"
     #echo -n " "
   fi
 
