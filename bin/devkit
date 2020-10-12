@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# workaround for a missing /dev/shm/calcurse-a after reboot
+systemctl --user start calcurse.service
+
 if ! ps fax | grep [c]onnectivity.sh; then
     ~/git/wiki/devkit/plugins/connectivity.sh &
 fi
