@@ -105,6 +105,36 @@
       [x] change l3mule fqdn for the IP: 10.160.3.98
       [x] do not show hogs, show as 0 or 1
       [x] move hogs output next to netstatus
+      [x] commit changes
+    * Tuesday - C
+      [x] open sololearn-return-a-pointer.c
+      [x] ask questions to Jarow
+      [x] what's next, what you cannot explain from reading the code
+      [ ] figure out what it means line 34: static int nums[5];
+      [ ] why the code segfaults when ITER > 1008 ?
+      [ ] why nums is an array 5 of int?
+      [ ] open sololearn and try do do the exercises
+      [ ] how can I create nums with the same size as ITER?
+      [x] static int nums[iter]; -> "storage size of 'nums' isn't constant"
+      [x] record jarows answer in the file
+    * Wednesday - bootstrap
+      [x] open w3schools bootstrap chapter
+      [x] open wiki-bootstrap-example.html on editor and browser
+      [ ] create a page for your ptfrepos
+      [ ] how to change theme? eos-ds
+      [ ] https://suse.eosdesignsystem.com/layout
+      [ ] npm i --save eos-ds
+      [ ] git clone  https://gitlab.com/SUSE-UIUX/eos-ds-npm
+      [ ] ~/barendartchuk/l-t.pdf
+
+## W42
+    * Monday - wiki
+      [x] hogs.sh: fix random issue with proc name
+      [x] hogs.sh: run in a loop
+      [x] hogs.sh: can I reproduce?
+      [x] git commit -p # hogs.sh
+      [x] bin/event-now.rb: check if file exists before loop
+      [x] git commit -p # event-now.rb
 
 # Modes to think about
 
@@ -116,11 +146,9 @@
 
 ## Bugs
 
-    * bin: nmcli-add.sh doesn't work if ssid has " " (spaces)
-    * devkit: fix bug where solidground data is lost during reconnect
-    * /dev/shm/ doesn't survice reboots ->
-         systemctl --user start calcurse.service
-         bugzilla info and incidents gets broken too:x
+    * [ ] nmcli-add.sh doesn't work if ssid has " " (spaces)
+    * [ ] devkit: fix bug where solidground data is lost during reconnect
+    * [ ] bugzilla info and incidents gets broken after reboot
 
 ## Features
 
