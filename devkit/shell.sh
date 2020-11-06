@@ -14,8 +14,8 @@ fi
 
 main(){
     show_separator
-    calendar_now_or_next
-    show_separator
+    #calendar_now_or_next
+    #show_separator
     #gimbal
     #countdown
     weather
@@ -24,7 +24,7 @@ main(){
         l3mule=${netstatus:1}
         if [ "$l3mule" = 0 ]; then
             solidground_progress
-            targets
+            #targets
         fi
     fi
     hdd-stat

@@ -135,6 +135,53 @@
       [x] git commit -p # hogs.sh
       [x] bin/event-now.rb: check if file exists before loop
       [x] git commit -p # event-now.rb
+      [x] comment targets() in shell.sh (not used)
+      [x] inspect solidground_progress()
+      [x] simulate the problem -> rm /dev/shm/{solidground,bugzilla_http_status)
+      [x] create fix-suse-data.sh
+      [x] solidground_progress() - check if files are empty
+    * Tuesday - C
+      [x] open sololearn-return-a-pointer.c
+      [x] process notes from Jarow
+      [x] improve your artifact and understanding
+      [x] move free() to the correct place
+      [x] move sololearn-return-a-pointer.c to wiki/blg/dev/c/
+    * Wednesday - bootstrap
+      [x] review ~/barendartchuk/l-t.pdf
+      [x] open wiki-bootstrap-example.html on editor and browser
+      [ ] open w3schools bootstrap chapter
+      [ ] create a page for your ptfrepos
+      [ ] how to change theme? eos-ds
+      [ ] https://suse.eosdesignsystem.com/layout
+      [ ] npm i --save eos-ds
+      [ ] git clone  https://gitlab.com/SUSE-UIUX/eos-ds-npm
+
+## W43
+    * Monday - wiki
+      [x] aim!!! -> share knowledge and educate people about open source
+    * Tuesday - C
+      [x] open git/wiki/blg/dev/c/sololearn-return-a-pointer.c
+      [x] cd git/wiki/blg/dev/c; cg sololearn-return-a-pointer.c
+      [x] clarify the for loop syntax (init, condition, step)
+      [ ] search: c for loops without step increment
+      [ ] how to make the for loop without the k variable
+      [ ] in a for loop, the step (as in init, condition, step) does dot have
+          to be an increment (k++)
+      [ ] check why gcc complains about:
+
+            sololearn-return-a-pointer.c:33:42: warning: conversion to ‘long
+            unsigned int’ from ‘int’ may change the sign of the result
+            [-Wsign-conversion]
+            33 |     int* nums = (int*)malloc(sizeof(int) * iter);
+               |                                          ^
+
+
+          for loop syntax:
+                                          Does not have
+                                            to be an
+                                            increment
+                                           /
+                  for (init, condition, step)
 
 # Modes to think about
 
@@ -146,15 +193,14 @@
 
 ## Bugs
 
-    * [ ] nmcli-add.sh doesn't work if ssid has " " (spaces)
+    * [ ] calcurse can no longer import from Google Calendar
     * [ ] devkit: fix bug where solidground data is lost during reconnect
     * [ ] bugzilla info and incidents gets broken after reboot
+    * [ ] nmcli-add.sh doesn't work if ssid has " " (spaces)
+    * [ ] weather errors comming back from sleep (maybe I should check if I
+          just came back from sleep?
 
 ## Features
-
-    * connectivity.sh refactor bugzilla check
-    * devkit: refactor display_targets()
-    * devkit: refactor solidground_progress()
 
     * vim "coc" plugin
     * w3m - research how to use tabs

@@ -124,3 +124,4 @@
 2020 W37 09/10 300
 2020 W37 09/11 1500 break
 2020 W41 10/06 300 -a /sys/class/hwmon/hwmon4/fan1_input
+2020 W42 10/15 5400 status report

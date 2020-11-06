@@ -298,6 +298,10 @@ solidground_progress()
         then
           solidground_fix
         fi
+        # check if files are empty- if yes - call solidground_fix
+        if [ ! -s /dev/shm/solidground ]  ; then
+          solidground_fix
+        fi
         B=$(display_targets | tail -1)
         echo -n " $B"
       fi
