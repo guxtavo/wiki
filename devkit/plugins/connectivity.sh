@@ -27,7 +27,7 @@ ioping()
 
 ioprobe()
 {
-    if [ $ARCH = "armv6l" ]; then
+    if [ $ARCH = "armv7l" ]; then
         B=$(ioping mmcblk0p1)
     else
         B=$(ioping sda1)
@@ -45,7 +45,7 @@ ioprobe()
 
 temperatures()
 {
-    if [ $ARCH = "armv6l" ]; then
+    if [ $ARCH = "armv7l" ]; then
         temp=$(sudo vcgencmd measure_temp | cut -f 2 -d "=" | cut -f 1 -d .)
         echo "$temp" >> /dev/shm/cpu-hdd_temp
     else
