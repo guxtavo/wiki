@@ -27,7 +27,7 @@ ioping()
 
 ioprobe()
 {
-    if [ $ARCH = "armv7l" ]; then
+    if [ $ARCH = "armv7l" ] || [ "$ARCH" = "aarch64" ]; then
         B=$(ioping mmcblk0p1)
     else
         B=$(ioping sda1)
@@ -45,8 +45,8 @@ ioprobe()
 
 temperatures()
 {
-    if [ $ARCH = "armv7l" ]; then
-        temp=$(sudo vcgencmd measure_temp | cut -f 2 -d "=" | cut -f 1 -d .)
+    if [ $ARCH = "armv7l" ] || [ "$ARCH" = "aarch64" ]  ; then
+        temp=$(vcgencmd measure_temp | cut -f 2 -d "=" | cut -f 1 -d .)
         echo "$temp" >> /dev/shm/cpu-hdd_temp
     else
         tempcpu=$(sensors | grep CPU | awk '{print $2}' |  tr -d "+°C" | sed 's/\.0//g')
@@ -128,7 +128,7 @@ function main()
         cpu_freq
         weather_main
         hogs
-        calendar
+        #calendar
         sleep 15
     done
 }
