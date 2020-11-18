@@ -52,7 +52,7 @@ main()
   if [ -f /tmp/recording ]; then
     stop_recording
   else
-    if [ $ARCH = "armv6l" ] ; then
+    if [ $ARCH = "aarch64" ] ; then
         start_recording_arm
     else
         start_recording
