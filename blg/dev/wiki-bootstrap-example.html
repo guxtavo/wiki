@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>The Future of L3 and Maintenance Solutions</title>
+    <meta charset="utf-8">
+    <!-- this is what makes the format to follow the screen size (mobile) -->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+
+    <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div class="jumbotron text-center">
+    <h1>L3-tooling</h1>
+    <p>ptfrepos - how L3 is going to release PTFs into custom repositories</p>
+</div>
+
+<!-- fixed width container. for full width use container-fluid -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>How we are doing right now?</h3>
+            <ul>
+                <li>rpms in an URL</li>
+                <li>download each rpm</li>
+                <li>call zypper with all the required rpms</li>
+                <li>fail to do so and ask quesitons</li>
+            <ul>
+        </div>
+        <div class="col-sm-4">
+            <h3>What challenges our users face?</h3>
+            <ul>
+                <li>huge server park, thousands of SUSE servers</li>
+                <li>they are running with many PTFs</li>
+                <li>dislike for our current delivery method</li>
+            <ul>
+        </div>
+        <div class="col-sm-4">
+            <h3>Where we want to get?</h3>
+            <ul>
+                <li>multiple products per namespace</li>
+                <li>multiple namespaces per customer</li>
+                <li>automatic provisioning on registration</li>
+            <ul>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

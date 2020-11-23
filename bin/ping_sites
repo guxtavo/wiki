@@ -21,3 +21,11 @@ else
 fi
 
 # TODO: implement smtp (add imap.suse.de) , irc, and think about what impacts your work
+
+# list of places to ping
+# a.root-servers.net
+# b.root-servers.net
+# c.root-servers.net
+# www.google.com
+# www.microsoft.com
+# www.amazon.com

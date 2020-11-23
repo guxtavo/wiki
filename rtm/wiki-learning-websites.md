@@ -1,0 +1,7 @@
+youtube
+khanacademy
+skillshare
+brilliant
+codecademy
+linkedin
+duolingo

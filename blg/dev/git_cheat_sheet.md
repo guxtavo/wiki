@@ -18,6 +18,22 @@
 * Wait for merge
 * git pull (update from origin)
 
+# rebase
+
+(0) ptfutils (master)$ git checkout improve-variables
+Switched to branch 'improve-variables'
+
+(0) ptfutils (improve-variables)$ git rebase origin/master
+Auto-merging ptfutils/ptfrepos.py
+CONFLICT (content): Merge conflict in ptfutils/ptfrepos.py
+error: could not apply a46fcf4... ptfrepos: improve variable names
+Resolve all conflicts manually, mark them as resolved with
+"git add/rm <conflicted_files>", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase
+--abort".
+Could not apply a46fcf4... ptfrepos: improve variable names
+
 # working with remotes
 
 git remote show origin | less
